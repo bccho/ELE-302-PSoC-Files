@@ -1,0 +1,580 @@
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"main.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 7B000000 		.text
+  20      02004600 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.section	.rodata
+  24              		.align	2
+  25              	.LC0:
+  26 0000 4F6E2000 		.ascii	"On \000"
+  27              		.align	2
+  28              	.LC1:
+  29 0004 4F666600 		.ascii	"Off\000"
+  30              		.section	.text.inter,"ax",%progbits
+  31              		.align	2
+  32              		.global	inter
+  33              		.thumb
+  34              		.thumb_func
+  35              		.type	inter, %function
+  36              	inter:
+  37              	.LFB29:
+  38              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <device.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** CY_ISR(inter) {
+  39              		.loc 1 14 0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 2
+
+
+  40              		.cfi_startproc
+  41              		@ args = 0, pretend = 0, frame = 0
+  42              		@ frame_needed = 1, uses_anonymous_args = 0
+  43 0000 80B5     		push	{r7, lr}
+  44              	.LCFI0:
+  45              		.cfi_def_cfa_offset 8
+  46 0002 00AF     		add	r7, sp, #0
+  47              		.cfi_offset 14, -4
+  48              		.cfi_offset 7, -8
+  49              	.LCFI1:
+  50              		.cfi_def_cfa_register 7
+  15:.\main.c      ****     if (PWM_ReadCompare() == 0) {
+  51              		.loc 1 15 0
+  52 0004 46F22E43 		movw	r3, #:lower16:1073767470
+  53 0008 C4F20003 		movt	r3, #:upper16:1073767470
+  54 000c 1B78     		ldrb	r3, [r3, #0]
+  55 000e DBB2     		uxtb	r3, r3
+  56 0010 002B     		cmp	r3, #0
+  57 0012 10D1     		bne	.L2
+  16:.\main.c      ****         PWM_WriteCompare(99);
+  58              		.loc 1 16 0
+  59 0014 4FF06300 		mov	r0, #99
+  60 0018 FFF7FEFF 		bl	PWM_WriteCompare
+  17:.\main.c      ****         LCD_Position(1,0);
+  61              		.loc 1 17 0
+  62 001c 4FF00100 		mov	r0, #1
+  63 0020 4FF00001 		mov	r1, #0
+  64 0024 FFF7FEFF 		bl	LCD_Position
+  18:.\main.c      ****         LCD_PrintString("On ");
+  65              		.loc 1 18 0
+  66 0028 40F20000 		movw	r0, #:lower16:.LC0
+  67 002c C0F20000 		movt	r0, #:upper16:.LC0
+  68 0030 FFF7FEFF 		bl	LCD_PrintString
+  69 0034 0FE0     		b	.L4
+  70              	.L2:
+  19:.\main.c      ****     } else {
+  20:.\main.c      ****         PWM_WriteCompare(0);
+  71              		.loc 1 20 0
+  72 0036 4FF00000 		mov	r0, #0
+  73 003a FFF7FEFF 		bl	PWM_WriteCompare
+  21:.\main.c      ****         LCD_Position(1,0);
+  74              		.loc 1 21 0
+  75 003e 4FF00100 		mov	r0, #1
+  76 0042 4FF00001 		mov	r1, #0
+  77 0046 FFF7FEFF 		bl	LCD_Position
+  22:.\main.c      ****         LCD_PrintString("Off");
+  78              		.loc 1 22 0
+  79 004a 40F20000 		movw	r0, #:lower16:.LC1
+  80 004e C0F20000 		movt	r0, #:upper16:.LC1
+  81 0052 FFF7FEFF 		bl	LCD_PrintString
+  82              	.L4:
+  23:.\main.c      ****     }
+  24:.\main.c      **** }
+  83              		.loc 1 24 0
+  84 0056 80BD     		pop	{r7, pc}
+  85              		.cfi_endproc
+  86              	.LFE29:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 3
+
+
+  87              		.size	inter, .-inter
+  88              		.section	.rodata
+  89              		.align	2
+  90              	.LC2:
+  91 0008 4C454420 		.ascii	"LED status:\000"
+  91      73746174 
+  91      75733A00 
+  92              		.section	.text.main,"ax",%progbits
+  93              		.align	2
+  94              		.global	main
+  95              		.thumb
+  96              		.thumb_func
+  97              		.type	main, %function
+  98              	main:
+  99              	.LFB30:
+  25:.\main.c      **** 
+  26:.\main.c      **** void main() {
+ 100              		.loc 1 26 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 1, uses_anonymous_args = 0
+ 104 0000 80B5     		push	{r7, lr}
+ 105              	.LCFI2:
+ 106              		.cfi_def_cfa_offset 8
+ 107 0002 00AF     		add	r7, sp, #0
+ 108              		.cfi_offset 14, -4
+ 109              		.cfi_offset 7, -8
+ 110              	.LCFI3:
+ 111              		.cfi_def_cfa_register 7
+  27:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  28:.\main.c      **** 
+  29:.\main.c      ****     CyGlobalIntEnable;
+ 112              		.loc 1 29 0
+ 113              	@ 29 ".\main.c" 1
+ 114 0004 62B6     		CPSIE   i
+ 115              	@ 0 "" 2
+  30:.\main.c      ****     
+  31:.\main.c      ****     inter_2_Start();
+ 116              		.loc 1 31 0
+ 117              		.thumb
+ 118 0006 FFF7FEFF 		bl	inter_2_Start
+  32:.\main.c      ****     inter_2_SetVector(inter);
+ 119              		.loc 1 32 0
+ 120 000a 40F20000 		movw	r0, #:lower16:inter
+ 121 000e C0F20000 		movt	r0, #:upper16:inter
+ 122 0012 FFF7FEFF 		bl	inter_2_SetVector
+  33:.\main.c      ****     PWM_Start();
+ 123              		.loc 1 33 0
+ 124 0016 FFF7FEFF 		bl	PWM_Start
+  34:.\main.c      ****     Counter_Start();
+ 125              		.loc 1 34 0
+ 126 001a FFF7FEFF 		bl	Counter_Start
+  35:.\main.c      **** 
+  36:.\main.c      ****     LCD_Start();
+ 127              		.loc 1 36 0
+ 128 001e FFF7FEFF 		bl	LCD_Start
+  37:.\main.c      ****     LCD_Position(0, 0);
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 4
+
+
+ 129              		.loc 1 37 0
+ 130 0022 4FF00000 		mov	r0, #0
+ 131 0026 4FF00001 		mov	r1, #0
+ 132 002a FFF7FEFF 		bl	LCD_Position
+  38:.\main.c      ****     LCD_PrintString("LED status:");
+ 133              		.loc 1 38 0
+ 134 002e 40F20000 		movw	r0, #:lower16:.LC2
+ 135 0032 C0F20000 		movt	r0, #:upper16:.LC2
+ 136 0036 FFF7FEFF 		bl	LCD_PrintString
+ 137              	.L6:
+  39:.\main.c      ****     
+  40:.\main.c      ****     for(;;) {
+  41:.\main.c      ****         /* Place your application code here. */
+  42:.\main.c      ****     }
+ 138              		.loc 1 42 0
+ 139 003a FEE7     		b	.L6
+ 140              		.cfi_endproc
+ 141              	.LFE30:
+ 142              		.size	main, .-main
+ 143              		.text
+ 144              	.Letext0:
+ 145              		.section	.debug_loc,"",%progbits
+ 146              	.Ldebug_loc0:
+ 147              	.LLST0:
+ 148 0000 00000000 		.4byte	.LFB29
+ 149 0004 02000000 		.4byte	.LCFI0
+ 150 0008 0100     		.2byte	0x1
+ 151 000a 5D       		.byte	0x5d
+ 152 000b 02000000 		.4byte	.LCFI0
+ 153 000f 04000000 		.4byte	.LCFI1
+ 154 0013 0200     		.2byte	0x2
+ 155 0015 7D       		.byte	0x7d
+ 156 0016 08       		.sleb128 8
+ 157 0017 04000000 		.4byte	.LCFI1
+ 158 001b 58000000 		.4byte	.LFE29
+ 159 001f 0200     		.2byte	0x2
+ 160 0021 77       		.byte	0x77
+ 161 0022 08       		.sleb128 8
+ 162 0023 00000000 		.4byte	0x0
+ 163 0027 00000000 		.4byte	0x0
+ 164              	.LLST1:
+ 165 002b 00000000 		.4byte	.LFB30
+ 166 002f 02000000 		.4byte	.LCFI2
+ 167 0033 0100     		.2byte	0x1
+ 168 0035 5D       		.byte	0x5d
+ 169 0036 02000000 		.4byte	.LCFI2
+ 170 003a 04000000 		.4byte	.LCFI3
+ 171 003e 0200     		.2byte	0x2
+ 172 0040 7D       		.byte	0x7d
+ 173 0041 08       		.sleb128 8
+ 174 0042 04000000 		.4byte	.LCFI3
+ 175 0046 3C000000 		.4byte	.LFE30
+ 176 004a 0200     		.2byte	0x2
+ 177 004c 77       		.byte	0x77
+ 178 004d 08       		.sleb128 8
+ 179 004e 00000000 		.4byte	0x0
+ 180 0052 00000000 		.4byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 5
+
+
+ 181              		.file 2 "./Generated_Source/PSoC5/core_cm3.h"
+ 182              		.section	.debug_info
+ 183 0000 B2000000 		.4byte	0xb2
+ 184 0004 0200     		.2byte	0x2
+ 185 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 186 000a 04       		.byte	0x4
+ 187 000b 01       		.uleb128 0x1
+ 188 000c 78000000 		.4byte	.LASF10
+ 189 0010 01       		.byte	0x1
+ 190 0011 E4000000 		.4byte	.LASF11
+ 191 0015 00000000 		.4byte	.LASF12
+ 192 0019 00000000 		.4byte	0x0
+ 193 001d 00000000 		.4byte	0x0
+ 194 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 195 0025 00000000 		.4byte	.Ldebug_line0
+ 196 0029 02       		.uleb128 0x2
+ 197 002a 01       		.byte	0x1
+ 198 002b 06       		.byte	0x6
+ 199 002c CF000000 		.4byte	.LASF0
+ 200 0030 02       		.uleb128 0x2
+ 201 0031 01       		.byte	0x1
+ 202 0032 08       		.byte	0x8
+ 203 0033 84000000 		.4byte	.LASF1
+ 204 0037 02       		.uleb128 0x2
+ 205 0038 02       		.byte	0x2
+ 206 0039 05       		.byte	0x5
+ 207 003a A4000000 		.4byte	.LASF2
+ 208 003e 02       		.uleb128 0x2
+ 209 003f 02       		.byte	0x2
+ 210 0040 07       		.byte	0x7
+ 211 0041 BC000000 		.4byte	.LASF3
+ 212 0045 02       		.uleb128 0x2
+ 213 0046 04       		.byte	0x4
+ 214 0047 05       		.byte	0x5
+ 215 0048 DB000000 		.4byte	.LASF4
+ 216 004c 02       		.uleb128 0x2
+ 217 004d 04       		.byte	0x4
+ 218 004e 07       		.byte	0x7
+ 219 004f 4F000000 		.4byte	.LASF5
+ 220 0053 02       		.uleb128 0x2
+ 221 0054 08       		.byte	0x8
+ 222 0055 05       		.byte	0x5
+ 223 0056 AE000000 		.4byte	.LASF6
+ 224 005a 02       		.uleb128 0x2
+ 225 005b 08       		.byte	0x8
+ 226 005c 07       		.byte	0x7
+ 227 005d 61000000 		.4byte	.LASF7
+ 228 0061 03       		.uleb128 0x3
+ 229 0062 04       		.byte	0x4
+ 230 0063 05       		.byte	0x5
+ 231 0064 696E7400 		.ascii	"int\000"
+ 232 0068 02       		.uleb128 0x2
+ 233 0069 04       		.byte	0x4
+ 234 006a 07       		.byte	0x7
+ 235 006b 3D000000 		.4byte	.LASF8
+ 236 006f 02       		.uleb128 0x2
+ 237 0070 01       		.byte	0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 6
+
+
+ 238 0071 08       		.byte	0x8
+ 239 0072 92000000 		.4byte	.LASF9
+ 240 0076 04       		.uleb128 0x4
+ 241 0077 04       		.byte	0x4
+ 242 0078 07       		.byte	0x7
+ 243 0079 05       		.uleb128 0x5
+ 244 007a 01       		.byte	0x1
+ 245 007b ED000000 		.4byte	.LASF13
+ 246 007f 01       		.byte	0x1
+ 247 0080 0E       		.byte	0xe
+ 248 0081 01       		.byte	0x1
+ 249 0082 00000000 		.4byte	.LFB29
+ 250 0086 58000000 		.4byte	.LFE29
+ 251 008a 00000000 		.4byte	.LLST0
+ 252 008e 06       		.uleb128 0x6
+ 253 008f 01       		.byte	0x1
+ 254 0090 4A000000 		.4byte	.LASF14
+ 255 0094 01       		.byte	0x1
+ 256 0095 1A       		.byte	0x1a
+ 257 0096 00000000 		.4byte	.LFB30
+ 258 009a 3C000000 		.4byte	.LFE30
+ 259 009e 2B000000 		.4byte	.LLST1
+ 260 00a2 07       		.uleb128 0x7
+ 261 00a3 97000000 		.4byte	.LASF15
+ 262 00a7 02       		.byte	0x2
+ 263 00a8 CE06     		.2byte	0x6ce
+ 264 00aa B0000000 		.4byte	0xb0
+ 265 00ae 01       		.byte	0x1
+ 266 00af 01       		.byte	0x1
+ 267 00b0 08       		.uleb128 0x8
+ 268 00b1 61000000 		.4byte	0x61
+ 269 00b5 00       		.byte	0x0
+ 270              		.section	.debug_abbrev
+ 271 0000 01       		.uleb128 0x1
+ 272 0001 11       		.uleb128 0x11
+ 273 0002 01       		.byte	0x1
+ 274 0003 25       		.uleb128 0x25
+ 275 0004 0E       		.uleb128 0xe
+ 276 0005 13       		.uleb128 0x13
+ 277 0006 0B       		.uleb128 0xb
+ 278 0007 03       		.uleb128 0x3
+ 279 0008 0E       		.uleb128 0xe
+ 280 0009 1B       		.uleb128 0x1b
+ 281 000a 0E       		.uleb128 0xe
+ 282 000b 11       		.uleb128 0x11
+ 283 000c 01       		.uleb128 0x1
+ 284 000d 52       		.uleb128 0x52
+ 285 000e 01       		.uleb128 0x1
+ 286 000f 55       		.uleb128 0x55
+ 287 0010 06       		.uleb128 0x6
+ 288 0011 10       		.uleb128 0x10
+ 289 0012 06       		.uleb128 0x6
+ 290 0013 00       		.byte	0x0
+ 291 0014 00       		.byte	0x0
+ 292 0015 02       		.uleb128 0x2
+ 293 0016 24       		.uleb128 0x24
+ 294 0017 00       		.byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 7
+
+
+ 295 0018 0B       		.uleb128 0xb
+ 296 0019 0B       		.uleb128 0xb
+ 297 001a 3E       		.uleb128 0x3e
+ 298 001b 0B       		.uleb128 0xb
+ 299 001c 03       		.uleb128 0x3
+ 300 001d 0E       		.uleb128 0xe
+ 301 001e 00       		.byte	0x0
+ 302 001f 00       		.byte	0x0
+ 303 0020 03       		.uleb128 0x3
+ 304 0021 24       		.uleb128 0x24
+ 305 0022 00       		.byte	0x0
+ 306 0023 0B       		.uleb128 0xb
+ 307 0024 0B       		.uleb128 0xb
+ 308 0025 3E       		.uleb128 0x3e
+ 309 0026 0B       		.uleb128 0xb
+ 310 0027 03       		.uleb128 0x3
+ 311 0028 08       		.uleb128 0x8
+ 312 0029 00       		.byte	0x0
+ 313 002a 00       		.byte	0x0
+ 314 002b 04       		.uleb128 0x4
+ 315 002c 24       		.uleb128 0x24
+ 316 002d 00       		.byte	0x0
+ 317 002e 0B       		.uleb128 0xb
+ 318 002f 0B       		.uleb128 0xb
+ 319 0030 3E       		.uleb128 0x3e
+ 320 0031 0B       		.uleb128 0xb
+ 321 0032 00       		.byte	0x0
+ 322 0033 00       		.byte	0x0
+ 323 0034 05       		.uleb128 0x5
+ 324 0035 2E       		.uleb128 0x2e
+ 325 0036 00       		.byte	0x0
+ 326 0037 3F       		.uleb128 0x3f
+ 327 0038 0C       		.uleb128 0xc
+ 328 0039 03       		.uleb128 0x3
+ 329 003a 0E       		.uleb128 0xe
+ 330 003b 3A       		.uleb128 0x3a
+ 331 003c 0B       		.uleb128 0xb
+ 332 003d 3B       		.uleb128 0x3b
+ 333 003e 0B       		.uleb128 0xb
+ 334 003f 27       		.uleb128 0x27
+ 335 0040 0C       		.uleb128 0xc
+ 336 0041 11       		.uleb128 0x11
+ 337 0042 01       		.uleb128 0x1
+ 338 0043 12       		.uleb128 0x12
+ 339 0044 01       		.uleb128 0x1
+ 340 0045 40       		.uleb128 0x40
+ 341 0046 06       		.uleb128 0x6
+ 342 0047 00       		.byte	0x0
+ 343 0048 00       		.byte	0x0
+ 344 0049 06       		.uleb128 0x6
+ 345 004a 2E       		.uleb128 0x2e
+ 346 004b 00       		.byte	0x0
+ 347 004c 3F       		.uleb128 0x3f
+ 348 004d 0C       		.uleb128 0xc
+ 349 004e 03       		.uleb128 0x3
+ 350 004f 0E       		.uleb128 0xe
+ 351 0050 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 8
+
+
+ 352 0051 0B       		.uleb128 0xb
+ 353 0052 3B       		.uleb128 0x3b
+ 354 0053 0B       		.uleb128 0xb
+ 355 0054 11       		.uleb128 0x11
+ 356 0055 01       		.uleb128 0x1
+ 357 0056 12       		.uleb128 0x12
+ 358 0057 01       		.uleb128 0x1
+ 359 0058 40       		.uleb128 0x40
+ 360 0059 06       		.uleb128 0x6
+ 361 005a 00       		.byte	0x0
+ 362 005b 00       		.byte	0x0
+ 363 005c 07       		.uleb128 0x7
+ 364 005d 34       		.uleb128 0x34
+ 365 005e 00       		.byte	0x0
+ 366 005f 03       		.uleb128 0x3
+ 367 0060 0E       		.uleb128 0xe
+ 368 0061 3A       		.uleb128 0x3a
+ 369 0062 0B       		.uleb128 0xb
+ 370 0063 3B       		.uleb128 0x3b
+ 371 0064 05       		.uleb128 0x5
+ 372 0065 49       		.uleb128 0x49
+ 373 0066 13       		.uleb128 0x13
+ 374 0067 3F       		.uleb128 0x3f
+ 375 0068 0C       		.uleb128 0xc
+ 376 0069 3C       		.uleb128 0x3c
+ 377 006a 0C       		.uleb128 0xc
+ 378 006b 00       		.byte	0x0
+ 379 006c 00       		.byte	0x0
+ 380 006d 08       		.uleb128 0x8
+ 381 006e 35       		.uleb128 0x35
+ 382 006f 00       		.byte	0x0
+ 383 0070 49       		.uleb128 0x49
+ 384 0071 13       		.uleb128 0x13
+ 385 0072 00       		.byte	0x0
+ 386 0073 00       		.byte	0x0
+ 387 0074 00       		.byte	0x0
+ 388              		.section	.debug_pubnames,"",%progbits
+ 389 0000 21000000 		.4byte	0x21
+ 390 0004 0200     		.2byte	0x2
+ 391 0006 00000000 		.4byte	.Ldebug_info0
+ 392 000a B6000000 		.4byte	0xb6
+ 393 000e 79000000 		.4byte	0x79
+ 394 0012 696E7465 		.ascii	"inter\000"
+ 394      7200
+ 395 0018 8E000000 		.4byte	0x8e
+ 396 001c 6D61696E 		.ascii	"main\000"
+ 396      00
+ 397 0021 00000000 		.4byte	0x0
+ 398              		.section	.debug_aranges,"",%progbits
+ 399 0000 24000000 		.4byte	0x24
+ 400 0004 0200     		.2byte	0x2
+ 401 0006 00000000 		.4byte	.Ldebug_info0
+ 402 000a 04       		.byte	0x4
+ 403 000b 00       		.byte	0x0
+ 404 000c 0000     		.2byte	0x0
+ 405 000e 0000     		.2byte	0x0
+ 406 0010 00000000 		.4byte	.LFB29
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 9
+
+
+ 407 0014 58000000 		.4byte	.LFE29-.LFB29
+ 408 0018 00000000 		.4byte	.LFB30
+ 409 001c 3C000000 		.4byte	.LFE30-.LFB30
+ 410 0020 00000000 		.4byte	0x0
+ 411 0024 00000000 		.4byte	0x0
+ 412              		.section	.debug_ranges,"",%progbits
+ 413              	.Ldebug_ranges0:
+ 414 0000 00000000 		.4byte	.Ltext0
+ 415 0004 00000000 		.4byte	.Letext0
+ 416 0008 00000000 		.4byte	.LFB29
+ 417 000c 58000000 		.4byte	.LFE29
+ 418 0010 00000000 		.4byte	.LFB30
+ 419 0014 3C000000 		.4byte	.LFE30
+ 420 0018 00000000 		.4byte	0x0
+ 421 001c 00000000 		.4byte	0x0
+ 422              		.section	.debug_str,"MS",%progbits,1
+ 423              	.LASF12:
+ 424 0000 483A5C65 		.ascii	"H:\\ele302\\learning\\Whatever You Want\\Whatever Y"
+ 424      6C653330 
+ 424      325C6C65 
+ 424      61726E69 
+ 424      6E675C57 
+ 425 002f 6F752057 		.ascii	"ou Want.cydsn\000"
+ 425      616E742E 
+ 425      63796473 
+ 425      6E00
+ 426              	.LASF8:
+ 427 003d 756E7369 		.ascii	"unsigned int\000"
+ 427      676E6564 
+ 427      20696E74 
+ 427      00
+ 428              	.LASF14:
+ 429 004a 6D61696E 		.ascii	"main\000"
+ 429      00
+ 430              	.LASF5:
+ 431 004f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 431      20756E73 
+ 431      69676E65 
+ 431      6420696E 
+ 431      7400
+ 432              	.LASF7:
+ 433 0061 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 433      206C6F6E 
+ 433      6720756E 
+ 433      7369676E 
+ 433      65642069 
+ 434              	.LASF10:
+ 435 0078 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 435      4320342E 
+ 435      342E3100 
+ 436              	.LASF1:
+ 437 0084 756E7369 		.ascii	"unsigned char\000"
+ 437      676E6564 
+ 437      20636861 
+ 437      7200
+ 438              	.LASF9:
+ 439 0092 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccdg49jd.s 			page 10
+
+
+ 439      00
+ 440              	.LASF15:
+ 441 0097 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 441      52784275 
+ 441      66666572 
+ 441      00
+ 442              	.LASF2:
+ 443 00a4 73686F72 		.ascii	"short int\000"
+ 443      7420696E 
+ 443      7400
+ 444              	.LASF6:
+ 445 00ae 6C6F6E67 		.ascii	"long long int\000"
+ 445      206C6F6E 
+ 445      6720696E 
+ 445      7400
+ 446              	.LASF3:
+ 447 00bc 73686F72 		.ascii	"short unsigned int\000"
+ 447      7420756E 
+ 447      7369676E 
+ 447      65642069 
+ 447      6E7400
+ 448              	.LASF0:
+ 449 00cf 7369676E 		.ascii	"signed char\000"
+ 449      65642063 
+ 449      68617200 
+ 450              	.LASF4:
+ 451 00db 6C6F6E67 		.ascii	"long int\000"
+ 451      20696E74 
+ 451      00
+ 452              	.LASF11:
+ 453 00e4 2E5C6D61 		.ascii	".\\main.c\000"
+ 453      696E2E63 
+ 453      00
+ 454              	.LASF13:
+ 455 00ed 696E7465 		.ascii	"inter\000"
+ 455      7200
+ 456              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

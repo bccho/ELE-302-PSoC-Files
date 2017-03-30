@@ -1,0 +1,58 @@
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/CortexM3/ARM_GCC_441/Debug/main.o : H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Clock_1.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Counter.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyDmac.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyFlash.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyLib.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CySpc.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/LCD.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/PWM.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_1.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_1_aliases.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_2.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_2_aliases.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/core_cm3.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cyPm.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cydevice.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cydevice_trm.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cyfitter.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cypins.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cytypes.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/inter_1.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/inter_2.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/project.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/device.h H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/main.c 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Clock_1.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Counter.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyDmac.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyFlash.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyLib.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CySpc.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/LCD.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/LCD_LCDPort.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/LCD_LCDPort_aliases.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/PWM.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_1.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_1_aliases.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_2.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/Pin_2_aliases.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/core_cm3.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/core_cm3_psoc5.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cyPm.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cydevice.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cydevice_trm.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cyfitter.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cyfitter_cfg.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cypins.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/cytypes.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/inter_1.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/inter_2.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/project.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/device.h : 
+
+H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/main.c : 
+
