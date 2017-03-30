@@ -1,0 +1,941 @@
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"serial.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 96000000 		.text
+  20      02004800 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.bss
+  24              		.align	2
+  25              	bufRx:
+  26 0000 00000000 		.space	100
+  26      00000000 
+  26      00000000 
+  26      00000000 
+  26      00000000 
+  27              		.align	2
+  28              	bufRxPos:
+  29 0064 00000000 		.space	4
+  30              		.align	2
+  31              	needReset:
+  32 0068 00000000 		.space	4
+  33              		.section	.text.Serial_init,"ax",%progbits
+  34              		.align	2
+  35              		.global	Serial_init
+  36              		.thumb
+  37              		.thumb_func
+  38              		.type	Serial_init, %function
+  39              	Serial_init:
+  40              	.LFB29:
+  41              		.file 1 ".\\serial.c"
+   1:.\serial.c    **** /*-----------------------------------------------------------------*/
+   2:.\serial.c    **** /* serial.c                                                        */
+   3:.\serial.c    **** /*                                                                 */
+   4:.\serial.c    **** /* BC Cho (bccho@) and TJ Smith (tjs8@)                            */
+   5:.\serial.c    **** /*-----------------------------------------------------------------*/
+   6:.\serial.c    **** #include <serial.h>
+   7:.\serial.c    **** #include <device.h>
+   8:.\serial.c    **** 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 2
+
+
+   9:.\serial.c    **** /*-----------------------------------------------------------------*/
+  10:.\serial.c    **** 
+  11:.\serial.c    **** #define BUF_RX_SIZE 100
+  12:.\serial.c    **** static char bufRx[BUF_RX_SIZE];
+  13:.\serial.c    **** static int bufRxPos = 0;
+  14:.\serial.c    **** static int needReset = 0;
+  15:.\serial.c    **** 
+  16:.\serial.c    **** /*-----------------------------------------------------------------*/
+  17:.\serial.c    **** 
+  18:.\serial.c    **** static void resetRx();
+  19:.\serial.c    **** 
+  20:.\serial.c    **** /*-----------------------------------------------------------------*/
+  21:.\serial.c    **** 
+  22:.\serial.c    **** /* Initializes serial communications */
+  23:.\serial.c    **** void Serial_init() {
+  42              		.loc 1 23 0
+  43              		.cfi_startproc
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 1, uses_anonymous_args = 0
+  46 0000 80B5     		push	{r7, lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 8
+  49 0002 00AF     		add	r7, sp, #0
+  50              		.cfi_offset 14, -4
+  51              		.cfi_offset 7, -8
+  52              	.LCFI1:
+  53              		.cfi_def_cfa_register 7
+  24:.\serial.c    ****     resetRx();
+  54              		.loc 1 24 0
+  55 0004 FFF7FEFF 		bl	resetRx
+  25:.\serial.c    **** }
+  56              		.loc 1 25 0
+  57 0008 80BD     		pop	{r7, pc}
+  58              		.cfi_endproc
+  59              	.LFE29:
+  60              		.size	Serial_init, .-Serial_init
+  61 000a 00BF     		.section	.rodata
+  62              		.align	2
+  63              	.LC0:
+  64 0000 21204275 		.ascii	"! Buffer Overflow !\000"
+  64      66666572 
+  64      204F7665 
+  64      72666C6F 
+  64      77202100 
+  65              		.section	.text.Serial_handleData,"ax",%progbits
+  66              		.align	2
+  67              		.global	Serial_handleData
+  68              		.thumb
+  69              		.thumb_func
+  70              		.type	Serial_handleData, %function
+  71              	Serial_handleData:
+  72              	.LFB30:
+  26:.\serial.c    **** 
+  27:.\serial.c    **** 
+  28:.\serial.c    **** /* Handles incoming serial data 
+  29:.\serial.c    ****    Returns: null if transmission is not complete, the transmitted
+  30:.\serial.c    ****             string otherwise */
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 3
+
+
+  31:.\serial.c    **** char *Serial_handleData() {
+  73              		.loc 1 31 0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 8
+  76              		@ frame_needed = 1, uses_anonymous_args = 0
+  77 0000 80B5     		push	{r7, lr}
+  78              	.LCFI2:
+  79              		.cfi_def_cfa_offset 8
+  80 0002 82B0     		sub	sp, sp, #8
+  81              	.LCFI3:
+  82              		.cfi_def_cfa_offset 16
+  83 0004 00AF     		add	r7, sp, #0
+  84              		.cfi_offset 14, -4
+  85              		.cfi_offset 7, -8
+  86              	.LCFI4:
+  87              		.cfi_def_cfa_register 7
+  32:.\serial.c    ****     // reset the buffer if needed (last call completed a message)
+  33:.\serial.c    ****     if (needReset) {
+  88              		.loc 1 33 0
+  89 0006 40F20003 		movw	r3, #:lower16:needReset
+  90 000a C0F20003 		movt	r3, #:upper16:needReset
+  91 000e 1B68     		ldr	r3, [r3, #0]
+  92 0010 002B     		cmp	r3, #0
+  93 0012 08D0     		beq	.L4
+  34:.\serial.c    ****         resetRx();
+  94              		.loc 1 34 0
+  95 0014 FFF7FEFF 		bl	resetRx
+  35:.\serial.c    ****         needReset = 0;
+  96              		.loc 1 35 0
+  97 0018 40F20003 		movw	r3, #:lower16:needReset
+  98 001c C0F20003 		movt	r3, #:upper16:needReset
+  99 0020 4FF00002 		mov	r2, #0
+ 100 0024 1A60     		str	r2, [r3, #0]
+ 101              	.L4:
+  36:.\serial.c    ****     }
+  37:.\serial.c    ****     
+  38:.\serial.c    ****     // get char
+  39:.\serial.c    ****     char recByte = UART_GetChar();
+ 102              		.loc 1 39 0
+ 103 0026 FFF7FEFF 		bl	UART_GetChar
+ 104 002a 0346     		mov	r3, r0
+ 105 002c FB71     		strb	r3, [r7, #7]
+  40:.\serial.c    ****     
+  41:.\serial.c    ****     // if NL, CR, or EOT, indicate end of message and echo back special char
+  42:.\serial.c    ****     if (recByte == 0xA || recByte == 0xD || recByte == 0x4) {
+ 106              		.loc 1 42 0
+ 107 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 108 0030 0A2B     		cmp	r3, #10
+ 109 0032 05D0     		beq	.L5
+ 110 0034 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 111 0036 0D2B     		cmp	r3, #13
+ 112 0038 02D0     		beq	.L5
+ 113 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 114 003c 042B     		cmp	r3, #4
+ 115 003e 13D1     		bne	.L6
+ 116              	.L5:
+  43:.\serial.c    ****         UART_PutChar('$');
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 4
+
+
+ 117              		.loc 1 43 0
+ 118 0040 4FF02400 		mov	r0, #36
+ 119 0044 FFF7FEFF 		bl	UART_PutChar
+  44:.\serial.c    ****         UART_PutChar(recByte);
+ 120              		.loc 1 44 0
+ 121 0048 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 122 004a 1846     		mov	r0, r3
+ 123 004c FFF7FEFF 		bl	UART_PutChar
+  45:.\serial.c    ****         needReset = 1;
+ 124              		.loc 1 45 0
+ 125 0050 40F20003 		movw	r3, #:lower16:needReset
+ 126 0054 C0F20003 		movt	r3, #:upper16:needReset
+ 127 0058 4FF00102 		mov	r2, #1
+ 128 005c 1A60     		str	r2, [r3, #0]
+  46:.\serial.c    ****         return bufRx;
+ 129              		.loc 1 46 0
+ 130 005e 40F20003 		movw	r3, #:lower16:bufRx
+ 131 0062 C0F20003 		movt	r3, #:upper16:bufRx
+ 132 0066 3DE0     		b	.L7
+ 133              	.L6:
+  47:.\serial.c    ****     } else if (recByte > 0) {
+ 134              		.loc 1 47 0
+ 135 0068 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 136 006a 002B     		cmp	r3, #0
+ 137 006c 34D0     		beq	.L8
+  48:.\serial.c    ****         // if we have reached max buffer size, indicate overflow error
+  49:.\serial.c    ****         if (bufRxPos == BUF_RX_SIZE) {
+ 138              		.loc 1 49 0
+ 139 006e 40F20003 		movw	r3, #:lower16:bufRxPos
+ 140 0072 C0F20003 		movt	r3, #:upper16:bufRxPos
+ 141 0076 1B68     		ldr	r3, [r3, #0]
+ 142 0078 642B     		cmp	r3, #100
+ 143 007a 11D1     		bne	.L9
+  50:.\serial.c    ****             UART_PutString("! Buffer Overflow !");
+ 144              		.loc 1 50 0
+ 145 007c 40F20000 		movw	r0, #:lower16:.LC0
+ 146 0080 C0F20000 		movt	r0, #:upper16:.LC0
+ 147 0084 FFF7FEFF 		bl	UART_PutString
+  51:.\serial.c    ****             needReset = 1;
+ 148              		.loc 1 51 0
+ 149 0088 40F20003 		movw	r3, #:lower16:needReset
+ 150 008c C0F20003 		movt	r3, #:upper16:needReset
+ 151 0090 4FF00102 		mov	r2, #1
+ 152 0094 1A60     		str	r2, [r3, #0]
+  52:.\serial.c    ****             return bufRx;
+ 153              		.loc 1 52 0
+ 154 0096 40F20003 		movw	r3, #:lower16:bufRx
+ 155 009a C0F20003 		movt	r3, #:upper16:bufRx
+ 156 009e 21E0     		b	.L7
+ 157              	.L9:
+  53:.\serial.c    ****         // for normal bytes, put byte in buffer and echo the byte
+  54:.\serial.c    ****         } else {
+  55:.\serial.c    ****             bufRx[bufRxPos] = recByte;
+ 158              		.loc 1 55 0
+ 159 00a0 40F20003 		movw	r3, #:lower16:bufRxPos
+ 160 00a4 C0F20003 		movt	r3, #:upper16:bufRxPos
+ 161 00a8 1A68     		ldr	r2, [r3, #0]
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 5
+
+
+ 162 00aa 40F20003 		movw	r3, #:lower16:bufRx
+ 163 00ae C0F20003 		movt	r3, #:upper16:bufRx
+ 164 00b2 F979     		ldrb	r1, [r7, #7]
+ 165 00b4 9954     		strb	r1, [r3, r2]
+  56:.\serial.c    ****             bufRxPos++;
+ 166              		.loc 1 56 0
+ 167 00b6 40F20003 		movw	r3, #:lower16:bufRxPos
+ 168 00ba C0F20003 		movt	r3, #:upper16:bufRxPos
+ 169 00be 1B68     		ldr	r3, [r3, #0]
+ 170 00c0 03F10102 		add	r2, r3, #1
+ 171 00c4 40F20003 		movw	r3, #:lower16:bufRxPos
+ 172 00c8 C0F20003 		movt	r3, #:upper16:bufRxPos
+ 173 00cc 1A60     		str	r2, [r3, #0]
+  57:.\serial.c    ****             UART_PutChar(recByte);
+ 174              		.loc 1 57 0
+ 175 00ce FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 176 00d0 1846     		mov	r0, r3
+ 177 00d2 FFF7FEFF 		bl	UART_PutChar
+ 178 00d6 03E0     		b	.L10
+ 179              	.L8:
+  58:.\serial.c    ****         }
+  59:.\serial.c    ****     // byte should never be zero, so print error char if it is
+  60:.\serial.c    ****     } else {
+  61:.\serial.c    ****         UART_PutChar('!');
+ 180              		.loc 1 61 0
+ 181 00d8 4FF02100 		mov	r0, #33
+ 182 00dc FFF7FEFF 		bl	UART_PutChar
+ 183              	.L10:
+  62:.\serial.c    ****     }
+  63:.\serial.c    ****     return NULL;
+ 184              		.loc 1 63 0
+ 185 00e0 4FF00003 		mov	r3, #0
+ 186              	.L7:
+  64:.\serial.c    **** }
+ 187              		.loc 1 64 0
+ 188 00e4 1846     		mov	r0, r3
+ 189 00e6 07F10807 		add	r7, r7, #8
+ 190 00ea BD46     		mov	sp, r7
+ 191 00ec 80BD     		pop	{r7, pc}
+ 192              		.cfi_endproc
+ 193              	.LFE30:
+ 194              		.size	Serial_handleData, .-Serial_handleData
+ 195 00ee 00BF     		.section	.text.resetRx,"ax",%progbits
+ 196              		.align	2
+ 197              		.thumb
+ 198              		.thumb_func
+ 199              		.type	resetRx, %function
+ 200              	resetRx:
+ 201              	.LFB31:
+  65:.\serial.c    **** 
+  66:.\serial.c    **** 
+  67:.\serial.c    **** 
+  68:.\serial.c    **** /*-----------------------------------------------------------------*/
+  69:.\serial.c    **** 
+  70:.\serial.c    **** 
+  71:.\serial.c    **** static void resetRx() {
+ 202              		.loc 1 71 0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 6
+
+
+ 203              		.cfi_startproc
+ 204              		@ args = 0, pretend = 0, frame = 8
+ 205              		@ frame_needed = 1, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+ 207 0000 80B4     		push	{r7}
+ 208              	.LCFI5:
+ 209              		.cfi_def_cfa_offset 4
+ 210 0002 83B0     		sub	sp, sp, #12
+ 211              	.LCFI6:
+ 212              		.cfi_def_cfa_offset 16
+ 213 0004 00AF     		add	r7, sp, #0
+ 214              		.cfi_offset 7, -4
+ 215              	.LCFI7:
+ 216              		.cfi_def_cfa_register 7
+  72:.\serial.c    ****     // Clear mesage buffer and reset position
+  73:.\serial.c    ****     int i;
+  74:.\serial.c    ****     for (i = 0; i < bufRxPos; i++) bufRx[i] = 0;
+ 217              		.loc 1 74 0
+ 218 0006 4FF00003 		mov	r3, #0
+ 219 000a 7B60     		str	r3, [r7, #4]
+ 220 000c 0BE0     		b	.L13
+ 221              	.L14:
+ 222 000e 7A68     		ldr	r2, [r7, #4]
+ 223 0010 40F20003 		movw	r3, #:lower16:bufRx
+ 224 0014 C0F20003 		movt	r3, #:upper16:bufRx
+ 225 0018 4FF00001 		mov	r1, #0
+ 226 001c 9954     		strb	r1, [r3, r2]
+ 227 001e 7B68     		ldr	r3, [r7, #4]
+ 228 0020 03F10103 		add	r3, r3, #1
+ 229 0024 7B60     		str	r3, [r7, #4]
+ 230              	.L13:
+ 231 0026 40F20003 		movw	r3, #:lower16:bufRxPos
+ 232 002a C0F20003 		movt	r3, #:upper16:bufRxPos
+ 233 002e 1B68     		ldr	r3, [r3, #0]
+ 234 0030 7A68     		ldr	r2, [r7, #4]
+ 235 0032 9A42     		cmp	r2, r3
+ 236 0034 EBDB     		blt	.L14
+  75:.\serial.c    ****     bufRxPos = 0;
+ 237              		.loc 1 75 0
+ 238 0036 40F20003 		movw	r3, #:lower16:bufRxPos
+ 239 003a C0F20003 		movt	r3, #:upper16:bufRxPos
+ 240 003e 4FF00002 		mov	r2, #0
+ 241 0042 1A60     		str	r2, [r3, #0]
+  76:.\serial.c    **** }
+ 242              		.loc 1 76 0
+ 243 0044 07F10C07 		add	r7, r7, #12
+ 244 0048 BD46     		mov	sp, r7
+ 245 004a 80BC     		pop	{r7}
+ 246 004c 7047     		bx	lr
+ 247              		.cfi_endproc
+ 248              	.LFE31:
+ 249              		.size	resetRx, .-resetRx
+ 250 004e 00BF     		.text
+ 251              	.Letext0:
+ 252              		.section	.debug_loc,"",%progbits
+ 253              	.Ldebug_loc0:
+ 254              	.LLST0:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 7
+
+
+ 255 0000 00000000 		.4byte	.LFB29
+ 256 0004 02000000 		.4byte	.LCFI0
+ 257 0008 0100     		.2byte	0x1
+ 258 000a 5D       		.byte	0x5d
+ 259 000b 02000000 		.4byte	.LCFI0
+ 260 000f 04000000 		.4byte	.LCFI1
+ 261 0013 0200     		.2byte	0x2
+ 262 0015 7D       		.byte	0x7d
+ 263 0016 08       		.sleb128 8
+ 264 0017 04000000 		.4byte	.LCFI1
+ 265 001b 0A000000 		.4byte	.LFE29
+ 266 001f 0200     		.2byte	0x2
+ 267 0021 77       		.byte	0x77
+ 268 0022 08       		.sleb128 8
+ 269 0023 00000000 		.4byte	0x0
+ 270 0027 00000000 		.4byte	0x0
+ 271              	.LLST1:
+ 272 002b 00000000 		.4byte	.LFB30
+ 273 002f 02000000 		.4byte	.LCFI2
+ 274 0033 0100     		.2byte	0x1
+ 275 0035 5D       		.byte	0x5d
+ 276 0036 02000000 		.4byte	.LCFI2
+ 277 003a 04000000 		.4byte	.LCFI3
+ 278 003e 0200     		.2byte	0x2
+ 279 0040 7D       		.byte	0x7d
+ 280 0041 08       		.sleb128 8
+ 281 0042 04000000 		.4byte	.LCFI3
+ 282 0046 06000000 		.4byte	.LCFI4
+ 283 004a 0200     		.2byte	0x2
+ 284 004c 7D       		.byte	0x7d
+ 285 004d 10       		.sleb128 16
+ 286 004e 06000000 		.4byte	.LCFI4
+ 287 0052 EE000000 		.4byte	.LFE30
+ 288 0056 0200     		.2byte	0x2
+ 289 0058 77       		.byte	0x77
+ 290 0059 10       		.sleb128 16
+ 291 005a 00000000 		.4byte	0x0
+ 292 005e 00000000 		.4byte	0x0
+ 293              	.LLST2:
+ 294 0062 00000000 		.4byte	.LFB31
+ 295 0066 02000000 		.4byte	.LCFI5
+ 296 006a 0100     		.2byte	0x1
+ 297 006c 5D       		.byte	0x5d
+ 298 006d 02000000 		.4byte	.LCFI5
+ 299 0071 04000000 		.4byte	.LCFI6
+ 300 0075 0200     		.2byte	0x2
+ 301 0077 7D       		.byte	0x7d
+ 302 0078 04       		.sleb128 4
+ 303 0079 04000000 		.4byte	.LCFI6
+ 304 007d 06000000 		.4byte	.LCFI7
+ 305 0081 0200     		.2byte	0x2
+ 306 0083 7D       		.byte	0x7d
+ 307 0084 10       		.sleb128 16
+ 308 0085 06000000 		.4byte	.LCFI7
+ 309 0089 4E000000 		.4byte	.LFE31
+ 310 008d 0200     		.2byte	0x2
+ 311 008f 77       		.byte	0x77
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 8
+
+
+ 312 0090 10       		.sleb128 16
+ 313 0091 00000000 		.4byte	0x0
+ 314 0095 00000000 		.4byte	0x0
+ 315              		.file 2 "./Generated_Source/PSoC5/core_cm3.h"
+ 316              		.section	.debug_info
+ 317 0000 35010000 		.4byte	0x135
+ 318 0004 0200     		.2byte	0x2
+ 319 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 320 000a 04       		.byte	0x4
+ 321 000b 01       		.uleb128 0x1
+ 322 000c 7A000000 		.4byte	.LASF14
+ 323 0010 01       		.byte	0x1
+ 324 0011 6F000000 		.4byte	.LASF15
+ 325 0015 DA000000 		.4byte	.LASF16
+ 326 0019 00000000 		.4byte	0x0
+ 327 001d 00000000 		.4byte	0x0
+ 328 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 329 0025 00000000 		.4byte	.Ldebug_line0
+ 330 0029 02       		.uleb128 0x2
+ 331 002a 01       		.byte	0x1
+ 332 002b 06       		.byte	0x6
+ 333 002c CE000000 		.4byte	.LASF0
+ 334 0030 02       		.uleb128 0x2
+ 335 0031 01       		.byte	0x1
+ 336 0032 08       		.byte	0x8
+ 337 0033 86000000 		.4byte	.LASF1
+ 338 0037 02       		.uleb128 0x2
+ 339 0038 02       		.byte	0x2
+ 340 0039 05       		.byte	0x5
+ 341 003a 39010000 		.4byte	.LASF2
+ 342 003e 02       		.uleb128 0x2
+ 343 003f 02       		.byte	0x2
+ 344 0040 07       		.byte	0x7
+ 345 0041 BB000000 		.4byte	.LASF3
+ 346 0045 02       		.uleb128 0x2
+ 347 0046 04       		.byte	0x4
+ 348 0047 05       		.byte	0x5
+ 349 0048 B2000000 		.4byte	.LASF4
+ 350 004c 02       		.uleb128 0x2
+ 351 004d 04       		.byte	0x4
+ 352 004e 07       		.byte	0x7
+ 353 004f 46000000 		.4byte	.LASF5
+ 354 0053 02       		.uleb128 0x2
+ 355 0054 08       		.byte	0x8
+ 356 0055 05       		.byte	0x5
+ 357 0056 00000000 		.4byte	.LASF6
+ 358 005a 02       		.uleb128 0x2
+ 359 005b 08       		.byte	0x8
+ 360 005c 07       		.byte	0x7
+ 361 005d 58000000 		.4byte	.LASF7
+ 362 0061 03       		.uleb128 0x3
+ 363 0062 04       		.byte	0x4
+ 364 0063 05       		.byte	0x5
+ 365 0064 696E7400 		.ascii	"int\000"
+ 366 0068 02       		.uleb128 0x2
+ 367 0069 04       		.byte	0x4
+ 368 006a 07       		.byte	0x7
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 9
+
+
+ 369 006b 0E000000 		.4byte	.LASF8
+ 370 006f 02       		.uleb128 0x2
+ 371 0070 01       		.byte	0x1
+ 372 0071 08       		.byte	0x8
+ 373 0072 A0000000 		.4byte	.LASF9
+ 374 0076 04       		.uleb128 0x4
+ 375 0077 04       		.byte	0x4
+ 376 0078 07       		.byte	0x7
+ 377 0079 05       		.uleb128 0x5
+ 378 007a 04       		.byte	0x4
+ 379 007b 6F000000 		.4byte	0x6f
+ 380 007f 06       		.uleb128 0x6
+ 381 0080 01       		.byte	0x1
+ 382 0081 94000000 		.4byte	.LASF17
+ 383 0085 01       		.byte	0x1
+ 384 0086 17       		.byte	0x17
+ 385 0087 00000000 		.4byte	.LFB29
+ 386 008b 0A000000 		.4byte	.LFE29
+ 387 008f 00000000 		.4byte	.LLST0
+ 388 0093 07       		.uleb128 0x7
+ 389 0094 01       		.byte	0x1
+ 390 0095 23000000 		.4byte	.LASF18
+ 391 0099 01       		.byte	0x1
+ 392 009a 1F       		.byte	0x1f
+ 393 009b 79000000 		.4byte	0x79
+ 394 009f 00000000 		.4byte	.LFB30
+ 395 00a3 EE000000 		.4byte	.LFE30
+ 396 00a7 2B000000 		.4byte	.LLST1
+ 397 00ab BE000000 		.4byte	0xbe
+ 398 00af 08       		.uleb128 0x8
+ 399 00b0 35000000 		.4byte	.LASF10
+ 400 00b4 01       		.byte	0x1
+ 401 00b5 27       		.byte	0x27
+ 402 00b6 6F000000 		.4byte	0x6f
+ 403 00ba 02       		.byte	0x2
+ 404 00bb 91       		.byte	0x91
+ 405 00bc 77       		.sleb128 -9
+ 406 00bd 00       		.byte	0x0
+ 407 00be 09       		.uleb128 0x9
+ 408 00bf 1B000000 		.4byte	.LASF19
+ 409 00c3 01       		.byte	0x1
+ 410 00c4 47       		.byte	0x47
+ 411 00c5 00000000 		.4byte	.LFB31
+ 412 00c9 4E000000 		.4byte	.LFE31
+ 413 00cd 62000000 		.4byte	.LLST2
+ 414 00d1 E2000000 		.4byte	0xe2
+ 415 00d5 0A       		.uleb128 0xa
+ 416 00d6 6900     		.ascii	"i\000"
+ 417 00d8 01       		.byte	0x1
+ 418 00d9 49       		.byte	0x49
+ 419 00da 61000000 		.4byte	0x61
+ 420 00de 02       		.byte	0x2
+ 421 00df 91       		.byte	0x91
+ 422 00e0 74       		.sleb128 -12
+ 423 00e1 00       		.byte	0x0
+ 424 00e2 0B       		.uleb128 0xb
+ 425 00e3 6F000000 		.4byte	0x6f
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 10
+
+
+ 426 00e7 F2000000 		.4byte	0xf2
+ 427 00eb 0C       		.uleb128 0xc
+ 428 00ec 76000000 		.4byte	0x76
+ 429 00f0 63       		.byte	0x63
+ 430 00f1 00       		.byte	0x0
+ 431 00f2 08       		.uleb128 0x8
+ 432 00f3 43010000 		.4byte	.LASF11
+ 433 00f7 01       		.byte	0x1
+ 434 00f8 0C       		.byte	0xc
+ 435 00f9 E2000000 		.4byte	0xe2
+ 436 00fd 05       		.byte	0x5
+ 437 00fe 03       		.byte	0x3
+ 438 00ff 00000000 		.4byte	bufRx
+ 439 0103 08       		.uleb128 0x8
+ 440 0104 3D000000 		.4byte	.LASF12
+ 441 0108 01       		.byte	0x1
+ 442 0109 0D       		.byte	0xd
+ 443 010a 61000000 		.4byte	0x61
+ 444 010e 05       		.byte	0x5
+ 445 010f 03       		.byte	0x3
+ 446 0110 64000000 		.4byte	bufRxPos
+ 447 0114 08       		.uleb128 0x8
+ 448 0115 2F010000 		.4byte	.LASF13
+ 449 0119 01       		.byte	0x1
+ 450 011a 0E       		.byte	0xe
+ 451 011b 61000000 		.4byte	0x61
+ 452 011f 05       		.byte	0x5
+ 453 0120 03       		.byte	0x3
+ 454 0121 68000000 		.4byte	needReset
+ 455 0125 0D       		.uleb128 0xd
+ 456 0126 A5000000 		.4byte	.LASF20
+ 457 012a 02       		.byte	0x2
+ 458 012b CE06     		.2byte	0x6ce
+ 459 012d 33010000 		.4byte	0x133
+ 460 0131 01       		.byte	0x1
+ 461 0132 01       		.byte	0x1
+ 462 0133 0E       		.uleb128 0xe
+ 463 0134 61000000 		.4byte	0x61
+ 464 0138 00       		.byte	0x0
+ 465              		.section	.debug_abbrev
+ 466 0000 01       		.uleb128 0x1
+ 467 0001 11       		.uleb128 0x11
+ 468 0002 01       		.byte	0x1
+ 469 0003 25       		.uleb128 0x25
+ 470 0004 0E       		.uleb128 0xe
+ 471 0005 13       		.uleb128 0x13
+ 472 0006 0B       		.uleb128 0xb
+ 473 0007 03       		.uleb128 0x3
+ 474 0008 0E       		.uleb128 0xe
+ 475 0009 1B       		.uleb128 0x1b
+ 476 000a 0E       		.uleb128 0xe
+ 477 000b 11       		.uleb128 0x11
+ 478 000c 01       		.uleb128 0x1
+ 479 000d 52       		.uleb128 0x52
+ 480 000e 01       		.uleb128 0x1
+ 481 000f 55       		.uleb128 0x55
+ 482 0010 06       		.uleb128 0x6
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 11
+
+
+ 483 0011 10       		.uleb128 0x10
+ 484 0012 06       		.uleb128 0x6
+ 485 0013 00       		.byte	0x0
+ 486 0014 00       		.byte	0x0
+ 487 0015 02       		.uleb128 0x2
+ 488 0016 24       		.uleb128 0x24
+ 489 0017 00       		.byte	0x0
+ 490 0018 0B       		.uleb128 0xb
+ 491 0019 0B       		.uleb128 0xb
+ 492 001a 3E       		.uleb128 0x3e
+ 493 001b 0B       		.uleb128 0xb
+ 494 001c 03       		.uleb128 0x3
+ 495 001d 0E       		.uleb128 0xe
+ 496 001e 00       		.byte	0x0
+ 497 001f 00       		.byte	0x0
+ 498 0020 03       		.uleb128 0x3
+ 499 0021 24       		.uleb128 0x24
+ 500 0022 00       		.byte	0x0
+ 501 0023 0B       		.uleb128 0xb
+ 502 0024 0B       		.uleb128 0xb
+ 503 0025 3E       		.uleb128 0x3e
+ 504 0026 0B       		.uleb128 0xb
+ 505 0027 03       		.uleb128 0x3
+ 506 0028 08       		.uleb128 0x8
+ 507 0029 00       		.byte	0x0
+ 508 002a 00       		.byte	0x0
+ 509 002b 04       		.uleb128 0x4
+ 510 002c 24       		.uleb128 0x24
+ 511 002d 00       		.byte	0x0
+ 512 002e 0B       		.uleb128 0xb
+ 513 002f 0B       		.uleb128 0xb
+ 514 0030 3E       		.uleb128 0x3e
+ 515 0031 0B       		.uleb128 0xb
+ 516 0032 00       		.byte	0x0
+ 517 0033 00       		.byte	0x0
+ 518 0034 05       		.uleb128 0x5
+ 519 0035 0F       		.uleb128 0xf
+ 520 0036 00       		.byte	0x0
+ 521 0037 0B       		.uleb128 0xb
+ 522 0038 0B       		.uleb128 0xb
+ 523 0039 49       		.uleb128 0x49
+ 524 003a 13       		.uleb128 0x13
+ 525 003b 00       		.byte	0x0
+ 526 003c 00       		.byte	0x0
+ 527 003d 06       		.uleb128 0x6
+ 528 003e 2E       		.uleb128 0x2e
+ 529 003f 00       		.byte	0x0
+ 530 0040 3F       		.uleb128 0x3f
+ 531 0041 0C       		.uleb128 0xc
+ 532 0042 03       		.uleb128 0x3
+ 533 0043 0E       		.uleb128 0xe
+ 534 0044 3A       		.uleb128 0x3a
+ 535 0045 0B       		.uleb128 0xb
+ 536 0046 3B       		.uleb128 0x3b
+ 537 0047 0B       		.uleb128 0xb
+ 538 0048 11       		.uleb128 0x11
+ 539 0049 01       		.uleb128 0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 12
+
+
+ 540 004a 12       		.uleb128 0x12
+ 541 004b 01       		.uleb128 0x1
+ 542 004c 40       		.uleb128 0x40
+ 543 004d 06       		.uleb128 0x6
+ 544 004e 00       		.byte	0x0
+ 545 004f 00       		.byte	0x0
+ 546 0050 07       		.uleb128 0x7
+ 547 0051 2E       		.uleb128 0x2e
+ 548 0052 01       		.byte	0x1
+ 549 0053 3F       		.uleb128 0x3f
+ 550 0054 0C       		.uleb128 0xc
+ 551 0055 03       		.uleb128 0x3
+ 552 0056 0E       		.uleb128 0xe
+ 553 0057 3A       		.uleb128 0x3a
+ 554 0058 0B       		.uleb128 0xb
+ 555 0059 3B       		.uleb128 0x3b
+ 556 005a 0B       		.uleb128 0xb
+ 557 005b 49       		.uleb128 0x49
+ 558 005c 13       		.uleb128 0x13
+ 559 005d 11       		.uleb128 0x11
+ 560 005e 01       		.uleb128 0x1
+ 561 005f 12       		.uleb128 0x12
+ 562 0060 01       		.uleb128 0x1
+ 563 0061 40       		.uleb128 0x40
+ 564 0062 06       		.uleb128 0x6
+ 565 0063 01       		.uleb128 0x1
+ 566 0064 13       		.uleb128 0x13
+ 567 0065 00       		.byte	0x0
+ 568 0066 00       		.byte	0x0
+ 569 0067 08       		.uleb128 0x8
+ 570 0068 34       		.uleb128 0x34
+ 571 0069 00       		.byte	0x0
+ 572 006a 03       		.uleb128 0x3
+ 573 006b 0E       		.uleb128 0xe
+ 574 006c 3A       		.uleb128 0x3a
+ 575 006d 0B       		.uleb128 0xb
+ 576 006e 3B       		.uleb128 0x3b
+ 577 006f 0B       		.uleb128 0xb
+ 578 0070 49       		.uleb128 0x49
+ 579 0071 13       		.uleb128 0x13
+ 580 0072 02       		.uleb128 0x2
+ 581 0073 0A       		.uleb128 0xa
+ 582 0074 00       		.byte	0x0
+ 583 0075 00       		.byte	0x0
+ 584 0076 09       		.uleb128 0x9
+ 585 0077 2E       		.uleb128 0x2e
+ 586 0078 01       		.byte	0x1
+ 587 0079 03       		.uleb128 0x3
+ 588 007a 0E       		.uleb128 0xe
+ 589 007b 3A       		.uleb128 0x3a
+ 590 007c 0B       		.uleb128 0xb
+ 591 007d 3B       		.uleb128 0x3b
+ 592 007e 0B       		.uleb128 0xb
+ 593 007f 11       		.uleb128 0x11
+ 594 0080 01       		.uleb128 0x1
+ 595 0081 12       		.uleb128 0x12
+ 596 0082 01       		.uleb128 0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 13
+
+
+ 597 0083 40       		.uleb128 0x40
+ 598 0084 06       		.uleb128 0x6
+ 599 0085 01       		.uleb128 0x1
+ 600 0086 13       		.uleb128 0x13
+ 601 0087 00       		.byte	0x0
+ 602 0088 00       		.byte	0x0
+ 603 0089 0A       		.uleb128 0xa
+ 604 008a 34       		.uleb128 0x34
+ 605 008b 00       		.byte	0x0
+ 606 008c 03       		.uleb128 0x3
+ 607 008d 08       		.uleb128 0x8
+ 608 008e 3A       		.uleb128 0x3a
+ 609 008f 0B       		.uleb128 0xb
+ 610 0090 3B       		.uleb128 0x3b
+ 611 0091 0B       		.uleb128 0xb
+ 612 0092 49       		.uleb128 0x49
+ 613 0093 13       		.uleb128 0x13
+ 614 0094 02       		.uleb128 0x2
+ 615 0095 0A       		.uleb128 0xa
+ 616 0096 00       		.byte	0x0
+ 617 0097 00       		.byte	0x0
+ 618 0098 0B       		.uleb128 0xb
+ 619 0099 01       		.uleb128 0x1
+ 620 009a 01       		.byte	0x1
+ 621 009b 49       		.uleb128 0x49
+ 622 009c 13       		.uleb128 0x13
+ 623 009d 01       		.uleb128 0x1
+ 624 009e 13       		.uleb128 0x13
+ 625 009f 00       		.byte	0x0
+ 626 00a0 00       		.byte	0x0
+ 627 00a1 0C       		.uleb128 0xc
+ 628 00a2 21       		.uleb128 0x21
+ 629 00a3 00       		.byte	0x0
+ 630 00a4 49       		.uleb128 0x49
+ 631 00a5 13       		.uleb128 0x13
+ 632 00a6 2F       		.uleb128 0x2f
+ 633 00a7 0B       		.uleb128 0xb
+ 634 00a8 00       		.byte	0x0
+ 635 00a9 00       		.byte	0x0
+ 636 00aa 0D       		.uleb128 0xd
+ 637 00ab 34       		.uleb128 0x34
+ 638 00ac 00       		.byte	0x0
+ 639 00ad 03       		.uleb128 0x3
+ 640 00ae 0E       		.uleb128 0xe
+ 641 00af 3A       		.uleb128 0x3a
+ 642 00b0 0B       		.uleb128 0xb
+ 643 00b1 3B       		.uleb128 0x3b
+ 644 00b2 05       		.uleb128 0x5
+ 645 00b3 49       		.uleb128 0x49
+ 646 00b4 13       		.uleb128 0x13
+ 647 00b5 3F       		.uleb128 0x3f
+ 648 00b6 0C       		.uleb128 0xc
+ 649 00b7 3C       		.uleb128 0x3c
+ 650 00b8 0C       		.uleb128 0xc
+ 651 00b9 00       		.byte	0x0
+ 652 00ba 00       		.byte	0x0
+ 653 00bb 0E       		.uleb128 0xe
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 14
+
+
+ 654 00bc 35       		.uleb128 0x35
+ 655 00bd 00       		.byte	0x0
+ 656 00be 49       		.uleb128 0x49
+ 657 00bf 13       		.uleb128 0x13
+ 658 00c0 00       		.byte	0x0
+ 659 00c1 00       		.byte	0x0
+ 660 00c2 00       		.byte	0x0
+ 661              		.section	.debug_pubnames,"",%progbits
+ 662 0000 34000000 		.4byte	0x34
+ 663 0004 0200     		.2byte	0x2
+ 664 0006 00000000 		.4byte	.Ldebug_info0
+ 665 000a 39010000 		.4byte	0x139
+ 666 000e 7F000000 		.4byte	0x7f
+ 667 0012 53657269 		.ascii	"Serial_init\000"
+ 667      616C5F69 
+ 667      6E697400 
+ 668 001e 93000000 		.4byte	0x93
+ 669 0022 53657269 		.ascii	"Serial_handleData\000"
+ 669      616C5F68 
+ 669      616E646C 
+ 669      65446174 
+ 669      6100
+ 670 0034 00000000 		.4byte	0x0
+ 671              		.section	.debug_aranges,"",%progbits
+ 672 0000 2C000000 		.4byte	0x2c
+ 673 0004 0200     		.2byte	0x2
+ 674 0006 00000000 		.4byte	.Ldebug_info0
+ 675 000a 04       		.byte	0x4
+ 676 000b 00       		.byte	0x0
+ 677 000c 0000     		.2byte	0x0
+ 678 000e 0000     		.2byte	0x0
+ 679 0010 00000000 		.4byte	.LFB29
+ 680 0014 0A000000 		.4byte	.LFE29-.LFB29
+ 681 0018 00000000 		.4byte	.LFB30
+ 682 001c EE000000 		.4byte	.LFE30-.LFB30
+ 683 0020 00000000 		.4byte	.LFB31
+ 684 0024 4E000000 		.4byte	.LFE31-.LFB31
+ 685 0028 00000000 		.4byte	0x0
+ 686 002c 00000000 		.4byte	0x0
+ 687              		.section	.debug_ranges,"",%progbits
+ 688              	.Ldebug_ranges0:
+ 689 0000 00000000 		.4byte	.Ltext0
+ 690 0004 00000000 		.4byte	.Letext0
+ 691 0008 00000000 		.4byte	.LFB29
+ 692 000c 0A000000 		.4byte	.LFE29
+ 693 0010 00000000 		.4byte	.LFB30
+ 694 0014 EE000000 		.4byte	.LFE30
+ 695 0018 00000000 		.4byte	.LFB31
+ 696 001c 4E000000 		.4byte	.LFE31
+ 697 0020 00000000 		.4byte	0x0
+ 698 0024 00000000 		.4byte	0x0
+ 699              		.section	.debug_str,"MS",%progbits,1
+ 700              	.LASF6:
+ 701 0000 6C6F6E67 		.ascii	"long long int\000"
+ 701      206C6F6E 
+ 701      6720696E 
+ 701      7400
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 15
+
+
+ 702              	.LASF8:
+ 703 000e 756E7369 		.ascii	"unsigned int\000"
+ 703      676E6564 
+ 703      20696E74 
+ 703      00
+ 704              	.LASF19:
+ 705 001b 72657365 		.ascii	"resetRx\000"
+ 705      74527800 
+ 706              	.LASF18:
+ 707 0023 53657269 		.ascii	"Serial_handleData\000"
+ 707      616C5F68 
+ 707      616E646C 
+ 707      65446174 
+ 707      6100
+ 708              	.LASF10:
+ 709 0035 72656342 		.ascii	"recByte\000"
+ 709      79746500 
+ 710              	.LASF12:
+ 711 003d 62756652 		.ascii	"bufRxPos\000"
+ 711      78506F73 
+ 711      00
+ 712              	.LASF5:
+ 713 0046 6C6F6E67 		.ascii	"long unsigned int\000"
+ 713      20756E73 
+ 713      69676E65 
+ 713      6420696E 
+ 713      7400
+ 714              	.LASF7:
+ 715 0058 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 715      206C6F6E 
+ 715      6720756E 
+ 715      7369676E 
+ 715      65642069 
+ 716              	.LASF15:
+ 717 006f 2E5C7365 		.ascii	".\\serial.c\000"
+ 717      7269616C 
+ 717      2E6300
+ 718              	.LASF14:
+ 719 007a 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 719      4320342E 
+ 719      342E3100 
+ 720              	.LASF1:
+ 721 0086 756E7369 		.ascii	"unsigned char\000"
+ 721      676E6564 
+ 721      20636861 
+ 721      7200
+ 722              	.LASF17:
+ 723 0094 53657269 		.ascii	"Serial_init\000"
+ 723      616C5F69 
+ 723      6E697400 
+ 724              	.LASF9:
+ 725 00a0 63686172 		.ascii	"char\000"
+ 725      00
+ 726              	.LASF20:
+ 727 00a5 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 727      52784275 
+ 727      66666572 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\cczR4Mqt.s 			page 16
+
+
+ 727      00
+ 728              	.LASF4:
+ 729 00b2 6C6F6E67 		.ascii	"long int\000"
+ 729      20696E74 
+ 729      00
+ 730              	.LASF3:
+ 731 00bb 73686F72 		.ascii	"short unsigned int\000"
+ 731      7420756E 
+ 731      7369676E 
+ 731      65642069 
+ 731      6E7400
+ 732              	.LASF0:
+ 733 00ce 7369676E 		.ascii	"signed char\000"
+ 733      65642063 
+ 733      68617200 
+ 734              	.LASF16:
+ 735 00da 433A5C55 		.ascii	"C:\\Users\\Public\\Documents\\Carlab\\BC and TJ\\Pr"
+ 735      73657273 
+ 735      5C507562 
+ 735      6C69635C 
+ 735      446F6375 
+ 736 0107 6F6A6563 		.ascii	"oject 4\\Navigation01\\Navigation01.cydsn\000"
+ 736      7420345C 
+ 736      4E617669 
+ 736      67617469 
+ 736      6F6E3031 
+ 737              	.LASF13:
+ 738 012f 6E656564 		.ascii	"needReset\000"
+ 738      52657365 
+ 738      7400
+ 739              	.LASF2:
+ 740 0139 73686F72 		.ascii	"short int\000"
+ 740      7420696E 
+ 740      7400
+ 741              	.LASF11:
+ 742 0143 62756652 		.ascii	"bufRx\000"
+ 742      7800
+ 743              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

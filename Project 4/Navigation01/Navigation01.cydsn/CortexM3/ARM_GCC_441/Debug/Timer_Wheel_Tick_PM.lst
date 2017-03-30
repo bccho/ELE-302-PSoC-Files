@@ -1,0 +1,927 @@
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"Timer_Wheel_Tick_PM.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 D7000000 		.text
+  20      02008200 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.bss
+  24              		.align	2
+  25              	Timer_Wheel_Tick_backup:
+  26 0000 00       		.space	1
+  27 0001 000000   		.section	.text.Timer_Wheel_Tick_SaveConfig,"ax",%progbits
+  28              		.align	2
+  29              		.global	Timer_Wheel_Tick_SaveConfig
+  30              		.thumb
+  31              		.thumb_func
+  32              		.type	Timer_Wheel_Tick_SaveConfig, %function
+  33              	Timer_Wheel_Tick_SaveConfig:
+  34              	.LFB0:
+  35              		.file 1 ".\\Generated_Source\\PSoC5\\Timer_Wheel_Tick_PM.c"
+   1:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * File Name: Timer_Wheel_Tick_PM.c
+   3:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+   5:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Description:
+   6:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *     This file provides the power management source code to API for the
+   7:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *     Timer.
+   8:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+   9:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *   Note:
+  10:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *     None
+  11:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  12:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *******************************************************************************
+  13:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** ********************************************************************************/
+  18:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 2
+
+
+  19:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** #include "Timer_Wheel_Tick.h"
+  20:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** static Timer_Wheel_Tick_backupStruct Timer_Wheel_Tick_backup;
+  21:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  22:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  23:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Function Name: Timer_Wheel_Tick_SaveConfig
+  25:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  27:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Summary:
+  28:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *     Save the current user configuration
+  29:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  30:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Parameters:
+  31:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+  32:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  33:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Return:
+  34:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+  35:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  36:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Global variables:
+  37:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Timer_Wheel_Tick_backup:  Variables of this global structure are modified to
+  38:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  store the values of non retention configuration registers when Sleep() API is
+  39:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  called.
+  40:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  41:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** void Timer_Wheel_Tick_SaveConfig(void) 
+  43:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** {
+  36              		.loc 1 43 0
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 1, uses_anonymous_args = 0
+  40              		@ link register save eliminated.
+  41 0000 80B4     		push	{r7}
+  42              	.LCFI0:
+  43              		.cfi_def_cfa_offset 4
+  44 0002 00AF     		add	r7, sp, #0
+  45              		.cfi_offset 7, -4
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_register 7
+  44:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #if (!Timer_Wheel_Tick_UsingFixedFunction)
+  45:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         /* Backup the UDB non-rentention registers for PSoC5A*/
+  46:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #if (CY_PSOC5A)
+  47:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.TimerUdb = Timer_Wheel_Tick_ReadCounter();
+  48:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.TimerPeriod = Timer_Wheel_Tick_ReadPeriod();
+  49:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.InterruptMaskValue = Timer_Wheel_Tick_STATUS_MASK;
+  50:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #if (Timer_Wheel_Tick_UsingHWCaptureCounter)
+  51:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****                 Timer_Wheel_Tick_backup.TimerCaptureCounter = Timer_Wheel_Tick_ReadCaptureCount();
+  52:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #endif /* Backup the UDB non-rentention register capture counter for PSoC5A */
+  53:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #endif /* Backup the UDB non-rentention registers for PSoC5A */
+  54:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  55:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+  56:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.TimerUdb = Timer_Wheel_Tick_ReadCounter();
+  57:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.InterruptMaskValue = Timer_Wheel_Tick_STATUS_MASK;
+  58:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #if (Timer_Wheel_Tick_UsingHWCaptureCounter)
+  59:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****                 Timer_Wheel_Tick_backup.TimerCaptureCounter = Timer_Wheel_Tick_ReadCaptureCount();
+  60:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #endif /* Back Up capture counter register  */
+  61:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #endif /* Backup non retention registers, interrupt mask and capture counter for PSoC3 or P
+  62:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  63:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #if(!Timer_Wheel_Tick_ControlRegRemoved)
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 3
+
+
+  64:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.TimerControlRegister = Timer_Wheel_Tick_ReadControlRegister();
+  65:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #endif /* Backup the enable state of the Timer component */
+  66:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #endif /* Backup non retention registers in UDB implementation. All fixed function registers ar
+  67:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** }
+  48              		.loc 1 67 0
+  49 0004 BD46     		mov	sp, r7
+  50 0006 80BC     		pop	{r7}
+  51 0008 7047     		bx	lr
+  52              		.cfi_endproc
+  53              	.LFE0:
+  54              		.size	Timer_Wheel_Tick_SaveConfig, .-Timer_Wheel_Tick_SaveConfig
+  55 000a 00BF     		.section	.text.Timer_Wheel_Tick_RestoreConfig,"ax",%progbits
+  56              		.align	2
+  57              		.global	Timer_Wheel_Tick_RestoreConfig
+  58              		.thumb
+  59              		.thumb_func
+  60              		.type	Timer_Wheel_Tick_RestoreConfig, %function
+  61              	Timer_Wheel_Tick_RestoreConfig:
+  62              	.LFB1:
+  68:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  69:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  70:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Function Name: Timer_Wheel_Tick_RestoreConfig
+  72:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  74:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Summary:
+  75:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Restores the current user configuration.
+  76:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  77:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Parameters:
+  78:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+  79:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  80:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Return:
+  81:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+  82:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  83:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Global variables:
+  84:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Timer_Wheel_Tick_backup:  Variables of this global structure are used to
+  85:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
+  86:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+  87:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** void Timer_Wheel_Tick_RestoreConfig(void) 
+  89:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** {   
+  63              		.loc 1 89 0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 1, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+  68 0000 80B4     		push	{r7}
+  69              	.LCFI2:
+  70              		.cfi_def_cfa_offset 4
+  71 0002 00AF     		add	r7, sp, #0
+  72              		.cfi_offset 7, -4
+  73              	.LCFI3:
+  74              		.cfi_def_cfa_register 7
+  90:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #if (!Timer_Wheel_Tick_UsingFixedFunction)
+  91:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         /* Restore the UDB non-rentention registers for PSoC5A */
+  92:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #if (CY_PSOC5A)
+  93:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* Interrupt State Backup for Critical Region*/
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 4
+
+
+  94:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             uint8 Timer_Wheel_Tick_interruptState;
+  95:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+  96:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_WriteCounter(Timer_Wheel_Tick_backup.TimerUdb);
+  97:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_WritePeriod(Timer_Wheel_Tick_backup.TimerPeriod);
+  98:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+  99:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* Enter Critical Region*/
+ 100:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_interruptState = CyEnterCriticalSection();
+ 101:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 102:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_STATUS_AUX_CTRL |= Timer_Wheel_Tick_STATUS_ACTL_INT_EN_MASK;
+ 103:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* Exit Critical Region*/
+ 104:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             CyExitCriticalSection(Timer_Wheel_Tick_interruptState);
+ 105:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_STATUS_MASK =Timer_Wheel_Tick_backup.InterruptMaskValue;
+ 106:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #if (Timer_Wheel_Tick_UsingHWCaptureCounter)
+ 107:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****                 Timer_Wheel_Tick_SetCaptureCount(Timer_Wheel_Tick_backup.TimerCaptureCounter);
+ 108:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #endif /* Restore the UDB non-rentention register capture counter for PSoC5A */
+ 109:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #endif /* Restore the UDB non-rentention registers for PSoC5A */
+ 110:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ 111:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+ 112:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_WriteCounter(Timer_Wheel_Tick_backup.TimerUdb);
+ 113:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_STATUS_MASK =Timer_Wheel_Tick_backup.InterruptMaskValue;
+ 114:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #if (Timer_Wheel_Tick_UsingHWCaptureCounter)
+ 115:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****                 Timer_Wheel_Tick_SetCaptureCount(Timer_Wheel_Tick_backup.TimerCaptureCounter);
+ 116:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             #endif /* Restore Capture counter register*/
+ 117:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #endif /* Restore up non retention registers, interrupt mask and capture counter for PSoC3 
+ 118:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ 119:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #if(!Timer_Wheel_Tick_ControlRegRemoved)
+ 120:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_WriteControlRegister(Timer_Wheel_Tick_backup.TimerControlRegister);
+ 121:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         #endif /* Restore the enable state of the Timer component */
+ 122:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #endif /* Restore non retention registers in the UDB implementation only */
+ 123:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** }
+  75              		.loc 1 123 0
+  76 0004 BD46     		mov	sp, r7
+  77 0006 80BC     		pop	{r7}
+  78 0008 7047     		bx	lr
+  79              		.cfi_endproc
+  80              	.LFE1:
+  81              		.size	Timer_Wheel_Tick_RestoreConfig, .-Timer_Wheel_Tick_RestoreConfig
+  82 000a 00BF     		.section	.text.Timer_Wheel_Tick_Sleep,"ax",%progbits
+  83              		.align	2
+  84              		.global	Timer_Wheel_Tick_Sleep
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	Timer_Wheel_Tick_Sleep, %function
+  88              	Timer_Wheel_Tick_Sleep:
+  89              	.LFB2:
+ 124:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ 125:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ 126:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** /*******************************************************************************
+ 127:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Function Name: Timer_Wheel_Tick_Sleep
+ 128:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** ********************************************************************************
+ 129:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 130:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Summary:
+ 131:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *     Stop and Save the user configuration
+ 132:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 133:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Parameters:
+ 134:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+ 135:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 5
+
+
+ 136:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Return:
+ 137:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+ 138:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 139:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Global variables:
+ 140:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Timer_Wheel_Tick_backup.TimerEnableState:  Is modified depending on the
+ 141:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  enable state of the block before entering sleep mode.
+ 142:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 143:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *******************************************************************************/
+ 144:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** void Timer_Wheel_Tick_Sleep(void) 
+ 145:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** {
+  90              		.loc 1 145 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 1, uses_anonymous_args = 0
+  94 0000 80B5     		push	{r7, lr}
+  95              	.LCFI4:
+  96              		.cfi_def_cfa_offset 8
+  97 0002 00AF     		add	r7, sp, #0
+  98              		.cfi_offset 14, -4
+  99              		.cfi_offset 7, -8
+ 100              	.LCFI5:
+ 101              		.cfi_def_cfa_register 7
+ 146:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #if(!Timer_Wheel_Tick_ControlRegRemoved)
+ 147:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         /* Save Counter's enable state */
+ 148:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         if(Timer_Wheel_Tick_CTRL_ENABLE == (Timer_Wheel_Tick_CONTROL & Timer_Wheel_Tick_CTRL_ENABLE
+ 102              		.loc 1 148 0
+ 103 0004 44F62473 		movw	r3, #:lower16:1073762084
+ 104 0008 C4F20003 		movt	r3, #:upper16:1073762084
+ 105 000c 1B78     		ldrb	r3, [r3, #0]
+ 106 000e DBB2     		uxtb	r3, r3
+ 107 0010 03F00103 		and	r3, r3, #1
+ 108 0014 DBB2     		uxtb	r3, r3
+ 109 0016 002B     		cmp	r3, #0
+ 110 0018 07D0     		beq	.L6
+ 149:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         {
+ 150:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* Timer is enabled */
+ 151:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.TimerEnableState = 1u;
+ 111              		.loc 1 151 0
+ 112 001a 40F20003 		movw	r3, #:lower16:Timer_Wheel_Tick_backup
+ 113 001e C0F20003 		movt	r3, #:upper16:Timer_Wheel_Tick_backup
+ 114 0022 4FF00102 		mov	r2, #1
+ 115 0026 1A70     		strb	r2, [r3, #0]
+ 116 0028 06E0     		b	.L7
+ 117              	.L6:
+ 152:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         }
+ 153:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         else
+ 154:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         {
+ 155:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             /* Timer is disabled */
+ 156:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****             Timer_Wheel_Tick_backup.TimerEnableState = 0u;
+ 118              		.loc 1 156 0
+ 119 002a 40F20003 		movw	r3, #:lower16:Timer_Wheel_Tick_backup
+ 120 002e C0F20003 		movt	r3, #:upper16:Timer_Wheel_Tick_backup
+ 121 0032 4FF00002 		mov	r2, #0
+ 122 0036 1A70     		strb	r2, [r3, #0]
+ 123              	.L7:
+ 157:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         }
+ 158:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #endif /* Back up enable state from the Timer control register */
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 6
+
+
+ 159:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     Timer_Wheel_Tick_Stop();
+ 124              		.loc 1 159 0
+ 125 0038 FFF7FEFF 		bl	Timer_Wheel_Tick_Stop
+ 160:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     Timer_Wheel_Tick_SaveConfig();
+ 126              		.loc 1 160 0
+ 127 003c FFF7FEFF 		bl	Timer_Wheel_Tick_SaveConfig
+ 161:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** }
+ 128              		.loc 1 161 0
+ 129 0040 80BD     		pop	{r7, pc}
+ 130              		.cfi_endproc
+ 131              	.LFE2:
+ 132              		.size	Timer_Wheel_Tick_Sleep, .-Timer_Wheel_Tick_Sleep
+ 133 0042 00BF     		.section	.text.Timer_Wheel_Tick_Wakeup,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	Timer_Wheel_Tick_Wakeup
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.type	Timer_Wheel_Tick_Wakeup, %function
+ 139              	Timer_Wheel_Tick_Wakeup:
+ 140              	.LFB3:
+ 162:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ 163:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** 
+ 164:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** /*******************************************************************************
+ 165:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Function Name: Timer_Wheel_Tick_Wakeup
+ 166:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** ********************************************************************************
+ 167:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 168:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Summary:
+ 169:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Restores and enables the user configuration
+ 170:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 171:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Parameters:
+ 172:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+ 173:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 174:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Return:
+ 175:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  void
+ 176:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 177:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** * Global variables:
+ 178:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  Timer_Wheel_Tick_backup.enableState:  Is used to restore the enable state of
+ 179:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *  block on wakeup from sleep mode.
+ 180:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *
+ 181:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** *******************************************************************************/
+ 182:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** void Timer_Wheel_Tick_Wakeup(void) 
+ 183:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** {
+ 141              		.loc 1 183 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              	.LCFI6:
+ 147              		.cfi_def_cfa_offset 8
+ 148 0002 00AF     		add	r7, sp, #0
+ 149              		.cfi_offset 14, -4
+ 150              		.cfi_offset 7, -8
+ 151              	.LCFI7:
+ 152              		.cfi_def_cfa_register 7
+ 184:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     Timer_Wheel_Tick_RestoreConfig();
+ 153              		.loc 1 184 0
+ 154 0004 FFF7FEFF 		bl	Timer_Wheel_Tick_RestoreConfig
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 7
+
+
+ 185:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #if(!Timer_Wheel_Tick_ControlRegRemoved)
+ 186:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         if(Timer_Wheel_Tick_backup.TimerEnableState == 1u)
+ 155              		.loc 1 186 0
+ 156 0008 40F20003 		movw	r3, #:lower16:Timer_Wheel_Tick_backup
+ 157 000c C0F20003 		movt	r3, #:upper16:Timer_Wheel_Tick_backup
+ 158 0010 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 159 0012 012B     		cmp	r3, #1
+ 160 0014 01D1     		bne	.L11
+ 187:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         {     /* Enable Timer's operation */
+ 188:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****                 Timer_Wheel_Tick_Enable();
+ 161              		.loc 1 188 0
+ 162 0016 FFF7FEFF 		bl	Timer_Wheel_Tick_Enable
+ 163              	.L11:
+ 189:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****         } /* Do nothing if Timer was disabled before */
+ 190:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c ****     #endif /* Remove this code section if Control register is removed */
+ 191:.\Generated_Source\PSoC5/Timer_Wheel_Tick_PM.c **** }
+ 164              		.loc 1 191 0
+ 165 001a 80BD     		pop	{r7, pc}
+ 166              		.cfi_endproc
+ 167              	.LFE3:
+ 168              		.size	Timer_Wheel_Tick_Wakeup, .-Timer_Wheel_Tick_Wakeup
+ 169              		.text
+ 170              	.Letext0:
+ 171              		.section	.debug_loc,"",%progbits
+ 172              	.Ldebug_loc0:
+ 173              	.LLST0:
+ 174 0000 00000000 		.4byte	.LFB0
+ 175 0004 02000000 		.4byte	.LCFI0
+ 176 0008 0100     		.2byte	0x1
+ 177 000a 5D       		.byte	0x5d
+ 178 000b 02000000 		.4byte	.LCFI0
+ 179 000f 04000000 		.4byte	.LCFI1
+ 180 0013 0200     		.2byte	0x2
+ 181 0015 7D       		.byte	0x7d
+ 182 0016 04       		.sleb128 4
+ 183 0017 04000000 		.4byte	.LCFI1
+ 184 001b 0A000000 		.4byte	.LFE0
+ 185 001f 0200     		.2byte	0x2
+ 186 0021 77       		.byte	0x77
+ 187 0022 04       		.sleb128 4
+ 188 0023 00000000 		.4byte	0x0
+ 189 0027 00000000 		.4byte	0x0
+ 190              	.LLST1:
+ 191 002b 00000000 		.4byte	.LFB1
+ 192 002f 02000000 		.4byte	.LCFI2
+ 193 0033 0100     		.2byte	0x1
+ 194 0035 5D       		.byte	0x5d
+ 195 0036 02000000 		.4byte	.LCFI2
+ 196 003a 04000000 		.4byte	.LCFI3
+ 197 003e 0200     		.2byte	0x2
+ 198 0040 7D       		.byte	0x7d
+ 199 0041 04       		.sleb128 4
+ 200 0042 04000000 		.4byte	.LCFI3
+ 201 0046 0A000000 		.4byte	.LFE1
+ 202 004a 0200     		.2byte	0x2
+ 203 004c 77       		.byte	0x77
+ 204 004d 04       		.sleb128 4
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 8
+
+
+ 205 004e 00000000 		.4byte	0x0
+ 206 0052 00000000 		.4byte	0x0
+ 207              	.LLST2:
+ 208 0056 00000000 		.4byte	.LFB2
+ 209 005a 02000000 		.4byte	.LCFI4
+ 210 005e 0100     		.2byte	0x1
+ 211 0060 5D       		.byte	0x5d
+ 212 0061 02000000 		.4byte	.LCFI4
+ 213 0065 04000000 		.4byte	.LCFI5
+ 214 0069 0200     		.2byte	0x2
+ 215 006b 7D       		.byte	0x7d
+ 216 006c 08       		.sleb128 8
+ 217 006d 04000000 		.4byte	.LCFI5
+ 218 0071 42000000 		.4byte	.LFE2
+ 219 0075 0200     		.2byte	0x2
+ 220 0077 77       		.byte	0x77
+ 221 0078 08       		.sleb128 8
+ 222 0079 00000000 		.4byte	0x0
+ 223 007d 00000000 		.4byte	0x0
+ 224              	.LLST3:
+ 225 0081 00000000 		.4byte	.LFB3
+ 226 0085 02000000 		.4byte	.LCFI6
+ 227 0089 0100     		.2byte	0x1
+ 228 008b 5D       		.byte	0x5d
+ 229 008c 02000000 		.4byte	.LCFI6
+ 230 0090 04000000 		.4byte	.LCFI7
+ 231 0094 0200     		.2byte	0x2
+ 232 0096 7D       		.byte	0x7d
+ 233 0097 08       		.sleb128 8
+ 234 0098 04000000 		.4byte	.LCFI7
+ 235 009c 1C000000 		.4byte	.LFE3
+ 236 00a0 0200     		.2byte	0x2
+ 237 00a2 77       		.byte	0x77
+ 238 00a3 08       		.sleb128 8
+ 239 00a4 00000000 		.4byte	0x0
+ 240 00a8 00000000 		.4byte	0x0
+ 241              		.file 2 ".\\Generated_Source\\PSoC5\\/cytypes.h"
+ 242              		.file 3 ".\\Generated_Source\\PSoC5\\/Timer_Wheel_Tick.h"
+ 243              		.section	.debug_info
+ 244 0000 0C010000 		.4byte	0x10c
+ 245 0004 0200     		.2byte	0x2
+ 246 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 247 000a 04       		.byte	0x4
+ 248 000b 01       		.uleb128 0x1
+ 249 000c DC000000 		.4byte	.LASF16
+ 250 0010 01       		.byte	0x1
+ 251 0011 9C000000 		.4byte	.LASF17
+ 252 0015 59010000 		.4byte	.LASF18
+ 253 0019 00000000 		.4byte	0x0
+ 254 001d 00000000 		.4byte	0x0
+ 255 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 256 0025 00000000 		.4byte	.Ldebug_line0
+ 257 0029 02       		.uleb128 0x2
+ 258 002a 01       		.byte	0x1
+ 259 002b 06       		.byte	0x6
+ 260 002c 4D010000 		.4byte	.LASF0
+ 261 0030 02       		.uleb128 0x2
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 9
+
+
+ 262 0031 01       		.byte	0x1
+ 263 0032 08       		.byte	0x8
+ 264 0033 E8000000 		.4byte	.LASF1
+ 265 0037 02       		.uleb128 0x2
+ 266 0038 02       		.byte	0x2
+ 267 0039 05       		.byte	0x5
+ 268 003a AE010000 		.4byte	.LASF2
+ 269 003e 02       		.uleb128 0x2
+ 270 003f 02       		.byte	0x2
+ 271 0040 07       		.byte	0x7
+ 272 0041 3A010000 		.4byte	.LASF3
+ 273 0045 02       		.uleb128 0x2
+ 274 0046 04       		.byte	0x4
+ 275 0047 05       		.byte	0x5
+ 276 0048 FB000000 		.4byte	.LASF4
+ 277 004c 02       		.uleb128 0x2
+ 278 004d 04       		.byte	0x4
+ 279 004e 07       		.byte	0x7
+ 280 004f 3F000000 		.4byte	.LASF5
+ 281 0053 02       		.uleb128 0x2
+ 282 0054 08       		.byte	0x8
+ 283 0055 05       		.byte	0x5
+ 284 0056 00000000 		.4byte	.LASF6
+ 285 005a 02       		.uleb128 0x2
+ 286 005b 08       		.byte	0x8
+ 287 005c 07       		.byte	0x7
+ 288 005d 51000000 		.4byte	.LASF7
+ 289 0061 03       		.uleb128 0x3
+ 290 0062 04       		.byte	0x4
+ 291 0063 05       		.byte	0x5
+ 292 0064 696E7400 		.ascii	"int\000"
+ 293 0068 02       		.uleb128 0x2
+ 294 0069 04       		.byte	0x4
+ 295 006a 07       		.byte	0x7
+ 296 006b 0E000000 		.4byte	.LASF8
+ 297 006f 02       		.uleb128 0x2
+ 298 0070 01       		.byte	0x1
+ 299 0071 08       		.byte	0x8
+ 300 0072 F6000000 		.4byte	.LASF9
+ 301 0076 04       		.uleb128 0x4
+ 302 0077 39000000 		.4byte	.LASF10
+ 303 007b 02       		.byte	0x2
+ 304 007c 60       		.byte	0x60
+ 305 007d 30000000 		.4byte	0x30
+ 306 0081 05       		.uleb128 0x5
+ 307 0082 04       		.byte	0x4
+ 308 0083 07       		.byte	0x7
+ 309 0084 06       		.uleb128 0x6
+ 310 0085 1B000000 		.4byte	.LASF11
+ 311 0089 01       		.byte	0x1
+ 312 008a 03       		.byte	0x3
+ 313 008b 3B       		.byte	0x3b
+ 314 008c 9F000000 		.4byte	0x9f
+ 315 0090 07       		.uleb128 0x7
+ 316 0091 CB000000 		.4byte	.LASF19
+ 317 0095 03       		.byte	0x3
+ 318 0096 3C       		.byte	0x3c
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 10
+
+
+ 319 0097 76000000 		.4byte	0x76
+ 320 009b 02       		.byte	0x2
+ 321 009c 23       		.byte	0x23
+ 322 009d 00       		.uleb128 0x0
+ 323 009e 00       		.byte	0x0
+ 324 009f 04       		.uleb128 0x4
+ 325 00a0 1B000000 		.4byte	.LASF11
+ 326 00a4 03       		.byte	0x3
+ 327 00a5 53       		.byte	0x53
+ 328 00a6 84000000 		.4byte	0x84
+ 329 00aa 08       		.uleb128 0x8
+ 330 00ab 01       		.byte	0x1
+ 331 00ac 80000000 		.4byte	.LASF12
+ 332 00b0 01       		.byte	0x1
+ 333 00b1 2A       		.byte	0x2a
+ 334 00b2 01       		.byte	0x1
+ 335 00b3 00000000 		.4byte	.LFB0
+ 336 00b7 0A000000 		.4byte	.LFE0
+ 337 00bb 00000000 		.4byte	.LLST0
+ 338 00bf 08       		.uleb128 0x8
+ 339 00c0 01       		.byte	0x1
+ 340 00c1 1B010000 		.4byte	.LASF13
+ 341 00c5 01       		.byte	0x1
+ 342 00c6 58       		.byte	0x58
+ 343 00c7 01       		.byte	0x1
+ 344 00c8 00000000 		.4byte	.LFB1
+ 345 00cc 0A000000 		.4byte	.LFE1
+ 346 00d0 2B000000 		.4byte	.LLST1
+ 347 00d4 08       		.uleb128 0x8
+ 348 00d5 01       		.byte	0x1
+ 349 00d6 04010000 		.4byte	.LASF14
+ 350 00da 01       		.byte	0x1
+ 351 00db 90       		.byte	0x90
+ 352 00dc 01       		.byte	0x1
+ 353 00dd 00000000 		.4byte	.LFB2
+ 354 00e1 42000000 		.4byte	.LFE2
+ 355 00e5 56000000 		.4byte	.LLST2
+ 356 00e9 08       		.uleb128 0x8
+ 357 00ea 01       		.byte	0x1
+ 358 00eb 68000000 		.4byte	.LASF15
+ 359 00ef 01       		.byte	0x1
+ 360 00f0 B6       		.byte	0xb6
+ 361 00f1 01       		.byte	0x1
+ 362 00f2 00000000 		.4byte	.LFB3
+ 363 00f6 1C000000 		.4byte	.LFE3
+ 364 00fa 81000000 		.4byte	.LLST3
+ 365 00fe 09       		.uleb128 0x9
+ 366 00ff B8010000 		.4byte	.LASF20
+ 367 0103 01       		.byte	0x1
+ 368 0104 14       		.byte	0x14
+ 369 0105 9F000000 		.4byte	0x9f
+ 370 0109 05       		.byte	0x5
+ 371 010a 03       		.byte	0x3
+ 372 010b 00000000 		.4byte	Timer_Wheel_Tick_backup
+ 373 010f 00       		.byte	0x0
+ 374              		.section	.debug_abbrev
+ 375 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 11
+
+
+ 376 0001 11       		.uleb128 0x11
+ 377 0002 01       		.byte	0x1
+ 378 0003 25       		.uleb128 0x25
+ 379 0004 0E       		.uleb128 0xe
+ 380 0005 13       		.uleb128 0x13
+ 381 0006 0B       		.uleb128 0xb
+ 382 0007 03       		.uleb128 0x3
+ 383 0008 0E       		.uleb128 0xe
+ 384 0009 1B       		.uleb128 0x1b
+ 385 000a 0E       		.uleb128 0xe
+ 386 000b 11       		.uleb128 0x11
+ 387 000c 01       		.uleb128 0x1
+ 388 000d 52       		.uleb128 0x52
+ 389 000e 01       		.uleb128 0x1
+ 390 000f 55       		.uleb128 0x55
+ 391 0010 06       		.uleb128 0x6
+ 392 0011 10       		.uleb128 0x10
+ 393 0012 06       		.uleb128 0x6
+ 394 0013 00       		.byte	0x0
+ 395 0014 00       		.byte	0x0
+ 396 0015 02       		.uleb128 0x2
+ 397 0016 24       		.uleb128 0x24
+ 398 0017 00       		.byte	0x0
+ 399 0018 0B       		.uleb128 0xb
+ 400 0019 0B       		.uleb128 0xb
+ 401 001a 3E       		.uleb128 0x3e
+ 402 001b 0B       		.uleb128 0xb
+ 403 001c 03       		.uleb128 0x3
+ 404 001d 0E       		.uleb128 0xe
+ 405 001e 00       		.byte	0x0
+ 406 001f 00       		.byte	0x0
+ 407 0020 03       		.uleb128 0x3
+ 408 0021 24       		.uleb128 0x24
+ 409 0022 00       		.byte	0x0
+ 410 0023 0B       		.uleb128 0xb
+ 411 0024 0B       		.uleb128 0xb
+ 412 0025 3E       		.uleb128 0x3e
+ 413 0026 0B       		.uleb128 0xb
+ 414 0027 03       		.uleb128 0x3
+ 415 0028 08       		.uleb128 0x8
+ 416 0029 00       		.byte	0x0
+ 417 002a 00       		.byte	0x0
+ 418 002b 04       		.uleb128 0x4
+ 419 002c 16       		.uleb128 0x16
+ 420 002d 00       		.byte	0x0
+ 421 002e 03       		.uleb128 0x3
+ 422 002f 0E       		.uleb128 0xe
+ 423 0030 3A       		.uleb128 0x3a
+ 424 0031 0B       		.uleb128 0xb
+ 425 0032 3B       		.uleb128 0x3b
+ 426 0033 0B       		.uleb128 0xb
+ 427 0034 49       		.uleb128 0x49
+ 428 0035 13       		.uleb128 0x13
+ 429 0036 00       		.byte	0x0
+ 430 0037 00       		.byte	0x0
+ 431 0038 05       		.uleb128 0x5
+ 432 0039 24       		.uleb128 0x24
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 12
+
+
+ 433 003a 00       		.byte	0x0
+ 434 003b 0B       		.uleb128 0xb
+ 435 003c 0B       		.uleb128 0xb
+ 436 003d 3E       		.uleb128 0x3e
+ 437 003e 0B       		.uleb128 0xb
+ 438 003f 00       		.byte	0x0
+ 439 0040 00       		.byte	0x0
+ 440 0041 06       		.uleb128 0x6
+ 441 0042 13       		.uleb128 0x13
+ 442 0043 01       		.byte	0x1
+ 443 0044 03       		.uleb128 0x3
+ 444 0045 0E       		.uleb128 0xe
+ 445 0046 0B       		.uleb128 0xb
+ 446 0047 0B       		.uleb128 0xb
+ 447 0048 3A       		.uleb128 0x3a
+ 448 0049 0B       		.uleb128 0xb
+ 449 004a 3B       		.uleb128 0x3b
+ 450 004b 0B       		.uleb128 0xb
+ 451 004c 01       		.uleb128 0x1
+ 452 004d 13       		.uleb128 0x13
+ 453 004e 00       		.byte	0x0
+ 454 004f 00       		.byte	0x0
+ 455 0050 07       		.uleb128 0x7
+ 456 0051 0D       		.uleb128 0xd
+ 457 0052 00       		.byte	0x0
+ 458 0053 03       		.uleb128 0x3
+ 459 0054 0E       		.uleb128 0xe
+ 460 0055 3A       		.uleb128 0x3a
+ 461 0056 0B       		.uleb128 0xb
+ 462 0057 3B       		.uleb128 0x3b
+ 463 0058 0B       		.uleb128 0xb
+ 464 0059 49       		.uleb128 0x49
+ 465 005a 13       		.uleb128 0x13
+ 466 005b 38       		.uleb128 0x38
+ 467 005c 0A       		.uleb128 0xa
+ 468 005d 00       		.byte	0x0
+ 469 005e 00       		.byte	0x0
+ 470 005f 08       		.uleb128 0x8
+ 471 0060 2E       		.uleb128 0x2e
+ 472 0061 00       		.byte	0x0
+ 473 0062 3F       		.uleb128 0x3f
+ 474 0063 0C       		.uleb128 0xc
+ 475 0064 03       		.uleb128 0x3
+ 476 0065 0E       		.uleb128 0xe
+ 477 0066 3A       		.uleb128 0x3a
+ 478 0067 0B       		.uleb128 0xb
+ 479 0068 3B       		.uleb128 0x3b
+ 480 0069 0B       		.uleb128 0xb
+ 481 006a 27       		.uleb128 0x27
+ 482 006b 0C       		.uleb128 0xc
+ 483 006c 11       		.uleb128 0x11
+ 484 006d 01       		.uleb128 0x1
+ 485 006e 12       		.uleb128 0x12
+ 486 006f 01       		.uleb128 0x1
+ 487 0070 40       		.uleb128 0x40
+ 488 0071 06       		.uleb128 0x6
+ 489 0072 00       		.byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 13
+
+
+ 490 0073 00       		.byte	0x0
+ 491 0074 09       		.uleb128 0x9
+ 492 0075 34       		.uleb128 0x34
+ 493 0076 00       		.byte	0x0
+ 494 0077 03       		.uleb128 0x3
+ 495 0078 0E       		.uleb128 0xe
+ 496 0079 3A       		.uleb128 0x3a
+ 497 007a 0B       		.uleb128 0xb
+ 498 007b 3B       		.uleb128 0x3b
+ 499 007c 0B       		.uleb128 0xb
+ 500 007d 49       		.uleb128 0x49
+ 501 007e 13       		.uleb128 0x13
+ 502 007f 02       		.uleb128 0x2
+ 503 0080 0A       		.uleb128 0xa
+ 504 0081 00       		.byte	0x0
+ 505 0082 00       		.byte	0x0
+ 506 0083 00       		.byte	0x0
+ 507              		.section	.debug_pubnames,"",%progbits
+ 508 0000 88000000 		.4byte	0x88
+ 509 0004 0200     		.2byte	0x2
+ 510 0006 00000000 		.4byte	.Ldebug_info0
+ 511 000a 10010000 		.4byte	0x110
+ 512 000e AA000000 		.4byte	0xaa
+ 513 0012 54696D65 		.ascii	"Timer_Wheel_Tick_SaveConfig\000"
+ 513      725F5768 
+ 513      65656C5F 
+ 513      5469636B 
+ 513      5F536176 
+ 514 002e BF000000 		.4byte	0xbf
+ 515 0032 54696D65 		.ascii	"Timer_Wheel_Tick_RestoreConfig\000"
+ 515      725F5768 
+ 515      65656C5F 
+ 515      5469636B 
+ 515      5F526573 
+ 516 0051 D4000000 		.4byte	0xd4
+ 517 0055 54696D65 		.ascii	"Timer_Wheel_Tick_Sleep\000"
+ 517      725F5768 
+ 517      65656C5F 
+ 517      5469636B 
+ 517      5F536C65 
+ 518 006c E9000000 		.4byte	0xe9
+ 519 0070 54696D65 		.ascii	"Timer_Wheel_Tick_Wakeup\000"
+ 519      725F5768 
+ 519      65656C5F 
+ 519      5469636B 
+ 519      5F57616B 
+ 520 0088 00000000 		.4byte	0x0
+ 521              		.section	.debug_aranges,"",%progbits
+ 522 0000 34000000 		.4byte	0x34
+ 523 0004 0200     		.2byte	0x2
+ 524 0006 00000000 		.4byte	.Ldebug_info0
+ 525 000a 04       		.byte	0x4
+ 526 000b 00       		.byte	0x0
+ 527 000c 0000     		.2byte	0x0
+ 528 000e 0000     		.2byte	0x0
+ 529 0010 00000000 		.4byte	.LFB0
+ 530 0014 0A000000 		.4byte	.LFE0-.LFB0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 14
+
+
+ 531 0018 00000000 		.4byte	.LFB1
+ 532 001c 0A000000 		.4byte	.LFE1-.LFB1
+ 533 0020 00000000 		.4byte	.LFB2
+ 534 0024 42000000 		.4byte	.LFE2-.LFB2
+ 535 0028 00000000 		.4byte	.LFB3
+ 536 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 537 0030 00000000 		.4byte	0x0
+ 538 0034 00000000 		.4byte	0x0
+ 539              		.section	.debug_ranges,"",%progbits
+ 540              	.Ldebug_ranges0:
+ 541 0000 00000000 		.4byte	.Ltext0
+ 542 0004 00000000 		.4byte	.Letext0
+ 543 0008 00000000 		.4byte	.LFB0
+ 544 000c 0A000000 		.4byte	.LFE0
+ 545 0010 00000000 		.4byte	.LFB1
+ 546 0014 0A000000 		.4byte	.LFE1
+ 547 0018 00000000 		.4byte	.LFB2
+ 548 001c 42000000 		.4byte	.LFE2
+ 549 0020 00000000 		.4byte	.LFB3
+ 550 0024 1C000000 		.4byte	.LFE3
+ 551 0028 00000000 		.4byte	0x0
+ 552 002c 00000000 		.4byte	0x0
+ 553              		.section	.debug_str,"MS",%progbits,1
+ 554              	.LASF6:
+ 555 0000 6C6F6E67 		.ascii	"long long int\000"
+ 555      206C6F6E 
+ 555      6720696E 
+ 555      7400
+ 556              	.LASF8:
+ 557 000e 756E7369 		.ascii	"unsigned int\000"
+ 557      676E6564 
+ 557      20696E74 
+ 557      00
+ 558              	.LASF11:
+ 559 001b 54696D65 		.ascii	"Timer_Wheel_Tick_backupStruct\000"
+ 559      725F5768 
+ 559      65656C5F 
+ 559      5469636B 
+ 559      5F626163 
+ 560              	.LASF10:
+ 561 0039 75696E74 		.ascii	"uint8\000"
+ 561      3800
+ 562              	.LASF5:
+ 563 003f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 563      20756E73 
+ 563      69676E65 
+ 563      6420696E 
+ 563      7400
+ 564              	.LASF7:
+ 565 0051 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 565      206C6F6E 
+ 565      6720756E 
+ 565      7369676E 
+ 565      65642069 
+ 566              	.LASF15:
+ 567 0068 54696D65 		.ascii	"Timer_Wheel_Tick_Wakeup\000"
+ 567      725F5768 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 15
+
+
+ 567      65656C5F 
+ 567      5469636B 
+ 567      5F57616B 
+ 568              	.LASF12:
+ 569 0080 54696D65 		.ascii	"Timer_Wheel_Tick_SaveConfig\000"
+ 569      725F5768 
+ 569      65656C5F 
+ 569      5469636B 
+ 569      5F536176 
+ 570              	.LASF17:
+ 571 009c 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Timer_Wheel_Tick_PM.c\000"
+ 571      6E657261 
+ 571      7465645F 
+ 571      536F7572 
+ 571      63655C50 
+ 572              	.LASF19:
+ 573 00cb 54696D65 		.ascii	"TimerEnableState\000"
+ 573      72456E61 
+ 573      626C6553 
+ 573      74617465 
+ 573      00
+ 574              	.LASF16:
+ 575 00dc 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 575      4320342E 
+ 575      342E3100 
+ 576              	.LASF1:
+ 577 00e8 756E7369 		.ascii	"unsigned char\000"
+ 577      676E6564 
+ 577      20636861 
+ 577      7200
+ 578              	.LASF9:
+ 579 00f6 63686172 		.ascii	"char\000"
+ 579      00
+ 580              	.LASF4:
+ 581 00fb 6C6F6E67 		.ascii	"long int\000"
+ 581      20696E74 
+ 581      00
+ 582              	.LASF14:
+ 583 0104 54696D65 		.ascii	"Timer_Wheel_Tick_Sleep\000"
+ 583      725F5768 
+ 583      65656C5F 
+ 583      5469636B 
+ 583      5F536C65 
+ 584              	.LASF13:
+ 585 011b 54696D65 		.ascii	"Timer_Wheel_Tick_RestoreConfig\000"
+ 585      725F5768 
+ 585      65656C5F 
+ 585      5469636B 
+ 585      5F526573 
+ 586              	.LASF3:
+ 587 013a 73686F72 		.ascii	"short unsigned int\000"
+ 587      7420756E 
+ 587      7369676E 
+ 587      65642069 
+ 587      6E7400
+ 588              	.LASF0:
+ 589 014d 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccAaD2V3.s 			page 16
+
+
+ 589      65642063 
+ 589      68617200 
+ 590              	.LASF18:
+ 591 0159 433A5C55 		.ascii	"C:\\Users\\Public\\Documents\\Carlab\\BC and TJ\\Pr"
+ 591      73657273 
+ 591      5C507562 
+ 591      6C69635C 
+ 591      446F6375 
+ 592 0186 6F6A6563 		.ascii	"oject 4\\Navigation01\\Navigation01.cydsn\000"
+ 592      7420345C 
+ 592      4E617669 
+ 592      67617469 
+ 592      6F6E3031 
+ 593              	.LASF2:
+ 594 01ae 73686F72 		.ascii	"short int\000"
+ 594      7420696E 
+ 594      7400
+ 595              	.LASF20:
+ 596 01b8 54696D65 		.ascii	"Timer_Wheel_Tick_backup\000"
+ 596      725F5768 
+ 596      65656C5F 
+ 596      5469636B 
+ 596      5F626163 
+ 597              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"
