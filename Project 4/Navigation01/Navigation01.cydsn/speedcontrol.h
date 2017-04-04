@@ -3,8 +3,8 @@
 /*                                                                 */
 /* BC Cho (bccho@) and TJ Smith (tjs8@)                            */
 /*-----------------------------------------------------------------*/
-#ifndef SPEEED_CONTROL_H
-#define SPEEED_CONTROL_H
+#ifndef SPEED_CONTROL_H
+#define SPEED_CONTROL_H
 
 /*-----------------------------------------------------------------*/
 

@@ -451,6 +451,7 @@ int main() {
             SpeedControl_handleTimer();
             sprintf(strbuffer, "Line mid: %f\n", lineMid);
             UART_PutString(strbuffer);
+            
             pidTimerInterrupted = 0;
         }
         
