@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <speedcontrol.h>
 #include <navigation.h>
+#include <camera.h>
 #include <serial.h>
 
 static char buildVersion[] = "Build 1.0.0";

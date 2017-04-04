@@ -22,23 +22,4 @@ double Camera_getLineAngle();
 void Camera_reset();
 
 
-
-
-
-
-
-
-
-
-
-/* Initializes serial communications */
-void Serial_init();
-
-/* Handles incoming serial data 
-   Returns: null if transmission is not complete, the transmitted
-            string otherwise */
-char *Serial_handleData();
-
-
-
 #endif
