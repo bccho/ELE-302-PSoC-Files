@@ -27,7 +27,7 @@ static int bufLineErrorPos = 0;
 static int bufLineErrorLastPos = 0;
 
 // Theta (angle from line) error integral tracking
-static double thetaErrorIntegral = 0.0;
+static double thetaIntegral = 0.0;
 
 // Theta (angle from line) error derivative tracking
 #define BUF_THETA_SIZE 10
@@ -53,10 +53,10 @@ static int verbosePrintoutOn = 0;
 /*-----------------------------------------------------------------*/
 
 static void killAll();
-static int controlSteering(double linePos, double theta);
+static double controlSteering(double linePos, double theta);
 static void setSteering(double dir);
-static double getSteering();
-static void resetSteeringTracking();
+// static double getSteering();
+// static void resetSteeringTracking();
 static void resetDerivativeTracking();
 static void resetIntegralTracking();
 
@@ -64,7 +64,7 @@ static void resetIntegralTracking();
 
 /* Initialize navigation */
 void Navigation_init() {
-    resetSteeringTracking();
+    // resetSteeringTracking();
     resetDerivativeTracking();
     setSteering(0);
 }
@@ -174,7 +174,14 @@ double Navigation_getDtheta() {
 
 /* Set steering */
 // Steering function (-1 is full left, +1 is full right, 0 is center)
-void Navigation_setSteering(int steering) {
+void Navigation_setSteering(double dir) {
+    if (!steeringPIDon) setSteering(dir);
+    else UART_PutString("Cannot change steering when PID on\n");
+
+}
+
+// Steering function (-1 is full left, +1 is full right, 0 is center)
+static void setSteering(double dir) {
     if (dir >  1) dir =  1;
     if (dir < -1) dir = -1;
 
@@ -195,8 +202,9 @@ void Navigation_kill() {
 /* Handle PID timer. Controls speed and updates time */
 void Navigation_handleTimer() {
     if (steeringPIDon) {
-        elapsedTime += (double) PID_TIMER_PERIOD / (double) CLK_FREQ;
         // TODO: get x and theta
+        double x = 0;
+        double theta = 0;
         setSteering(controlSteering(x, theta));
     }
 }
@@ -219,7 +227,7 @@ static double controlSteering(double linePos, double theta) {
     double lineErrorDerivative = (bufLineError[bufLineErrorPos] - bufLineError[bufLineErrorLastPos]) / (double) BUF_LINE_ERROR_SIZE;
     bufLineErrorPos = (bufLineErrorPos + 1) % BUF_LINE_ERROR_SIZE;
     if (bufLineErrorPos == bufLineErrorLastPos) { // this gets activated when bufLineErrorPos has made one loop around the ring buffer
-        bufLineErrorLastPos = (bufLineErrorLastPos + 1) % BUF_SPEED_SIZE;
+        bufLineErrorLastPos = (bufLineErrorLastPos + 1) % BUF_LINE_ERROR_SIZE;
     }
     // Calculate integral of error
     lineErrorIntegral += lineError;
@@ -230,9 +238,9 @@ static double controlSteering(double linePos, double theta) {
     bufTheta[bufThetaPos] = theta;
     // Calculate derivative of error
     double thetaDerivative = (bufTheta[bufThetaPos] - bufTheta[bufThetaLastPos]) / (double) BUF_THETA_SIZE;
-    bufThetaPos = (bufThetaPos + 1) % BUF_LINE_ERROR_SIZE;
+    bufThetaPos = (bufThetaPos + 1) % BUF_THETA_SIZE;
     if (bufThetaPos == bufThetaLastPos) { // this gets activated when bufThetaPos has made one loop around the ring buffer
-        bufThetaLastPos = (bufThetaLastPos + 1) % BUF_SPEED_SIZE;
+        bufThetaLastPos = (bufThetaLastPos + 1) % BUF_THETA_SIZE;
     }
     // Calculate integral of error
     thetaIntegral += theta;
@@ -243,7 +251,7 @@ static double controlSteering(double linePos, double theta) {
 
     if (verbosePrintoutOn) {
         sprintf(strbuffer, "%4.3f | %3.2f, %3.2f, %6.2f, %8.2f, %3.2f | %4.2f , %6.2f, %4.2f\n", 
-                newSteering, line, lineError, lineErrorIntegral, lineErrorDoubleIntegral, lineErrorDerivative, 
+                newSteering, linePos, lineError, lineErrorIntegral, lineErrorDoubleIntegral, lineErrorDerivative, 
                 theta, thetaIntegral, thetaDerivative);
         UART_PutString(strbuffer);
     }
@@ -260,64 +268,26 @@ static void killAll() {
 }
 
 
-/* Takes an integer between 0 and MAX_THROTTLE and
- * sets the motor PWM output to that value */
-static void setThrottle(int thr) {
-    if (thr < 0)
-        thr = 0;
-    if (thr > MAX_THROTTLE)
-        thr = MAX_THROTTLE;
-    
-    throttle = thr;
-    
-    PWM_Motor_WriteCompare(throttle);
-    
-    LCD_Position(1,0);
-    char lcdbuffer[4];
-    sprintf(lcdbuffer, "%3i", throttle);
-    LCD_PrintString(lcdbuffer);
-}
 
-
-/* Returns average speed (in ft/sec) over the last BUF_WHEEL_TICK_SIZE ticks */
-static double getSpeed() {
-    double cumSum = 0;
-    int i;
-    if (bufWheelTickCurSize == 0) return 0;
-    for (i = 0; i < BUF_WHEEL_TICK_SIZE; i++) {
-        cumSum += (double) bufWheelTick[i];
-    }
-    double averageCount = cumSum / bufWheelTickCurSize;
-    double ticksPerSec = CLK_FREQ / averageCount;
-    double speed = ticksPerSec * ((M_PI * WHEEL_DIAM) / 5) * (1.0/12.0);
-    
-    return speed;
-}
-
-/* Resets tick buffer */
-static void resetSpeedTracking() {
-    // Clear wheel tick buffer
-    bufWheelTickPos = 0;
-    bufWheelTickCurSize = 0;
-    int i;
-    for (i = 0; i < BUF_WHEEL_TICK_SIZE; i++) bufWheelTick[i] = 0;
-}
-
-
-/* Resets speed error buffer */
+/* Resets error buffers */
 static void resetDerivativeTracking() {
     // Clear speed buffer
-    bufSpeedPos = 0;
-    bufSpeedLastPos = 0;
+    bufLineErrorPos = 0;
+    bufLineErrorLastPos = 0;
+    bufThetaPos = 0;
+    bufThetaLastPos = 0;
     int i;
-    for (i = 0; i < BUF_SPEED_SIZE; i++) bufSpeed[i] = 0.0;
+    for (i = 0; i < BUF_LINE_ERROR_SIZE; i++) bufLineError[i] = 0.0;
+    for (i = 0; i < BUF_THETA_SIZE; i++) bufTheta[i] = 0.0;
 }
 
 
 /* Resets integral term */
 static void resetIntegralTracking() {
     // Reset integral term
-    errorIntegral = 0.0;
+    thetaIntegral = 0.0;
+    lineErrorIntegral = 0.0;
+    lineErrorDoubleIntegral = 0.0;
 }
 
 
