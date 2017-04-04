@@ -19,7 +19,7 @@
         <register>
           <name>Timer_Line_Begin_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x4000640A</addressOffset>
+          <addressOffset>0x40006400</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -28,7 +28,7 @@
         <register>
           <name>Timer_Line_Begin_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x4000642A</addressOffset>
+          <addressOffset>0x40006420</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -37,7 +37,7 @@
         <register>
           <name>Timer_Line_Begin_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006474</addressOffset>
+          <addressOffset>0x40006475</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -83,7 +83,7 @@
         <register>
           <name>Timer_Line_Begin_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x4000648B</addressOffset>
+          <addressOffset>0x40006481</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -122,7 +122,7 @@
         <register>
           <name>Timer_Line_Begin_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x4000649B</addressOffset>
+          <addressOffset>0x40006491</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -259,7 +259,7 @@
         <register>
           <name>Timer_Row_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x40006400</addressOffset>
+          <addressOffset>0x4000640A</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -268,7 +268,7 @@
         <register>
           <name>Timer_Row_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006420</addressOffset>
+          <addressOffset>0x4000642A</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -277,7 +277,7 @@
         <register>
           <name>Timer_Row_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006476</addressOffset>
+          <addressOffset>0x4000647B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -323,7 +323,7 @@
         <register>
           <name>Timer_Row_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006481</addressOffset>
+          <addressOffset>0x4000648B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -362,7 +362,7 @@
         <register>
           <name>Timer_Row_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006491</addressOffset>
+          <addressOffset>0x4000649B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -499,7 +499,7 @@
         <register>
           <name>Timer_Line_End_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x40006406</addressOffset>
+          <addressOffset>0x40006408</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -508,7 +508,7 @@
         <register>
           <name>Timer_Line_End_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006426</addressOffset>
+          <addressOffset>0x40006428</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -563,7 +563,7 @@
         <register>
           <name>Timer_Line_End_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006587</addressOffset>
+          <addressOffset>0x4000648A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -602,7 +602,7 @@
         <register>
           <name>Timer_Line_End_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006597</addressOffset>
+          <addressOffset>0x4000649A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -737,36 +737,9 @@
       </addressBlock>
       <registers>
         <register>
-          <name>Counter_First_Row_COUNTER</name>
-          <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x40006506</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>Counter_First_Row_PERIOD</name>
-          <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006526</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>Counter_First_Row_COMPARE</name>
-          <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x40006536</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
           <name>Counter_First_Row_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006577</addressOffset>
+          <addressOffset>0x40006474</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -796,9 +769,36 @@
           </fields>
         </register>
         <register>
+          <name>Counter_First_Row_COUNTER</name>
+          <description>UDB.A0 - Current Counter Value</description>
+          <addressOffset>0x40006507</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>Counter_First_Row_PERIOD</name>
+          <description>UDB.D0 - Assigned Period</description>
+          <addressOffset>0x40006527</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>Counter_First_Row_COMPARE</name>
+          <description>UDB.D1 - Assigned Compare Value</description>
+          <addressOffset>0x40006537</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
           <name>Counter_First_Row_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006586</addressOffset>
+          <addressOffset>0x40006587</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -858,7 +858,7 @@
         <register>
           <name>Counter_First_Row_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006596</addressOffset>
+          <addressOffset>0x40006597</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -995,7 +995,7 @@
         <register>
           <name>Counter_Last_Row_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x40006408</addressOffset>
+          <addressOffset>0x40006404</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1004,7 +1004,7 @@
         <register>
           <name>Counter_Last_Row_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006428</addressOffset>
+          <addressOffset>0x40006424</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1013,48 +1013,16 @@
         <register>
           <name>Counter_Last_Row_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x40006438</addressOffset>
+          <addressOffset>0x40006434</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>Counter_Last_Row_Control_Reg</name>
-          <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006477</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>CTRL_ENABLE</name>
-              <description>Enable Counter</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CAPMODE</name>
-              <description>Capture mode</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CMPMODE</name>
-              <description>Compare mode</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
         </register>
         <register>
           <name>Counter_Last_Row_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006488</addressOffset>
+          <addressOffset>0x40006484</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1114,7 +1082,7 @@
         <register>
           <name>Counter_Last_Row_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006498</addressOffset>
+          <addressOffset>0x40006494</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1233,6 +1201,38 @@
                   <value>1</value>
                 </enumeratedValue>
               </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>Counter_Last_Row_Control_Reg</name>
+          <description>UDB Control Register - Assigned Control Register Value</description>
+          <addressOffset>0x40006576</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>CTRL_ENABLE</name>
+              <description>Enable Counter</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CAPMODE</name>
+              <description>Capture mode</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CMPMODE</name>
+              <description>Compare mode</description>
+              <lsb>0</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
@@ -2184,7 +2184,7 @@
         <register>
           <name>PWM_Servo_COMPARE_Reg</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x40006424</addressOffset>
+          <addressOffset>0x40006426</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2225,7 +2225,7 @@
         <register>
           <name>PWM_Servo_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006485</addressOffset>
+          <addressOffset>0x40006487</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2271,7 +2271,7 @@
         <register>
           <name>PWM_Servo_STATUS_AUX_CTRLDP0</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006494</addressOffset>
+          <addressOffset>0x40006496</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2396,7 +2396,7 @@
         <register>
           <name>PWM_Servo_STATUS_AUX_CTRLDP1</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006495</addressOffset>
+          <addressOffset>0x40006497</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
