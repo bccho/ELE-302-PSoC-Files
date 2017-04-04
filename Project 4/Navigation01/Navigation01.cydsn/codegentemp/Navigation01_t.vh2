@@ -1,18 +1,24 @@
 -- Project:   C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\Navigation01.cyprj
--- Generated: 03/30/2017 14:09:56
+-- Generated: 04/03/2017 20:15:03
 -- 
 
 ENTITY Navigation01 IS
     PORT(
         Camera_data(0)_PAD : IN std_ulogic;
+        Comp_out(0)_PAD : OUT std_ulogic;
         Comparator(0)_PAD : IN std_ulogic;
         Hall_sensor(0)_PAD : IN std_ulogic;
+        Horiz_out(0)_PAD : OUT std_ulogic;
         Horiz_sync(0)_PAD : IN std_ulogic;
+        Line_begin(0)_PAD : OUT std_ulogic;
+        Line_end(0)_PAD : OUT std_ulogic;
         Pin_button(0)_PAD : IN std_ulogic;
         Pin_motor(0)_PAD : OUT std_ulogic;
         Pin_servo(0)_PAD : OUT std_ulogic;
         Rx_1(0)_PAD : IN std_ulogic;
+        Trigger(0)_PAD : OUT std_ulogic;
         Tx_1(0)_PAD : OUT std_ulogic;
+        Vert_out(0)_PAD : OUT std_ulogic;
         Vertical_sync(0)_PAD : IN std_ulogic;
         \LCD:LCDPort(0)_PAD\ : OUT std_ulogic;
         \LCD:LCDPort(1)_PAD\ : OUT std_ulogic;
@@ -43,25 +49,28 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
-    SIGNAL Net_10 : bit;
-    ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
-    SIGNAL Net_10_local : bit;
+    SIGNAL MODIN7_0 : bit;
+    ATTRIBUTE placement_force OF MODIN7_0 : SIGNAL IS "U(2,3,A)1";
+    SIGNAL MODIN7_1 : bit;
+    ATTRIBUTE placement_force OF MODIN7_1 : SIGNAL IS "U(2,3,B)3";
+    SIGNAL MODIN8_0 : bit;
+    SIGNAL MODIN8_1 : bit;
     SIGNAL Net_266 : bit;
     SIGNAL Net_276 : bit;
-    ATTRIBUTE placement_force OF Net_276 : SIGNAL IS "U(2,0,B)2";
+    ATTRIBUTE placement_force OF Net_276 : SIGNAL IS "U(0,1,B)2";
     SIGNAL Net_301 : bit;
-    ATTRIBUTE placement_force OF Net_301 : SIGNAL IS "U(1,0,A)1";
+    ATTRIBUTE placement_force OF Net_301 : SIGNAL IS "U(0,0,B)2";
     SIGNAL Net_347 : bit;
     SIGNAL Net_397 : bit;
     SIGNAL Net_398 : bit;
     ATTRIBUTE global_signal OF Net_398 : SIGNAL IS true;
     SIGNAL Net_398_local : bit;
     SIGNAL Net_416 : bit;
-    ATTRIBUTE placement_force OF Net_416 : SIGNAL IS "U(2,5,B)1";
+    ATTRIBUTE placement_force OF Net_416 : SIGNAL IS "U(0,3,A)1";
     SIGNAL Net_456 : bit;
-    ATTRIBUTE placement_force OF Net_456 : SIGNAL IS "U(3,3,B)3";
+    ATTRIBUTE placement_force OF Net_456 : SIGNAL IS "U(3,4,B)0";
     SIGNAL Net_47 : bit;
-    ATTRIBUTE placement_force OF Net_47 : SIGNAL IS "U(2,0,B)3";
+    ATTRIBUTE placement_force OF Net_47 : SIGNAL IS "U(0,0,A)2";
     SIGNAL Net_507 : bit;
     ATTRIBUTE global_signal OF Net_507 : SIGNAL IS true;
     SIGNAL Net_507_local : bit;
@@ -69,17 +78,75 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL Net_52 : bit;
     SIGNAL Net_530 : bit;
     SIGNAL Net_580 : bit;
-    ATTRIBUTE placement_force OF Net_580 : SIGNAL IS "U(2,3,B)3";
-    SIGNAL Net_591 : bit;
-    SIGNAL Net_599 : bit;
-    ATTRIBUTE placement_force OF Net_599 : SIGNAL IS "U(3,3,A)1";
-    SIGNAL Net_610 : bit;
+    ATTRIBUTE placement_force OF Net_580 : SIGNAL IS "U(2,4,B)0";
     SIGNAL Net_612 : bit;
-    ATTRIBUTE placement_force OF Net_612 : SIGNAL IS "U(2,3,B)0";
+    ATTRIBUTE placement_force OF Net_612 : SIGNAL IS "U(2,4,B)1";
     ATTRIBUTE soft OF Net_612 : SIGNAL IS 1;
-    SIGNAL Net_638 : bit;
-    SIGNAL Net_650 : bit;
+    SIGNAL Net_702 : bit;
+    SIGNAL Net_710 : bit;
+    SIGNAL Net_719 : bit;
     SIGNAL Net_72 : bit;
+    SIGNAL Net_764 : bit;
+    ATTRIBUTE placement_force OF Net_764 : SIGNAL IS "U(1,1,A)3";
+    SIGNAL Net_765 : bit;
+    ATTRIBUTE global_signal OF Net_765 : SIGNAL IS true;
+    SIGNAL Net_765_local : bit;
+    SIGNAL Net_835 : bit;
+    SIGNAL Net_836 : bit;
+    ATTRIBUTE placement_force OF Net_836 : SIGNAL IS "U(2,2,A)3";
+    SIGNAL Net_839 : bit;
+    ATTRIBUTE placement_force OF Net_839 : SIGNAL IS "U(1,1,A)2";
+    SIGNAL Net_840 : bit;
+    ATTRIBUTE placement_force OF Net_840 : SIGNAL IS "U(1,0,B)3";
+    SIGNAL Net_906 : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:cmp_out_i\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_0\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_1\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_2\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_3\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_4\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_5\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_6\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:control_7\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:count_enable\ : bit;
+    ATTRIBUTE placement_force OF \Counter_First_Row:CounterUDB:count_enable\ : SIGNAL IS "U(1,1,B)3";
+    SIGNAL \Counter_First_Row:CounterUDB:count_stored_i\ : bit;
+    ATTRIBUTE placement_force OF \Counter_First_Row:CounterUDB:count_stored_i\ : SIGNAL IS "U(1,3,B)3";
+    SIGNAL \Counter_First_Row:CounterUDB:overflow_reg_i\ : bit;
+    ATTRIBUTE placement_force OF \Counter_First_Row:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(1,0,B)0";
+    SIGNAL \Counter_First_Row:CounterUDB:per_equal\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:reload\ : bit;
+    ATTRIBUTE placement_force OF \Counter_First_Row:CounterUDB:reload\ : SIGNAL IS "U(1,0,A)1";
+    SIGNAL \Counter_First_Row:CounterUDB:status_0\ : bit;
+    ATTRIBUTE placement_force OF \Counter_First_Row:CounterUDB:status_0\ : SIGNAL IS "U(1,0,A)2";
+    SIGNAL \Counter_First_Row:CounterUDB:status_1\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:status_2\ : bit;
+    ATTRIBUTE placement_force OF \Counter_First_Row:CounterUDB:status_2\ : SIGNAL IS "U(1,0,A)3";
+    SIGNAL \Counter_First_Row:CounterUDB:status_5\ : bit;
+    SIGNAL \Counter_First_Row:CounterUDB:status_6\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:cmp_out_i\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_0\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_1\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_2\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_3\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_4\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_5\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_6\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:control_7\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:count_enable\ : bit;
+    ATTRIBUTE placement_force OF \Counter_Last_Row:CounterUDB:count_enable\ : SIGNAL IS "U(1,3,B)2";
+    SIGNAL \Counter_Last_Row:CounterUDB:overflow_reg_i\ : bit;
+    ATTRIBUTE placement_force OF \Counter_Last_Row:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(1,0,B)2";
+    SIGNAL \Counter_Last_Row:CounterUDB:per_equal\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:reload\ : bit;
+    ATTRIBUTE placement_force OF \Counter_Last_Row:CounterUDB:reload\ : SIGNAL IS "U(1,1,B)0";
+    SIGNAL \Counter_Last_Row:CounterUDB:status_0\ : bit;
+    ATTRIBUTE placement_force OF \Counter_Last_Row:CounterUDB:status_0\ : SIGNAL IS "U(1,1,B)2";
+    SIGNAL \Counter_Last_Row:CounterUDB:status_1\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:status_2\ : bit;
+    ATTRIBUTE placement_force OF \Counter_Last_Row:CounterUDB:status_2\ : SIGNAL IS "U(1,0,A)0";
+    SIGNAL \Counter_Last_Row:CounterUDB:status_5\ : bit;
+    SIGNAL \Counter_Last_Row:CounterUDB:status_6\ : bit;
     SIGNAL \Counter_PID:Net_48\ : bit;
     SIGNAL \Counter_PID:Net_54\ : bit;
     SIGNAL \Counter_Tick_Timeout:Net_54\ : bit;
@@ -93,17 +160,17 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL \PWM_Motor:PWMUDB:control_6\ : bit;
     SIGNAL \PWM_Motor:PWMUDB:ctrl_enable\ : bit;
     SIGNAL \PWM_Motor:PWMUDB:final_kill_reg\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:final_kill_reg\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:final_kill_reg\ : SIGNAL IS "U(0,2,A)2";
     SIGNAL \PWM_Motor:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:prevCompare1\ : SIGNAL IS "U(3,3,A)2";
+    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,4,A)2";
     SIGNAL \PWM_Motor:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:runmode_enable\ : SIGNAL IS "U(3,3,A)0";
+    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \PWM_Servo:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \PWM_Motor:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:status_0\ : SIGNAL IS "U(3,3,A)3";
+    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:status_0\ : SIGNAL IS "U(2,4,B)2";
     SIGNAL \PWM_Motor:PWMUDB:status_3\ : bit;
     SIGNAL \PWM_Motor:PWMUDB:status_5\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:status_5\ : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF \PWM_Motor:PWMUDB:status_5\ : SIGNAL IS "U(0,3,B)2";
     SIGNAL \PWM_Motor:PWMUDB:tc_i\ : bit;
     SIGNAL \PWM_Servo:PWMUDB:compare1\ : bit;
     SIGNAL \PWM_Servo:PWMUDB:control_0\ : bit;
@@ -115,37 +182,48 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL \PWM_Servo:PWMUDB:control_6\ : bit;
     SIGNAL \PWM_Servo:PWMUDB:ctrl_enable\ : bit;
     SIGNAL \PWM_Servo:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Servo:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF \PWM_Servo:PWMUDB:prevCompare1\ : SIGNAL IS "U(1,3,A)2";
     SIGNAL \PWM_Servo:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Servo:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,2,B)1";
+    ATTRIBUTE placement_force OF \PWM_Servo:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,3,A)0";
     SIGNAL \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \PWM_Servo:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \PWM_Servo:PWMUDB:status_0\ : SIGNAL IS "U(2,2,A)3";
+    ATTRIBUTE placement_force OF \PWM_Servo:PWMUDB:status_0\ : SIGNAL IS "U(1,3,A)3";
     SIGNAL \PWM_Servo:PWMUDB:status_3\ : bit;
     SIGNAL \PWM_Servo:PWMUDB:tc_i\ : bit;
-    SIGNAL \Timer_Line_Begin:TimerUDB:capt_fifo_load\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,4,A)0";
+    SIGNAL \Timer_Line_Begin:TimerUDB:capt_int_temp\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:capt_int_temp\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \Timer_Line_Begin:TimerUDB:capture_last\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:capture_last\ : SIGNAL IS "U(2,4,B)1";
-    SIGNAL \Timer_Line_Begin:TimerUDB:control_0\ : bit;
-    SIGNAL \Timer_Line_Begin:TimerUDB:control_1\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:capture_last\ : SIGNAL IS "U(1,3,B)0";
+    SIGNAL \Timer_Line_Begin:TimerUDB:cntr_load\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:cntr_load\ : SIGNAL IS "U(1,2,A)1";
     SIGNAL \Timer_Line_Begin:TimerUDB:control_2\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:control_3\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:control_4\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:control_5\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:control_6\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:control_7\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_0\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_1\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_2\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_3\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_4\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_5\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:count_6\ : bit;
+    SIGNAL \Timer_Line_Begin:TimerUDB:fifo_load_polarized\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:fifo_load_polarized\ : SIGNAL IS "U(1,2,B)1";
     SIGNAL \Timer_Line_Begin:TimerUDB:per_zero\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:status_2\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:status_3\ : bit;
     SIGNAL \Timer_Line_Begin:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:status_tc\ : SIGNAL IS "U(2,4,B)3";
+    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:status_tc\ : SIGNAL IS "U(3,0,A)2";
+    SIGNAL \Timer_Line_Begin:TimerUDB:tmp_fifo_load\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Line_Begin:TimerUDB:tmp_fifo_load\ : SIGNAL IS "U(1,2,A)0";
     SIGNAL \Timer_Line_End:TimerUDB:capt_fifo_load\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,5,A)2";
+    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,2,A)0";
     ATTRIBUTE soft OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
     SIGNAL \Timer_Line_End:TimerUDB:capt_int_temp\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:capt_int_temp\ : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:capt_int_temp\ : SIGNAL IS "U(2,2,B)1";
     SIGNAL \Timer_Line_End:TimerUDB:control_0\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:control_1\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:control_2\ : bit;
@@ -155,30 +233,45 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL \Timer_Line_End:TimerUDB:control_6\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:control_7\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:int_capt_count_0\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(2,1,A)0";
     SIGNAL \Timer_Line_End:TimerUDB:int_capt_count_1\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(2,4,B)0";
+    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(2,0,A)1";
     SIGNAL \Timer_Line_End:TimerUDB:per_zero\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:status_2\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:status_3\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:status_tc\ : SIGNAL IS "U(3,5,A)1";
-    SIGNAL \Timer_Row:Net_261\ : bit;
-    SIGNAL \Timer_Row:Net_51\ : bit;
-    SIGNAL \Timer_Row:Net_57\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Line_End:TimerUDB:status_tc\ : SIGNAL IS "U(3,2,B)0";
+    SIGNAL \Timer_Row:TimerUDB:capt_fifo_load\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Row:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(2,3,B)2";
+    SIGNAL \Timer_Row:TimerUDB:capture_last\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Row:TimerUDB:capture_last\ : SIGNAL IS "U(2,2,B)0";
+    SIGNAL \Timer_Row:TimerUDB:control_0\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_1\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_2\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_3\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_4\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_5\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_6\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:control_7\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:per_zero\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:status_2\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:status_3\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:status_tc\ : bit;
+    ATTRIBUTE placement_force OF \Timer_Row:TimerUDB:status_tc\ : SIGNAL IS "U(3,3,B)1";
     SIGNAL \Timer_Wheel_Tick:Net_261\ : bit;
     SIGNAL \Timer_Wheel_Tick:Net_51\ : bit;
     SIGNAL \Timer_Wheel_Tick:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:counter_load_not\ : SIGNAL IS "U(0,0,B)1";
+    ATTRIBUTE placement_force OF \UART:BUART:counter_load_not\ : SIGNAL IS "U(0,2,A)0";
     SIGNAL \UART:BUART:pollcount_0\ : bit;
     ATTRIBUTE placement_force OF \UART:BUART:pollcount_0\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \UART:BUART:pollcount_1\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:pollcount_1\ : SIGNAL IS "U(3,1,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:pollcount_1\ : SIGNAL IS "U(3,0,B)0";
     SIGNAL \UART:BUART:rx_address_detected\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_address_detected\ : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_address_detected\ : SIGNAL IS "U(3,2,A)2";
     SIGNAL \UART:BUART:rx_bitclk_enable\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_bitclk_enable\ : SIGNAL IS "U(3,1,B)3";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_bitclk_enable\ : SIGNAL IS "U(3,0,B)3";
     SIGNAL \UART:BUART:rx_count7_tc\ : bit;
     SIGNAL \UART:BUART:rx_count_0\ : bit;
     SIGNAL \UART:BUART:rx_count_1\ : bit;
@@ -188,62 +281,62 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL \UART:BUART:rx_count_5\ : bit;
     SIGNAL \UART:BUART:rx_count_6\ : bit;
     SIGNAL \UART:BUART:rx_counter_load\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_counter_load\ : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_counter_load\ : SIGNAL IS "U(3,4,B)2";
     SIGNAL \UART:BUART:rx_fifofull\ : bit;
     SIGNAL \UART:BUART:rx_fifonotempty\ : bit;
     SIGNAL \UART:BUART:rx_last\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_last\ : SIGNAL IS "U(3,0,A)3";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_last\ : SIGNAL IS "U(3,0,A)0";
     SIGNAL \UART:BUART:rx_load_fifo\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_load_fifo\ : SIGNAL IS "U(3,0,B)2";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_load_fifo\ : SIGNAL IS "U(3,2,B)1";
     SIGNAL \UART:BUART:rx_postpoll\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_postpoll\ : SIGNAL IS "U(3,0,A)2";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_postpoll\ : SIGNAL IS "U(3,0,A)3";
     SIGNAL \UART:BUART:rx_state_0\ : bit;
     ATTRIBUTE placement_force OF \UART:BUART:rx_state_0\ : SIGNAL IS "U(3,1,A)0";
     SIGNAL \UART:BUART:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_2\ : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_2\ : SIGNAL IS "U(3,1,B)0";
     SIGNAL \UART:BUART:rx_state_3\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_3\ : SIGNAL IS "U(3,2,A)3";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_3\ : SIGNAL IS "U(3,4,A)0";
     SIGNAL \UART:BUART:rx_state_stop1_reg\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(3,1,A)3";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \UART:BUART:rx_status_3\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_status_3\ : SIGNAL IS "U(3,0,A)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_status_3\ : SIGNAL IS "U(3,1,B)2";
     SIGNAL \UART:BUART:rx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_status_4\ : SIGNAL IS "U(3,0,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_status_4\ : SIGNAL IS "U(1,0,B)1";
     SIGNAL \UART:BUART:rx_status_5\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:rx_status_5\ : SIGNAL IS "U(3,1,B)2";
+    ATTRIBUTE placement_force OF \UART:BUART:rx_status_5\ : SIGNAL IS "U(2,0,A)2";
     SIGNAL \UART:BUART:tx_bitclk\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_bitclk\ : SIGNAL IS "U(0,0,A)2";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_bitclk\ : SIGNAL IS "U(0,3,B)0";
     SIGNAL \UART:BUART:tx_bitclk_dp\ : bit;
     SIGNAL \UART:BUART:tx_bitclk_enable_pre\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_bitclk_enable_pre\ : SIGNAL IS "U(1,0,A)2";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_bitclk_enable_pre\ : SIGNAL IS "U(0,2,B)3";
     SIGNAL \UART:BUART:tx_counter_dp\ : bit;
     SIGNAL \UART:BUART:tx_fifo_empty\ : bit;
     SIGNAL \UART:BUART:tx_fifo_notfull\ : bit;
     SIGNAL \UART:BUART:tx_shift_out\ : bit;
     SIGNAL \UART:BUART:tx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_state_0\ : SIGNAL IS "U(0,0,A)0";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_state_0\ : SIGNAL IS "U(0,3,B)3";
     SIGNAL \UART:BUART:tx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_state_1\ : SIGNAL IS "U(0,0,B)2";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_state_1\ : SIGNAL IS "U(0,0,A)0";
     SIGNAL \UART:BUART:tx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_state_2\ : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_state_2\ : SIGNAL IS "U(0,2,B)2";
     SIGNAL \UART:BUART:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_status_0\ : SIGNAL IS "U(1,0,A)0";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_status_0\ : SIGNAL IS "U(0,3,A)3";
     SIGNAL \UART:BUART:tx_status_2\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:tx_status_2\ : SIGNAL IS "U(1,0,A)3";
+    ATTRIBUTE placement_force OF \UART:BUART:tx_status_2\ : SIGNAL IS "U(0,1,B)3";
     SIGNAL \UART:BUART:txn\ : bit;
-    ATTRIBUTE placement_force OF \UART:BUART:txn\ : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF \UART:BUART:txn\ : SIGNAL IS "U(0,1,A)0";
     SIGNAL \UART:Net_9\ : bit;
     ATTRIBUTE global_signal OF \UART:Net_9\ : SIGNAL IS true;
     SIGNAL \UART:Net_9_local\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,1,B)2";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(0,2,A)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
     SIGNAL tmpOE__Pin_button_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__Pin_button_net_0 : SIGNAL IS true;
     SIGNAL tmp__cydff_2_reg : bit;
-    ATTRIBUTE placement_force OF tmp__cydff_2_reg : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF tmp__cydff_2_reg : SIGNAL IS "U(1,2,A)2";
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \PWM_Motor:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
@@ -295,197 +388,284 @@ ARCHITECTURE __DEFAULT__ OF Navigation01 IS
     SIGNAL \Timer_Line_End:TimerUDB:sT16:timerdp:u0.cfbo__sig\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
     SIGNAL \Timer_Line_End:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.ff0__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.ce1__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.cl1__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.z1__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.ff1__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.co_msb__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.sol_msb__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u0.cfbo__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u1.sor__sig\ : bit;
+    SIGNAL \Timer_Row:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF Camera_data(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF Camera_data(0) : LABEL IS "P4[0]";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-    ATTRIBUTE lib_model OF Comparator(0) : LABEL IS "iocell2";
+    ATTRIBUTE lib_model OF Comp_out(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Comp_out(0) : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF Comparator(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Comparator(0) : LABEL IS "P4[6]";
-    ATTRIBUTE lib_model OF Hall_sensor(0) : LABEL IS "iocell3";
+    ATTRIBUTE lib_model OF Hall_sensor(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF Hall_sensor(0) : LABEL IS "P5[0]";
-    ATTRIBUTE lib_model OF Horiz_sync(0) : LABEL IS "iocell4";
+    ATTRIBUTE lib_model OF Horiz_out(0) : LABEL IS "iocell5";
+    ATTRIBUTE Location OF Horiz_out(0) : LABEL IS "P2[4]";
+    ATTRIBUTE lib_model OF Horiz_sync(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF Horiz_sync(0) : LABEL IS "P4[4]";
-    ATTRIBUTE lib_model OF Net_276 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_276 : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF Net_301 : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF Net_301 : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF Net_416 : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF Net_416 : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF Net_456 : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF Net_456 : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF Net_47 : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF Net_47 : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF Net_580 : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF Net_580 : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF Net_599 : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF Net_599 : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF Net_612 : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF Net_612 : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF Pin_button(0) : LABEL IS "iocell5";
+    ATTRIBUTE lib_model OF Line_begin(0) : LABEL IS "iocell7";
+    ATTRIBUTE Location OF Line_begin(0) : LABEL IS "P3[4]";
+    ATTRIBUTE lib_model OF Line_end(0) : LABEL IS "iocell8";
+    ATTRIBUTE Location OF Line_end(0) : LABEL IS "P3[6]";
+    ATTRIBUTE lib_model OF MODIN7_0 : LABEL IS "macrocell1";
+    ATTRIBUTE Location OF MODIN7_0 : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF MODIN7_1 : LABEL IS "macrocell2";
+    ATTRIBUTE Location OF MODIN7_1 : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF Net_276 : LABEL IS "macrocell3";
+    ATTRIBUTE Location OF Net_276 : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF Net_301 : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF Net_301 : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF Net_416 : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF Net_416 : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF Net_456 : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF Net_456 : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF Net_47 : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF Net_47 : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF Net_580 : LABEL IS "macrocell8";
+    ATTRIBUTE Location OF Net_580 : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF Net_612 : LABEL IS "macrocell9";
+    ATTRIBUTE Location OF Net_612 : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF Net_764 : LABEL IS "macrocell10";
+    ATTRIBUTE Location OF Net_764 : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF Net_836 : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF Net_836 : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF Net_839 : LABEL IS "macrocell12";
+    ATTRIBUTE Location OF Net_839 : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF Net_840 : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF Net_840 : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF Pin_button(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF Pin_button(0) : LABEL IS "P6[1]";
-    ATTRIBUTE lib_model OF Pin_motor(0) : LABEL IS "iocell6";
+    ATTRIBUTE lib_model OF Pin_motor(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF Pin_motor(0) : LABEL IS "P4[1]";
-    ATTRIBUTE lib_model OF Pin_servo(0) : LABEL IS "iocell7";
+    ATTRIBUTE lib_model OF Pin_servo(0) : LABEL IS "iocell11";
     ATTRIBUTE Location OF Pin_servo(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell8";
+    ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell12";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P3[0]";
-    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell9";
+    ATTRIBUTE lib_model OF Trigger(0) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF Trigger(0) : LABEL IS "P3[2]";
+    ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell14";
     ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P3[1]";
-    ATTRIBUTE lib_model OF Vertical_sync(0) : LABEL IS "iocell10";
+    ATTRIBUTE lib_model OF Vert_out(0) : LABEL IS "iocell15";
+    ATTRIBUTE Location OF Vert_out(0) : LABEL IS "P2[2]";
+    ATTRIBUTE lib_model OF Vertical_sync(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF Vertical_sync(0) : LABEL IS "P4[2]";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:count_enable\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:count_enable\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:count_stored_i\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:count_stored_i\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:overflow_reg_i\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:reload\ : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:reload\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell1";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell1";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:status_0\ : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:status_0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_First_Row:CounterUDB:status_2\ : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF \Counter_First_Row:CounterUDB:status_2\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:count_enable\ : LABEL IS "macrocell20";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:count_enable\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell21";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:overflow_reg_i\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:reload\ : LABEL IS "macrocell22";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:reload\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell2";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell2";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:status_0\ : LABEL IS "macrocell23";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:status_0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \Counter_Last_Row:CounterUDB:status_2\ : LABEL IS "macrocell24";
+    ATTRIBUTE Location OF \Counter_Last_Row:CounterUDB:status_2\ : LABEL IS "U(1,0)";
     ATTRIBUTE Location OF \Counter_PID:CounterHW\ : LABEL IS "F(Timer,0)";
     ATTRIBUTE Location OF \Counter_Tick_Timeout:CounterHW\ : LABEL IS "F(Timer,1)";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell11";
-    ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell12";
-    ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P2[1]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell13";
-    ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P2[2]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell14";
-    ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P2[3]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell15";
-    ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P2[4]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell16";
-    ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
-    ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell17";
-    ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:final_kill_reg\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:final_kill_reg\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:prevCompare1\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:prevCompare1\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:runmode_enable\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:runmode_enable\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell17";
+    ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P5[1]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell18";
+    ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P5[2]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell19";
+    ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P5[3]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell20";
+    ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P5[4]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell21";
+    ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P5[5]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell22";
+    ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P5[6]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell23";
+    ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P5[7]";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:final_kill_reg\ : LABEL IS "macrocell25";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:final_kill_reg\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:prevCompare1\ : LABEL IS "macrocell26";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:prevCompare1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:runmode_enable\ : LABEL IS "macrocell27";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:runmode_enable\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
     ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:status_0\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:status_0\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:status_5\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:status_5\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:prevCompare1\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:prevCompare1\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:runmode_enable\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:runmode_enable\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell3";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell4";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell3";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:status_0\ : LABEL IS "macrocell28";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:status_0\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \PWM_Motor:PWMUDB:status_5\ : LABEL IS "macrocell29";
+    ATTRIBUTE Location OF \PWM_Motor:PWMUDB:status_5\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:prevCompare1\ : LABEL IS "macrocell30";
+    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:prevCompare1\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:runmode_enable\ : LABEL IS "macrocell31";
+    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:runmode_enable\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell4";
     ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:status_0\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:status_0\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:capture_last\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:capture_last\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell6";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:status_tc\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:status_tc\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:capt_int_temp\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:capt_int_temp\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:int_capt_count_0\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:int_capt_count_1\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:status_tc\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:status_tc\ : LABEL IS "U(3,5)";
-    ATTRIBUTE Location OF \Timer_Row:TimerHW\ : LABEL IS "F(Timer,2)";
-    ATTRIBUTE Location OF \Timer_Wheel_Tick:TimerHW\ : LABEL IS "F(Timer,3)";
-    ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \UART:BUART:counter_load_not\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell26";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell5";
+    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell6";
+    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "statusicell4";
+    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:sSTSReg:rstSts:stsreg\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \PWM_Servo:PWMUDB:status_0\ : LABEL IS "macrocell32";
+    ATTRIBUTE Location OF \PWM_Servo:PWMUDB:status_0\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:capt_int_temp\ : LABEL IS "macrocell33";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:capt_int_temp\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:capture_last\ : LABEL IS "macrocell34";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:capture_last\ : LABEL IS "U(1,3)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:cntr_load\ : LABEL IS "macrocell35";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:cntr_load\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:fifo_load_polarized\ : LABEL IS "macrocell36";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:fifo_load_polarized\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell5";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell5";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sCapCount:counter\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell7";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell8";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:status_tc\ : LABEL IS "macrocell37";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:status_tc\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \Timer_Line_Begin:TimerUDB:tmp_fifo_load\ : LABEL IS "macrocell38";
+    ATTRIBUTE Location OF \Timer_Line_Begin:TimerUDB:tmp_fifo_load\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell39";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:capt_int_temp\ : LABEL IS "macrocell40";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:capt_int_temp\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell41";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:int_capt_count_0\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell42";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:int_capt_count_1\ : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell6";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell6";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell9";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell10";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Timer_Line_End:TimerUDB:status_tc\ : LABEL IS "macrocell43";
+    ATTRIBUTE Location OF \Timer_Line_End:TimerUDB:status_tc\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell44";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:capt_fifo_load\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:capture_last\ : LABEL IS "macrocell45";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:capture_last\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell7";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell7";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell11";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell12";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \Timer_Row:TimerUDB:status_tc\ : LABEL IS "macrocell46";
+    ATTRIBUTE Location OF \Timer_Row:TimerUDB:status_tc\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \Timer_Wheel_Tick:TimerHW\ : LABEL IS "F(Timer,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell47";
+    ATTRIBUTE Location OF \UART:BUART:counter_load_not\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_0\ : LABEL IS "macrocell48";
     ATTRIBUTE Location OF \UART:BUART:pollcount_0\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \UART:BUART:pollcount_1\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_address_detected\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \UART:BUART:rx_address_detected\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_counter_load\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \UART:BUART:rx_counter_load\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell31";
+    ATTRIBUTE lib_model OF \UART:BUART:pollcount_1\ : LABEL IS "macrocell49";
+    ATTRIBUTE Location OF \UART:BUART:pollcount_1\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_address_detected\ : LABEL IS "macrocell50";
+    ATTRIBUTE Location OF \UART:BUART:rx_address_detected\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "macrocell51";
+    ATTRIBUTE Location OF \UART:BUART:rx_bitclk_enable\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_counter_load\ : LABEL IS "macrocell52";
+    ATTRIBUTE Location OF \UART:BUART:rx_counter_load\ : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_last\ : LABEL IS "macrocell53";
     ATTRIBUTE Location OF \UART:BUART:rx_last\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF \UART:BUART:rx_load_fifo\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_postpoll\ : LABEL IS "macrocell33";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_load_fifo\ : LABEL IS "macrocell54";
+    ATTRIBUTE Location OF \UART:BUART:rx_load_fifo\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_postpoll\ : LABEL IS "macrocell55";
     ATTRIBUTE Location OF \UART:BUART:rx_postpoll\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell34";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_0\ : LABEL IS "macrocell56";
     ATTRIBUTE Location OF \UART:BUART:rx_state_0\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_2\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_3\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \UART:BUART:rx_status_3\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_4\ : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF \UART:BUART:rx_status_4\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:rx_status_5\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \UART:BUART:rx_status_5\ : LABEL IS "U(3,1)";
-    ATTRIBUTE Location OF \UART:BUART:sRX:RxBitCounter\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell9";
-    ATTRIBUTE Location OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \UART:BUART:sRX:RxSts\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell10";
-    ATTRIBUTE Location OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell6";
-    ATTRIBUTE Location OF \UART:BUART:sTX:TxSts\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell11";
-    ATTRIBUTE Location OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF \UART:BUART:tx_bitclk\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk_enable_pre\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \UART:BUART:tx_bitclk_enable_pre\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF \UART:BUART:tx_state_0\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell44";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_2\ : LABEL IS "macrocell57";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_2\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_3\ : LABEL IS "macrocell58";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_3\ : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell59";
+    ATTRIBUTE Location OF \UART:BUART:rx_state_stop1_reg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_3\ : LABEL IS "macrocell60";
+    ATTRIBUTE Location OF \UART:BUART:rx_status_3\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_4\ : LABEL IS "macrocell61";
+    ATTRIBUTE Location OF \UART:BUART:rx_status_4\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \UART:BUART:rx_status_5\ : LABEL IS "macrocell62";
+    ATTRIBUTE Location OF \UART:BUART:rx_status_5\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \UART:BUART:sRX:RxBitCounter\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell13";
+    ATTRIBUTE Location OF \UART:BUART:sRX:RxShifter:u0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \UART:BUART:sRX:RxSts\ : LABEL IS "statusicell8";
+    ATTRIBUTE Location OF \UART:BUART:sRX:RxSts\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell14";
+    ATTRIBUTE Location OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell9";
+    ATTRIBUTE Location OF \UART:BUART:sTX:TxSts\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell15";
+    ATTRIBUTE Location OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk\ : LABEL IS "macrocell63";
+    ATTRIBUTE Location OF \UART:BUART:tx_bitclk\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_bitclk_enable_pre\ : LABEL IS "macrocell64";
+    ATTRIBUTE Location OF \UART:BUART:tx_bitclk_enable_pre\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell65";
+    ATTRIBUTE Location OF \UART:BUART:tx_state_0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell66";
     ATTRIBUTE Location OF \UART:BUART:tx_state_1\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF \UART:BUART:tx_state_2\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF \UART:BUART:tx_status_0\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:tx_status_2\ : LABEL IS "macrocell47";
-    ATTRIBUTE Location OF \UART:BUART:tx_status_2\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell48";
-    ATTRIBUTE Location OF \UART:BUART:txn\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell49";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_state_2\ : LABEL IS "macrocell67";
+    ATTRIBUTE Location OF \UART:BUART:tx_state_2\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell68";
+    ATTRIBUTE Location OF \UART:BUART:tx_status_0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE lib_model OF \UART:BUART:tx_status_2\ : LABEL IS "macrocell69";
+    ATTRIBUTE Location OF \UART:BUART:tx_status_2\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell70";
+    ATTRIBUTE Location OF \UART:BUART:txn\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell71";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(0,2)";
     ATTRIBUTE Location OF camera_comp_fall : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF camera_comp_rise : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
     ATTRIBUTE Location OF camera_frame_start : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
-    ATTRIBUTE Location OF camera_row_start : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
-    ATTRIBUTE Location OF inter_button : LABEL IS "[IntrHod=(0)][IntrId=(4)]";
-    ATTRIBUTE Location OF rx_rcvd : LABEL IS "[IntrHod=(0)][IntrId=(5)]";
+    ATTRIBUTE Location OF inter_button : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
+    ATTRIBUTE Location OF rx_rcvd : LABEL IS "[IntrHod=(0)][IntrId=(4)]";
     ATTRIBUTE Location OF throttle_update : LABEL IS "[IntrHod=(0)][IntrId=(17)]";
-    ATTRIBUTE Location OF tick_timeout : LABEL IS "[IntrHod=(0)][IntrId=(6)]";
-    ATTRIBUTE lib_model OF tmp__cydff_2_reg : LABEL IS "macrocell50";
-    ATTRIBUTE Location OF tmp__cydff_2_reg : LABEL IS "U(2,3)";
-    ATTRIBUTE Location OF wheel_tick : LABEL IS "[IntrHod=(0)][IntrId=(7)]";
+    ATTRIBUTE Location OF tick_timeout : LABEL IS "[IntrHod=(0)][IntrId=(5)]";
+    ATTRIBUTE lib_model OF tmp__cydff_2_reg : LABEL IS "macrocell72";
+    ATTRIBUTE Location OF tmp__cydff_2_reg : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF wheel_tick : LABEL IS "[IntrHod=(0)][IntrId=(6)]";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1348,14 +1528,58 @@ BEGIN
             imo => ClockBlock_IMO,
             dsi_clkin_div => open,
             dsi_glb_div => open,
-            dclk_glb_0 => Net_10,
-            dclk_0 => Net_10_local,
-            dclk_glb_1 => Net_507,
-            dclk_1 => Net_507_local,
-            dclk_glb_2 => \UART:Net_9\,
-            dclk_2 => \UART:Net_9_local\,
+            dclk_glb_0 => Net_765,
+            dclk_0 => Net_765_local,
+            dclk_glb_1 => \UART:Net_9\,
+            dclk_1 => \UART:Net_9_local\,
+            dclk_glb_2 => Net_507,
+            dclk_2 => Net_507_local,
             dclk_glb_3 => Net_398,
             dclk_3 => Net_398_local);
+
+    Comp_out:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "df9d6cf2-6402-4235-b23d-6d74dc54a8b7",
+            init_dr_st => "0",
+            input_sync => "1",
+            intr_mode => "00",
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            output_conn => "1",
+            output_sync => "0",
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1);
+
+    Comp_out(0):iocell
+        GENERIC MAP(
+            logicalport => "Comp_out",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            oe => open,
+            pin_input => Net_835,
+            pad_out => Comp_out(0)_PAD,
+            pad_in => Comp_out(0)_PAD);
 
     Comparator:logicalport
         GENERIC MAP(
@@ -1397,7 +1621,7 @@ BEGIN
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
             oe => open,
-            fb => Net_638,
+            fb => Net_835,
             pad_in => Comparator(0)_PAD,
             clock => ClockBlock_BUS_CLK);
 
@@ -1445,6 +1669,50 @@ BEGIN
             pad_in => Hall_sensor(0)_PAD,
             clock => ClockBlock_BUS_CLK);
 
+    Horiz_out:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "00fdeeea-1863-42cc-9a43-231f2739d1e2",
+            init_dr_st => "0",
+            input_sync => "1",
+            intr_mode => "00",
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            output_conn => "1",
+            output_sync => "0",
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1);
+
+    Horiz_out(0):iocell
+        GENERIC MAP(
+            logicalport => "Horiz_out",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            oe => open,
+            pin_input => Net_702,
+            pad_out => Horiz_out(0)_PAD,
+            pad_in => Horiz_out(0)_PAD);
+
     Horiz_sync:logicalport
         GENERIC MAP(
             drive_mode => "001",
@@ -1485,9 +1753,123 @@ BEGIN
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
             oe => open,
-            fb => Net_610,
+            fb => Net_702,
             pad_in => Horiz_sync(0)_PAD,
             clock => ClockBlock_BUS_CLK);
+
+    Line_begin:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "8340df12-c083-47c8-9b3f-02d22995d454",
+            init_dr_st => "0",
+            input_sync => "1",
+            intr_mode => "00",
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            output_conn => "1",
+            output_sync => "0",
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1);
+
+    Line_begin(0):iocell
+        GENERIC MAP(
+            logicalport => "Line_begin",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            oe => open,
+            pin_input => Net_710,
+            pad_out => Line_begin(0)_PAD,
+            pad_in => Line_begin(0)_PAD);
+
+    Line_end:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "1dce5c6d-36a2-4fa8-bd92-f039f82071b9",
+            init_dr_st => "0",
+            input_sync => "1",
+            intr_mode => "00",
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            output_conn => "1",
+            output_sync => "0",
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1);
+
+    Line_end(0):iocell
+        GENERIC MAP(
+            logicalport => "Line_end",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            oe => open,
+            pin_input => Net_719,
+            pad_out => Line_end(0)_PAD,
+            pad_in => Line_end(0)_PAD);
+
+    MODIN7_0:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * main_3) + (!main_0 * main_1 * !main_2 * !main_3 * main_4) + (!main_0 * main_1 * main_2 * !main_3 * !main_4) + (!main_0 * main_1 * !main_3 * main_5)")
+        PORT MAP(
+            q => MODIN7_0,
+            clock_0 => Net_765,
+            main_0 => Net_612,
+            main_1 => \Timer_Line_Begin:TimerUDB:tmp_fifo_load\,
+            main_2 => MODIN7_1,
+            main_3 => MODIN7_0,
+            main_4 => MODIN8_1,
+            main_5 => MODIN8_0);
+
+    MODIN7_1:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * main_1 * !main_2 * main_3 * main_4) + (!main_0 * main_1 * !main_2 * main_3 * !main_5) + (!main_0 * main_2 * !main_3 * !main_4) + (!main_0 * main_2 * !main_3 * main_5)")
+        PORT MAP(
+            q => MODIN7_1,
+            clock_0 => Net_765,
+            main_0 => Net_612,
+            main_1 => \Timer_Line_Begin:TimerUDB:tmp_fifo_load\,
+            main_2 => MODIN7_1,
+            main_3 => MODIN7_0,
+            main_4 => MODIN8_1,
+            main_5 => MODIN8_0);
 
     Net_276:macrocell
         GENERIC MAP(
@@ -1538,21 +1920,45 @@ BEGIN
             main_0 => \PWM_Servo:PWMUDB:ctrl_enable\,
             main_1 => \PWM_Servo:PWMUDB:compare1\);
 
-    Net_599:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0)")
-        PORT MAP(
-            q => Net_599,
-            main_0 => Net_610);
-
     Net_612:macrocell
         GENERIC MAP(
             soft => 1,
             eqn_main => "(main_0 * main_1)")
         PORT MAP(
             q => Net_612,
-            main_0 => Net_610,
+            main_0 => Net_702,
             main_1 => tmp__cydff_2_reg);
+
+    Net_764:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0)")
+        PORT MAP(
+            q => Net_764,
+            main_0 => Net_906);
+
+    Net_836:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1)")
+        PORT MAP(
+            q => Net_836,
+            main_0 => Net_839,
+            main_1 => Net_840);
+
+    Net_839:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)")
+        PORT MAP(
+            q => Net_839,
+            main_0 => \Counter_Last_Row:CounterUDB:cmp_out_i\,
+            clock_0 => Net_765);
+
+    Net_840:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)")
+        PORT MAP(
+            q => Net_840,
+            main_0 => \Counter_First_Row:CounterUDB:cmp_out_i\,
+            clock_0 => Net_765);
 
     Pin_button:logicalport
         GENERIC MAP(
@@ -1730,6 +2136,50 @@ BEGIN
             pad_in => Rx_1(0)_PAD,
             clock => ClockBlock_BUS_CLK);
 
+    Trigger:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "ff5e6c43-5be9-42ec-9782-8d11b7ed8bf6",
+            init_dr_st => "0",
+            input_sync => "1",
+            intr_mode => "00",
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            output_conn => "1",
+            output_sync => "0",
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1);
+
+    Trigger(0):iocell
+        GENERIC MAP(
+            logicalport => "Trigger",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            oe => open,
+            pin_input => Net_836,
+            pad_out => Trigger(0)_PAD,
+            pad_in => Trigger(0)_PAD);
+
     Tx_1:logicalport
         GENERIC MAP(
             drive_mode => "110",
@@ -1774,6 +2224,50 @@ BEGIN
             pad_out => Tx_1(0)_PAD,
             pad_in => Tx_1(0)_PAD);
 
+    Vert_out:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "1fd250b8-2fbd-47c0-be3a-32695449ae21",
+            init_dr_st => "0",
+            input_sync => "1",
+            intr_mode => "00",
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            output_conn => "1",
+            output_sync => "0",
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1);
+
+    Vert_out(0):iocell
+        GENERIC MAP(
+            logicalport => "Vert_out",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            oe => open,
+            pin_input => Net_906,
+            pad_out => Vert_out(0)_PAD,
+            pad_in => Vert_out(0)_PAD);
+
     Vertical_sync:logicalport
         GENERIC MAP(
             drive_mode => "001",
@@ -1814,9 +2308,244 @@ BEGIN
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
             oe => open,
-            fb => Net_591,
+            fb => Net_906,
             pad_in => Vertical_sync(0)_PAD,
             clock => ClockBlock_BUS_CLK);
+
+    \Counter_First_Row:CounterUDB:count_enable\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1 * !main_2)")
+        PORT MAP(
+            q => \Counter_First_Row:CounterUDB:count_enable\,
+            main_0 => Net_612,
+            main_1 => \Counter_First_Row:CounterUDB:control_7\,
+            main_2 => \Counter_First_Row:CounterUDB:count_stored_i\);
+
+    \Counter_First_Row:CounterUDB:count_stored_i\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)")
+        PORT MAP(
+            q => \Counter_First_Row:CounterUDB:count_stored_i\,
+            clock_0 => Net_765,
+            main_0 => Net_702,
+            main_1 => tmp__cydff_2_reg);
+
+    \Counter_First_Row:CounterUDB:overflow_reg_i\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)")
+        PORT MAP(
+            q => \Counter_First_Row:CounterUDB:overflow_reg_i\,
+            main_0 => \Counter_First_Row:CounterUDB:per_equal\,
+            clock_0 => Net_765);
+
+    \Counter_First_Row:CounterUDB:reload\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => \Counter_First_Row:CounterUDB:reload\,
+            main_0 => Net_906,
+            main_1 => \Counter_First_Row:CounterUDB:per_equal\);
+
+    \Counter_First_Row:CounterUDB:sC8:counterdp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0')
+        PORT MAP(
+            clock => Net_765,
+            cs_addr_2 => __ONE__,
+            cs_addr_1 => \Counter_First_Row:CounterUDB:count_enable\,
+            cs_addr_0 => \Counter_First_Row:CounterUDB:reload\,
+            ce0_comb => \Counter_First_Row:CounterUDB:per_equal\,
+            z0_comb => \Counter_First_Row:CounterUDB:status_1\,
+            ce1_comb => \Counter_First_Row:CounterUDB:cmp_out_i\,
+            f0_bus_stat_comb => \Counter_First_Row:CounterUDB:status_6\,
+            f0_blk_stat_comb => \Counter_First_Row:CounterUDB:status_5\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Counter_First_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000")
+        PORT MAP(
+            clock => Net_765,
+            control_7 => \Counter_First_Row:CounterUDB:control_7\,
+            control_6 => \Counter_First_Row:CounterUDB:control_6\,
+            control_5 => \Counter_First_Row:CounterUDB:control_5\,
+            control_4 => \Counter_First_Row:CounterUDB:control_4\,
+            control_3 => \Counter_First_Row:CounterUDB:control_3\,
+            control_2 => \Counter_First_Row:CounterUDB:control_2\,
+            control_1 => \Counter_First_Row:CounterUDB:control_1\,
+            control_0 => \Counter_First_Row:CounterUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Counter_First_Row:CounterUDB:sSTSReg:rstSts:stsreg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0011111")
+        PORT MAP(
+            reset => Net_764,
+            clock => Net_765,
+            status_6 => \Counter_First_Row:CounterUDB:status_6\,
+            status_5 => \Counter_First_Row:CounterUDB:status_5\,
+            status_4 => open,
+            status_3 => open,
+            status_2 => \Counter_First_Row:CounterUDB:status_2\,
+            status_1 => \Counter_First_Row:CounterUDB:status_1\,
+            status_0 => \Counter_First_Row:CounterUDB:status_0\);
+
+    \Counter_First_Row:CounterUDB:status_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => \Counter_First_Row:CounterUDB:status_0\,
+            main_0 => \Counter_First_Row:CounterUDB:cmp_out_i\,
+            main_1 => Net_840);
+
+    \Counter_First_Row:CounterUDB:status_2\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => \Counter_First_Row:CounterUDB:status_2\,
+            main_0 => \Counter_First_Row:CounterUDB:per_equal\,
+            main_1 => \Counter_First_Row:CounterUDB:overflow_reg_i\);
+
+    \Counter_Last_Row:CounterUDB:count_enable\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1 * !main_2)")
+        PORT MAP(
+            q => \Counter_Last_Row:CounterUDB:count_enable\,
+            main_0 => Net_612,
+            main_1 => \Counter_Last_Row:CounterUDB:control_7\,
+            main_2 => \Counter_First_Row:CounterUDB:count_stored_i\);
+
+    \Counter_Last_Row:CounterUDB:overflow_reg_i\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)")
+        PORT MAP(
+            q => \Counter_Last_Row:CounterUDB:overflow_reg_i\,
+            main_0 => \Counter_Last_Row:CounterUDB:per_equal\,
+            clock_0 => Net_765);
+
+    \Counter_Last_Row:CounterUDB:reload\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => \Counter_Last_Row:CounterUDB:reload\,
+            main_0 => Net_906,
+            main_1 => \Counter_Last_Row:CounterUDB:per_equal\);
+
+    \Counter_Last_Row:CounterUDB:sC8:counterdp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0')
+        PORT MAP(
+            clock => Net_765,
+            cs_addr_2 => __ONE__,
+            cs_addr_1 => \Counter_Last_Row:CounterUDB:count_enable\,
+            cs_addr_0 => \Counter_Last_Row:CounterUDB:reload\,
+            ce0_comb => \Counter_Last_Row:CounterUDB:per_equal\,
+            z0_comb => \Counter_Last_Row:CounterUDB:status_1\,
+            ce1_comb => \Counter_Last_Row:CounterUDB:cmp_out_i\,
+            f0_bus_stat_comb => \Counter_Last_Row:CounterUDB:status_6\,
+            f0_blk_stat_comb => \Counter_Last_Row:CounterUDB:status_5\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Counter_Last_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000")
+        PORT MAP(
+            clock => Net_765,
+            control_7 => \Counter_Last_Row:CounterUDB:control_7\,
+            control_6 => \Counter_Last_Row:CounterUDB:control_6\,
+            control_5 => \Counter_Last_Row:CounterUDB:control_5\,
+            control_4 => \Counter_Last_Row:CounterUDB:control_4\,
+            control_3 => \Counter_Last_Row:CounterUDB:control_3\,
+            control_2 => \Counter_Last_Row:CounterUDB:control_2\,
+            control_1 => \Counter_Last_Row:CounterUDB:control_1\,
+            control_0 => \Counter_Last_Row:CounterUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Counter_Last_Row:CounterUDB:sSTSReg:rstSts:stsreg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0011111")
+        PORT MAP(
+            reset => Net_764,
+            clock => Net_765,
+            status_6 => \Counter_Last_Row:CounterUDB:status_6\,
+            status_5 => \Counter_Last_Row:CounterUDB:status_5\,
+            status_4 => open,
+            status_3 => open,
+            status_2 => \Counter_Last_Row:CounterUDB:status_2\,
+            status_1 => \Counter_Last_Row:CounterUDB:status_1\,
+            status_0 => \Counter_Last_Row:CounterUDB:status_0\);
+
+    \Counter_Last_Row:CounterUDB:status_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => \Counter_Last_Row:CounterUDB:status_0\,
+            main_0 => \Counter_Last_Row:CounterUDB:cmp_out_i\,
+            main_1 => Net_839);
+
+    \Counter_Last_Row:CounterUDB:status_2\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1)")
+        PORT MAP(
+            q => \Counter_Last_Row:CounterUDB:status_2\,
+            main_0 => \Counter_Last_Row:CounterUDB:per_equal\,
+            main_1 => \Counter_Last_Row:CounterUDB:overflow_reg_i\);
 
     \Counter_PID:CounterHW\:timercell
         GENERIC MAP(
@@ -2254,22 +2983,53 @@ BEGIN
             main_0 => \PWM_Servo:PWMUDB:compare1\,
             main_1 => \PWM_Servo:PWMUDB:prevCompare1\);
 
-    \Timer_Line_Begin:TimerUDB:capt_fifo_load\:macrocell
+    \Timer_Line_Begin:TimerUDB:capt_int_temp\:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * main_1 * !main_2)")
+            eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * !main_4 * !main_5) + (!main_0 * main_1 * !main_2 * main_3 * !main_4 * main_5) + (!main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5) + (!main_0 * main_1 * main_2 * main_3 * main_4 * main_5)")
         PORT MAP(
-            q => \Timer_Line_Begin:TimerUDB:capt_fifo_load\,
-            main_0 => Net_638,
-            main_1 => \Timer_Line_Begin:TimerUDB:control_7\,
-            main_2 => \Timer_Line_Begin:TimerUDB:capture_last\);
+            q => \Timer_Line_Begin:TimerUDB:capt_int_temp\,
+            clock_0 => Net_765,
+            main_0 => Net_612,
+            main_1 => \Timer_Line_Begin:TimerUDB:tmp_fifo_load\,
+            main_2 => MODIN7_1,
+            main_3 => MODIN7_0,
+            main_4 => MODIN8_1,
+            main_5 => MODIN8_0);
 
     \Timer_Line_Begin:TimerUDB:capture_last\:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0)")
+            eqn_main => "(main_0 * main_1) + (main_0 * main_2)")
         PORT MAP(
             q => \Timer_Line_Begin:TimerUDB:capture_last\,
-            main_0 => Net_638,
-            clock_0 => Net_10);
+            clock_0 => Net_765,
+            main_0 => Net_835,
+            main_1 => Net_839,
+            main_2 => Net_840);
+
+    \Timer_Line_Begin:TimerUDB:cntr_load\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3 * !main_4 * !main_5 * !main_6 * main_7)")
+        PORT MAP(
+            q => \Timer_Line_Begin:TimerUDB:cntr_load\,
+            clock_0 => Net_765,
+            main_0 => Net_612,
+            main_1 => \Timer_Line_Begin:TimerUDB:count_6\,
+            main_2 => \Timer_Line_Begin:TimerUDB:count_5\,
+            main_3 => \Timer_Line_Begin:TimerUDB:count_4\,
+            main_4 => \Timer_Line_Begin:TimerUDB:count_3\,
+            main_5 => \Timer_Line_Begin:TimerUDB:count_2\,
+            main_6 => \Timer_Line_Begin:TimerUDB:count_1\,
+            main_7 => \Timer_Line_Begin:TimerUDB:count_0\);
+
+    \Timer_Line_Begin:TimerUDB:fifo_load_polarized\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1 * main_2) + (main_0 * !main_1 * main_3)")
+        PORT MAP(
+            q => \Timer_Line_Begin:TimerUDB:fifo_load_polarized\,
+            main_0 => Net_835,
+            main_1 => \Timer_Line_Begin:TimerUDB:capture_last\,
+            main_2 => Net_839,
+            main_3 => Net_840);
 
     \Timer_Line_Begin:TimerUDB:rstSts:stsreg\:statusicell
         GENERIC MAP(
@@ -2278,14 +3038,15 @@ BEGIN
             cy_md_select => "0000011")
         PORT MAP(
             reset => Net_612,
-            clock => Net_10,
+            clock => Net_765,
             status_6 => open,
             status_5 => open,
             status_4 => open,
             status_3 => \Timer_Line_Begin:TimerUDB:status_3\,
             status_2 => \Timer_Line_Begin:TimerUDB:status_2\,
-            status_1 => \Timer_Line_Begin:TimerUDB:capt_fifo_load\,
-            status_0 => \Timer_Line_Begin:TimerUDB:status_tc\);
+            status_1 => \Timer_Line_Begin:TimerUDB:capt_int_temp\,
+            status_0 => \Timer_Line_Begin:TimerUDB:status_tc\,
+            interrupt => Net_710);
 
     \Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
         GENERIC MAP(
@@ -2295,16 +3056,36 @@ BEGIN
             cy_force_order => 1,
             cy_init_value => "00000000")
         PORT MAP(
-            clock => Net_10,
+            clock => Net_765,
             control_7 => \Timer_Line_Begin:TimerUDB:control_7\,
             control_6 => \Timer_Line_Begin:TimerUDB:control_6\,
             control_5 => \Timer_Line_Begin:TimerUDB:control_5\,
             control_4 => \Timer_Line_Begin:TimerUDB:control_4\,
             control_3 => \Timer_Line_Begin:TimerUDB:control_3\,
             control_2 => \Timer_Line_Begin:TimerUDB:control_2\,
-            control_1 => \Timer_Line_Begin:TimerUDB:control_1\,
-            control_0 => \Timer_Line_Begin:TimerUDB:control_0\,
+            control_1 => MODIN8_1,
+            control_0 => MODIN8_0,
             busclk => ClockBlock_BUS_CLK);
+
+    \Timer_Line_Begin:TimerUDB:sCapCount:counter\:count7cell
+        GENERIC MAP(
+            cy_alt_mode => 0,
+            cy_init_value => "0000000",
+            cy_period => "0000001",
+            cy_route_en => 1,
+            cy_route_ld => 1)
+        PORT MAP(
+            clock => Net_765,
+            reset => Net_612,
+            load => \Timer_Line_Begin:TimerUDB:cntr_load\,
+            enable => \Timer_Line_Begin:TimerUDB:fifo_load_polarized\,
+            count_6 => \Timer_Line_Begin:TimerUDB:count_6\,
+            count_5 => \Timer_Line_Begin:TimerUDB:count_5\,
+            count_4 => \Timer_Line_Begin:TimerUDB:count_4\,
+            count_3 => \Timer_Line_Begin:TimerUDB:count_3\,
+            count_2 => \Timer_Line_Begin:TimerUDB:count_2\,
+            count_1 => \Timer_Line_Begin:TimerUDB:count_1\,
+            count_0 => \Timer_Line_Begin:TimerUDB:count_0\);
 
     \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\:datapathcell
         GENERIC MAP(
@@ -2332,11 +3113,11 @@ BEGIN
             uses_p_in => '0',
             uses_p_out => '0')
         PORT MAP(
-            clock => Net_10,
+            clock => Net_765,
             cs_addr_2 => Net_612,
             cs_addr_1 => \Timer_Line_Begin:TimerUDB:control_7\,
             cs_addr_0 => \Timer_Line_Begin:TimerUDB:per_zero\,
-            f0_load => \Timer_Line_Begin:TimerUDB:capt_fifo_load\,
+            f0_load => \Timer_Line_Begin:TimerUDB:tmp_fifo_load\,
             busclk => ClockBlock_BUS_CLK,
             ce0 => \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0.ce0__sig\,
             cl0 => \Timer_Line_Begin:TimerUDB:sT16:timerdp:u0.cl0__sig\,
@@ -2378,11 +3159,11 @@ BEGIN
             uses_p_in => '0',
             uses_p_out => '0')
         PORT MAP(
-            clock => Net_10,
+            clock => Net_765,
             cs_addr_2 => Net_612,
             cs_addr_1 => \Timer_Line_Begin:TimerUDB:control_7\,
             cs_addr_0 => \Timer_Line_Begin:TimerUDB:per_zero\,
-            f0_load => \Timer_Line_Begin:TimerUDB:capt_fifo_load\,
+            f0_load => \Timer_Line_Begin:TimerUDB:tmp_fifo_load\,
             z0_comb => \Timer_Line_Begin:TimerUDB:per_zero\,
             f0_bus_stat_comb => \Timer_Line_Begin:TimerUDB:status_3\,
             f0_blk_stat_comb => \Timer_Line_Begin:TimerUDB:status_2\,
@@ -2409,22 +3190,40 @@ BEGIN
             main_0 => \Timer_Line_Begin:TimerUDB:control_7\,
             main_1 => \Timer_Line_Begin:TimerUDB:per_zero\);
 
+    \Timer_Line_Begin:TimerUDB:tmp_fifo_load\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3 * !main_4 * !main_5 * !main_6 * !main_7 * main_8)")
+        PORT MAP(
+            q => \Timer_Line_Begin:TimerUDB:tmp_fifo_load\,
+            clock_0 => Net_765,
+            main_0 => Net_612,
+            main_1 => \Timer_Line_Begin:TimerUDB:cntr_load\,
+            main_2 => \Timer_Line_Begin:TimerUDB:count_6\,
+            main_3 => \Timer_Line_Begin:TimerUDB:count_5\,
+            main_4 => \Timer_Line_Begin:TimerUDB:count_4\,
+            main_5 => \Timer_Line_Begin:TimerUDB:count_3\,
+            main_6 => \Timer_Line_Begin:TimerUDB:count_2\,
+            main_7 => \Timer_Line_Begin:TimerUDB:count_1\,
+            main_8 => \Timer_Line_Begin:TimerUDB:count_0\);
+
     \Timer_Line_End:TimerUDB:capt_fifo_load\:macrocell
         GENERIC MAP(
             soft => 1,
-            eqn_main => "(!main_0 * main_2 * main_1)")
+            eqn_main => "(!main_0 * main_2 * main_1) + (main_2 * main_1 * !main_3 * !main_4)")
         PORT MAP(
             q => \Timer_Line_End:TimerUDB:capt_fifo_load\,
-            main_0 => Net_638,
+            main_0 => Net_835,
             main_1 => \Timer_Line_End:TimerUDB:control_7\,
-            main_2 => \Timer_Line_Begin:TimerUDB:capture_last\);
+            main_2 => \Timer_Line_Begin:TimerUDB:capture_last\,
+            main_3 => Net_839,
+            main_4 => Net_840);
 
     \Timer_Line_End:TimerUDB:capt_int_temp\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * main_3 * !main_4 * !main_5) + (!main_0 * !main_1 * main_2 * main_3 * !main_4 * main_5) + (!main_0 * main_1 * !main_2 * main_3 * main_4 * !main_5) + (!main_0 * main_1 * main_2 * main_3 * main_4 * main_5)")
         PORT MAP(
             q => \Timer_Line_End:TimerUDB:capt_int_temp\,
-            clock_0 => Net_10,
+            clock_0 => Net_765,
             main_0 => Net_612,
             main_1 => \Timer_Line_End:TimerUDB:control_1\,
             main_2 => \Timer_Line_End:TimerUDB:control_0\,
@@ -2437,7 +3236,7 @@ BEGIN
             eqn_main => "(!main_0 * !main_1 * main_3 * main_4 * !main_5) + (!main_0 * main_1 * main_3 * !main_4 * !main_5) + (!main_0 * main_2 * main_3 * !main_5) + (!main_0 * !main_3 * main_5)")
         PORT MAP(
             q => \Timer_Line_End:TimerUDB:int_capt_count_0\,
-            clock_0 => Net_10,
+            clock_0 => Net_765,
             main_0 => Net_612,
             main_1 => \Timer_Line_End:TimerUDB:control_1\,
             main_2 => \Timer_Line_End:TimerUDB:control_0\,
@@ -2450,7 +3249,7 @@ BEGIN
             eqn_main => "(!main_0 * !main_1 * main_4 * !main_5) + (!main_0 * main_1 * main_3 * !main_4 * main_5) + (!main_0 * !main_2 * main_3 * !main_4 * main_5) + (!main_0 * main_2 * main_4 * !main_5) + (!main_0 * !main_3 * main_4)")
         PORT MAP(
             q => \Timer_Line_End:TimerUDB:int_capt_count_1\,
-            clock_0 => Net_10,
+            clock_0 => Net_765,
             main_0 => Net_612,
             main_1 => \Timer_Line_End:TimerUDB:control_1\,
             main_2 => \Timer_Line_End:TimerUDB:control_0\,
@@ -2465,7 +3264,7 @@ BEGIN
             cy_md_select => "0000011")
         PORT MAP(
             reset => Net_612,
-            clock => Net_10,
+            clock => Net_765,
             status_6 => open,
             status_5 => open,
             status_4 => open,
@@ -2473,7 +3272,7 @@ BEGIN
             status_2 => \Timer_Line_End:TimerUDB:status_2\,
             status_1 => \Timer_Line_End:TimerUDB:capt_int_temp\,
             status_0 => \Timer_Line_End:TimerUDB:status_tc\,
-            interrupt => Net_650);
+            interrupt => Net_719);
 
     \Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
         GENERIC MAP(
@@ -2483,7 +3282,7 @@ BEGIN
             cy_force_order => 1,
             cy_init_value => "00000000")
         PORT MAP(
-            clock => Net_10,
+            clock => Net_765,
             control_7 => \Timer_Line_End:TimerUDB:control_7\,
             control_6 => \Timer_Line_End:TimerUDB:control_6\,
             control_5 => \Timer_Line_End:TimerUDB:control_5\,
@@ -2520,7 +3319,7 @@ BEGIN
             uses_p_in => '0',
             uses_p_out => '0')
         PORT MAP(
-            clock => Net_10,
+            clock => Net_765,
             cs_addr_2 => Net_612,
             cs_addr_1 => \Timer_Line_End:TimerUDB:control_7\,
             cs_addr_0 => \Timer_Line_End:TimerUDB:per_zero\,
@@ -2566,7 +3365,7 @@ BEGIN
             uses_p_in => '0',
             uses_p_out => '0')
         PORT MAP(
-            clock => Net_10,
+            clock => Net_765,
             cs_addr_2 => Net_612,
             cs_addr_1 => \Timer_Line_End:TimerUDB:control_7\,
             cs_addr_0 => \Timer_Line_End:TimerUDB:per_zero\,
@@ -2597,18 +3396,164 @@ BEGIN
             main_0 => \Timer_Line_End:TimerUDB:control_7\,
             main_1 => \Timer_Line_End:TimerUDB:per_zero\);
 
-    \Timer_Row:TimerHW\:timercell
+    \Timer_Row:TimerUDB:capt_fifo_load\:macrocell
         GENERIC MAP(
-            cy_registers => "")
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_1 * main_2 * !main_3 * !main_4)")
         PORT MAP(
-            clock => Net_10,
-            kill => open,
-            enable => __ONE__,
-            capture => Net_599,
-            timer_reset => Net_612,
-            tc => \Timer_Row:Net_51\,
-            cmp => \Timer_Row:Net_261\,
-            irq => \Timer_Row:Net_57\);
+            q => \Timer_Row:TimerUDB:capt_fifo_load\,
+            main_0 => Net_702,
+            main_1 => \Timer_Row:TimerUDB:control_7\,
+            main_2 => \Timer_Row:TimerUDB:capture_last\,
+            main_3 => Net_839,
+            main_4 => Net_840);
+
+    \Timer_Row:TimerUDB:capture_last\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1) + (main_0 * main_2)")
+        PORT MAP(
+            q => \Timer_Row:TimerUDB:capture_last\,
+            clock_0 => Net_765,
+            main_0 => Net_702,
+            main_1 => Net_839,
+            main_2 => Net_840);
+
+    \Timer_Row:TimerUDB:rstSts:stsreg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0000011")
+        PORT MAP(
+            reset => Net_612,
+            clock => Net_765,
+            status_6 => open,
+            status_5 => open,
+            status_4 => open,
+            status_3 => \Timer_Row:TimerUDB:status_3\,
+            status_2 => \Timer_Row:TimerUDB:status_2\,
+            status_1 => \Timer_Row:TimerUDB:capt_fifo_load\,
+            status_0 => \Timer_Row:TimerUDB:status_tc\);
+
+    \Timer_Row:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000")
+        PORT MAP(
+            clock => Net_765,
+            control_7 => \Timer_Row:TimerUDB:control_7\,
+            control_6 => \Timer_Row:TimerUDB:control_6\,
+            control_5 => \Timer_Row:TimerUDB:control_5\,
+            control_4 => \Timer_Row:TimerUDB:control_4\,
+            control_3 => \Timer_Row:TimerUDB:control_3\,
+            control_2 => \Timer_Row:TimerUDB:control_2\,
+            control_1 => \Timer_Row:TimerUDB:control_1\,
+            control_0 => \Timer_Row:TimerUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Timer_Row:TimerUDB:sT16:timerdp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0')
+        PORT MAP(
+            clock => Net_765,
+            cs_addr_2 => Net_612,
+            cs_addr_1 => \Timer_Row:TimerUDB:control_7\,
+            cs_addr_0 => \Timer_Row:TimerUDB:per_zero\,
+            f0_load => \Timer_Row:TimerUDB:capt_fifo_load\,
+            busclk => ClockBlock_BUS_CLK,
+            ce0 => \Timer_Row:TimerUDB:sT16:timerdp:u0.ce0__sig\,
+            cl0 => \Timer_Row:TimerUDB:sT16:timerdp:u0.cl0__sig\,
+            z0 => \Timer_Row:TimerUDB:sT16:timerdp:u0.z0__sig\,
+            ff0 => \Timer_Row:TimerUDB:sT16:timerdp:u0.ff0__sig\,
+            ce1 => \Timer_Row:TimerUDB:sT16:timerdp:u0.ce1__sig\,
+            cl1 => \Timer_Row:TimerUDB:sT16:timerdp:u0.cl1__sig\,
+            z1 => \Timer_Row:TimerUDB:sT16:timerdp:u0.z1__sig\,
+            ff1 => \Timer_Row:TimerUDB:sT16:timerdp:u0.ff1__sig\,
+            co_msb => \Timer_Row:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
+            sol_msb => \Timer_Row:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
+            cfbo => \Timer_Row:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
+            sil => \Timer_Row:TimerUDB:sT16:timerdp:u1.sor__sig\,
+            cmsbi => \Timer_Row:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
+
+    \Timer_Row:TimerUDB:sT16:timerdp:u1\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0')
+        PORT MAP(
+            clock => Net_765,
+            cs_addr_2 => Net_612,
+            cs_addr_1 => \Timer_Row:TimerUDB:control_7\,
+            cs_addr_0 => \Timer_Row:TimerUDB:per_zero\,
+            f0_load => \Timer_Row:TimerUDB:capt_fifo_load\,
+            z0_comb => \Timer_Row:TimerUDB:per_zero\,
+            f0_bus_stat_comb => \Timer_Row:TimerUDB:status_3\,
+            f0_blk_stat_comb => \Timer_Row:TimerUDB:status_2\,
+            busclk => ClockBlock_BUS_CLK,
+            ce0i => \Timer_Row:TimerUDB:sT16:timerdp:u0.ce0__sig\,
+            cl0i => \Timer_Row:TimerUDB:sT16:timerdp:u0.cl0__sig\,
+            z0i => \Timer_Row:TimerUDB:sT16:timerdp:u0.z0__sig\,
+            ff0i => \Timer_Row:TimerUDB:sT16:timerdp:u0.ff0__sig\,
+            ce1i => \Timer_Row:TimerUDB:sT16:timerdp:u0.ce1__sig\,
+            cl1i => \Timer_Row:TimerUDB:sT16:timerdp:u0.cl1__sig\,
+            z1i => \Timer_Row:TimerUDB:sT16:timerdp:u0.z1__sig\,
+            ff1i => \Timer_Row:TimerUDB:sT16:timerdp:u0.ff1__sig\,
+            ci => \Timer_Row:TimerUDB:sT16:timerdp:u0.co_msb__sig\,
+            sir => \Timer_Row:TimerUDB:sT16:timerdp:u0.sol_msb__sig\,
+            cfbi => \Timer_Row:TimerUDB:sT16:timerdp:u0.cfbo__sig\,
+            sor => \Timer_Row:TimerUDB:sT16:timerdp:u1.sor__sig\,
+            cmsbo => \Timer_Row:TimerUDB:sT16:timerdp:u1.cmsbo__sig\);
+
+    \Timer_Row:TimerUDB:status_tc\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)")
+        PORT MAP(
+            q => \Timer_Row:TimerUDB:status_tc\,
+            main_0 => \Timer_Row:TimerUDB:control_7\,
+            main_1 => \Timer_Row:TimerUDB:per_zero\);
 
     \Timer_Wheel_Tick:TimerHW\:timercell
         GENERIC MAP(
@@ -3060,28 +4005,21 @@ BEGIN
         GENERIC MAP(
             int_type => "00")
         PORT MAP(
-            interrupt => Net_650,
+            interrupt => Net_719,
             clock => ClockBlock_BUS_CLK);
 
     camera_comp_rise:interrupt
         GENERIC MAP(
             int_type => "00")
         PORT MAP(
-            interrupt => Net_638,
+            interrupt => Net_710,
             clock => ClockBlock_BUS_CLK);
 
     camera_frame_start:interrupt
         GENERIC MAP(
             int_type => "00")
         PORT MAP(
-            interrupt => Net_591,
-            clock => ClockBlock_BUS_CLK);
-
-    camera_row_start:interrupt
-        GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_610,
+            interrupt => Net_906,
             clock => ClockBlock_BUS_CLK);
 
     inter_button:interrupt
@@ -3117,8 +4055,8 @@ BEGIN
             eqn_main => "(!main_0)")
         PORT MAP(
             q => tmp__cydff_2_reg,
-            clock_0 => Net_10,
-            main_0 => Net_610);
+            clock_0 => Net_765,
+            main_0 => Net_702);
 
     wheel_tick:interrupt
         GENERIC MAP(

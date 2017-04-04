@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: camera_row_start.c  
+* File Name: isr_2.c  
 * Version 1.60
 *
 *  Description:
@@ -19,13 +19,13 @@
 #include <CYDEVICE.H>
 #include <CYDEVICE_TRM.H>
 #include <CYLIB.H>
-#include <camera_row_start.H>
+#include <isr_2.H>
 
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START camera_row_start_intc` */
+/* `#START isr_2_intc` */
 
 /* `#END` */
 
@@ -40,7 +40,7 @@
 CY_ISR_PROTO(IntDefaultHandler);
 
 /*******************************************************************************
-* Function Name: camera_row_start_Start
+* Function Name: isr_2_Start
 ********************************************************************************
 * Summary:
 *  Set up the interrupt and enable it.
@@ -53,23 +53,23 @@ CY_ISR_PROTO(IntDefaultHandler);
 *   void.
 *
 *******************************************************************************/
-void camera_row_start_Start(void)
+void isr_2_Start(void)
 {
     /* For all we know the interrupt is active. */
-    camera_row_start_Disable();
+    isr_2_Disable();
 
-    /* Set the ISR to point to the camera_row_start Interrupt. */
-    camera_row_start_SetVector(camera_row_start_Interrupt);
+    /* Set the ISR to point to the isr_2 Interrupt. */
+    isr_2_SetVector(isr_2_Interrupt);
 
     /* Set the priority. */
-    camera_row_start_SetPriority(camera_row_start_INTC_PRIOR_NUMBER);
+    isr_2_SetPriority(isr_2_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    camera_row_start_Enable();
+    isr_2_Enable();
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_StartEx
+* Function Name: isr_2_StartEx
 ********************************************************************************
 * Summary:
 *  Set up the interrupt and enable it.
@@ -82,23 +82,23 @@ void camera_row_start_Start(void)
 *   void.
 *
 *******************************************************************************/
-void camera_row_start_StartEx(cyisraddress address)
+void isr_2_StartEx(cyisraddress address)
 {
     /* For all we know the interrupt is active. */
-    camera_row_start_Disable();
+    isr_2_Disable();
 
-    /* Set the ISR to point to the camera_row_start Interrupt. */
-    camera_row_start_SetVector(address);
+    /* Set the ISR to point to the isr_2 Interrupt. */
+    isr_2_SetVector(address);
 
     /* Set the priority. */
-    camera_row_start_SetPriority(camera_row_start_INTC_PRIOR_NUMBER);
+    isr_2_SetPriority(isr_2_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    camera_row_start_Enable();
+    isr_2_Enable();
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_Stop
+* Function Name: isr_2_Stop
 ********************************************************************************
 * Summary:
 *   Disables and removes the interrupt.
@@ -110,20 +110,20 @@ void camera_row_start_StartEx(cyisraddress address)
 *   void.
 *
 *******************************************************************************/
-void camera_row_start_Stop(void) 
+void isr_2_Stop(void) 
 {
     /* Disable this interrupt. */
-    camera_row_start_Disable();
+    isr_2_Disable();
 
     /* Set the ISR to point to the passive one. */
-    camera_row_start_SetVector(IntDefaultHandler);
+    isr_2_SetVector(IntDefaultHandler);
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_Interrupt
+* Function Name: isr_2_Interrupt
 ********************************************************************************
 * Summary:
-*   The default Interrupt Service Routine for camera_row_start.
+*   The default Interrupt Service Routine for isr_2.
 *
 *   Add custom code between the coments to keep the next version of this file
 *   from over writting your code.
@@ -137,21 +137,21 @@ void camera_row_start_Stop(void)
 *   void.
 *
 *******************************************************************************/
-CY_ISR(camera_row_start_Interrupt)
+CY_ISR(isr_2_Interrupt)
 {
     /*  Place your Interrupt code here. */
-    /* `#START camera_row_start_Interrupt` */
+    /* `#START isr_2_Interrupt` */
 
     /* `#END` */
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_SetVector
+* Function Name: isr_2_SetVector
 ********************************************************************************
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling camera_row_start_Start
+*   Change the ISR vector for the Interrupt. Note calling isr_2_Start
 *   will override any effect this method would have had. To set the vector before
-*   the component has been started use camera_row_start_StartEx instead.
+*   the component has been started use isr_2_StartEx instead.
 *
 *
 * Parameters:
@@ -163,17 +163,17 @@ CY_ISR(camera_row_start_Interrupt)
 *
 *
 *******************************************************************************/
-void camera_row_start_SetVector(cyisraddress address) 
+void isr_2_SetVector(cyisraddress address) 
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    ramVectorTable[CYINT_IRQ_BASE + camera_row_start__INTC_NUMBER] = address;
+    ramVectorTable[CYINT_IRQ_BASE + isr_2__INTC_NUMBER] = address;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_GetVector
+* Function Name: isr_2_GetVector
 ********************************************************************************
 * Summary:
 *   Gets the "address" of the current ISR vector for the Interrupt.
@@ -188,23 +188,23 @@ void camera_row_start_SetVector(cyisraddress address)
 *
 *
 *******************************************************************************/
-cyisraddress camera_row_start_GetVector(void) 
+cyisraddress isr_2_GetVector(void) 
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    return ramVectorTable[CYINT_IRQ_BASE + camera_row_start__INTC_NUMBER];
+    return ramVectorTable[CYINT_IRQ_BASE + isr_2__INTC_NUMBER];
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_SetPriority
+* Function Name: isr_2_SetPriority
 ********************************************************************************
 * Summary:
-*   Sets the Priority of the Interrupt. Note calling camera_row_start_Start
-*   or camera_row_start_StartEx will override any effect this method would have had. 
-*	This method should only be called after camera_row_start_Start or 
-*	camera_row_start_StartEx has been called. To set the initial
+*   Sets the Priority of the Interrupt. Note calling isr_2_Start
+*   or isr_2_StartEx will override any effect this method would have had. 
+*	This method should only be called after isr_2_Start or 
+*	isr_2_StartEx has been called. To set the initial
 *	priority for the component use the cydwr file in the tool.
 *
 *
@@ -217,13 +217,13 @@ cyisraddress camera_row_start_GetVector(void)
 *
 *
 *******************************************************************************/
-void camera_row_start_SetPriority(uint8 priority) 
+void isr_2_SetPriority(uint8 priority) 
 {
-    *camera_row_start_INTC_PRIOR = priority << 5;
+    *isr_2_INTC_PRIOR = priority << 5;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_GetPriority
+* Function Name: isr_2_GetPriority
 ********************************************************************************
 * Summary:
 *   Gets the Priority of the Interrupt.
@@ -238,18 +238,18 @@ void camera_row_start_SetPriority(uint8 priority)
 *
 *
 *******************************************************************************/
-uint8 camera_row_start_GetPriority(void) 
+uint8 isr_2_GetPriority(void) 
 {
     uint8 priority;
 
 
-    priority = *camera_row_start_INTC_PRIOR >> 5;
+    priority = *isr_2_INTC_PRIOR >> 5;
 
     return priority;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_Enable
+* Function Name: isr_2_Enable
 ********************************************************************************
 * Summary:
 *   Enables the interrupt.
@@ -264,14 +264,14 @@ uint8 camera_row_start_GetPriority(void)
 *
 *
 *******************************************************************************/
-void camera_row_start_Enable(void) 
+void isr_2_Enable(void) 
 {
     /* Enable the general interrupt. */
-    *camera_row_start_INTC_SET_EN = camera_row_start__INTC_MASK;
+    *isr_2_INTC_SET_EN = isr_2__INTC_MASK;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_GetState
+* Function Name: isr_2_GetState
 ********************************************************************************
 * Summary:
 *   Gets the state (enabled, disabled) of the Interrupt.
@@ -286,14 +286,14 @@ void camera_row_start_Enable(void)
 *
 *
 *******************************************************************************/
-uint8 camera_row_start_GetState(void) 
+uint8 isr_2_GetState(void) 
 {
     /* Get the state of the general interrupt. */
-    return (*camera_row_start_INTC_SET_EN & camera_row_start__INTC_MASK) ? 1:0;
+    return (*isr_2_INTC_SET_EN & isr_2__INTC_MASK) ? 1:0;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_Disable
+* Function Name: isr_2_Disable
 ********************************************************************************
 * Summary:
 *   Disables the Interrupt.
@@ -308,14 +308,14 @@ uint8 camera_row_start_GetState(void)
 *
 *
 *******************************************************************************/
-void camera_row_start_Disable(void) 
+void isr_2_Disable(void) 
 {
     /* Disable the general interrupt. */
-    *camera_row_start_INTC_CLR_EN = camera_row_start__INTC_MASK;
+    *isr_2_INTC_CLR_EN = isr_2__INTC_MASK;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_SetPending
+* Function Name: isr_2_SetPending
 ********************************************************************************
 * Summary:
 *   Causes the Interrupt to enter the pending state, a software method of
@@ -331,13 +331,13 @@ void camera_row_start_Disable(void)
 *
 *
 *******************************************************************************/
-void camera_row_start_SetPending(void) 
+void isr_2_SetPending(void) 
 {
-    *camera_row_start_INTC_SET_PD = camera_row_start__INTC_MASK;
+    *isr_2_INTC_SET_PD = isr_2__INTC_MASK;
 }
 
 /*******************************************************************************
-* Function Name: camera_row_start_ClearPending
+* Function Name: isr_2_ClearPending
 ********************************************************************************
 * Summary:
 *   Clears a pending interrupt.
@@ -351,7 +351,7 @@ void camera_row_start_SetPending(void)
 *
 *
 *******************************************************************************/
-void camera_row_start_ClearPending(void) 
+void isr_2_ClearPending(void) 
 {
-    *camera_row_start_INTC_CLR_PD = camera_row_start__INTC_MASK;
+    *isr_2_INTC_CLR_PD = isr_2__INTC_MASK;
 }

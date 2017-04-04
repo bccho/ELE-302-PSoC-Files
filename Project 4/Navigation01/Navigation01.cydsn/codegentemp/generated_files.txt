@@ -78,14 +78,18 @@
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Camera_data.h" value="NONE;Camera_data" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_frame_start.c" value="ARM_C_FILE;camera_frame_start" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_frame_start.h" value="NONE;camera_frame_start" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Trigger_aliases.h" value="NONE;Trigger" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Trigger.c" value="ARM_C_FILE;Trigger" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Trigger.h" value="NONE;Trigger" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Row.c" value="ARM_C_FILE;Timer_Row" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Row.h" value="NONE;Timer_Row" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Row_PM.c" value="ARM_C_FILE;Timer_Row" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Line_Begin.c" value="ARM_C_FILE;Timer_Line_Begin" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Line_Begin.h" value="NONE;Timer_Line_Begin" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Line_Begin_PM.c" value="ARM_C_FILE;Timer_Line_Begin" />
-  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_row_start.c" value="ARM_C_FILE;camera_row_start" />
-  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_row_start.h" value="NONE;camera_row_start" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Line_begin_aliases.h" value="NONE;Line_begin" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Line_begin.c" value="ARM_C_FILE;Line_begin" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Line_begin.h" value="NONE;Line_begin" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_comp_rise.c" value="ARM_C_FILE;camera_comp_rise" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_comp_rise.h" value="NONE;camera_comp_rise" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Line_End.c" value="ARM_C_FILE;Timer_Line_End" />
@@ -93,6 +97,24 @@
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Timer_Line_End_PM.c" value="ARM_C_FILE;Timer_Line_End" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_comp_fall.c" value="ARM_C_FILE;camera_comp_fall" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\camera_comp_fall.h" value="NONE;camera_comp_fall" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Counter_Last_Row.c" value="ARM_C_FILE;Counter_Last_Row" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Counter_Last_Row.h" value="NONE;Counter_Last_Row" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Counter_Last_Row_PM.c" value="ARM_C_FILE;Counter_Last_Row" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Counter_First_Row.c" value="ARM_C_FILE;Counter_First_Row" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Counter_First_Row.h" value="NONE;Counter_First_Row" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Counter_First_Row_PM.c" value="ARM_C_FILE;Counter_First_Row" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Line_end_aliases.h" value="NONE;Line_end" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Line_end.c" value="ARM_C_FILE;Line_end" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Line_end.h" value="NONE;Line_end" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Comp_out_aliases.h" value="NONE;Comp_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Comp_out.c" value="ARM_C_FILE;Comp_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Comp_out.h" value="NONE;Comp_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Horiz_out_aliases.h" value="NONE;Horiz_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Horiz_out.c" value="ARM_C_FILE;Horiz_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Horiz_out.h" value="NONE;Horiz_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Vert_out_aliases.h" value="NONE;Vert_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Vert_out.c" value="ARM_C_FILE;Vert_out" />
+  <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\Vert_out.h" value="NONE;Vert_out" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\LCD_LCDPort_aliases.h" value="NONE;LCD_LCDPort" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\LCD_LCDPort.c" value="ARM_C_FILE;LCD_LCDPort" />
   <file name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\Navigation01\Navigation01.cydsn\codegentemp\LCD_LCDPort.h" value="NONE;LCD_LCDPort" />

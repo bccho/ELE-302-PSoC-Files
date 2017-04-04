@@ -36,7 +36,7 @@
 **************************************/
 
 #define Timer_Row_Resolution                 16u
-#define Timer_Row_UsingFixedFunction         1u
+#define Timer_Row_UsingFixedFunction         0u
 #define Timer_Row_UsingHWCaptureCounter      0u
 #define Timer_Row_SoftwareCaptureMode        0u
 #define Timer_Row_SoftwareTriggerMode        0u
@@ -175,7 +175,7 @@ void Timer_Row_Wakeup(void)        ;
 ***************************************/
 
 #define Timer_Row_INIT_PERIOD             65535u
-#define Timer_Row_INIT_CAPTURE_MODE       (1u << Timer_Row_CTRL_CAP_MODE_SHIFT)
+#define Timer_Row_INIT_CAPTURE_MODE       (2u << Timer_Row_CTRL_CAP_MODE_SHIFT)
 #define Timer_Row_INIT_TRIGGER_MODE       (0u << Timer_Row_CTRL_TRIG_MODE_SHIFT)
 #if (Timer_Row_UsingFixedFunction)
     #define Timer_Row_INIT_INTERRUPT_MODE ((0u << Timer_Row_STATUS_TC_INT_MASK_SHIFT) | \

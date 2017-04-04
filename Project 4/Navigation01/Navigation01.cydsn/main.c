@@ -49,6 +49,8 @@ int test7 = 0;
 int test8 = 0;
 int test9 = 0;
 
+double lineMid = 0;
+
 double floor(double a) {
     return (double) (int) a;
 }
@@ -240,7 +242,10 @@ void parseMessage(char *message) {
         
         // Messages of the form "GT" retun all test variables
         else if (strcmp(msgPrefix, "GT") == 0) {
-            sprintf(strbuffer, "6: %d\n7: %d\n8: %d\n9: %d\n\n", test6, test7, test8, test9);
+            sprintf(strbuffer, "Frame count = %d\nComparator counts (begin) = %d\nComparator counts (end) = %d\nLine begin cycles = %d\nLine end cycles = %d\n",
+                    numFrames, numCompBegin, numCompEnd, lineBeginCycles, lineEndCycles);
+            UART_PutString(strbuffer);
+            sprintf(strbuffer, "6: %d\n7: %d\n9: %d\nLine mid: %f\n", test6, test7, test9, lineMid);
             UART_PutString(strbuffer);
         }
         
@@ -282,77 +287,68 @@ void parseMessage(char *message) {
 
 /* Button interrupt */
 CY_ISR(button_inter) {
-    if (buttonInterrupted) {
-        UART_PutString("Error 1: Interrupt not handled\n");
-    }
+//    if (buttonInterrupted) {
+//        UART_PutString("Error 1: Interrupt not handled\n");
+//    }
     buttonInterrupted = 1;
 }
 
 /* Recieved data interrupt */
 CY_ISR(rx_inter) {
-    if (rxInterrupted) {
-        UART_PutString("Error 2: Interrupt not handled\n");
-    }
+//    if (rxInterrupted) {
+//        UART_PutString("Error 2: Interrupt not handled\n");
+//    }
     rxInterrupted = 1;
 }
 
 /* Wheel tick interrupt */
 CY_ISR(wheel_inter) {
-    if (wheelTickInterrupted) {
-        UART_PutString("Error 3: Interrupt not handled\n");
-    }
+//    if (wheelTickInterrupted) {
+//        UART_PutString("Error 3: Interrupt not handled\n");
+//    }
     wheelTickInterrupted = 1;
 }
 
 /* Wheel tick timeout interrupt */
 CY_ISR(timeout_inter) {
-    if (tickTimeoutInterrupted) {
-        UART_PutString("Error 4: Interrupt not handled\n");
-    }
+//    if (tickTimeoutInterrupted) {
+//        UART_PutString("Error 4: Interrupt not handled\n");
+//    }
     tickTimeoutInterrupted = 1;
 }
 
 /* PID timer interrupt */
 CY_ISR(pid_inter) {
-    if (pidTimerInterrupted) {
-        UART_PutString("Error 5: Interrupt not handled\n");
-    }
+//    if (pidTimerInterrupted) {
+//        UART_PutString("Error 5: Interrupt not handled\n");
+//    }
     pidTimerInterrupted = 1;
 }
 
 /* Camera comparator rise interrupt */
 CY_ISR(cam_comp_rise_inter) {
-    if (camCompRiseInterrupted) {
-        //UART_PutString("Error 6: Interrupt not handled\n");
-    }
-    test6++;
+//    if (camCompRiseInterrupted) {
+//        UART_PutString("Error 6: Interrupt not handled\n");
+//    }
+//    test6++;
     camCompRiseInterrupted = 1;
 }
 
 /* Camera comparator fall interrupt */
 CY_ISR(cam_comp_fall_inter) {
-    if (camCompFallInterrupted) {
-        //UART_PutString("Error 7: Interrupt not handled\n");
-    }
-    test7++;
+//    if (camCompFallInterrupted) {
+//        UART_PutString("Error 7: Interrupt not handled\n");
+//    }
+//    test7++;
     camCompFallInterrupted = 1;
-}
-
-/* Camera row start interrupt */
-CY_ISR(cam_row_inter) {
-    if (camRowInterrupted) {
-        //UART_PutString("Error 8: Interrupt not handled\n");
-    }
-    test8++;
-    camRowInterrupted = 1;
 }
 
 /* Camera frame start interrupt */
 CY_ISR(cam_frame_inter) {
-    if (camFrameInterrupted) {
-        //UART_PutString("Error 9: Interrupt not handled\n");
-    }
-    test9++;
+//    if (camFrameInterrupted) {
+//        UART_PutString("Error 9: Interrupt not handled\n");
+//    }
+//    test9++;
     camFrameInterrupted = 1;
 }
 
@@ -399,13 +395,14 @@ int main() {
     camera_comp_rise_SetVector(cam_comp_rise_inter);
     camera_comp_fall_Start();
     camera_comp_fall_SetVector(cam_comp_fall_inter);
-    camera_row_start_Start();
-    camera_row_start_SetVector(cam_row_inter);
     camera_frame_start_Start();
     camera_frame_start_SetVector(cam_frame_inter);
     Timer_Line_Begin_Start();
     Timer_Line_End_Start(); 
     Timer_Row_Start();
+    
+    Counter_First_Row_Start();
+    Counter_Last_Row_Start();
     
     // LCD initial text
     LCD_Position(0, 0);
@@ -452,42 +449,33 @@ int main() {
         // Perform PID update and update time count
         if (pidTimerInterrupted) {
             SpeedControl_handleTimer();
+            sprintf(strbuffer, "Line mid: %f\n", lineMid);
+            UART_PutString(strbuffer);
             pidTimerInterrupted = 0;
         }
         
         // Handle comparator rise interrupt
         if (camCompRiseInterrupted) {
-//            if (Vertical_sync_Read() == 1) {
-//                double lineBeginCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_Begin_ReadCapture();
-//                if (lineBeginCyclesTemp > 0.15*EXPECTED_ROW_CYCLES && lineBeginCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
-                    numCompBegin++;
-//                    lineBeginCycles = lineBeginCyclesTemp;
-//                }
-//            }
+            double lineBeginCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_Begin_ReadCapture();
+            if (lineBeginCyclesTemp > 0.15*EXPECTED_ROW_CYCLES && lineBeginCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
+                numCompBegin++;
+                lineBeginCycles = lineBeginCyclesTemp;
+            }
             camCompRiseInterrupted = 0;
         }
         
         // Handle comparator fall interrupt
         if (camCompFallInterrupted) {
-//            if (Vertical_sync_Read() == 1) {
-//                double lineEndCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_End_ReadCapture();
-//                if (lineEndCyclesTemp > 0.15*EXPECTED_ROW_CYCLES && lineEndCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
-                    numCompEnd++;
-//                    lineEndCycles = lineEndCyclesTemp;
-//                }
-//            }
+            double lineEndCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_End_ReadCapture();
+            if (lineEndCyclesTemp > 0.15*EXPECTED_ROW_CYCLES && lineEndCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
+                numCompEnd++;
+                lineEndCycles = lineEndCyclesTemp;
+                int diff = lineEndCycles - lineBeginCycles;
+                if (diff < 150 && diff > 0) {
+                    lineMid = ((lineEndCycles + lineBeginCycles)/2)/EXPECTED_ROW_CYCLES;
+                }
+            }
             camCompFallInterrupted = 0;
-        }
-        
-        // Handle row interrupt
-        if (camRowInterrupted) {
-//            if (Vertical_sync_Read() == 1) {
-//                rowCycles = CAMERA_TIMER_PERIOD - Timer_Row_ReadCapture();
-//                if (rowCycles > 0.8*EXPECTED_ROW_CYCLES && rowCycles < 1.2*EXPECTED_ROW_CYCLES) {
-                   numRows++;
-//                }
-//            }
-            camRowInterrupted = 0;
         }
         
         // Handle frame interrupts

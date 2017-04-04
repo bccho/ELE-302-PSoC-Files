@@ -37,12 +37,12 @@
 
 #define Timer_Line_Begin_Resolution                 16u
 #define Timer_Line_Begin_UsingFixedFunction         0u
-#define Timer_Line_Begin_UsingHWCaptureCounter      0u
+#define Timer_Line_Begin_UsingHWCaptureCounter      1u
 #define Timer_Line_Begin_SoftwareCaptureMode        0u
 #define Timer_Line_Begin_SoftwareTriggerMode        0u
 #define Timer_Line_Begin_UsingHWEnable              0u
 #define Timer_Line_Begin_EnableTriggerMode          0u
-#define Timer_Line_Begin_InterruptOnCaptureCount    0u
+#define Timer_Line_Begin_InterruptOnCaptureCount    1u
 #define Timer_Line_Begin_RunModeUsed                0u
 #define Timer_Line_Begin_ControlRegRemoved          0u
 
@@ -179,10 +179,10 @@ void Timer_Line_Begin_Wakeup(void)        ;
 #define Timer_Line_Begin_INIT_TRIGGER_MODE       (0u << Timer_Line_Begin_CTRL_TRIG_MODE_SHIFT)
 #if (Timer_Line_Begin_UsingFixedFunction)
     #define Timer_Line_Begin_INIT_INTERRUPT_MODE ((0u << Timer_Line_Begin_STATUS_TC_INT_MASK_SHIFT) | \
-                                                  (0 << Timer_Line_Begin_STATUS_CAPTURE_INT_MASK_SHIFT))
+                                                  (1 << Timer_Line_Begin_STATUS_CAPTURE_INT_MASK_SHIFT))
 #else
     #define Timer_Line_Begin_INIT_INTERRUPT_MODE ((0u << Timer_Line_Begin_STATUS_TC_INT_MASK_SHIFT) | \
-                                                 (0 << Timer_Line_Begin_STATUS_CAPTURE_INT_MASK_SHIFT) | \
+                                                 (1 << Timer_Line_Begin_STATUS_CAPTURE_INT_MASK_SHIFT) | \
                                                  (0 << Timer_Line_Begin_STATUS_FIFOFULL_INT_MASK_SHIFT))
 #endif /* (Timer_Line_Begin_UsingFixedFunction) */
 #define Timer_Line_Begin_INIT_CAPTURE_COUNT      (2u)

@@ -813,16 +813,6 @@
               <FilePath>.\Generated_Source\PSoC5\Timer_Line_Begin_PM.c</FilePath>
             </File>
             <File>
-              <FileName>camera_row_start.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\camera_row_start.c</FilePath>
-            </File>
-            <File>
-              <FileName>camera_row_start.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\camera_row_start.h</FilePath>
-            </File>
-            <File>
               <FileName>camera_comp_rise.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC5\camera_comp_rise.c</FilePath>
@@ -856,6 +846,126 @@
               <FileName>camera_comp_fall.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\camera_comp_fall.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Last_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Last_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Last_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_First_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_First_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_First_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Trigger_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Trigger_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Trigger.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Trigger.c</FilePath>
+            </File>
+            <File>
+              <FileName>Trigger.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Trigger.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_begin_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_begin_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_begin.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_begin.c</FilePath>
+            </File>
+            <File>
+              <FileName>Line_begin.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_begin.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_end_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_end_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_end.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_end.c</FilePath>
+            </File>
+            <File>
+              <FileName>Line_end.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_end.h</FilePath>
+            </File>
+            <File>
+              <FileName>Comp_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Comp_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Comp_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Comp_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Comp_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Comp_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Horiz_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Horiz_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Horiz_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Horiz_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Horiz_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Horiz_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vert_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Vert_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vert_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Vert_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Vert_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Vert_out.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1672,16 +1782,6 @@
               <FilePath>.\Generated_Source\PSoC5\Timer_Line_Begin_PM.c</FilePath>
             </File>
             <File>
-              <FileName>camera_row_start.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\camera_row_start.c</FilePath>
-            </File>
-            <File>
-              <FileName>camera_row_start.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\camera_row_start.h</FilePath>
-            </File>
-            <File>
               <FileName>camera_comp_rise.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC5\camera_comp_rise.c</FilePath>
@@ -1715,6 +1815,126 @@
               <FileName>camera_comp_fall.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\camera_comp_fall.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Last_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Last_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Last_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_First_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_First_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_First_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Trigger_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Trigger_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Trigger.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Trigger.c</FilePath>
+            </File>
+            <File>
+              <FileName>Trigger.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Trigger.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_begin_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_begin_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_begin.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_begin.c</FilePath>
+            </File>
+            <File>
+              <FileName>Line_begin.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_begin.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_end_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_end_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Line_end.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_end.c</FilePath>
+            </File>
+            <File>
+              <FileName>Line_end.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Line_end.h</FilePath>
+            </File>
+            <File>
+              <FileName>Comp_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Comp_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Comp_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Comp_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Comp_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Comp_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Horiz_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Horiz_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Horiz_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Horiz_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Horiz_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Horiz_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vert_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Vert_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vert_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Vert_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Vert_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Vert_out.h</FilePath>
             </File>
           </Files>
         </Group>

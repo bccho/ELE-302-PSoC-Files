@@ -1,0 +1,2595 @@
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"Counter_Frist_Row.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 A7010000 		.text
+  20      02006A00 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.global	Counter_Frist_Row_initVar
+  24              		.bss
+  25              		.type	Counter_Frist_Row_initVar, %object
+  26              		.size	Counter_Frist_Row_initVar, 1
+  27              	Counter_Frist_Row_initVar:
+  28 0000 00       		.space	1
+  29              		.section	.text.Counter_Frist_Row_Init,"ax",%progbits
+  30              		.align	2
+  31              		.global	Counter_Frist_Row_Init
+  32              		.thumb
+  33              		.thumb_func
+  34              		.type	Counter_Frist_Row_Init, %function
+  35              	Counter_Frist_Row_Init:
+  36              	.LFB0:
+  37              		.file 1 ".\\Generated_Source\\PSoC5\\Counter_Frist_Row.c"
+   1:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * File Name: Counter_Frist_Row.c  
+   3:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Version 2.20
+   4:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+   5:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  Description:
+   6:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *     The Counter component consists of a 8, 16, 24 or 32-bit counter with
+   7:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *     a selectable period between 2 and 2^Width - 1.  
+   8:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+   9:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   Note:
+  10:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *     None
+  11:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+  12:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************
+  13:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * the software package with which this file was provided.
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 2
+
+
+  17:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************/
+  18:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+  19:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #include "Counter_Frist_Row.h"
+  20:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+  21:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8 Counter_Frist_Row_initVar = 0u;
+  22:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+  23:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+  24:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_Init
+  26:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+  28:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *     Initialize to the schematic state
+  29:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * 
+  30:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+  31:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void  
+  32:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+  33:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+  34:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+  35:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+  36:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+  37:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_Init(void) 
+  38:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+  38              		.loc 1 38 0
+  39              		.cfi_startproc
+  40              		@ args = 0, pretend = 0, frame = 8
+  41              		@ frame_needed = 1, uses_anonymous_args = 0
+  42 0000 80B5     		push	{r7, lr}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 8
+  45 0002 82B0     		sub	sp, sp, #8
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 16
+  48 0004 00AF     		add	r7, sp, #0
+  49              		.cfi_offset 14, -4
+  50              		.cfi_offset 7, -8
+  51              	.LCFI2:
+  52              		.cfi_def_cfa_register 7
+  39:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #if (!Counter_Frist_Row_UsingFixedFunction && !Counter_Frist_Row_ControlRegRemoved)
+  40:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             uint8 ctrl;
+  41:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #endif /* (!Counter_Frist_Row_UsingFixedFunction && !Counter_Frist_Row_ControlRegRemoved) *
+  42:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+  43:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #if(!Counter_Frist_Row_UsingFixedFunction) 
+  44:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Interrupt State Backup for Critical Region*/
+  45:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             uint8 Counter_Frist_Row_interruptState;
+  46:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #endif /* (!Counter_Frist_Row_UsingFixedFunction) */
+  47:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+  48:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #if (Counter_Frist_Row_UsingFixedFunction)
+  49:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Clear all bits but the enable bit (if it's already set for Timer operation */
+  50:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_CONTROL &= Counter_Frist_Row_CTRL_ENABLE;
+  51:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+  52:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Clear the mode bits for continuous run mode */
+  53:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #if (CY_PSOC5A)
+  54:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                 Counter_Frist_Row_CONTROL2 &= ~Counter_Frist_Row_CTRL_MODE_MASK;
+  55:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #endif /* (CY_PSOC5A) */
+  56:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  57:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                 Counter_Frist_Row_CONTROL3 &= ~Counter_Frist_Row_CTRL_MODE_MASK;                
+  58:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 3
+
+
+  59:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  60:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #if (Counter_Frist_Row_RunModeUsed != 0x0u)
+  61:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                 /* Set 3rd bit of Control register to enable one shot mode */
+  62:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                 Counter_Frist_Row_CONTROL |= Counter_Frist_Row_ONESHOT;
+  63:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #endif /* (Counter_Frist_Row_RunModeUsed != 0x0u) */
+  64:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+  65:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Set the IRQ to use the status register interrupts */
+  66:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_CONTROL2 |= Counter_Frist_Row_CTRL2_IRQ_SEL;
+  67:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+  68:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+  69:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_RT1 &= ~Counter_Frist_Row_RT1_MASK;
+  70:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_RT1 |= Counter_Frist_Row_SYNC;     
+  71:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                     
+  72:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /*Enable DSI Sync all all inputs of the Timer*/
+  73:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_RT1 &= ~(Counter_Frist_Row_SYNCDSI_MASK);
+  74:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_RT1 |= Counter_Frist_Row_SYNCDSI_EN;
+  75:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+  76:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #else
+  77:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #if(!Counter_Frist_Row_ControlRegRemoved)
+  78:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Set the default compare mode defined in the parameter */
+  79:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             ctrl = Counter_Frist_Row_CONTROL & ~Counter_Frist_Row_CTRL_CMPMODE_MASK;
+  53              		.loc 1 79 0
+  54 0006 46F27B43 		movw	r3, #:lower16:1073767547
+  55 000a C4F20003 		movt	r3, #:upper16:1073767547
+  56 000e 1B78     		ldrb	r3, [r3, #0]
+  57 0010 DBB2     		uxtb	r3, r3
+  58 0012 23F00703 		bic	r3, r3, #7
+  59 0016 BB71     		strb	r3, [r7, #6]
+  80:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_CONTROL = ctrl | Counter_Frist_Row_DEFAULT_COMPARE_MODE;
+  60              		.loc 1 80 0
+  61 0018 46F27B43 		movw	r3, #:lower16:1073767547
+  62 001c C4F20003 		movt	r3, #:upper16:1073767547
+  63 0020 BA79     		ldrb	r2, [r7, #6]
+  64 0022 1A70     		strb	r2, [r3, #0]
+  81:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+  82:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Set the default capture mode defined in the parameter */
+  83:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             ctrl = Counter_Frist_Row_CONTROL & ~Counter_Frist_Row_CTRL_CAPMODE_MASK;
+  65              		.loc 1 83 0
+  66 0024 46F27B43 		movw	r3, #:lower16:1073767547
+  67 0028 C4F20003 		movt	r3, #:upper16:1073767547
+  68 002c 1B78     		ldrb	r3, [r3, #0]
+  69 002e DBB2     		uxtb	r3, r3
+  70 0030 23F01803 		bic	r3, r3, #24
+  71 0034 BB71     		strb	r3, [r7, #6]
+  84:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_CONTROL = ctrl | Counter_Frist_Row_DEFAULT_CAPTURE_MODE;
+  72              		.loc 1 84 0
+  73 0036 46F27B43 		movw	r3, #:lower16:1073767547
+  74 003a C4F20003 		movt	r3, #:upper16:1073767547
+  75 003e BA79     		ldrb	r2, [r7, #6]
+  76 0040 1A70     		strb	r2, [r3, #0]
+  85:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             #endif /* (!Counter_Frist_Row_ControlRegRemoved) */
+  86:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #endif /* (Counter_Frist_Row_UsingFixedFunction) */
+  87:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+  88:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         /* Clear all data in the FIFO's */
+  89:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #if (!Counter_Frist_Row_UsingFixedFunction)
+  90:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_ClearFIFO();
+  77              		.loc 1 90 0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 4
+
+
+  78 0042 FFF7FEFF 		bl	Counter_Frist_Row_ClearFIFO
+  91:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #endif /* (!Counter_Frist_Row_UsingFixedFunction) */
+  92:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+  93:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         /* Set Initial values from Configuration */
+  94:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_WritePeriod(Counter_Frist_Row_INIT_PERIOD_VALUE);
+  79              		.loc 1 94 0
+  80 0046 4FF0FF00 		mov	r0, #255
+  81 004a FFF7FEFF 		bl	Counter_Frist_Row_WritePeriod
+  95:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #if (!(Counter_Frist_Row_UsingFixedFunction && (CY_PSOC5A)))
+  96:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_WriteCounter(Counter_Frist_Row_INIT_COUNTER_VALUE);
+  82              		.loc 1 96 0
+  83 004e 4FF00000 		mov	r0, #0
+  84 0052 FFF7FEFF 		bl	Counter_Frist_Row_WriteCounter
+  97:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #endif /* (!(Counter_Frist_Row_UsingFixedFunction && (CY_PSOC5A))) */
+  98:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_SetInterruptMode(Counter_Frist_Row_INIT_INTERRUPTS_MASK);
+  85              		.loc 1 98 0
+  86 0056 4FF00100 		mov	r0, #1
+  87 005a FFF7FEFF 		bl	Counter_Frist_Row_SetInterruptMode
+  99:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+ 100:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #if (!Counter_Frist_Row_UsingFixedFunction)
+ 101:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Read the status register to clear the unwanted interrupts */
+ 102:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_ReadStatusRegister();
+  88              		.loc 1 102 0
+  89 005e FFF7FEFF 		bl	Counter_Frist_Row_ReadStatusRegister
+ 103:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 104:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_WriteCompare(Counter_Frist_Row_INIT_COMPARE_VALUE);
+  90              		.loc 1 104 0
+  91 0062 4FF00500 		mov	r0, #5
+  92 0066 FFF7FEFF 		bl	Counter_Frist_Row_WriteCompare
+ 105:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 106:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+ 107:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 108:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Enter Critical Region*/
+ 109:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_interruptState = CyEnterCriticalSection();
+  93              		.loc 1 109 0
+  94 006a FFF7FEFF 		bl	CyEnterCriticalSection
+  95 006e 0346     		mov	r3, r0
+  96 0070 FB71     		strb	r3, [r7, #7]
+ 110:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+ 111:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             Counter_Frist_Row_STATUS_AUX_CTRL |= Counter_Frist_Row_STATUS_ACTL_INT_EN_MASK;
+  97              		.loc 1 111 0
+  98 0072 46F29A43 		movw	r3, #:lower16:1073767578
+  99 0076 C4F20003 		movt	r3, #:upper16:1073767578
+ 100 007a 46F29A42 		movw	r2, #:lower16:1073767578
+ 101 007e C4F20002 		movt	r2, #:upper16:1073767578
+ 102 0082 1278     		ldrb	r2, [r2, #0]
+ 103 0084 D2B2     		uxtb	r2, r2
+ 104 0086 42F01002 		orr	r2, r2, #16
+ 105 008a D2B2     		uxtb	r2, r2
+ 106 008c 1A70     		strb	r2, [r3, #0]
+ 112:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+ 113:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             /* Exit Critical Region*/
+ 114:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             CyExitCriticalSection(Counter_Frist_Row_interruptState);
+ 107              		.loc 1 114 0
+ 108 008e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 109 0090 1846     		mov	r0, r3
+ 110 0092 FFF7FEFF 		bl	CyExitCriticalSection
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 5
+
+
+ 115:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****             
+ 116:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         #endif /* (!Counter_Frist_Row_UsingFixedFunction) */
+ 117:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 111              		.loc 1 117 0
+ 112 0096 07F10807 		add	r7, r7, #8
+ 113 009a BD46     		mov	sp, r7
+ 114 009c 80BD     		pop	{r7, pc}
+ 115              		.cfi_endproc
+ 116              	.LFE0:
+ 117              		.size	Counter_Frist_Row_Init, .-Counter_Frist_Row_Init
+ 118 009e 00BF     		.section	.text.Counter_Frist_Row_Enable,"ax",%progbits
+ 119              		.align	2
+ 120              		.global	Counter_Frist_Row_Enable
+ 121              		.thumb
+ 122              		.thumb_func
+ 123              		.type	Counter_Frist_Row_Enable, %function
+ 124              	Counter_Frist_Row_Enable:
+ 125              	.LFB1:
+ 118:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 119:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 120:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 121:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_Enable
+ 122:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 123:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 124:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *     Enable the Counter
+ 125:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * 
+ 126:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 127:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void  
+ 128:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 129:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 130:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 131:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 132:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Side Effects: 
+ 133:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   If the Enable mode is set to Hardware only then this function has no effect 
+ 134:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   on the operation of the counter.
+ 135:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 136:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 137:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_Enable(void) 
+ 138:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 126              		.loc 1 138 0
+ 127              		.cfi_startproc
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 1, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
+ 131 0000 80B4     		push	{r7}
+ 132              	.LCFI3:
+ 133              		.cfi_def_cfa_offset 4
+ 134 0002 00AF     		add	r7, sp, #0
+ 135              		.cfi_offset 7, -4
+ 136              	.LCFI4:
+ 137              		.cfi_def_cfa_register 7
+ 139:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 140:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if (Counter_Frist_Row_UsingFixedFunction)
+ 141:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_GLOBAL_ENABLE |= Counter_Frist_Row_BLOCK_EN_MASK;
+ 142:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_GLOBAL_STBY_ENABLE |= Counter_Frist_Row_BLOCK_STBY_EN_MASK;
+ 143:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (Counter_Frist_Row_UsingFixedFunction) */  
+ 144:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 6
+
+
+ 145:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Enable the counter from the control register  */
+ 146:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* If Fixed Function then make sure Mode is set correctly */
+ 147:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* else make sure reset is clear */
+ 148:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if(!Counter_Frist_Row_ControlRegRemoved || Counter_Frist_Row_UsingFixedFunction)
+ 149:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_CONTROL |= Counter_Frist_Row_CTRL_ENABLE;                
+ 138              		.loc 1 149 0
+ 139 0004 46F27B43 		movw	r3, #:lower16:1073767547
+ 140 0008 C4F20003 		movt	r3, #:upper16:1073767547
+ 141 000c 46F27B42 		movw	r2, #:lower16:1073767547
+ 142 0010 C4F20002 		movt	r2, #:upper16:1073767547
+ 143 0014 1278     		ldrb	r2, [r2, #0]
+ 144 0016 D2B2     		uxtb	r2, r2
+ 145 0018 6FEA4262 		mvn	r2, r2, lsl #25
+ 146 001c 6FEA5262 		mvn	r2, r2, lsr #25
+ 147 0020 D2B2     		uxtb	r2, r2
+ 148 0022 1A70     		strb	r2, [r3, #0]
+ 150:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (!Counter_Frist_Row_ControlRegRemoved || Counter_Frist_Row_UsingFixedFunction) */
+ 151:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     
+ 152:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 149              		.loc 1 152 0
+ 150 0024 BD46     		mov	sp, r7
+ 151 0026 80BC     		pop	{r7}
+ 152 0028 7047     		bx	lr
+ 153              		.cfi_endproc
+ 154              	.LFE1:
+ 155              		.size	Counter_Frist_Row_Enable, .-Counter_Frist_Row_Enable
+ 156 002a 00BF     		.section	.text.Counter_Frist_Row_Start,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	Counter_Frist_Row_Start
+ 159              		.thumb
+ 160              		.thumb_func
+ 161              		.type	Counter_Frist_Row_Start, %function
+ 162              	Counter_Frist_Row_Start:
+ 163              	.LFB2:
+ 153:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 154:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 155:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 156:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_Start
+ 157:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 158:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 159:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  Enables the counter for operation 
+ 160:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 161:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 162:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void  
+ 163:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 164:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 165:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 166:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 167:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Global variables:
+ 168:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  Counter_Frist_Row_initVar: Is modified when this function is called for the  
+ 169:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   first time. Is used to ensure that initialization happens only once.
+ 170:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 171:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 172:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_Start(void) 
+ 173:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 164              		.loc 1 173 0
+ 165              		.cfi_startproc
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 7
+
+
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 1, uses_anonymous_args = 0
+ 168 0000 80B5     		push	{r7, lr}
+ 169              	.LCFI5:
+ 170              		.cfi_def_cfa_offset 8
+ 171 0002 00AF     		add	r7, sp, #0
+ 172              		.cfi_offset 14, -4
+ 173              		.cfi_offset 7, -8
+ 174              	.LCFI6:
+ 175              		.cfi_def_cfa_register 7
+ 174:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     if(Counter_Frist_Row_initVar == 0u)
+ 176              		.loc 1 174 0
+ 177 0004 40F20003 		movw	r3, #:lower16:Counter_Frist_Row_initVar
+ 178 0008 C0F20003 		movt	r3, #:upper16:Counter_Frist_Row_initVar
+ 179 000c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 180 000e 002B     		cmp	r3, #0
+ 181 0010 08D1     		bne	.L6
+ 175:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     {
+ 176:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_Init();
+ 182              		.loc 1 176 0
+ 183 0012 FFF7FEFF 		bl	Counter_Frist_Row_Init
+ 177:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         
+ 178:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_initVar = 1u; /* Clear this bit for Initialization */        
+ 184              		.loc 1 178 0
+ 185 0016 40F20003 		movw	r3, #:lower16:Counter_Frist_Row_initVar
+ 186 001a C0F20003 		movt	r3, #:upper16:Counter_Frist_Row_initVar
+ 187 001e 4FF00102 		mov	r2, #1
+ 188 0022 1A70     		strb	r2, [r3, #0]
+ 189              	.L6:
+ 179:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     }
+ 180:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     
+ 181:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Enable the Counter */
+ 182:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_Enable();        
+ 190              		.loc 1 182 0
+ 191 0024 FFF7FEFF 		bl	Counter_Frist_Row_Enable
+ 183:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 192              		.loc 1 183 0
+ 193 0028 80BD     		pop	{r7, pc}
+ 194              		.cfi_endproc
+ 195              	.LFE2:
+ 196              		.size	Counter_Frist_Row_Start, .-Counter_Frist_Row_Start
+ 197 002a 00BF     		.section	.text.Counter_Frist_Row_Stop,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	Counter_Frist_Row_Stop
+ 200              		.thumb
+ 201              		.thumb_func
+ 202              		.type	Counter_Frist_Row_Stop, %function
+ 203              	Counter_Frist_Row_Stop:
+ 204              	.LFB3:
+ 184:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 185:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 186:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 187:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_Stop
+ 188:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 189:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 190:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Halts the counter, but does not change any modes or disable interrupts.
+ 191:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 8
+
+
+ 192:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 193:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void  
+ 194:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 195:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 196:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 197:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 198:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 199:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *               has no effect on the operation of the counter.
+ 200:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 201:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 202:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_Stop(void) 
+ 203:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 205              		.loc 1 203 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 1, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 210 0000 80B4     		push	{r7}
+ 211              	.LCFI7:
+ 212              		.cfi_def_cfa_offset 4
+ 213 0002 00AF     		add	r7, sp, #0
+ 214              		.cfi_offset 7, -4
+ 215              	.LCFI8:
+ 216              		.cfi_def_cfa_register 7
+ 204:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Disable Counter */
+ 205:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if(!Counter_Frist_Row_ControlRegRemoved || Counter_Frist_Row_UsingFixedFunction)
+ 206:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_CONTROL &= ~Counter_Frist_Row_CTRL_ENABLE;        
+ 217              		.loc 1 206 0
+ 218 0004 46F27B43 		movw	r3, #:lower16:1073767547
+ 219 0008 C4F20003 		movt	r3, #:upper16:1073767547
+ 220 000c 46F27B42 		movw	r2, #:lower16:1073767547
+ 221 0010 C4F20002 		movt	r2, #:upper16:1073767547
+ 222 0014 1278     		ldrb	r2, [r2, #0]
+ 223 0016 D2B2     		uxtb	r2, r2
+ 224 0018 02F07F02 		and	r2, r2, #127
+ 225 001c 1A70     		strb	r2, [r3, #0]
+ 207:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (!Counter_Frist_Row_ControlRegRemoved || Counter_Frist_Row_UsingFixedFunction) */
+ 208:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     
+ 209:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Globally disable the Fixed Function Block chosen */
+ 210:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if (Counter_Frist_Row_UsingFixedFunction)
+ 211:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_GLOBAL_ENABLE &= ~Counter_Frist_Row_BLOCK_EN_MASK;
+ 212:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_GLOBAL_STBY_ENABLE &= ~Counter_Frist_Row_BLOCK_STBY_EN_MASK;
+ 213:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (Counter_Frist_Row_UsingFixedFunction) */
+ 214:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 226              		.loc 1 214 0
+ 227 001e BD46     		mov	sp, r7
+ 228 0020 80BC     		pop	{r7}
+ 229 0022 7047     		bx	lr
+ 230              		.cfi_endproc
+ 231              	.LFE3:
+ 232              		.size	Counter_Frist_Row_Stop, .-Counter_Frist_Row_Stop
+ 233              		.section	.text.Counter_Frist_Row_SetInterruptMode,"ax",%progbits
+ 234              		.align	2
+ 235              		.global	Counter_Frist_Row_SetInterruptMode
+ 236              		.thumb
+ 237              		.thumb_func
+ 238              		.type	Counter_Frist_Row_SetInterruptMode, %function
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 9
+
+
+ 239              	Counter_Frist_Row_SetInterruptMode:
+ 240              	.LFB4:
+ 215:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 216:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 217:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 218:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_SetInterruptMode
+ 219:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 220:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 221:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Configures which interrupt sources are enabled to generate the final interrupt
+ 222:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 223:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 224:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  InterruptsMask: This parameter is an or'd collection of the status bits
+ 225:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *                   which will be allowed to generate the counters interrupt.   
+ 226:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 227:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 228:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 229:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 230:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 231:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_SetInterruptMode(uint8 interruptsMask) 
+ 232:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 241              		.loc 1 232 0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 8
+ 244              		@ frame_needed = 1, uses_anonymous_args = 0
+ 245              		@ link register save eliminated.
+ 246 0000 80B4     		push	{r7}
+ 247              	.LCFI9:
+ 248              		.cfi_def_cfa_offset 4
+ 249 0002 83B0     		sub	sp, sp, #12
+ 250              	.LCFI10:
+ 251              		.cfi_def_cfa_offset 16
+ 252 0004 00AF     		add	r7, sp, #0
+ 253              		.cfi_offset 7, -4
+ 254              	.LCFI11:
+ 255              		.cfi_def_cfa_register 7
+ 256 0006 0346     		mov	r3, r0
+ 257 0008 FB71     		strb	r3, [r7, #7]
+ 233:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_STATUS_MASK = interruptsMask;
+ 258              		.loc 1 233 0
+ 259 000a 46F28A43 		movw	r3, #:lower16:1073767562
+ 260 000e C4F20003 		movt	r3, #:upper16:1073767562
+ 261 0012 FA79     		ldrb	r2, [r7, #7]
+ 262 0014 1A70     		strb	r2, [r3, #0]
+ 234:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 263              		.loc 1 234 0
+ 264 0016 07F10C07 		add	r7, r7, #12
+ 265 001a BD46     		mov	sp, r7
+ 266 001c 80BC     		pop	{r7}
+ 267 001e 7047     		bx	lr
+ 268              		.cfi_endproc
+ 269              	.LFE4:
+ 270              		.size	Counter_Frist_Row_SetInterruptMode, .-Counter_Frist_Row_SetInterruptMode
+ 271              		.section	.text.Counter_Frist_Row_ReadStatusRegister,"ax",%progbits
+ 272              		.align	2
+ 273              		.global	Counter_Frist_Row_ReadStatusRegister
+ 274              		.thumb
+ 275              		.thumb_func
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 10
+
+
+ 276              		.type	Counter_Frist_Row_ReadStatusRegister, %function
+ 277              	Counter_Frist_Row_ReadStatusRegister:
+ 278              	.LFB5:
+ 235:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 236:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 237:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 238:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ReadStatusRegister
+ 239:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 240:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 241:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   Reads the status register and returns it's state. This function should use
+ 242:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *       defined types for the bit-field information as the bits in this
+ 243:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *       register may be permuteable.
+ 244:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 245:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 246:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 247:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 248:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 249:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) The contents of the status register
+ 250:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 251:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Side Effects:
+ 252:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   Status register bits may be clear on read. 
+ 253:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 254:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 255:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8   Counter_Frist_Row_ReadStatusRegister(void) 
+ 256:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 279              		.loc 1 256 0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 1, uses_anonymous_args = 0
+ 283              		@ link register save eliminated.
+ 284 0000 80B4     		push	{r7}
+ 285              	.LCFI12:
+ 286              		.cfi_def_cfa_offset 4
+ 287 0002 00AF     		add	r7, sp, #0
+ 288              		.cfi_offset 7, -4
+ 289              	.LCFI13:
+ 290              		.cfi_def_cfa_register 7
+ 257:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     return Counter_Frist_Row_STATUS;
+ 291              		.loc 1 257 0
+ 292 0004 46F26A43 		movw	r3, #:lower16:1073767530
+ 293 0008 C4F20003 		movt	r3, #:upper16:1073767530
+ 294 000c 1B78     		ldrb	r3, [r3, #0]
+ 295 000e DBB2     		uxtb	r3, r3
+ 258:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 296              		.loc 1 258 0
+ 297 0010 1846     		mov	r0, r3
+ 298 0012 BD46     		mov	sp, r7
+ 299 0014 80BC     		pop	{r7}
+ 300 0016 7047     		bx	lr
+ 301              		.cfi_endproc
+ 302              	.LFE5:
+ 303              		.size	Counter_Frist_Row_ReadStatusRegister, .-Counter_Frist_Row_ReadStatusRegister
+ 304              		.section	.text.Counter_Frist_Row_ReadControlRegister,"ax",%progbits
+ 305              		.align	2
+ 306              		.global	Counter_Frist_Row_ReadControlRegister
+ 307              		.thumb
+ 308              		.thumb_func
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 11
+
+
+ 309              		.type	Counter_Frist_Row_ReadControlRegister, %function
+ 310              	Counter_Frist_Row_ReadControlRegister:
+ 311              	.LFB6:
+ 259:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 260:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 261:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #if(!Counter_Frist_Row_ControlRegRemoved)
+ 262:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 263:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ReadControlRegister
+ 264:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 265:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 266:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   Reads the control register and returns it's state. This function should use
+ 267:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *       defined types for the bit-field information as the bits in this
+ 268:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *       register may be permuteable.
+ 269:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 270:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 271:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 272:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 273:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 274:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) The contents of the control register
+ 275:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 276:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 277:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8   Counter_Frist_Row_ReadControlRegister(void) 
+ 278:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 312              		.loc 1 278 0
+ 313              		.cfi_startproc
+ 314              		@ args = 0, pretend = 0, frame = 0
+ 315              		@ frame_needed = 1, uses_anonymous_args = 0
+ 316              		@ link register save eliminated.
+ 317 0000 80B4     		push	{r7}
+ 318              	.LCFI14:
+ 319              		.cfi_def_cfa_offset 4
+ 320 0002 00AF     		add	r7, sp, #0
+ 321              		.cfi_offset 7, -4
+ 322              	.LCFI15:
+ 323              		.cfi_def_cfa_register 7
+ 279:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     return Counter_Frist_Row_CONTROL;
+ 324              		.loc 1 279 0
+ 325 0004 46F27B43 		movw	r3, #:lower16:1073767547
+ 326 0008 C4F20003 		movt	r3, #:upper16:1073767547
+ 327 000c 1B78     		ldrb	r3, [r3, #0]
+ 328 000e DBB2     		uxtb	r3, r3
+ 280:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 329              		.loc 1 280 0
+ 330 0010 1846     		mov	r0, r3
+ 331 0012 BD46     		mov	sp, r7
+ 332 0014 80BC     		pop	{r7}
+ 333 0016 7047     		bx	lr
+ 334              		.cfi_endproc
+ 335              	.LFE6:
+ 336              		.size	Counter_Frist_Row_ReadControlRegister, .-Counter_Frist_Row_ReadControlRegister
+ 337              		.section	.text.Counter_Frist_Row_WriteControlRegister,"ax",%progbits
+ 338              		.align	2
+ 339              		.global	Counter_Frist_Row_WriteControlRegister
+ 340              		.thumb
+ 341              		.thumb_func
+ 342              		.type	Counter_Frist_Row_WriteControlRegister, %function
+ 343              	Counter_Frist_Row_WriteControlRegister:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 12
+
+
+ 344              	.LFB7:
+ 281:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 282:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 283:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 284:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_WriteControlRegister
+ 285:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 286:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 287:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   Sets the bit-field of the control register.  This function should use
+ 288:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *       defined types for the bit-field information as the bits in this
+ 289:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *       register may be permuteable.
+ 290:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 291:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 292:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 293:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 294:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 295:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) The contents of the control register
+ 296:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 297:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 298:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void    Counter_Frist_Row_WriteControlRegister(uint8 control) 
+ 299:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 345              		.loc 1 299 0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 8
+ 348              		@ frame_needed = 1, uses_anonymous_args = 0
+ 349              		@ link register save eliminated.
+ 350 0000 80B4     		push	{r7}
+ 351              	.LCFI16:
+ 352              		.cfi_def_cfa_offset 4
+ 353 0002 83B0     		sub	sp, sp, #12
+ 354              	.LCFI17:
+ 355              		.cfi_def_cfa_offset 16
+ 356 0004 00AF     		add	r7, sp, #0
+ 357              		.cfi_offset 7, -4
+ 358              	.LCFI18:
+ 359              		.cfi_def_cfa_register 7
+ 360 0006 0346     		mov	r3, r0
+ 361 0008 FB71     		strb	r3, [r7, #7]
+ 300:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_CONTROL = control;
+ 362              		.loc 1 300 0
+ 363 000a 46F27B43 		movw	r3, #:lower16:1073767547
+ 364 000e C4F20003 		movt	r3, #:upper16:1073767547
+ 365 0012 FA79     		ldrb	r2, [r7, #7]
+ 366 0014 1A70     		strb	r2, [r3, #0]
+ 301:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 367              		.loc 1 301 0
+ 368 0016 07F10C07 		add	r7, r7, #12
+ 369 001a BD46     		mov	sp, r7
+ 370 001c 80BC     		pop	{r7}
+ 371 001e 7047     		bx	lr
+ 372              		.cfi_endproc
+ 373              	.LFE7:
+ 374              		.size	Counter_Frist_Row_WriteControlRegister, .-Counter_Frist_Row_WriteControlRegister
+ 375              		.section	.text.Counter_Frist_Row_WriteCounter,"ax",%progbits
+ 376              		.align	2
+ 377              		.global	Counter_Frist_Row_WriteCounter
+ 378              		.thumb
+ 379              		.thumb_func
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 13
+
+
+ 380              		.type	Counter_Frist_Row_WriteCounter, %function
+ 381              	Counter_Frist_Row_WriteCounter:
+ 382              	.LFB8:
+ 302:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 303:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #endif  /* (!Counter_Frist_Row_ControlRegRemoved) */
+ 304:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 305:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 306:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #if (!(Counter_Frist_Row_UsingFixedFunction && (CY_PSOC5A)))
+ 307:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 308:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_WriteCounter
+ 309:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 310:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 311:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   This funtion is used to set the counter to a specific value
+ 312:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 313:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 314:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  counter:  New counter value. 
+ 315:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 316:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 317:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void 
+ 318:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 319:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 320:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_WriteCounter(uint8 counter) \
+ 321:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                                    
+ 322:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 383              		.loc 1 322 0
+ 384              		.cfi_startproc
+ 385              		@ args = 0, pretend = 0, frame = 8
+ 386              		@ frame_needed = 1, uses_anonymous_args = 0
+ 387              		@ link register save eliminated.
+ 388 0000 80B4     		push	{r7}
+ 389              	.LCFI19:
+ 390              		.cfi_def_cfa_offset 4
+ 391 0002 83B0     		sub	sp, sp, #12
+ 392              	.LCFI20:
+ 393              		.cfi_def_cfa_offset 16
+ 394 0004 00AF     		add	r7, sp, #0
+ 395              		.cfi_offset 7, -4
+ 396              	.LCFI21:
+ 397              		.cfi_def_cfa_register 7
+ 398 0006 0346     		mov	r3, r0
+ 399 0008 FB71     		strb	r3, [r7, #7]
+ 323:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if(Counter_Frist_Row_UsingFixedFunction)
+ 324:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         /* assert if block is already enabled */
+ 325:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CYASSERT (!(Counter_Frist_Row_GLOBAL_ENABLE & Counter_Frist_Row_BLOCK_EN_MASK));
+ 326:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         /* If block is disabled, enable it and then write the counter */
+ 327:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_GLOBAL_ENABLE |= Counter_Frist_Row_BLOCK_EN_MASK;
+ 328:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CY_SET_REG16(Counter_Frist_Row_COUNTER_LSB_PTR, (uint16)counter);
+ 329:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_GLOBAL_ENABLE &= ~Counter_Frist_Row_BLOCK_EN_MASK;
+ 330:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #else
+ 331:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CY_SET_REG8(Counter_Frist_Row_COUNTER_LSB_PTR, counter);
+ 400              		.loc 1 331 0
+ 401 000a 46F20A43 		movw	r3, #:lower16:1073767434
+ 402 000e C4F20003 		movt	r3, #:upper16:1073767434
+ 403 0012 FA79     		ldrb	r2, [r7, #7]
+ 404 0014 1A70     		strb	r2, [r3, #0]
+ 332:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (Counter_Frist_Row_UsingFixedFunction) */
+ 333:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 14
+
+
+ 405              		.loc 1 333 0
+ 406 0016 07F10C07 		add	r7, r7, #12
+ 407 001a BD46     		mov	sp, r7
+ 408 001c 80BC     		pop	{r7}
+ 409 001e 7047     		bx	lr
+ 410              		.cfi_endproc
+ 411              	.LFE8:
+ 412              		.size	Counter_Frist_Row_WriteCounter, .-Counter_Frist_Row_WriteCounter
+ 413              		.section	.text.Counter_Frist_Row_ReadCounter,"ax",%progbits
+ 414              		.align	2
+ 415              		.global	Counter_Frist_Row_ReadCounter
+ 416              		.thumb
+ 417              		.thumb_func
+ 418              		.type	Counter_Frist_Row_ReadCounter, %function
+ 419              	Counter_Frist_Row_ReadCounter:
+ 420              	.LFB9:
+ 334:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #endif /* (!(Counter_Frist_Row_UsingFixedFunction && (CY_PSOC5A))) */
+ 335:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 336:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 337:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 338:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ReadCounter
+ 339:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 340:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 341:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Returns the current value of the counter.  It doesn't matter
+ 342:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * if the counter is enabled or running.
+ 343:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 344:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 345:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void:  
+ 346:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 347:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 348:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) The present value of the counter.
+ 349:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 350:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 351:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8 Counter_Frist_Row_ReadCounter(void) 
+ 352:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 421              		.loc 1 352 0
+ 422              		.cfi_startproc
+ 423              		@ args = 0, pretend = 0, frame = 0
+ 424              		@ frame_needed = 1, uses_anonymous_args = 0
+ 425              		@ link register save eliminated.
+ 426 0000 80B4     		push	{r7}
+ 427              	.LCFI22:
+ 428              		.cfi_def_cfa_offset 4
+ 429 0002 00AF     		add	r7, sp, #0
+ 430              		.cfi_offset 7, -4
+ 431              	.LCFI23:
+ 432              		.cfi_def_cfa_register 7
+ 353:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Force capture by reading Accumulator */
+ 354:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Must first do a software capture to be able to read the counter */
+ 355:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 356:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     CY_GET_REG8(Counter_Frist_Row_COUNTER_LSB_PTR);
+ 433              		.loc 1 356 0
+ 434 0004 46F20A43 		movw	r3, #:lower16:1073767434
+ 435 0008 C4F20003 		movt	r3, #:upper16:1073767434
+ 436 000c 1B78     		ldrb	r3, [r3, #0]
+ 357:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     
+ 358:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 15
+
+
+ 359:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     return (CY_GET_REG8(Counter_Frist_Row_STATICCOUNT_LSB_PTR));
+ 437              		.loc 1 359 0
+ 438 000e 46F24A43 		movw	r3, #:lower16:1073767498
+ 439 0012 C4F20003 		movt	r3, #:upper16:1073767498
+ 440 0016 1B78     		ldrb	r3, [r3, #0]
+ 441 0018 DBB2     		uxtb	r3, r3
+ 360:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 442              		.loc 1 360 0
+ 443 001a 1846     		mov	r0, r3
+ 444 001c BD46     		mov	sp, r7
+ 445 001e 80BC     		pop	{r7}
+ 446 0020 7047     		bx	lr
+ 447              		.cfi_endproc
+ 448              	.LFE9:
+ 449              		.size	Counter_Frist_Row_ReadCounter, .-Counter_Frist_Row_ReadCounter
+ 450 0022 00BF     		.section	.text.Counter_Frist_Row_ReadCapture,"ax",%progbits
+ 451              		.align	2
+ 452              		.global	Counter_Frist_Row_ReadCapture
+ 453              		.thumb
+ 454              		.thumb_func
+ 455              		.type	Counter_Frist_Row_ReadCapture, %function
+ 456              	Counter_Frist_Row_ReadCapture:
+ 457              	.LFB10:
+ 361:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 362:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 363:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 364:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ReadCapture
+ 365:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 366:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 367:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   This function returns the last value captured.
+ 368:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 369:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 370:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 371:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 372:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 373:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) Present Capture value.
+ 374:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 375:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 376:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8 Counter_Frist_Row_ReadCapture(void) 
+ 377:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 458              		.loc 1 377 0
+ 459              		.cfi_startproc
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 1, uses_anonymous_args = 0
+ 462              		@ link register save eliminated.
+ 463 0000 80B4     		push	{r7}
+ 464              	.LCFI24:
+ 465              		.cfi_def_cfa_offset 4
+ 466 0002 00AF     		add	r7, sp, #0
+ 467              		.cfi_offset 7, -4
+ 468              	.LCFI25:
+ 469              		.cfi_def_cfa_register 7
+ 378:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****    return ( CY_GET_REG8(Counter_Frist_Row_STATICCOUNT_LSB_PTR) );  
+ 470              		.loc 1 378 0
+ 471 0004 46F24A43 		movw	r3, #:lower16:1073767498
+ 472 0008 C4F20003 		movt	r3, #:upper16:1073767498
+ 473 000c 1B78     		ldrb	r3, [r3, #0]
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 16
+
+
+ 474 000e DBB2     		uxtb	r3, r3
+ 379:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 475              		.loc 1 379 0
+ 476 0010 1846     		mov	r0, r3
+ 477 0012 BD46     		mov	sp, r7
+ 478 0014 80BC     		pop	{r7}
+ 479 0016 7047     		bx	lr
+ 480              		.cfi_endproc
+ 481              	.LFE10:
+ 482              		.size	Counter_Frist_Row_ReadCapture, .-Counter_Frist_Row_ReadCapture
+ 483              		.section	.text.Counter_Frist_Row_WritePeriod,"ax",%progbits
+ 484              		.align	2
+ 485              		.global	Counter_Frist_Row_WritePeriod
+ 486              		.thumb
+ 487              		.thumb_func
+ 488              		.type	Counter_Frist_Row_WritePeriod, %function
+ 489              	Counter_Frist_Row_WritePeriod:
+ 490              	.LFB11:
+ 380:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 381:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 382:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 383:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_WritePeriod
+ 384:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 385:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 386:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Changes the period of the counter.  The new period 
+ 387:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * will be loaded the next time terminal count is detected.
+ 388:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 389:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 390:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  period: (uint8) A value of 0 will result in
+ 391:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *         the counter remaining at zero.  
+ 392:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 393:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 394:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 395:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 396:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 397:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_WritePeriod(uint8 period) 
+ 398:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 491              		.loc 1 398 0
+ 492              		.cfi_startproc
+ 493              		@ args = 0, pretend = 0, frame = 8
+ 494              		@ frame_needed = 1, uses_anonymous_args = 0
+ 495              		@ link register save eliminated.
+ 496 0000 80B4     		push	{r7}
+ 497              	.LCFI26:
+ 498              		.cfi_def_cfa_offset 4
+ 499 0002 83B0     		sub	sp, sp, #12
+ 500              	.LCFI27:
+ 501              		.cfi_def_cfa_offset 16
+ 502 0004 00AF     		add	r7, sp, #0
+ 503              		.cfi_offset 7, -4
+ 504              	.LCFI28:
+ 505              		.cfi_def_cfa_register 7
+ 506 0006 0346     		mov	r3, r0
+ 507 0008 FB71     		strb	r3, [r7, #7]
+ 399:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if(Counter_Frist_Row_UsingFixedFunction)
+ 400:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CY_SET_REG16(Counter_Frist_Row_PERIOD_LSB_PTR,(uint16)period);
+ 401:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #else
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 17
+
+
+ 402:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CY_SET_REG8(Counter_Frist_Row_PERIOD_LSB_PTR,period);
+ 508              		.loc 1 402 0
+ 509 000a 46F22A43 		movw	r3, #:lower16:1073767466
+ 510 000e C4F20003 		movt	r3, #:upper16:1073767466
+ 511 0012 FA79     		ldrb	r2, [r7, #7]
+ 512 0014 1A70     		strb	r2, [r3, #0]
+ 403:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (Counter_Frist_Row_UsingFixedFunction) */
+ 404:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 513              		.loc 1 404 0
+ 514 0016 07F10C07 		add	r7, r7, #12
+ 515 001a BD46     		mov	sp, r7
+ 516 001c 80BC     		pop	{r7}
+ 517 001e 7047     		bx	lr
+ 518              		.cfi_endproc
+ 519              	.LFE11:
+ 520              		.size	Counter_Frist_Row_WritePeriod, .-Counter_Frist_Row_WritePeriod
+ 521              		.section	.text.Counter_Frist_Row_ReadPeriod,"ax",%progbits
+ 522              		.align	2
+ 523              		.global	Counter_Frist_Row_ReadPeriod
+ 524              		.thumb
+ 525              		.thumb_func
+ 526              		.type	Counter_Frist_Row_ReadPeriod, %function
+ 527              	Counter_Frist_Row_ReadPeriod:
+ 528              	.LFB12:
+ 405:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 406:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 407:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 408:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ReadPeriod
+ 409:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 410:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 411:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Reads the current period value without affecting counter operation.
+ 412:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 413:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 414:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void:  
+ 415:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 416:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 417:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) Present period value.
+ 418:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 419:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 420:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8 Counter_Frist_Row_ReadPeriod(void) 
+ 421:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 529              		.loc 1 421 0
+ 530              		.cfi_startproc
+ 531              		@ args = 0, pretend = 0, frame = 0
+ 532              		@ frame_needed = 1, uses_anonymous_args = 0
+ 533              		@ link register save eliminated.
+ 534 0000 80B4     		push	{r7}
+ 535              	.LCFI29:
+ 536              		.cfi_def_cfa_offset 4
+ 537 0002 00AF     		add	r7, sp, #0
+ 538              		.cfi_offset 7, -4
+ 539              	.LCFI30:
+ 540              		.cfi_def_cfa_register 7
+ 422:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****    return ( CY_GET_REG8(Counter_Frist_Row_PERIOD_LSB_PTR));
+ 541              		.loc 1 422 0
+ 542 0004 46F22A43 		movw	r3, #:lower16:1073767466
+ 543 0008 C4F20003 		movt	r3, #:upper16:1073767466
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 18
+
+
+ 544 000c 1B78     		ldrb	r3, [r3, #0]
+ 545 000e DBB2     		uxtb	r3, r3
+ 423:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 546              		.loc 1 423 0
+ 547 0010 1846     		mov	r0, r3
+ 548 0012 BD46     		mov	sp, r7
+ 549 0014 80BC     		pop	{r7}
+ 550 0016 7047     		bx	lr
+ 551              		.cfi_endproc
+ 552              	.LFE12:
+ 553              		.size	Counter_Frist_Row_ReadPeriod, .-Counter_Frist_Row_ReadPeriod
+ 554              		.section	.text.Counter_Frist_Row_WriteCompare,"ax",%progbits
+ 555              		.align	2
+ 556              		.global	Counter_Frist_Row_WriteCompare
+ 557              		.thumb
+ 558              		.thumb_func
+ 559              		.type	Counter_Frist_Row_WriteCompare, %function
+ 560              	Counter_Frist_Row_WriteCompare:
+ 561              	.LFB13:
+ 424:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 425:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 426:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #if (!Counter_Frist_Row_UsingFixedFunction)
+ 427:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 428:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_WriteCompare
+ 429:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 430:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 431:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Changes the compare value.  The compare output will 
+ 432:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * reflect the new value on the next UDB clock.  The compare output will be 
+ 433:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * driven high when the present counter value compares true based on the 
+ 434:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * configured compare mode setting. 
+ 435:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 436:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 437:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  Compare:  New compare value. 
+ 438:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 439:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 440:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 441:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 442:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 443:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_WriteCompare(uint8 compare) \
+ 444:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****                                    
+ 445:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 562              		.loc 1 445 0
+ 563              		.cfi_startproc
+ 564              		@ args = 0, pretend = 0, frame = 8
+ 565              		@ frame_needed = 1, uses_anonymous_args = 0
+ 566              		@ link register save eliminated.
+ 567 0000 80B4     		push	{r7}
+ 568              	.LCFI31:
+ 569              		.cfi_def_cfa_offset 4
+ 570 0002 83B0     		sub	sp, sp, #12
+ 571              	.LCFI32:
+ 572              		.cfi_def_cfa_offset 16
+ 573 0004 00AF     		add	r7, sp, #0
+ 574              		.cfi_offset 7, -4
+ 575              	.LCFI33:
+ 576              		.cfi_def_cfa_register 7
+ 577 0006 0346     		mov	r3, r0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 19
+
+
+ 578 0008 FB71     		strb	r3, [r7, #7]
+ 446:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #if(Counter_Frist_Row_UsingFixedFunction)
+ 447:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CY_SET_REG16(Counter_Frist_Row_COMPARE_LSB_PTR,(uint16)compare);
+ 448:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #else
+ 449:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         CY_SET_REG8(Counter_Frist_Row_COMPARE_LSB_PTR,compare);
+ 579              		.loc 1 449 0
+ 580 000a 46F23A43 		movw	r3, #:lower16:1073767482
+ 581 000e C4F20003 		movt	r3, #:upper16:1073767482
+ 582 0012 FA79     		ldrb	r2, [r7, #7]
+ 583 0014 1A70     		strb	r2, [r3, #0]
+ 450:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     #endif /* (Counter_Frist_Row_UsingFixedFunction) */
+ 451:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 584              		.loc 1 451 0
+ 585 0016 07F10C07 		add	r7, r7, #12
+ 586 001a BD46     		mov	sp, r7
+ 587 001c 80BC     		pop	{r7}
+ 588 001e 7047     		bx	lr
+ 589              		.cfi_endproc
+ 590              	.LFE13:
+ 591              		.size	Counter_Frist_Row_WriteCompare, .-Counter_Frist_Row_WriteCompare
+ 592              		.section	.text.Counter_Frist_Row_ReadCompare,"ax",%progbits
+ 593              		.align	2
+ 594              		.global	Counter_Frist_Row_ReadCompare
+ 595              		.thumb
+ 596              		.thumb_func
+ 597              		.type	Counter_Frist_Row_ReadCompare, %function
+ 598              	Counter_Frist_Row_ReadCompare:
+ 599              	.LFB14:
+ 452:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 453:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 454:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 455:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ReadCompare
+ 456:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 457:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 458:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Returns the compare value.
+ 459:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 460:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 461:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void:
+ 462:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 463:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 464:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  (uint8) Present compare value.
+ 465:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 466:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 467:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** uint8 Counter_Frist_Row_ReadCompare(void) 
+ 468:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 600              		.loc 1 468 0
+ 601              		.cfi_startproc
+ 602              		@ args = 0, pretend = 0, frame = 0
+ 603              		@ frame_needed = 1, uses_anonymous_args = 0
+ 604              		@ link register save eliminated.
+ 605 0000 80B4     		push	{r7}
+ 606              	.LCFI34:
+ 607              		.cfi_def_cfa_offset 4
+ 608 0002 00AF     		add	r7, sp, #0
+ 609              		.cfi_offset 7, -4
+ 610              	.LCFI35:
+ 611              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 20
+
+
+ 469:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****    return ( CY_GET_REG8(Counter_Frist_Row_COMPARE_LSB_PTR));
+ 612              		.loc 1 469 0
+ 613 0004 46F23A43 		movw	r3, #:lower16:1073767482
+ 614 0008 C4F20003 		movt	r3, #:upper16:1073767482
+ 615 000c 1B78     		ldrb	r3, [r3, #0]
+ 616 000e DBB2     		uxtb	r3, r3
+ 470:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 617              		.loc 1 470 0
+ 618 0010 1846     		mov	r0, r3
+ 619 0012 BD46     		mov	sp, r7
+ 620 0014 80BC     		pop	{r7}
+ 621 0016 7047     		bx	lr
+ 622              		.cfi_endproc
+ 623              	.LFE14:
+ 624              		.size	Counter_Frist_Row_ReadCompare, .-Counter_Frist_Row_ReadCompare
+ 625              		.section	.text.Counter_Frist_Row_ClearFIFO,"ax",%progbits
+ 626              		.align	2
+ 627              		.global	Counter_Frist_Row_ClearFIFO
+ 628              		.thumb
+ 629              		.thumb_func
+ 630              		.type	Counter_Frist_Row_ClearFIFO, %function
+ 631              	Counter_Frist_Row_ClearFIFO:
+ 632              	.LFB15:
+ 471:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 472:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 473:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #if (Counter_Frist_Row_COMPARE_MODE_SOFTWARE)
+ 474:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 475:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_SetCompareMode
+ 476:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 477:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 478:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  Sets the software controlled Compare Mode.
+ 479:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 480:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:
+ 481:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  compareMode:  Compare Mode Enumerated Type.
+ 482:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 483:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return:
+ 484:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 485:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 486:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 487:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_SetCompareMode(uint8 compareMode) 
+ 488:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 489:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Clear the compare mode bits in the control register */
+ 490:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_CONTROL &= ~Counter_Frist_Row_CTRL_CMPMODE_MASK;
+ 491:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     
+ 492:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Write the new setting */
+ 493:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_CONTROL |= (compareMode << Counter_Frist_Row_CTRL_CMPMODE0_SHIFT);
+ 494:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 495:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #endif  /* (Counter_Frist_Row_COMPARE_MODE_SOFTWARE) */
+ 496:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 497:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 498:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #if (Counter_Frist_Row_CAPTURE_MODE_SOFTWARE)
+ 499:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 500:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_SetCaptureMode
+ 501:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 502:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 503:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  Sets the software controlled Capture Mode.
+ 504:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 21
+
+
+ 505:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:
+ 506:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  captureMode:  Capture Mode Enumerated Type.
+ 507:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 508:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return:
+ 509:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void
+ 510:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 511:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 512:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_SetCaptureMode(uint8 captureMode) 
+ 513:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 514:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Clear the capture mode bits in the control register */
+ 515:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_CONTROL &= ~Counter_Frist_Row_CTRL_CAPMODE_MASK;
+ 516:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     
+ 517:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     /* Write the new setting */
+ 518:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     Counter_Frist_Row_CONTROL |= (captureMode << Counter_Frist_Row_CTRL_CAPMODE0_SHIFT);
+ 519:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 520:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** #endif  /* (Counter_Frist_Row_CAPTURE_MODE_SOFTWARE) */
+ 521:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 522:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 523:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** /*******************************************************************************
+ 524:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Function Name: Counter_Frist_Row_ClearFIFO
+ 525:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** ********************************************************************************
+ 526:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Summary:
+ 527:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *   This function clears all capture data from the capture FIFO
+ 528:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 529:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Parameters:  
+ 530:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  void:
+ 531:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 532:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** * Return: 
+ 533:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *  None
+ 534:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *
+ 535:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** *******************************************************************************/
+ 536:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** void Counter_Frist_Row_ClearFIFO(void) 
+ 537:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** {
+ 633              		.loc 1 537 0
+ 634              		.cfi_startproc
+ 635              		@ args = 0, pretend = 0, frame = 0
+ 636              		@ frame_needed = 1, uses_anonymous_args = 0
+ 637 0000 80B5     		push	{r7, lr}
+ 638              	.LCFI36:
+ 639              		.cfi_def_cfa_offset 8
+ 640 0002 00AF     		add	r7, sp, #0
+ 641              		.cfi_offset 14, -4
+ 642              		.cfi_offset 7, -8
+ 643              	.LCFI37:
+ 644              		.cfi_def_cfa_register 7
+ 538:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 539:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     while(Counter_Frist_Row_ReadStatusRegister() & Counter_Frist_Row_STATUS_FIFONEMP)
+ 645              		.loc 1 539 0
+ 646 0004 01E0     		b	.L33
+ 647              	.L34:
+ 540:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     {
+ 541:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****         Counter_Frist_Row_ReadCapture();
+ 648              		.loc 1 541 0
+ 649 0006 FFF7FEFF 		bl	Counter_Frist_Row_ReadCapture
+ 650              	.L33:
+ 651              		.loc 1 539 0
+ 652 000a FFF7FEFF 		bl	Counter_Frist_Row_ReadStatusRegister
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 22
+
+
+ 653 000e 0346     		mov	r3, r0
+ 654 0010 03F04003 		and	r3, r3, #64
+ 655 0014 002B     		cmp	r3, #0
+ 656 0016 F6D1     		bne	.L34
+ 542:.\Generated_Source\PSoC5/Counter_Frist_Row.c ****     }
+ 543:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** 
+ 544:.\Generated_Source\PSoC5/Counter_Frist_Row.c **** }
+ 657              		.loc 1 544 0
+ 658 0018 80BD     		pop	{r7, pc}
+ 659              		.cfi_endproc
+ 660              	.LFE15:
+ 661              		.size	Counter_Frist_Row_ClearFIFO, .-Counter_Frist_Row_ClearFIFO
+ 662 001a 00BF     		.text
+ 663              	.Letext0:
+ 664              		.section	.debug_loc,"",%progbits
+ 665              	.Ldebug_loc0:
+ 666              	.LLST0:
+ 667 0000 00000000 		.4byte	.LFB0
+ 668 0004 02000000 		.4byte	.LCFI0
+ 669 0008 0100     		.2byte	0x1
+ 670 000a 5D       		.byte	0x5d
+ 671 000b 02000000 		.4byte	.LCFI0
+ 672 000f 04000000 		.4byte	.LCFI1
+ 673 0013 0200     		.2byte	0x2
+ 674 0015 7D       		.byte	0x7d
+ 675 0016 08       		.sleb128 8
+ 676 0017 04000000 		.4byte	.LCFI1
+ 677 001b 06000000 		.4byte	.LCFI2
+ 678 001f 0200     		.2byte	0x2
+ 679 0021 7D       		.byte	0x7d
+ 680 0022 10       		.sleb128 16
+ 681 0023 06000000 		.4byte	.LCFI2
+ 682 0027 9E000000 		.4byte	.LFE0
+ 683 002b 0200     		.2byte	0x2
+ 684 002d 77       		.byte	0x77
+ 685 002e 10       		.sleb128 16
+ 686 002f 00000000 		.4byte	0x0
+ 687 0033 00000000 		.4byte	0x0
+ 688              	.LLST1:
+ 689 0037 00000000 		.4byte	.LFB1
+ 690 003b 02000000 		.4byte	.LCFI3
+ 691 003f 0100     		.2byte	0x1
+ 692 0041 5D       		.byte	0x5d
+ 693 0042 02000000 		.4byte	.LCFI3
+ 694 0046 04000000 		.4byte	.LCFI4
+ 695 004a 0200     		.2byte	0x2
+ 696 004c 7D       		.byte	0x7d
+ 697 004d 04       		.sleb128 4
+ 698 004e 04000000 		.4byte	.LCFI4
+ 699 0052 2A000000 		.4byte	.LFE1
+ 700 0056 0200     		.2byte	0x2
+ 701 0058 77       		.byte	0x77
+ 702 0059 04       		.sleb128 4
+ 703 005a 00000000 		.4byte	0x0
+ 704 005e 00000000 		.4byte	0x0
+ 705              	.LLST2:
+ 706 0062 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 23
+
+
+ 707 0066 02000000 		.4byte	.LCFI5
+ 708 006a 0100     		.2byte	0x1
+ 709 006c 5D       		.byte	0x5d
+ 710 006d 02000000 		.4byte	.LCFI5
+ 711 0071 04000000 		.4byte	.LCFI6
+ 712 0075 0200     		.2byte	0x2
+ 713 0077 7D       		.byte	0x7d
+ 714 0078 08       		.sleb128 8
+ 715 0079 04000000 		.4byte	.LCFI6
+ 716 007d 2A000000 		.4byte	.LFE2
+ 717 0081 0200     		.2byte	0x2
+ 718 0083 77       		.byte	0x77
+ 719 0084 08       		.sleb128 8
+ 720 0085 00000000 		.4byte	0x0
+ 721 0089 00000000 		.4byte	0x0
+ 722              	.LLST3:
+ 723 008d 00000000 		.4byte	.LFB3
+ 724 0091 02000000 		.4byte	.LCFI7
+ 725 0095 0100     		.2byte	0x1
+ 726 0097 5D       		.byte	0x5d
+ 727 0098 02000000 		.4byte	.LCFI7
+ 728 009c 04000000 		.4byte	.LCFI8
+ 729 00a0 0200     		.2byte	0x2
+ 730 00a2 7D       		.byte	0x7d
+ 731 00a3 04       		.sleb128 4
+ 732 00a4 04000000 		.4byte	.LCFI8
+ 733 00a8 24000000 		.4byte	.LFE3
+ 734 00ac 0200     		.2byte	0x2
+ 735 00ae 77       		.byte	0x77
+ 736 00af 04       		.sleb128 4
+ 737 00b0 00000000 		.4byte	0x0
+ 738 00b4 00000000 		.4byte	0x0
+ 739              	.LLST4:
+ 740 00b8 00000000 		.4byte	.LFB4
+ 741 00bc 02000000 		.4byte	.LCFI9
+ 742 00c0 0100     		.2byte	0x1
+ 743 00c2 5D       		.byte	0x5d
+ 744 00c3 02000000 		.4byte	.LCFI9
+ 745 00c7 04000000 		.4byte	.LCFI10
+ 746 00cb 0200     		.2byte	0x2
+ 747 00cd 7D       		.byte	0x7d
+ 748 00ce 04       		.sleb128 4
+ 749 00cf 04000000 		.4byte	.LCFI10
+ 750 00d3 06000000 		.4byte	.LCFI11
+ 751 00d7 0200     		.2byte	0x2
+ 752 00d9 7D       		.byte	0x7d
+ 753 00da 10       		.sleb128 16
+ 754 00db 06000000 		.4byte	.LCFI11
+ 755 00df 20000000 		.4byte	.LFE4
+ 756 00e3 0200     		.2byte	0x2
+ 757 00e5 77       		.byte	0x77
+ 758 00e6 10       		.sleb128 16
+ 759 00e7 00000000 		.4byte	0x0
+ 760 00eb 00000000 		.4byte	0x0
+ 761              	.LLST5:
+ 762 00ef 00000000 		.4byte	.LFB5
+ 763 00f3 02000000 		.4byte	.LCFI12
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 24
+
+
+ 764 00f7 0100     		.2byte	0x1
+ 765 00f9 5D       		.byte	0x5d
+ 766 00fa 02000000 		.4byte	.LCFI12
+ 767 00fe 04000000 		.4byte	.LCFI13
+ 768 0102 0200     		.2byte	0x2
+ 769 0104 7D       		.byte	0x7d
+ 770 0105 04       		.sleb128 4
+ 771 0106 04000000 		.4byte	.LCFI13
+ 772 010a 18000000 		.4byte	.LFE5
+ 773 010e 0200     		.2byte	0x2
+ 774 0110 77       		.byte	0x77
+ 775 0111 04       		.sleb128 4
+ 776 0112 00000000 		.4byte	0x0
+ 777 0116 00000000 		.4byte	0x0
+ 778              	.LLST6:
+ 779 011a 00000000 		.4byte	.LFB6
+ 780 011e 02000000 		.4byte	.LCFI14
+ 781 0122 0100     		.2byte	0x1
+ 782 0124 5D       		.byte	0x5d
+ 783 0125 02000000 		.4byte	.LCFI14
+ 784 0129 04000000 		.4byte	.LCFI15
+ 785 012d 0200     		.2byte	0x2
+ 786 012f 7D       		.byte	0x7d
+ 787 0130 04       		.sleb128 4
+ 788 0131 04000000 		.4byte	.LCFI15
+ 789 0135 18000000 		.4byte	.LFE6
+ 790 0139 0200     		.2byte	0x2
+ 791 013b 77       		.byte	0x77
+ 792 013c 04       		.sleb128 4
+ 793 013d 00000000 		.4byte	0x0
+ 794 0141 00000000 		.4byte	0x0
+ 795              	.LLST7:
+ 796 0145 00000000 		.4byte	.LFB7
+ 797 0149 02000000 		.4byte	.LCFI16
+ 798 014d 0100     		.2byte	0x1
+ 799 014f 5D       		.byte	0x5d
+ 800 0150 02000000 		.4byte	.LCFI16
+ 801 0154 04000000 		.4byte	.LCFI17
+ 802 0158 0200     		.2byte	0x2
+ 803 015a 7D       		.byte	0x7d
+ 804 015b 04       		.sleb128 4
+ 805 015c 04000000 		.4byte	.LCFI17
+ 806 0160 06000000 		.4byte	.LCFI18
+ 807 0164 0200     		.2byte	0x2
+ 808 0166 7D       		.byte	0x7d
+ 809 0167 10       		.sleb128 16
+ 810 0168 06000000 		.4byte	.LCFI18
+ 811 016c 20000000 		.4byte	.LFE7
+ 812 0170 0200     		.2byte	0x2
+ 813 0172 77       		.byte	0x77
+ 814 0173 10       		.sleb128 16
+ 815 0174 00000000 		.4byte	0x0
+ 816 0178 00000000 		.4byte	0x0
+ 817              	.LLST8:
+ 818 017c 00000000 		.4byte	.LFB8
+ 819 0180 02000000 		.4byte	.LCFI19
+ 820 0184 0100     		.2byte	0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 25
+
+
+ 821 0186 5D       		.byte	0x5d
+ 822 0187 02000000 		.4byte	.LCFI19
+ 823 018b 04000000 		.4byte	.LCFI20
+ 824 018f 0200     		.2byte	0x2
+ 825 0191 7D       		.byte	0x7d
+ 826 0192 04       		.sleb128 4
+ 827 0193 04000000 		.4byte	.LCFI20
+ 828 0197 06000000 		.4byte	.LCFI21
+ 829 019b 0200     		.2byte	0x2
+ 830 019d 7D       		.byte	0x7d
+ 831 019e 10       		.sleb128 16
+ 832 019f 06000000 		.4byte	.LCFI21
+ 833 01a3 20000000 		.4byte	.LFE8
+ 834 01a7 0200     		.2byte	0x2
+ 835 01a9 77       		.byte	0x77
+ 836 01aa 10       		.sleb128 16
+ 837 01ab 00000000 		.4byte	0x0
+ 838 01af 00000000 		.4byte	0x0
+ 839              	.LLST9:
+ 840 01b3 00000000 		.4byte	.LFB9
+ 841 01b7 02000000 		.4byte	.LCFI22
+ 842 01bb 0100     		.2byte	0x1
+ 843 01bd 5D       		.byte	0x5d
+ 844 01be 02000000 		.4byte	.LCFI22
+ 845 01c2 04000000 		.4byte	.LCFI23
+ 846 01c6 0200     		.2byte	0x2
+ 847 01c8 7D       		.byte	0x7d
+ 848 01c9 04       		.sleb128 4
+ 849 01ca 04000000 		.4byte	.LCFI23
+ 850 01ce 22000000 		.4byte	.LFE9
+ 851 01d2 0200     		.2byte	0x2
+ 852 01d4 77       		.byte	0x77
+ 853 01d5 04       		.sleb128 4
+ 854 01d6 00000000 		.4byte	0x0
+ 855 01da 00000000 		.4byte	0x0
+ 856              	.LLST10:
+ 857 01de 00000000 		.4byte	.LFB10
+ 858 01e2 02000000 		.4byte	.LCFI24
+ 859 01e6 0100     		.2byte	0x1
+ 860 01e8 5D       		.byte	0x5d
+ 861 01e9 02000000 		.4byte	.LCFI24
+ 862 01ed 04000000 		.4byte	.LCFI25
+ 863 01f1 0200     		.2byte	0x2
+ 864 01f3 7D       		.byte	0x7d
+ 865 01f4 04       		.sleb128 4
+ 866 01f5 04000000 		.4byte	.LCFI25
+ 867 01f9 18000000 		.4byte	.LFE10
+ 868 01fd 0200     		.2byte	0x2
+ 869 01ff 77       		.byte	0x77
+ 870 0200 04       		.sleb128 4
+ 871 0201 00000000 		.4byte	0x0
+ 872 0205 00000000 		.4byte	0x0
+ 873              	.LLST11:
+ 874 0209 00000000 		.4byte	.LFB11
+ 875 020d 02000000 		.4byte	.LCFI26
+ 876 0211 0100     		.2byte	0x1
+ 877 0213 5D       		.byte	0x5d
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 26
+
+
+ 878 0214 02000000 		.4byte	.LCFI26
+ 879 0218 04000000 		.4byte	.LCFI27
+ 880 021c 0200     		.2byte	0x2
+ 881 021e 7D       		.byte	0x7d
+ 882 021f 04       		.sleb128 4
+ 883 0220 04000000 		.4byte	.LCFI27
+ 884 0224 06000000 		.4byte	.LCFI28
+ 885 0228 0200     		.2byte	0x2
+ 886 022a 7D       		.byte	0x7d
+ 887 022b 10       		.sleb128 16
+ 888 022c 06000000 		.4byte	.LCFI28
+ 889 0230 20000000 		.4byte	.LFE11
+ 890 0234 0200     		.2byte	0x2
+ 891 0236 77       		.byte	0x77
+ 892 0237 10       		.sleb128 16
+ 893 0238 00000000 		.4byte	0x0
+ 894 023c 00000000 		.4byte	0x0
+ 895              	.LLST12:
+ 896 0240 00000000 		.4byte	.LFB12
+ 897 0244 02000000 		.4byte	.LCFI29
+ 898 0248 0100     		.2byte	0x1
+ 899 024a 5D       		.byte	0x5d
+ 900 024b 02000000 		.4byte	.LCFI29
+ 901 024f 04000000 		.4byte	.LCFI30
+ 902 0253 0200     		.2byte	0x2
+ 903 0255 7D       		.byte	0x7d
+ 904 0256 04       		.sleb128 4
+ 905 0257 04000000 		.4byte	.LCFI30
+ 906 025b 18000000 		.4byte	.LFE12
+ 907 025f 0200     		.2byte	0x2
+ 908 0261 77       		.byte	0x77
+ 909 0262 04       		.sleb128 4
+ 910 0263 00000000 		.4byte	0x0
+ 911 0267 00000000 		.4byte	0x0
+ 912              	.LLST13:
+ 913 026b 00000000 		.4byte	.LFB13
+ 914 026f 02000000 		.4byte	.LCFI31
+ 915 0273 0100     		.2byte	0x1
+ 916 0275 5D       		.byte	0x5d
+ 917 0276 02000000 		.4byte	.LCFI31
+ 918 027a 04000000 		.4byte	.LCFI32
+ 919 027e 0200     		.2byte	0x2
+ 920 0280 7D       		.byte	0x7d
+ 921 0281 04       		.sleb128 4
+ 922 0282 04000000 		.4byte	.LCFI32
+ 923 0286 06000000 		.4byte	.LCFI33
+ 924 028a 0200     		.2byte	0x2
+ 925 028c 7D       		.byte	0x7d
+ 926 028d 10       		.sleb128 16
+ 927 028e 06000000 		.4byte	.LCFI33
+ 928 0292 20000000 		.4byte	.LFE13
+ 929 0296 0200     		.2byte	0x2
+ 930 0298 77       		.byte	0x77
+ 931 0299 10       		.sleb128 16
+ 932 029a 00000000 		.4byte	0x0
+ 933 029e 00000000 		.4byte	0x0
+ 934              	.LLST14:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 27
+
+
+ 935 02a2 00000000 		.4byte	.LFB14
+ 936 02a6 02000000 		.4byte	.LCFI34
+ 937 02aa 0100     		.2byte	0x1
+ 938 02ac 5D       		.byte	0x5d
+ 939 02ad 02000000 		.4byte	.LCFI34
+ 940 02b1 04000000 		.4byte	.LCFI35
+ 941 02b5 0200     		.2byte	0x2
+ 942 02b7 7D       		.byte	0x7d
+ 943 02b8 04       		.sleb128 4
+ 944 02b9 04000000 		.4byte	.LCFI35
+ 945 02bd 18000000 		.4byte	.LFE14
+ 946 02c1 0200     		.2byte	0x2
+ 947 02c3 77       		.byte	0x77
+ 948 02c4 04       		.sleb128 4
+ 949 02c5 00000000 		.4byte	0x0
+ 950 02c9 00000000 		.4byte	0x0
+ 951              	.LLST15:
+ 952 02cd 00000000 		.4byte	.LFB15
+ 953 02d1 02000000 		.4byte	.LCFI36
+ 954 02d5 0100     		.2byte	0x1
+ 955 02d7 5D       		.byte	0x5d
+ 956 02d8 02000000 		.4byte	.LCFI36
+ 957 02dc 04000000 		.4byte	.LCFI37
+ 958 02e0 0200     		.2byte	0x2
+ 959 02e2 7D       		.byte	0x7d
+ 960 02e3 08       		.sleb128 8
+ 961 02e4 04000000 		.4byte	.LCFI37
+ 962 02e8 1A000000 		.4byte	.LFE15
+ 963 02ec 0200     		.2byte	0x2
+ 964 02ee 77       		.byte	0x77
+ 965 02ef 08       		.sleb128 8
+ 966 02f0 00000000 		.4byte	0x0
+ 967 02f4 00000000 		.4byte	0x0
+ 968              		.file 2 ".\\Generated_Source\\PSoC5\\/cytypes.h"
+ 969              		.section	.debug_info
+ 970 0000 89020000 		.4byte	0x289
+ 971 0004 0200     		.2byte	0x2
+ 972 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 973 000a 04       		.byte	0x4
+ 974 000b 01       		.uleb128 0x1
+ 975 000c E6020000 		.4byte	.LASF33
+ 976 0010 01       		.byte	0x1
+ 977 0011 B9020000 		.4byte	.LASF34
+ 978 0015 DA010000 		.4byte	.LASF35
+ 979 0019 00000000 		.4byte	0x0
+ 980 001d 00000000 		.4byte	0x0
+ 981 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 982 0025 00000000 		.4byte	.Ldebug_line0
+ 983 0029 02       		.uleb128 0x2
+ 984 002a 01       		.byte	0x1
+ 985 002b 06       		.byte	0x6
+ 986 002c 5A030000 		.4byte	.LASF0
+ 987 0030 02       		.uleb128 0x2
+ 988 0031 01       		.byte	0x1
+ 989 0032 08       		.byte	0x8
+ 990 0033 07010000 		.4byte	.LASF1
+ 991 0037 02       		.uleb128 0x2
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 28
+
+
+ 992 0038 02       		.byte	0x2
+ 993 0039 05       		.byte	0x5
+ 994 003a F7020000 		.4byte	.LASF2
+ 995 003e 02       		.uleb128 0x2
+ 996 003f 02       		.byte	0x2
+ 997 0040 07       		.byte	0x7
+ 998 0041 8D000000 		.4byte	.LASF3
+ 999 0045 02       		.uleb128 0x2
+ 1000 0046 04       		.byte	0x4
+ 1001 0047 05       		.byte	0x5
+ 1002 0048 84000000 		.4byte	.LASF4
+ 1003 004c 02       		.uleb128 0x2
+ 1004 004d 04       		.byte	0x4
+ 1005 004e 07       		.byte	0x7
+ 1006 004f 9C010000 		.4byte	.LASF5
+ 1007 0053 02       		.uleb128 0x2
+ 1008 0054 08       		.byte	0x8
+ 1009 0055 05       		.byte	0x5
+ 1010 0056 00000000 		.4byte	.LASF6
+ 1011 005a 02       		.uleb128 0x2
+ 1012 005b 08       		.byte	0x8
+ 1013 005c 07       		.byte	0x7
+ 1014 005d 2F020000 		.4byte	.LASF7
+ 1015 0061 03       		.uleb128 0x3
+ 1016 0062 04       		.byte	0x4
+ 1017 0063 05       		.byte	0x5
+ 1018 0064 696E7400 		.ascii	"int\000"
+ 1019 0068 02       		.uleb128 0x2
+ 1020 0069 04       		.byte	0x4
+ 1021 006a 07       		.byte	0x7
+ 1022 006b CD010000 		.4byte	.LASF8
+ 1023 006f 02       		.uleb128 0x2
+ 1024 0070 01       		.byte	0x1
+ 1025 0071 08       		.byte	0x8
+ 1026 0072 F2020000 		.4byte	.LASF9
+ 1027 0076 04       		.uleb128 0x4
+ 1028 0077 4B010000 		.4byte	.LASF36
+ 1029 007b 02       		.byte	0x2
+ 1030 007c 60       		.byte	0x60
+ 1031 007d 30000000 		.4byte	0x30
+ 1032 0081 05       		.uleb128 0x5
+ 1033 0082 04       		.byte	0x4
+ 1034 0083 07       		.byte	0x7
+ 1035 0084 06       		.uleb128 0x6
+ 1036 0085 01       		.byte	0x1
+ 1037 0086 84020000 		.4byte	.LASF15
+ 1038 008a 01       		.byte	0x1
+ 1039 008b 25       		.byte	0x25
+ 1040 008c 01       		.byte	0x1
+ 1041 008d 00000000 		.4byte	.LFB0
+ 1042 0091 9E000000 		.4byte	.LFE0
+ 1043 0095 00000000 		.4byte	.LLST0
+ 1044 0099 BA000000 		.4byte	0xba
+ 1045 009d 07       		.uleb128 0x7
+ 1046 009e 1B030000 		.4byte	.LASF10
+ 1047 00a2 01       		.byte	0x1
+ 1048 00a3 28       		.byte	0x28
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 29
+
+
+ 1049 00a4 76000000 		.4byte	0x76
+ 1050 00a8 02       		.byte	0x2
+ 1051 00a9 91       		.byte	0x91
+ 1052 00aa 76       		.sleb128 -10
+ 1053 00ab 07       		.uleb128 0x7
+ 1054 00ac 46020000 		.4byte	.LASF11
+ 1055 00b0 01       		.byte	0x1
+ 1056 00b1 2D       		.byte	0x2d
+ 1057 00b2 76000000 		.4byte	0x76
+ 1058 00b6 02       		.byte	0x2
+ 1059 00b7 91       		.byte	0x91
+ 1060 00b8 77       		.sleb128 -9
+ 1061 00b9 00       		.byte	0x0
+ 1062 00ba 08       		.uleb128 0x8
+ 1063 00bb 01       		.byte	0x1
+ 1064 00bc EE000000 		.4byte	.LASF12
+ 1065 00c0 01       		.byte	0x1
+ 1066 00c1 89       		.byte	0x89
+ 1067 00c2 01       		.byte	0x1
+ 1068 00c3 00000000 		.4byte	.LFB1
+ 1069 00c7 2A000000 		.4byte	.LFE1
+ 1070 00cb 37000000 		.4byte	.LLST1
+ 1071 00cf 08       		.uleb128 0x8
+ 1072 00d0 01       		.byte	0x1
+ 1073 00d1 33010000 		.4byte	.LASF13
+ 1074 00d5 01       		.byte	0x1
+ 1075 00d6 AC       		.byte	0xac
+ 1076 00d7 01       		.byte	0x1
+ 1077 00d8 00000000 		.4byte	.LFB2
+ 1078 00dc 2A000000 		.4byte	.LFE2
+ 1079 00e0 62000000 		.4byte	.LLST2
+ 1080 00e4 08       		.uleb128 0x8
+ 1081 00e5 01       		.byte	0x1
+ 1082 00e6 0E000000 		.4byte	.LASF14
+ 1083 00ea 01       		.byte	0x1
+ 1084 00eb CA       		.byte	0xca
+ 1085 00ec 01       		.byte	0x1
+ 1086 00ed 00000000 		.4byte	.LFB3
+ 1087 00f1 24000000 		.4byte	.LFE3
+ 1088 00f5 8D000000 		.4byte	.LLST3
+ 1089 00f9 06       		.uleb128 0x6
+ 1090 00fa 01       		.byte	0x1
+ 1091 00fb 25000000 		.4byte	.LASF16
+ 1092 00ff 01       		.byte	0x1
+ 1093 0100 E7       		.byte	0xe7
+ 1094 0101 01       		.byte	0x1
+ 1095 0102 00000000 		.4byte	.LFB4
+ 1096 0106 20000000 		.4byte	.LFE4
+ 1097 010a B8000000 		.4byte	.LLST4
+ 1098 010e 21010000 		.4byte	0x121
+ 1099 0112 09       		.uleb128 0x9
+ 1100 0113 6E000000 		.4byte	.LASF20
+ 1101 0117 01       		.byte	0x1
+ 1102 0118 E7       		.byte	0xe7
+ 1103 0119 76000000 		.4byte	0x76
+ 1104 011d 02       		.byte	0x2
+ 1105 011e 91       		.byte	0x91
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 30
+
+
+ 1106 011f 77       		.sleb128 -9
+ 1107 0120 00       		.byte	0x0
+ 1108 0121 0A       		.uleb128 0xa
+ 1109 0122 01       		.byte	0x1
+ 1110 0123 77010000 		.4byte	.LASF17
+ 1111 0127 01       		.byte	0x1
+ 1112 0128 FF       		.byte	0xff
+ 1113 0129 01       		.byte	0x1
+ 1114 012a 76000000 		.4byte	0x76
+ 1115 012e 00000000 		.4byte	.LFB5
+ 1116 0132 18000000 		.4byte	.LFE5
+ 1117 0136 EF000000 		.4byte	.LLST5
+ 1118 013a 0B       		.uleb128 0xb
+ 1119 013b 01       		.byte	0x1
+ 1120 013c 48000000 		.4byte	.LASF18
+ 1121 0140 01       		.byte	0x1
+ 1122 0141 1501     		.2byte	0x115
+ 1123 0143 01       		.byte	0x1
+ 1124 0144 76000000 		.4byte	0x76
+ 1125 0148 00000000 		.4byte	.LFB6
+ 1126 014c 18000000 		.4byte	.LFE6
+ 1127 0150 1A010000 		.4byte	.LLST6
+ 1128 0154 0C       		.uleb128 0xc
+ 1129 0155 01       		.byte	0x1
+ 1130 0156 BF000000 		.4byte	.LASF19
+ 1131 015a 01       		.byte	0x1
+ 1132 015b 2A01     		.2byte	0x12a
+ 1133 015d 01       		.byte	0x1
+ 1134 015e 00000000 		.4byte	.LFB7
+ 1135 0162 20000000 		.4byte	.LFE7
+ 1136 0166 45010000 		.4byte	.LLST7
+ 1137 016a 7E010000 		.4byte	0x17e
+ 1138 016e 0D       		.uleb128 0xd
+ 1139 016f 51010000 		.4byte	.LASF21
+ 1140 0173 01       		.byte	0x1
+ 1141 0174 2A01     		.2byte	0x12a
+ 1142 0176 76000000 		.4byte	0x76
+ 1143 017a 02       		.byte	0x2
+ 1144 017b 91       		.byte	0x91
+ 1145 017c 77       		.sleb128 -9
+ 1146 017d 00       		.byte	0x0
+ 1147 017e 0C       		.uleb128 0xc
+ 1148 017f 01       		.byte	0x1
+ 1149 0180 AE010000 		.4byte	.LASF22
+ 1150 0184 01       		.byte	0x1
+ 1151 0185 4001     		.2byte	0x140
+ 1152 0187 01       		.byte	0x1
+ 1153 0188 00000000 		.4byte	.LFB8
+ 1154 018c 20000000 		.4byte	.LFE8
+ 1155 0190 7C010000 		.4byte	.LLST8
+ 1156 0194 A8010000 		.4byte	0x1a8
+ 1157 0198 0D       		.uleb128 0xd
+ 1158 0199 E6000000 		.4byte	.LASF23
+ 1159 019d 01       		.byte	0x1
+ 1160 019e 4001     		.2byte	0x140
+ 1161 01a0 76000000 		.4byte	0x76
+ 1162 01a4 02       		.byte	0x2
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 31
+
+
+ 1163 01a5 91       		.byte	0x91
+ 1164 01a6 77       		.sleb128 -9
+ 1165 01a7 00       		.byte	0x0
+ 1166 01a8 0B       		.uleb128 0xb
+ 1167 01a9 01       		.byte	0x1
+ 1168 01aa 9B020000 		.4byte	.LASF24
+ 1169 01ae 01       		.byte	0x1
+ 1170 01af 5F01     		.2byte	0x15f
+ 1171 01b1 01       		.byte	0x1
+ 1172 01b2 76000000 		.4byte	0x76
+ 1173 01b6 00000000 		.4byte	.LFB9
+ 1174 01ba 22000000 		.4byte	.LFE9
+ 1175 01be B3010000 		.4byte	.LLST9
+ 1176 01c2 0B       		.uleb128 0xb
+ 1177 01c3 01       		.byte	0x1
+ 1178 01c4 59010000 		.4byte	.LASF25
+ 1179 01c8 01       		.byte	0x1
+ 1180 01c9 7801     		.2byte	0x178
+ 1181 01cb 01       		.byte	0x1
+ 1182 01cc 76000000 		.4byte	0x76
+ 1183 01d0 00000000 		.4byte	.LFB10
+ 1184 01d4 18000000 		.4byte	.LFE10
+ 1185 01d8 DE010000 		.4byte	.LLST10
+ 1186 01dc 0C       		.uleb128 0xc
+ 1187 01dd 01       		.byte	0x1
+ 1188 01de 20030000 		.4byte	.LASF26
+ 1189 01e2 01       		.byte	0x1
+ 1190 01e3 8D01     		.2byte	0x18d
+ 1191 01e5 01       		.byte	0x1
+ 1192 01e6 00000000 		.4byte	.LFB11
+ 1193 01ea 20000000 		.4byte	.LFE11
+ 1194 01ee 09020000 		.4byte	.LLST11
+ 1195 01f2 06020000 		.4byte	0x206
+ 1196 01f6 0D       		.uleb128 0xd
+ 1197 01f7 7D000000 		.4byte	.LASF27
+ 1198 01fb 01       		.byte	0x1
+ 1199 01fc 8D01     		.2byte	0x18d
+ 1200 01fe 76000000 		.4byte	0x76
+ 1201 0202 02       		.byte	0x2
+ 1202 0203 91       		.byte	0x91
+ 1203 0204 77       		.sleb128 -9
+ 1204 0205 00       		.byte	0x0
+ 1205 0206 0B       		.uleb128 0xb
+ 1206 0207 01       		.byte	0x1
+ 1207 0208 67020000 		.4byte	.LASF28
+ 1208 020c 01       		.byte	0x1
+ 1209 020d A401     		.2byte	0x1a4
+ 1210 020f 01       		.byte	0x1
+ 1211 0210 76000000 		.4byte	0x76
+ 1212 0214 00000000 		.4byte	.LFB12
+ 1213 0218 18000000 		.4byte	.LFE12
+ 1214 021c 40020000 		.4byte	.LLST12
+ 1215 0220 0C       		.uleb128 0xc
+ 1216 0221 01       		.byte	0x1
+ 1217 0222 A0000000 		.4byte	.LASF29
+ 1218 0226 01       		.byte	0x1
+ 1219 0227 BB01     		.2byte	0x1bb
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 32
+
+
+ 1220 0229 01       		.byte	0x1
+ 1221 022a 00000000 		.4byte	.LFB13
+ 1222 022e 20000000 		.4byte	.LFE13
+ 1223 0232 6B020000 		.4byte	.LLST13
+ 1224 0236 4A020000 		.4byte	0x24a
+ 1225 023a 0D       		.uleb128 0xd
+ 1226 023b 66030000 		.4byte	.LASF30
+ 1227 023f 01       		.byte	0x1
+ 1228 0240 BB01     		.2byte	0x1bb
+ 1229 0242 76000000 		.4byte	0x76
+ 1230 0246 02       		.byte	0x2
+ 1231 0247 91       		.byte	0x91
+ 1232 0248 77       		.sleb128 -9
+ 1233 0249 00       		.byte	0x0
+ 1234 024a 0B       		.uleb128 0xb
+ 1235 024b 01       		.byte	0x1
+ 1236 024c 15010000 		.4byte	.LASF31
+ 1237 0250 01       		.byte	0x1
+ 1238 0251 D301     		.2byte	0x1d3
+ 1239 0253 01       		.byte	0x1
+ 1240 0254 76000000 		.4byte	0x76
+ 1241 0258 00000000 		.4byte	.LFB14
+ 1242 025c 18000000 		.4byte	.LFE14
+ 1243 0260 A2020000 		.4byte	.LLST14
+ 1244 0264 0E       		.uleb128 0xe
+ 1245 0265 01       		.byte	0x1
+ 1246 0266 3E030000 		.4byte	.LASF32
+ 1247 026a 01       		.byte	0x1
+ 1248 026b 1802     		.2byte	0x218
+ 1249 026d 01       		.byte	0x1
+ 1250 026e 00000000 		.4byte	.LFB15
+ 1251 0272 1A000000 		.4byte	.LFE15
+ 1252 0276 CD020000 		.4byte	.LLST15
+ 1253 027a 0F       		.uleb128 0xf
+ 1254 027b 01030000 		.4byte	.LASF37
+ 1255 027f 01       		.byte	0x1
+ 1256 0280 15       		.byte	0x15
+ 1257 0281 76000000 		.4byte	0x76
+ 1258 0285 01       		.byte	0x1
+ 1259 0286 05       		.byte	0x5
+ 1260 0287 03       		.byte	0x3
+ 1261 0288 00000000 		.4byte	Counter_Frist_Row_initVar
+ 1262 028c 00       		.byte	0x0
+ 1263              		.section	.debug_abbrev
+ 1264 0000 01       		.uleb128 0x1
+ 1265 0001 11       		.uleb128 0x11
+ 1266 0002 01       		.byte	0x1
+ 1267 0003 25       		.uleb128 0x25
+ 1268 0004 0E       		.uleb128 0xe
+ 1269 0005 13       		.uleb128 0x13
+ 1270 0006 0B       		.uleb128 0xb
+ 1271 0007 03       		.uleb128 0x3
+ 1272 0008 0E       		.uleb128 0xe
+ 1273 0009 1B       		.uleb128 0x1b
+ 1274 000a 0E       		.uleb128 0xe
+ 1275 000b 11       		.uleb128 0x11
+ 1276 000c 01       		.uleb128 0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 33
+
+
+ 1277 000d 52       		.uleb128 0x52
+ 1278 000e 01       		.uleb128 0x1
+ 1279 000f 55       		.uleb128 0x55
+ 1280 0010 06       		.uleb128 0x6
+ 1281 0011 10       		.uleb128 0x10
+ 1282 0012 06       		.uleb128 0x6
+ 1283 0013 00       		.byte	0x0
+ 1284 0014 00       		.byte	0x0
+ 1285 0015 02       		.uleb128 0x2
+ 1286 0016 24       		.uleb128 0x24
+ 1287 0017 00       		.byte	0x0
+ 1288 0018 0B       		.uleb128 0xb
+ 1289 0019 0B       		.uleb128 0xb
+ 1290 001a 3E       		.uleb128 0x3e
+ 1291 001b 0B       		.uleb128 0xb
+ 1292 001c 03       		.uleb128 0x3
+ 1293 001d 0E       		.uleb128 0xe
+ 1294 001e 00       		.byte	0x0
+ 1295 001f 00       		.byte	0x0
+ 1296 0020 03       		.uleb128 0x3
+ 1297 0021 24       		.uleb128 0x24
+ 1298 0022 00       		.byte	0x0
+ 1299 0023 0B       		.uleb128 0xb
+ 1300 0024 0B       		.uleb128 0xb
+ 1301 0025 3E       		.uleb128 0x3e
+ 1302 0026 0B       		.uleb128 0xb
+ 1303 0027 03       		.uleb128 0x3
+ 1304 0028 08       		.uleb128 0x8
+ 1305 0029 00       		.byte	0x0
+ 1306 002a 00       		.byte	0x0
+ 1307 002b 04       		.uleb128 0x4
+ 1308 002c 16       		.uleb128 0x16
+ 1309 002d 00       		.byte	0x0
+ 1310 002e 03       		.uleb128 0x3
+ 1311 002f 0E       		.uleb128 0xe
+ 1312 0030 3A       		.uleb128 0x3a
+ 1313 0031 0B       		.uleb128 0xb
+ 1314 0032 3B       		.uleb128 0x3b
+ 1315 0033 0B       		.uleb128 0xb
+ 1316 0034 49       		.uleb128 0x49
+ 1317 0035 13       		.uleb128 0x13
+ 1318 0036 00       		.byte	0x0
+ 1319 0037 00       		.byte	0x0
+ 1320 0038 05       		.uleb128 0x5
+ 1321 0039 24       		.uleb128 0x24
+ 1322 003a 00       		.byte	0x0
+ 1323 003b 0B       		.uleb128 0xb
+ 1324 003c 0B       		.uleb128 0xb
+ 1325 003d 3E       		.uleb128 0x3e
+ 1326 003e 0B       		.uleb128 0xb
+ 1327 003f 00       		.byte	0x0
+ 1328 0040 00       		.byte	0x0
+ 1329 0041 06       		.uleb128 0x6
+ 1330 0042 2E       		.uleb128 0x2e
+ 1331 0043 01       		.byte	0x1
+ 1332 0044 3F       		.uleb128 0x3f
+ 1333 0045 0C       		.uleb128 0xc
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 34
+
+
+ 1334 0046 03       		.uleb128 0x3
+ 1335 0047 0E       		.uleb128 0xe
+ 1336 0048 3A       		.uleb128 0x3a
+ 1337 0049 0B       		.uleb128 0xb
+ 1338 004a 3B       		.uleb128 0x3b
+ 1339 004b 0B       		.uleb128 0xb
+ 1340 004c 27       		.uleb128 0x27
+ 1341 004d 0C       		.uleb128 0xc
+ 1342 004e 11       		.uleb128 0x11
+ 1343 004f 01       		.uleb128 0x1
+ 1344 0050 12       		.uleb128 0x12
+ 1345 0051 01       		.uleb128 0x1
+ 1346 0052 40       		.uleb128 0x40
+ 1347 0053 06       		.uleb128 0x6
+ 1348 0054 01       		.uleb128 0x1
+ 1349 0055 13       		.uleb128 0x13
+ 1350 0056 00       		.byte	0x0
+ 1351 0057 00       		.byte	0x0
+ 1352 0058 07       		.uleb128 0x7
+ 1353 0059 34       		.uleb128 0x34
+ 1354 005a 00       		.byte	0x0
+ 1355 005b 03       		.uleb128 0x3
+ 1356 005c 0E       		.uleb128 0xe
+ 1357 005d 3A       		.uleb128 0x3a
+ 1358 005e 0B       		.uleb128 0xb
+ 1359 005f 3B       		.uleb128 0x3b
+ 1360 0060 0B       		.uleb128 0xb
+ 1361 0061 49       		.uleb128 0x49
+ 1362 0062 13       		.uleb128 0x13
+ 1363 0063 02       		.uleb128 0x2
+ 1364 0064 0A       		.uleb128 0xa
+ 1365 0065 00       		.byte	0x0
+ 1366 0066 00       		.byte	0x0
+ 1367 0067 08       		.uleb128 0x8
+ 1368 0068 2E       		.uleb128 0x2e
+ 1369 0069 00       		.byte	0x0
+ 1370 006a 3F       		.uleb128 0x3f
+ 1371 006b 0C       		.uleb128 0xc
+ 1372 006c 03       		.uleb128 0x3
+ 1373 006d 0E       		.uleb128 0xe
+ 1374 006e 3A       		.uleb128 0x3a
+ 1375 006f 0B       		.uleb128 0xb
+ 1376 0070 3B       		.uleb128 0x3b
+ 1377 0071 0B       		.uleb128 0xb
+ 1378 0072 27       		.uleb128 0x27
+ 1379 0073 0C       		.uleb128 0xc
+ 1380 0074 11       		.uleb128 0x11
+ 1381 0075 01       		.uleb128 0x1
+ 1382 0076 12       		.uleb128 0x12
+ 1383 0077 01       		.uleb128 0x1
+ 1384 0078 40       		.uleb128 0x40
+ 1385 0079 06       		.uleb128 0x6
+ 1386 007a 00       		.byte	0x0
+ 1387 007b 00       		.byte	0x0
+ 1388 007c 09       		.uleb128 0x9
+ 1389 007d 05       		.uleb128 0x5
+ 1390 007e 00       		.byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 35
+
+
+ 1391 007f 03       		.uleb128 0x3
+ 1392 0080 0E       		.uleb128 0xe
+ 1393 0081 3A       		.uleb128 0x3a
+ 1394 0082 0B       		.uleb128 0xb
+ 1395 0083 3B       		.uleb128 0x3b
+ 1396 0084 0B       		.uleb128 0xb
+ 1397 0085 49       		.uleb128 0x49
+ 1398 0086 13       		.uleb128 0x13
+ 1399 0087 02       		.uleb128 0x2
+ 1400 0088 0A       		.uleb128 0xa
+ 1401 0089 00       		.byte	0x0
+ 1402 008a 00       		.byte	0x0
+ 1403 008b 0A       		.uleb128 0xa
+ 1404 008c 2E       		.uleb128 0x2e
+ 1405 008d 00       		.byte	0x0
+ 1406 008e 3F       		.uleb128 0x3f
+ 1407 008f 0C       		.uleb128 0xc
+ 1408 0090 03       		.uleb128 0x3
+ 1409 0091 0E       		.uleb128 0xe
+ 1410 0092 3A       		.uleb128 0x3a
+ 1411 0093 0B       		.uleb128 0xb
+ 1412 0094 3B       		.uleb128 0x3b
+ 1413 0095 0B       		.uleb128 0xb
+ 1414 0096 27       		.uleb128 0x27
+ 1415 0097 0C       		.uleb128 0xc
+ 1416 0098 49       		.uleb128 0x49
+ 1417 0099 13       		.uleb128 0x13
+ 1418 009a 11       		.uleb128 0x11
+ 1419 009b 01       		.uleb128 0x1
+ 1420 009c 12       		.uleb128 0x12
+ 1421 009d 01       		.uleb128 0x1
+ 1422 009e 40       		.uleb128 0x40
+ 1423 009f 06       		.uleb128 0x6
+ 1424 00a0 00       		.byte	0x0
+ 1425 00a1 00       		.byte	0x0
+ 1426 00a2 0B       		.uleb128 0xb
+ 1427 00a3 2E       		.uleb128 0x2e
+ 1428 00a4 00       		.byte	0x0
+ 1429 00a5 3F       		.uleb128 0x3f
+ 1430 00a6 0C       		.uleb128 0xc
+ 1431 00a7 03       		.uleb128 0x3
+ 1432 00a8 0E       		.uleb128 0xe
+ 1433 00a9 3A       		.uleb128 0x3a
+ 1434 00aa 0B       		.uleb128 0xb
+ 1435 00ab 3B       		.uleb128 0x3b
+ 1436 00ac 05       		.uleb128 0x5
+ 1437 00ad 27       		.uleb128 0x27
+ 1438 00ae 0C       		.uleb128 0xc
+ 1439 00af 49       		.uleb128 0x49
+ 1440 00b0 13       		.uleb128 0x13
+ 1441 00b1 11       		.uleb128 0x11
+ 1442 00b2 01       		.uleb128 0x1
+ 1443 00b3 12       		.uleb128 0x12
+ 1444 00b4 01       		.uleb128 0x1
+ 1445 00b5 40       		.uleb128 0x40
+ 1446 00b6 06       		.uleb128 0x6
+ 1447 00b7 00       		.byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 36
+
+
+ 1448 00b8 00       		.byte	0x0
+ 1449 00b9 0C       		.uleb128 0xc
+ 1450 00ba 2E       		.uleb128 0x2e
+ 1451 00bb 01       		.byte	0x1
+ 1452 00bc 3F       		.uleb128 0x3f
+ 1453 00bd 0C       		.uleb128 0xc
+ 1454 00be 03       		.uleb128 0x3
+ 1455 00bf 0E       		.uleb128 0xe
+ 1456 00c0 3A       		.uleb128 0x3a
+ 1457 00c1 0B       		.uleb128 0xb
+ 1458 00c2 3B       		.uleb128 0x3b
+ 1459 00c3 05       		.uleb128 0x5
+ 1460 00c4 27       		.uleb128 0x27
+ 1461 00c5 0C       		.uleb128 0xc
+ 1462 00c6 11       		.uleb128 0x11
+ 1463 00c7 01       		.uleb128 0x1
+ 1464 00c8 12       		.uleb128 0x12
+ 1465 00c9 01       		.uleb128 0x1
+ 1466 00ca 40       		.uleb128 0x40
+ 1467 00cb 06       		.uleb128 0x6
+ 1468 00cc 01       		.uleb128 0x1
+ 1469 00cd 13       		.uleb128 0x13
+ 1470 00ce 00       		.byte	0x0
+ 1471 00cf 00       		.byte	0x0
+ 1472 00d0 0D       		.uleb128 0xd
+ 1473 00d1 05       		.uleb128 0x5
+ 1474 00d2 00       		.byte	0x0
+ 1475 00d3 03       		.uleb128 0x3
+ 1476 00d4 0E       		.uleb128 0xe
+ 1477 00d5 3A       		.uleb128 0x3a
+ 1478 00d6 0B       		.uleb128 0xb
+ 1479 00d7 3B       		.uleb128 0x3b
+ 1480 00d8 05       		.uleb128 0x5
+ 1481 00d9 49       		.uleb128 0x49
+ 1482 00da 13       		.uleb128 0x13
+ 1483 00db 02       		.uleb128 0x2
+ 1484 00dc 0A       		.uleb128 0xa
+ 1485 00dd 00       		.byte	0x0
+ 1486 00de 00       		.byte	0x0
+ 1487 00df 0E       		.uleb128 0xe
+ 1488 00e0 2E       		.uleb128 0x2e
+ 1489 00e1 00       		.byte	0x0
+ 1490 00e2 3F       		.uleb128 0x3f
+ 1491 00e3 0C       		.uleb128 0xc
+ 1492 00e4 03       		.uleb128 0x3
+ 1493 00e5 0E       		.uleb128 0xe
+ 1494 00e6 3A       		.uleb128 0x3a
+ 1495 00e7 0B       		.uleb128 0xb
+ 1496 00e8 3B       		.uleb128 0x3b
+ 1497 00e9 05       		.uleb128 0x5
+ 1498 00ea 27       		.uleb128 0x27
+ 1499 00eb 0C       		.uleb128 0xc
+ 1500 00ec 11       		.uleb128 0x11
+ 1501 00ed 01       		.uleb128 0x1
+ 1502 00ee 12       		.uleb128 0x12
+ 1503 00ef 01       		.uleb128 0x1
+ 1504 00f0 40       		.uleb128 0x40
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 37
+
+
+ 1505 00f1 06       		.uleb128 0x6
+ 1506 00f2 00       		.byte	0x0
+ 1507 00f3 00       		.byte	0x0
+ 1508 00f4 0F       		.uleb128 0xf
+ 1509 00f5 34       		.uleb128 0x34
+ 1510 00f6 00       		.byte	0x0
+ 1511 00f7 03       		.uleb128 0x3
+ 1512 00f8 0E       		.uleb128 0xe
+ 1513 00f9 3A       		.uleb128 0x3a
+ 1514 00fa 0B       		.uleb128 0xb
+ 1515 00fb 3B       		.uleb128 0x3b
+ 1516 00fc 0B       		.uleb128 0xb
+ 1517 00fd 49       		.uleb128 0x49
+ 1518 00fe 13       		.uleb128 0x13
+ 1519 00ff 3F       		.uleb128 0x3f
+ 1520 0100 0C       		.uleb128 0xc
+ 1521 0101 02       		.uleb128 0x2
+ 1522 0102 0A       		.uleb128 0xa
+ 1523 0103 00       		.byte	0x0
+ 1524 0104 00       		.byte	0x0
+ 1525 0105 00       		.byte	0x0
+ 1526              		.section	.debug_pubnames,"",%progbits
+ 1527 0000 4F020000 		.4byte	0x24f
+ 1528 0004 0200     		.2byte	0x2
+ 1529 0006 00000000 		.4byte	.Ldebug_info0
+ 1530 000a 8D020000 		.4byte	0x28d
+ 1531 000e 84000000 		.4byte	0x84
+ 1532 0012 436F756E 		.ascii	"Counter_Frist_Row_Init\000"
+ 1532      7465725F 
+ 1532      46726973 
+ 1532      745F526F 
+ 1532      775F496E 
+ 1533 0029 BA000000 		.4byte	0xba
+ 1534 002d 436F756E 		.ascii	"Counter_Frist_Row_Enable\000"
+ 1534      7465725F 
+ 1534      46726973 
+ 1534      745F526F 
+ 1534      775F456E 
+ 1535 0046 CF000000 		.4byte	0xcf
+ 1536 004a 436F756E 		.ascii	"Counter_Frist_Row_Start\000"
+ 1536      7465725F 
+ 1536      46726973 
+ 1536      745F526F 
+ 1536      775F5374 
+ 1537 0062 E4000000 		.4byte	0xe4
+ 1538 0066 436F756E 		.ascii	"Counter_Frist_Row_Stop\000"
+ 1538      7465725F 
+ 1538      46726973 
+ 1538      745F526F 
+ 1538      775F5374 
+ 1539 007d F9000000 		.4byte	0xf9
+ 1540 0081 436F756E 		.ascii	"Counter_Frist_Row_SetInterruptMode\000"
+ 1540      7465725F 
+ 1540      46726973 
+ 1540      745F526F 
+ 1540      775F5365 
+ 1541 00a4 21010000 		.4byte	0x121
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 38
+
+
+ 1542 00a8 436F756E 		.ascii	"Counter_Frist_Row_ReadStatusRegister\000"
+ 1542      7465725F 
+ 1542      46726973 
+ 1542      745F526F 
+ 1542      775F5265 
+ 1543 00cd 3A010000 		.4byte	0x13a
+ 1544 00d1 436F756E 		.ascii	"Counter_Frist_Row_ReadControlRegister\000"
+ 1544      7465725F 
+ 1544      46726973 
+ 1544      745F526F 
+ 1544      775F5265 
+ 1545 00f7 54010000 		.4byte	0x154
+ 1546 00fb 436F756E 		.ascii	"Counter_Frist_Row_WriteControlRegister\000"
+ 1546      7465725F 
+ 1546      46726973 
+ 1546      745F526F 
+ 1546      775F5772 
+ 1547 0122 7E010000 		.4byte	0x17e
+ 1548 0126 436F756E 		.ascii	"Counter_Frist_Row_WriteCounter\000"
+ 1548      7465725F 
+ 1548      46726973 
+ 1548      745F526F 
+ 1548      775F5772 
+ 1549 0145 A8010000 		.4byte	0x1a8
+ 1550 0149 436F756E 		.ascii	"Counter_Frist_Row_ReadCounter\000"
+ 1550      7465725F 
+ 1550      46726973 
+ 1550      745F526F 
+ 1550      775F5265 
+ 1551 0167 C2010000 		.4byte	0x1c2
+ 1552 016b 436F756E 		.ascii	"Counter_Frist_Row_ReadCapture\000"
+ 1552      7465725F 
+ 1552      46726973 
+ 1552      745F526F 
+ 1552      775F5265 
+ 1553 0189 DC010000 		.4byte	0x1dc
+ 1554 018d 436F756E 		.ascii	"Counter_Frist_Row_WritePeriod\000"
+ 1554      7465725F 
+ 1554      46726973 
+ 1554      745F526F 
+ 1554      775F5772 
+ 1555 01ab 06020000 		.4byte	0x206
+ 1556 01af 436F756E 		.ascii	"Counter_Frist_Row_ReadPeriod\000"
+ 1556      7465725F 
+ 1556      46726973 
+ 1556      745F526F 
+ 1556      775F5265 
+ 1557 01cc 20020000 		.4byte	0x220
+ 1558 01d0 436F756E 		.ascii	"Counter_Frist_Row_WriteCompare\000"
+ 1558      7465725F 
+ 1558      46726973 
+ 1558      745F526F 
+ 1558      775F5772 
+ 1559 01ef 4A020000 		.4byte	0x24a
+ 1560 01f3 436F756E 		.ascii	"Counter_Frist_Row_ReadCompare\000"
+ 1560      7465725F 
+ 1560      46726973 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 39
+
+
+ 1560      745F526F 
+ 1560      775F5265 
+ 1561 0211 64020000 		.4byte	0x264
+ 1562 0215 436F756E 		.ascii	"Counter_Frist_Row_ClearFIFO\000"
+ 1562      7465725F 
+ 1562      46726973 
+ 1562      745F526F 
+ 1562      775F436C 
+ 1563 0231 7A020000 		.4byte	0x27a
+ 1564 0235 436F756E 		.ascii	"Counter_Frist_Row_initVar\000"
+ 1564      7465725F 
+ 1564      46726973 
+ 1564      745F526F 
+ 1564      775F696E 
+ 1565 024f 00000000 		.4byte	0x0
+ 1566              		.section	.debug_aranges,"",%progbits
+ 1567 0000 94000000 		.4byte	0x94
+ 1568 0004 0200     		.2byte	0x2
+ 1569 0006 00000000 		.4byte	.Ldebug_info0
+ 1570 000a 04       		.byte	0x4
+ 1571 000b 00       		.byte	0x0
+ 1572 000c 0000     		.2byte	0x0
+ 1573 000e 0000     		.2byte	0x0
+ 1574 0010 00000000 		.4byte	.LFB0
+ 1575 0014 9E000000 		.4byte	.LFE0-.LFB0
+ 1576 0018 00000000 		.4byte	.LFB1
+ 1577 001c 2A000000 		.4byte	.LFE1-.LFB1
+ 1578 0020 00000000 		.4byte	.LFB2
+ 1579 0024 2A000000 		.4byte	.LFE2-.LFB2
+ 1580 0028 00000000 		.4byte	.LFB3
+ 1581 002c 24000000 		.4byte	.LFE3-.LFB3
+ 1582 0030 00000000 		.4byte	.LFB4
+ 1583 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1584 0038 00000000 		.4byte	.LFB5
+ 1585 003c 18000000 		.4byte	.LFE5-.LFB5
+ 1586 0040 00000000 		.4byte	.LFB6
+ 1587 0044 18000000 		.4byte	.LFE6-.LFB6
+ 1588 0048 00000000 		.4byte	.LFB7
+ 1589 004c 20000000 		.4byte	.LFE7-.LFB7
+ 1590 0050 00000000 		.4byte	.LFB8
+ 1591 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1592 0058 00000000 		.4byte	.LFB9
+ 1593 005c 22000000 		.4byte	.LFE9-.LFB9
+ 1594 0060 00000000 		.4byte	.LFB10
+ 1595 0064 18000000 		.4byte	.LFE10-.LFB10
+ 1596 0068 00000000 		.4byte	.LFB11
+ 1597 006c 20000000 		.4byte	.LFE11-.LFB11
+ 1598 0070 00000000 		.4byte	.LFB12
+ 1599 0074 18000000 		.4byte	.LFE12-.LFB12
+ 1600 0078 00000000 		.4byte	.LFB13
+ 1601 007c 20000000 		.4byte	.LFE13-.LFB13
+ 1602 0080 00000000 		.4byte	.LFB14
+ 1603 0084 18000000 		.4byte	.LFE14-.LFB14
+ 1604 0088 00000000 		.4byte	.LFB15
+ 1605 008c 1A000000 		.4byte	.LFE15-.LFB15
+ 1606 0090 00000000 		.4byte	0x0
+ 1607 0094 00000000 		.4byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 40
+
+
+ 1608              		.section	.debug_ranges,"",%progbits
+ 1609              	.Ldebug_ranges0:
+ 1610 0000 00000000 		.4byte	.Ltext0
+ 1611 0004 00000000 		.4byte	.Letext0
+ 1612 0008 00000000 		.4byte	.LFB0
+ 1613 000c 9E000000 		.4byte	.LFE0
+ 1614 0010 00000000 		.4byte	.LFB1
+ 1615 0014 2A000000 		.4byte	.LFE1
+ 1616 0018 00000000 		.4byte	.LFB2
+ 1617 001c 2A000000 		.4byte	.LFE2
+ 1618 0020 00000000 		.4byte	.LFB3
+ 1619 0024 24000000 		.4byte	.LFE3
+ 1620 0028 00000000 		.4byte	.LFB4
+ 1621 002c 20000000 		.4byte	.LFE4
+ 1622 0030 00000000 		.4byte	.LFB5
+ 1623 0034 18000000 		.4byte	.LFE5
+ 1624 0038 00000000 		.4byte	.LFB6
+ 1625 003c 18000000 		.4byte	.LFE6
+ 1626 0040 00000000 		.4byte	.LFB7
+ 1627 0044 20000000 		.4byte	.LFE7
+ 1628 0048 00000000 		.4byte	.LFB8
+ 1629 004c 20000000 		.4byte	.LFE8
+ 1630 0050 00000000 		.4byte	.LFB9
+ 1631 0054 22000000 		.4byte	.LFE9
+ 1632 0058 00000000 		.4byte	.LFB10
+ 1633 005c 18000000 		.4byte	.LFE10
+ 1634 0060 00000000 		.4byte	.LFB11
+ 1635 0064 20000000 		.4byte	.LFE11
+ 1636 0068 00000000 		.4byte	.LFB12
+ 1637 006c 18000000 		.4byte	.LFE12
+ 1638 0070 00000000 		.4byte	.LFB13
+ 1639 0074 20000000 		.4byte	.LFE13
+ 1640 0078 00000000 		.4byte	.LFB14
+ 1641 007c 18000000 		.4byte	.LFE14
+ 1642 0080 00000000 		.4byte	.LFB15
+ 1643 0084 1A000000 		.4byte	.LFE15
+ 1644 0088 00000000 		.4byte	0x0
+ 1645 008c 00000000 		.4byte	0x0
+ 1646              		.section	.debug_str,"MS",%progbits,1
+ 1647              	.LASF6:
+ 1648 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1648      206C6F6E 
+ 1648      6720696E 
+ 1648      7400
+ 1649              	.LASF14:
+ 1650 000e 436F756E 		.ascii	"Counter_Frist_Row_Stop\000"
+ 1650      7465725F 
+ 1650      46726973 
+ 1650      745F526F 
+ 1650      775F5374 
+ 1651              	.LASF16:
+ 1652 0025 436F756E 		.ascii	"Counter_Frist_Row_SetInterruptMode\000"
+ 1652      7465725F 
+ 1652      46726973 
+ 1652      745F526F 
+ 1652      775F5365 
+ 1653              	.LASF18:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 41
+
+
+ 1654 0048 436F756E 		.ascii	"Counter_Frist_Row_ReadControlRegister\000"
+ 1654      7465725F 
+ 1654      46726973 
+ 1654      745F526F 
+ 1654      775F5265 
+ 1655              	.LASF20:
+ 1656 006e 696E7465 		.ascii	"interruptsMask\000"
+ 1656      72727570 
+ 1656      74734D61 
+ 1656      736B00
+ 1657              	.LASF27:
+ 1658 007d 70657269 		.ascii	"period\000"
+ 1658      6F6400
+ 1659              	.LASF4:
+ 1660 0084 6C6F6E67 		.ascii	"long int\000"
+ 1660      20696E74 
+ 1660      00
+ 1661              	.LASF3:
+ 1662 008d 73686F72 		.ascii	"short unsigned int\000"
+ 1662      7420756E 
+ 1662      7369676E 
+ 1662      65642069 
+ 1662      6E7400
+ 1663              	.LASF29:
+ 1664 00a0 436F756E 		.ascii	"Counter_Frist_Row_WriteCompare\000"
+ 1664      7465725F 
+ 1664      46726973 
+ 1664      745F526F 
+ 1664      775F5772 
+ 1665              	.LASF19:
+ 1666 00bf 436F756E 		.ascii	"Counter_Frist_Row_WriteControlRegister\000"
+ 1666      7465725F 
+ 1666      46726973 
+ 1666      745F526F 
+ 1666      775F5772 
+ 1667              	.LASF23:
+ 1668 00e6 636F756E 		.ascii	"counter\000"
+ 1668      74657200 
+ 1669              	.LASF12:
+ 1670 00ee 436F756E 		.ascii	"Counter_Frist_Row_Enable\000"
+ 1670      7465725F 
+ 1670      46726973 
+ 1670      745F526F 
+ 1670      775F456E 
+ 1671              	.LASF1:
+ 1672 0107 756E7369 		.ascii	"unsigned char\000"
+ 1672      676E6564 
+ 1672      20636861 
+ 1672      7200
+ 1673              	.LASF31:
+ 1674 0115 436F756E 		.ascii	"Counter_Frist_Row_ReadCompare\000"
+ 1674      7465725F 
+ 1674      46726973 
+ 1674      745F526F 
+ 1674      775F5265 
+ 1675              	.LASF13:
+ 1676 0133 436F756E 		.ascii	"Counter_Frist_Row_Start\000"
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 42
+
+
+ 1676      7465725F 
+ 1676      46726973 
+ 1676      745F526F 
+ 1676      775F5374 
+ 1677              	.LASF36:
+ 1678 014b 75696E74 		.ascii	"uint8\000"
+ 1678      3800
+ 1679              	.LASF21:
+ 1680 0151 636F6E74 		.ascii	"control\000"
+ 1680      726F6C00 
+ 1681              	.LASF25:
+ 1682 0159 436F756E 		.ascii	"Counter_Frist_Row_ReadCapture\000"
+ 1682      7465725F 
+ 1682      46726973 
+ 1682      745F526F 
+ 1682      775F5265 
+ 1683              	.LASF17:
+ 1684 0177 436F756E 		.ascii	"Counter_Frist_Row_ReadStatusRegister\000"
+ 1684      7465725F 
+ 1684      46726973 
+ 1684      745F526F 
+ 1684      775F5265 
+ 1685              	.LASF5:
+ 1686 019c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1686      20756E73 
+ 1686      69676E65 
+ 1686      6420696E 
+ 1686      7400
+ 1687              	.LASF22:
+ 1688 01ae 436F756E 		.ascii	"Counter_Frist_Row_WriteCounter\000"
+ 1688      7465725F 
+ 1688      46726973 
+ 1688      745F526F 
+ 1688      775F5772 
+ 1689              	.LASF8:
+ 1690 01cd 756E7369 		.ascii	"unsigned int\000"
+ 1690      676E6564 
+ 1690      20696E74 
+ 1690      00
+ 1691              	.LASF35:
+ 1692 01da 433A5C55 		.ascii	"C:\\Users\\Public\\Documents\\Carlab\\BC and TJ\\Pr"
+ 1692      73657273 
+ 1692      5C507562 
+ 1692      6C69635C 
+ 1692      446F6375 
+ 1693 0207 6F6A6563 		.ascii	"oject 4\\Navigation01\\Navigation01.cydsn\000"
+ 1693      7420345C 
+ 1693      4E617669 
+ 1693      67617469 
+ 1693      6F6E3031 
+ 1694              	.LASF7:
+ 1695 022f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1695      206C6F6E 
+ 1695      6720756E 
+ 1695      7369676E 
+ 1695      65642069 
+ 1696              	.LASF11:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 43
+
+
+ 1697 0246 436F756E 		.ascii	"Counter_Frist_Row_interruptState\000"
+ 1697      7465725F 
+ 1697      46726973 
+ 1697      745F526F 
+ 1697      775F696E 
+ 1698              	.LASF28:
+ 1699 0267 436F756E 		.ascii	"Counter_Frist_Row_ReadPeriod\000"
+ 1699      7465725F 
+ 1699      46726973 
+ 1699      745F526F 
+ 1699      775F5265 
+ 1700              	.LASF15:
+ 1701 0284 436F756E 		.ascii	"Counter_Frist_Row_Init\000"
+ 1701      7465725F 
+ 1701      46726973 
+ 1701      745F526F 
+ 1701      775F496E 
+ 1702              	.LASF24:
+ 1703 029b 436F756E 		.ascii	"Counter_Frist_Row_ReadCounter\000"
+ 1703      7465725F 
+ 1703      46726973 
+ 1703      745F526F 
+ 1703      775F5265 
+ 1704              	.LASF34:
+ 1705 02b9 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Counter_Frist_Row.c\000"
+ 1705      6E657261 
+ 1705      7465645F 
+ 1705      536F7572 
+ 1705      63655C50 
+ 1706              	.LASF33:
+ 1707 02e6 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 1707      4320342E 
+ 1707      342E3100 
+ 1708              	.LASF9:
+ 1709 02f2 63686172 		.ascii	"char\000"
+ 1709      00
+ 1710              	.LASF2:
+ 1711 02f7 73686F72 		.ascii	"short int\000"
+ 1711      7420696E 
+ 1711      7400
+ 1712              	.LASF37:
+ 1713 0301 436F756E 		.ascii	"Counter_Frist_Row_initVar\000"
+ 1713      7465725F 
+ 1713      46726973 
+ 1713      745F526F 
+ 1713      775F696E 
+ 1714              	.LASF10:
+ 1715 031b 6374726C 		.ascii	"ctrl\000"
+ 1715      00
+ 1716              	.LASF26:
+ 1717 0320 436F756E 		.ascii	"Counter_Frist_Row_WritePeriod\000"
+ 1717      7465725F 
+ 1717      46726973 
+ 1717      745F526F 
+ 1717      775F5772 
+ 1718              	.LASF32:
+ 1719 033e 436F756E 		.ascii	"Counter_Frist_Row_ClearFIFO\000"
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccN0uXAp.s 			page 44
+
+
+ 1719      7465725F 
+ 1719      46726973 
+ 1719      745F526F 
+ 1719      775F436C 
+ 1720              	.LASF0:
+ 1721 035a 7369676E 		.ascii	"signed char\000"
+ 1721      65642063 
+ 1721      68617200 
+ 1722              	.LASF30:
+ 1723 0366 636F6D70 		.ascii	"compare\000"
+ 1723      61726500 
+ 1724              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

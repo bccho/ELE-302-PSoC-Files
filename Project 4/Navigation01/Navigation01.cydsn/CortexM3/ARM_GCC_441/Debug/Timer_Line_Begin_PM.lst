@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 1
 
 
    1              		.syntax unified
@@ -20,7 +20,7 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   17              	.Ldebug_info0:
   18              		.section	.debug_line,"",%progbits
   19              	.Ldebug_line0:
-  20 0000 DD000000 		.text
+  20 0000 DF000000 		.text
   20      02008200 
   20      00000201 
   20      FB0E0D00 
@@ -30,9 +30,10 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   23              		.bss
   24              		.align	2
   25              	Timer_Line_Begin_backup:
-  26 0000 00000000 		.space	6
+  26 0000 00000000 		.space	10
+  26      00000000 
   26      0000
-  27 0006 0000     		.section	.text.Timer_Line_Begin_SaveConfig,"ax",%progbits
+  27 000a 0000     		.section	.text.Timer_Line_Begin_SaveConfig,"ax",%progbits
   28              		.align	2
   29              		.global	Timer_Line_Begin_SaveConfig
   30              		.thumb
@@ -57,10 +58,10 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   14:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
   15:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
   16:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * the software package with which this file was provided.
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 2
+
+
   17:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** ********************************************************************************/
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 2
-
-
   18:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
   19:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** #include "Timer_Line_Begin.h"
   20:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** static Timer_Line_Begin_backupStruct Timer_Line_Begin_backup;
@@ -117,15 +118,15 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   50 0008 0346     		mov	r3, r0
   51 000a 1A46     		mov	r2, r3
   52 000c 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 3
+
+
   53 0010 C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 3
-
-
   54 0014 5A80     		strh	r2, [r3, #2]	@ movhi
   57:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_backup.InterruptMaskValue = Timer_Line_Begin_STATUS_MASK;
   55              		.loc 1 57 0
-  56 0016 46F28343 		movw	r3, #:lower16:1073767555
-  57 001a C4F20003 		movt	r3, #:upper16:1073767555
+  56 0016 46F28653 		movw	r3, #:lower16:1073767814
+  57 001a C4F20003 		movt	r3, #:upper16:1073767814
   58 001e 1B78     		ldrb	r3, [r3, #0]
   59 0020 DAB2     		uxtb	r2, r3
   60 0022 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
@@ -133,34 +134,41 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   62 002a 1A71     		strb	r2, [r3, #4]
   58:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             #if (Timer_Line_Begin_UsingHWCaptureCounter)
   59:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****                 Timer_Line_Begin_backup.TimerCaptureCounter = Timer_Line_Begin_ReadCaptureCount();
+  63              		.loc 1 59 0
+  64 002c FFF7FEFF 		bl	Timer_Line_Begin_ReadCaptureCount
+  65 0030 0346     		mov	r3, r0
+  66 0032 1A46     		mov	r2, r3
+  67 0034 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+  68 0038 C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+  69 003c DA80     		strh	r2, [r3, #6]	@ movhi
   60:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             #endif /* Back Up capture counter register  */
   61:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #endif /* Backup non retention registers, interrupt mask and capture counter for PSoC3 or P
   62:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
   63:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #if(!Timer_Line_Begin_ControlRegRemoved)
   64:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_backup.TimerControlRegister = Timer_Line_Begin_ReadControlRegister();
-  63              		.loc 1 64 0
-  64 002c FFF7FEFF 		bl	Timer_Line_Begin_ReadControlRegister
-  65 0030 0346     		mov	r3, r0
-  66 0032 1A46     		mov	r2, r3
-  67 0034 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
-  68 0038 C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
-  69 003c 5A71     		strb	r2, [r3, #5]
+  70              		.loc 1 64 0
+  71 003e FFF7FEFF 		bl	Timer_Line_Begin_ReadControlRegister
+  72 0042 0346     		mov	r3, r0
+  73 0044 1A46     		mov	r2, r3
+  74 0046 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+  75 004a C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+  76 004e 1A72     		strb	r2, [r3, #8]
   65:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #endif /* Backup the enable state of the Timer component */
   66:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #endif /* Backup non retention registers in UDB implementation. All fixed function registers ar
   67:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** }
-  70              		.loc 1 67 0
-  71 003e 80BD     		pop	{r7, pc}
-  72              		.cfi_endproc
-  73              	.LFE0:
-  74              		.size	Timer_Line_Begin_SaveConfig, .-Timer_Line_Begin_SaveConfig
-  75              		.section	.text.Timer_Line_Begin_RestoreConfig,"ax",%progbits
-  76              		.align	2
-  77              		.global	Timer_Line_Begin_RestoreConfig
-  78              		.thumb
-  79              		.thumb_func
-  80              		.type	Timer_Line_Begin_RestoreConfig, %function
-  81              	Timer_Line_Begin_RestoreConfig:
-  82              	.LFB1:
+  77              		.loc 1 67 0
+  78 0050 80BD     		pop	{r7, pc}
+  79              		.cfi_endproc
+  80              	.LFE0:
+  81              		.size	Timer_Line_Begin_SaveConfig, .-Timer_Line_Begin_SaveConfig
+  82 0052 00BF     		.section	.text.Timer_Line_Begin_RestoreConfig,"ax",%progbits
+  83              		.align	2
+  84              		.global	Timer_Line_Begin_RestoreConfig
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	Timer_Line_Begin_RestoreConfig, %function
+  88              	Timer_Line_Begin_RestoreConfig:
+  89              	.LFB1:
   68:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
   69:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
   70:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** /*******************************************************************************
@@ -170,6 +178,9 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   74:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * Summary:
   75:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  Restores the current user configuration.
   76:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 4
+
+
   77:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * Parameters:
   78:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  void
   79:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *
@@ -178,26 +189,23 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
   82:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *
   83:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * Global variables:
   84:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  Timer_Line_Begin_backup:  Variables of this global structure are used to
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 4
-
-
   85:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
   86:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *
   87:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *******************************************************************************/
   88:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** void Timer_Line_Begin_RestoreConfig(void) 
   89:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** {   
-  83              		.loc 1 89 0
-  84              		.cfi_startproc
-  85              		@ args = 0, pretend = 0, frame = 0
-  86              		@ frame_needed = 1, uses_anonymous_args = 0
-  87 0000 80B5     		push	{r7, lr}
-  88              	.LCFI2:
-  89              		.cfi_def_cfa_offset 8
-  90 0002 00AF     		add	r7, sp, #0
-  91              		.cfi_offset 14, -4
-  92              		.cfi_offset 7, -8
-  93              	.LCFI3:
-  94              		.cfi_def_cfa_register 7
+  90              		.loc 1 89 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 1, uses_anonymous_args = 0
+  94 0000 80B5     		push	{r7, lr}
+  95              	.LCFI2:
+  96              		.cfi_def_cfa_offset 8
+  97 0002 00AF     		add	r7, sp, #0
+  98              		.cfi_offset 14, -4
+  99              		.cfi_offset 7, -8
+ 100              	.LCFI3:
+ 101              		.cfi_def_cfa_register 7
   90:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #if (!Timer_Line_Begin_UsingFixedFunction)
   91:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         /* Restore the UDB non-rentention registers for PSoC5A */
   92:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #if (CY_PSOC5A)
@@ -221,52 +229,59 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
  110:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
  111:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
  112:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_WriteCounter(Timer_Line_Begin_backup.TimerUdb);
-  95              		.loc 1 112 0
-  96 0004 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
-  97 0008 C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
-  98 000c 5B88     		ldrh	r3, [r3, #2]
-  99 000e 1846     		mov	r0, r3
- 100 0010 FFF7FEFF 		bl	Timer_Line_Begin_WriteCounter
+ 102              		.loc 1 112 0
+ 103 0004 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ 104 0008 C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+ 105 000c 5B88     		ldrh	r3, [r3, #2]
+ 106 000e 1846     		mov	r0, r3
+ 107 0010 FFF7FEFF 		bl	Timer_Line_Begin_WriteCounter
  113:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_STATUS_MASK =Timer_Line_Begin_backup.InterruptMaskValue;
- 101              		.loc 1 113 0
- 102 0014 46F28343 		movw	r3, #:lower16:1073767555
- 103 0018 C4F20003 		movt	r3, #:upper16:1073767555
- 104 001c 40F20002 		movw	r2, #:lower16:Timer_Line_Begin_backup
- 105 0020 C0F20002 		movt	r2, #:upper16:Timer_Line_Begin_backup
- 106 0024 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
- 107 0026 1A70     		strb	r2, [r3, #0]
+ 108              		.loc 1 113 0
+ 109 0014 46F28653 		movw	r3, #:lower16:1073767814
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 5
+
+
+ 110 0018 C4F20003 		movt	r3, #:upper16:1073767814
+ 111 001c 40F20002 		movw	r2, #:lower16:Timer_Line_Begin_backup
+ 112 0020 C0F20002 		movt	r2, #:upper16:Timer_Line_Begin_backup
+ 113 0024 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 114 0026 1A70     		strb	r2, [r3, #0]
  114:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             #if (Timer_Line_Begin_UsingHWCaptureCounter)
  115:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****                 Timer_Line_Begin_SetCaptureCount(Timer_Line_Begin_backup.TimerCaptureCounter);
+ 115              		.loc 1 115 0
+ 116 0028 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ 117 002c C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+ 118 0030 DB88     		ldrh	r3, [r3, #6]
+ 119 0032 DBB2     		uxtb	r3, r3
+ 120 0034 1846     		mov	r0, r3
+ 121 0036 FFF7FEFF 		bl	Timer_Line_Begin_SetCaptureCount
  116:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             #endif /* Restore Capture counter register*/
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 5
-
-
  117:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #endif /* Restore up non retention registers, interrupt mask and capture counter for PSoC3 
  118:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
  119:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #if(!Timer_Line_Begin_ControlRegRemoved)
  120:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_WriteControlRegister(Timer_Line_Begin_backup.TimerControlRegister);
- 108              		.loc 1 120 0
- 109 0028 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
- 110 002c C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
- 111 0030 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
- 112 0032 1846     		mov	r0, r3
- 113 0034 FFF7FEFF 		bl	Timer_Line_Begin_WriteControlRegister
+ 122              		.loc 1 120 0
+ 123 003a 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ 124 003e C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+ 125 0042 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+ 126 0044 1846     		mov	r0, r3
+ 127 0046 FFF7FEFF 		bl	Timer_Line_Begin_WriteControlRegister
  121:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         #endif /* Restore the enable state of the Timer component */
  122:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #endif /* Restore non retention registers in the UDB implementation only */
  123:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** }
- 114              		.loc 1 123 0
- 115 0038 80BD     		pop	{r7, pc}
- 116              		.cfi_endproc
- 117              	.LFE1:
- 118              		.size	Timer_Line_Begin_RestoreConfig, .-Timer_Line_Begin_RestoreConfig
- 119 003a 00BF     		.section	.text.Timer_Line_Begin_Sleep,"ax",%progbits
- 120              		.align	2
- 121              		.global	Timer_Line_Begin_Sleep
- 122              		.thumb
- 123              		.thumb_func
- 124              		.type	Timer_Line_Begin_Sleep, %function
- 125              	Timer_Line_Begin_Sleep:
- 126              	.LFB2:
+ 128              		.loc 1 123 0
+ 129 004a 80BD     		pop	{r7, pc}
+ 130              		.cfi_endproc
+ 131              	.LFE1:
+ 132              		.size	Timer_Line_Begin_RestoreConfig, .-Timer_Line_Begin_RestoreConfig
+ 133              		.section	.text.Timer_Line_Begin_Sleep,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	Timer_Line_Begin_Sleep
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.type	Timer_Line_Begin_Sleep, %function
+ 139              	Timer_Line_Begin_Sleep:
+ 140              	.LFB2:
  124:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
  125:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
  126:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** /*******************************************************************************
@@ -283,84 +298,84 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
  137:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  void
  138:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *
  139:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** * Global variables:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 6
+
+
  140:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  Timer_Line_Begin_backup.TimerEnableState:  Is modified depending on the
  141:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *  enable state of the block before entering sleep mode.
  142:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *
  143:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *******************************************************************************/
  144:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** void Timer_Line_Begin_Sleep(void) 
  145:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** {
- 127              		.loc 1 145 0
- 128              		.cfi_startproc
- 129              		@ args = 0, pretend = 0, frame = 0
- 130              		@ frame_needed = 1, uses_anonymous_args = 0
- 131 0000 80B5     		push	{r7, lr}
- 132              	.LCFI4:
- 133              		.cfi_def_cfa_offset 8
- 134 0002 00AF     		add	r7, sp, #0
- 135              		.cfi_offset 14, -4
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 6
-
-
- 136              		.cfi_offset 7, -8
- 137              	.LCFI5:
- 138              		.cfi_def_cfa_register 7
+ 141              		.loc 1 145 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              	.LCFI4:
+ 147              		.cfi_def_cfa_offset 8
+ 148 0002 00AF     		add	r7, sp, #0
+ 149              		.cfi_offset 14, -4
+ 150              		.cfi_offset 7, -8
+ 151              	.LCFI5:
+ 152              		.cfi_def_cfa_register 7
  146:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #if(!Timer_Line_Begin_ControlRegRemoved)
  147:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         /* Save Counter's enable state */
  148:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         if(Timer_Line_Begin_CTRL_ENABLE == (Timer_Line_Begin_CONTROL & Timer_Line_Begin_CTRL_ENABLE
- 139              		.loc 1 148 0
- 140 0004 46F27343 		movw	r3, #:lower16:1073767539
- 141 0008 C4F20003 		movt	r3, #:upper16:1073767539
- 142 000c 1B78     		ldrb	r3, [r3, #0]
- 143 000e DBB2     		uxtb	r3, r3
- 144 0010 5BB2     		sxtb	r3, r3
- 145 0012 002B     		cmp	r3, #0
- 146 0014 07DA     		bge	.L6
+ 153              		.loc 1 148 0
+ 154 0004 46F27243 		movw	r3, #:lower16:1073767538
+ 155 0008 C4F20003 		movt	r3, #:upper16:1073767538
+ 156 000c 1B78     		ldrb	r3, [r3, #0]
+ 157 000e DBB2     		uxtb	r3, r3
+ 158 0010 5BB2     		sxtb	r3, r3
+ 159 0012 002B     		cmp	r3, #0
+ 160 0014 07DA     		bge	.L6
  149:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         {
  150:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             /* Timer is enabled */
  151:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_backup.TimerEnableState = 1u;
- 147              		.loc 1 151 0
- 148 0016 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
- 149 001a C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
- 150 001e 4FF00102 		mov	r2, #1
- 151 0022 1A70     		strb	r2, [r3, #0]
- 152 0024 06E0     		b	.L7
- 153              	.L6:
+ 161              		.loc 1 151 0
+ 162 0016 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ 163 001a C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+ 164 001e 4FF00102 		mov	r2, #1
+ 165 0022 1A70     		strb	r2, [r3, #0]
+ 166 0024 06E0     		b	.L7
+ 167              	.L6:
  152:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         }
  153:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         else
  154:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         {
  155:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             /* Timer is disabled */
  156:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****             Timer_Line_Begin_backup.TimerEnableState = 0u;
- 154              		.loc 1 156 0
- 155 0026 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
- 156 002a C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
- 157 002e 4FF00002 		mov	r2, #0
- 158 0032 1A70     		strb	r2, [r3, #0]
- 159              	.L7:
+ 168              		.loc 1 156 0
+ 169 0026 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ 170 002a C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+ 171 002e 4FF00002 		mov	r2, #0
+ 172 0032 1A70     		strb	r2, [r3, #0]
+ 173              	.L7:
  157:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         }
  158:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #endif /* Back up enable state from the Timer control register */
  159:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     Timer_Line_Begin_Stop();
- 160              		.loc 1 159 0
- 161 0034 FFF7FEFF 		bl	Timer_Line_Begin_Stop
+ 174              		.loc 1 159 0
+ 175 0034 FFF7FEFF 		bl	Timer_Line_Begin_Stop
  160:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     Timer_Line_Begin_SaveConfig();
- 162              		.loc 1 160 0
- 163 0038 FFF7FEFF 		bl	Timer_Line_Begin_SaveConfig
+ 176              		.loc 1 160 0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 7
+
+
+ 177 0038 FFF7FEFF 		bl	Timer_Line_Begin_SaveConfig
  161:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** }
- 164              		.loc 1 161 0
- 165 003c 80BD     		pop	{r7, pc}
- 166              		.cfi_endproc
- 167              	.LFE2:
- 168              		.size	Timer_Line_Begin_Sleep, .-Timer_Line_Begin_Sleep
- 169 003e 00BF     		.section	.text.Timer_Line_Begin_Wakeup,"ax",%progbits
- 170              		.align	2
- 171              		.global	Timer_Line_Begin_Wakeup
- 172              		.thumb
- 173              		.thumb_func
- 174              		.type	Timer_Line_Begin_Wakeup, %function
- 175              	Timer_Line_Begin_Wakeup:
- 176              	.LFB3:
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 7
-
-
+ 178              		.loc 1 161 0
+ 179 003c 80BD     		pop	{r7, pc}
+ 180              		.cfi_endproc
+ 181              	.LFE2:
+ 182              		.size	Timer_Line_Begin_Sleep, .-Timer_Line_Begin_Sleep
+ 183 003e 00BF     		.section	.text.Timer_Line_Begin_Wakeup,"ax",%progbits
+ 184              		.align	2
+ 185              		.global	Timer_Line_Begin_Wakeup
+ 186              		.thumb
+ 187              		.thumb_func
+ 188              		.type	Timer_Line_Begin_Wakeup, %function
+ 189              	Timer_Line_Begin_Wakeup:
+ 190              	.LFB3:
  162:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
  163:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** 
  164:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** /*******************************************************************************
@@ -383,633 +398,650 @@ ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 1
  181:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** *******************************************************************************/
  182:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** void Timer_Line_Begin_Wakeup(void) 
  183:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** {
- 177              		.loc 1 183 0
- 178              		.cfi_startproc
- 179              		@ args = 0, pretend = 0, frame = 0
- 180              		@ frame_needed = 1, uses_anonymous_args = 0
- 181 0000 80B5     		push	{r7, lr}
- 182              	.LCFI6:
- 183              		.cfi_def_cfa_offset 8
- 184 0002 00AF     		add	r7, sp, #0
- 185              		.cfi_offset 14, -4
- 186              		.cfi_offset 7, -8
- 187              	.LCFI7:
- 188              		.cfi_def_cfa_register 7
+ 191              		.loc 1 183 0
+ 192              		.cfi_startproc
+ 193              		@ args = 0, pretend = 0, frame = 0
+ 194              		@ frame_needed = 1, uses_anonymous_args = 0
+ 195 0000 80B5     		push	{r7, lr}
+ 196              	.LCFI6:
+ 197              		.cfi_def_cfa_offset 8
+ 198 0002 00AF     		add	r7, sp, #0
+ 199              		.cfi_offset 14, -4
+ 200              		.cfi_offset 7, -8
+ 201              	.LCFI7:
+ 202              		.cfi_def_cfa_register 7
  184:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     Timer_Line_Begin_RestoreConfig();
- 189              		.loc 1 184 0
- 190 0004 FFF7FEFF 		bl	Timer_Line_Begin_RestoreConfig
+ 203              		.loc 1 184 0
+ 204 0004 FFF7FEFF 		bl	Timer_Line_Begin_RestoreConfig
  185:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #if(!Timer_Line_Begin_ControlRegRemoved)
  186:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         if(Timer_Line_Begin_backup.TimerEnableState == 1u)
- 191              		.loc 1 186 0
- 192 0008 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
- 193 000c C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
- 194 0010 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
- 195 0012 012B     		cmp	r3, #1
- 196 0014 01D1     		bne	.L11
+ 205              		.loc 1 186 0
+ 206 0008 40F20003 		movw	r3, #:lower16:Timer_Line_Begin_backup
+ 207 000c C0F20003 		movt	r3, #:upper16:Timer_Line_Begin_backup
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 8
+
+
+ 208 0010 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 209 0012 012B     		cmp	r3, #1
+ 210 0014 01D1     		bne	.L11
  187:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         {     /* Enable Timer's operation */
  188:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****                 Timer_Line_Begin_Enable();
- 197              		.loc 1 188 0
- 198 0016 FFF7FEFF 		bl	Timer_Line_Begin_Enable
- 199              	.L11:
+ 211              		.loc 1 188 0
+ 212 0016 FFF7FEFF 		bl	Timer_Line_Begin_Enable
+ 213              	.L11:
  189:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****         } /* Do nothing if Timer was disabled before */
  190:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c ****     #endif /* Remove this code section if Control register is removed */
  191:.\Generated_Source\PSoC5/Timer_Line_Begin_PM.c **** }
- 200              		.loc 1 191 0
- 201 001a 80BD     		pop	{r7, pc}
- 202              		.cfi_endproc
- 203              	.LFE3:
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 8
+ 214              		.loc 1 191 0
+ 215 001a 80BD     		pop	{r7, pc}
+ 216              		.cfi_endproc
+ 217              	.LFE3:
+ 218              		.size	Timer_Line_Begin_Wakeup, .-Timer_Line_Begin_Wakeup
+ 219              		.text
+ 220              	.Letext0:
+ 221              		.section	.debug_loc,"",%progbits
+ 222              	.Ldebug_loc0:
+ 223              	.LLST0:
+ 224 0000 00000000 		.4byte	.LFB0
+ 225 0004 02000000 		.4byte	.LCFI0
+ 226 0008 0100     		.2byte	0x1
+ 227 000a 5D       		.byte	0x5d
+ 228 000b 02000000 		.4byte	.LCFI0
+ 229 000f 04000000 		.4byte	.LCFI1
+ 230 0013 0200     		.2byte	0x2
+ 231 0015 7D       		.byte	0x7d
+ 232 0016 08       		.sleb128 8
+ 233 0017 04000000 		.4byte	.LCFI1
+ 234 001b 52000000 		.4byte	.LFE0
+ 235 001f 0200     		.2byte	0x2
+ 236 0021 77       		.byte	0x77
+ 237 0022 08       		.sleb128 8
+ 238 0023 00000000 		.4byte	0x0
+ 239 0027 00000000 		.4byte	0x0
+ 240              	.LLST1:
+ 241 002b 00000000 		.4byte	.LFB1
+ 242 002f 02000000 		.4byte	.LCFI2
+ 243 0033 0100     		.2byte	0x1
+ 244 0035 5D       		.byte	0x5d
+ 245 0036 02000000 		.4byte	.LCFI2
+ 246 003a 04000000 		.4byte	.LCFI3
+ 247 003e 0200     		.2byte	0x2
+ 248 0040 7D       		.byte	0x7d
+ 249 0041 08       		.sleb128 8
+ 250 0042 04000000 		.4byte	.LCFI3
+ 251 0046 4C000000 		.4byte	.LFE1
+ 252 004a 0200     		.2byte	0x2
+ 253 004c 77       		.byte	0x77
+ 254 004d 08       		.sleb128 8
+ 255 004e 00000000 		.4byte	0x0
+ 256 0052 00000000 		.4byte	0x0
+ 257              	.LLST2:
+ 258 0056 00000000 		.4byte	.LFB2
+ 259 005a 02000000 		.4byte	.LCFI4
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 9
 
 
- 204              		.size	Timer_Line_Begin_Wakeup, .-Timer_Line_Begin_Wakeup
- 205              		.text
- 206              	.Letext0:
- 207              		.section	.debug_loc,"",%progbits
- 208              	.Ldebug_loc0:
- 209              	.LLST0:
- 210 0000 00000000 		.4byte	.LFB0
- 211 0004 02000000 		.4byte	.LCFI0
- 212 0008 0100     		.2byte	0x1
- 213 000a 5D       		.byte	0x5d
- 214 000b 02000000 		.4byte	.LCFI0
- 215 000f 04000000 		.4byte	.LCFI1
- 216 0013 0200     		.2byte	0x2
- 217 0015 7D       		.byte	0x7d
- 218 0016 08       		.sleb128 8
- 219 0017 04000000 		.4byte	.LCFI1
- 220 001b 40000000 		.4byte	.LFE0
- 221 001f 0200     		.2byte	0x2
- 222 0021 77       		.byte	0x77
- 223 0022 08       		.sleb128 8
- 224 0023 00000000 		.4byte	0x0
- 225 0027 00000000 		.4byte	0x0
- 226              	.LLST1:
- 227 002b 00000000 		.4byte	.LFB1
- 228 002f 02000000 		.4byte	.LCFI2
- 229 0033 0100     		.2byte	0x1
- 230 0035 5D       		.byte	0x5d
- 231 0036 02000000 		.4byte	.LCFI2
- 232 003a 04000000 		.4byte	.LCFI3
- 233 003e 0200     		.2byte	0x2
- 234 0040 7D       		.byte	0x7d
- 235 0041 08       		.sleb128 8
- 236 0042 04000000 		.4byte	.LCFI3
- 237 0046 3A000000 		.4byte	.LFE1
- 238 004a 0200     		.2byte	0x2
- 239 004c 77       		.byte	0x77
- 240 004d 08       		.sleb128 8
- 241 004e 00000000 		.4byte	0x0
- 242 0052 00000000 		.4byte	0x0
- 243              	.LLST2:
- 244 0056 00000000 		.4byte	.LFB2
- 245 005a 02000000 		.4byte	.LCFI4
- 246 005e 0100     		.2byte	0x1
- 247 0060 5D       		.byte	0x5d
- 248 0061 02000000 		.4byte	.LCFI4
- 249 0065 04000000 		.4byte	.LCFI5
- 250 0069 0200     		.2byte	0x2
- 251 006b 7D       		.byte	0x7d
- 252 006c 08       		.sleb128 8
- 253 006d 04000000 		.4byte	.LCFI5
- 254 0071 3E000000 		.4byte	.LFE2
- 255 0075 0200     		.2byte	0x2
- 256 0077 77       		.byte	0x77
- 257 0078 08       		.sleb128 8
- 258 0079 00000000 		.4byte	0x0
- 259 007d 00000000 		.4byte	0x0
- 260              	.LLST3:
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 9
+ 260 005e 0100     		.2byte	0x1
+ 261 0060 5D       		.byte	0x5d
+ 262 0061 02000000 		.4byte	.LCFI4
+ 263 0065 04000000 		.4byte	.LCFI5
+ 264 0069 0200     		.2byte	0x2
+ 265 006b 7D       		.byte	0x7d
+ 266 006c 08       		.sleb128 8
+ 267 006d 04000000 		.4byte	.LCFI5
+ 268 0071 3E000000 		.4byte	.LFE2
+ 269 0075 0200     		.2byte	0x2
+ 270 0077 77       		.byte	0x77
+ 271 0078 08       		.sleb128 8
+ 272 0079 00000000 		.4byte	0x0
+ 273 007d 00000000 		.4byte	0x0
+ 274              	.LLST3:
+ 275 0081 00000000 		.4byte	.LFB3
+ 276 0085 02000000 		.4byte	.LCFI6
+ 277 0089 0100     		.2byte	0x1
+ 278 008b 5D       		.byte	0x5d
+ 279 008c 02000000 		.4byte	.LCFI6
+ 280 0090 04000000 		.4byte	.LCFI7
+ 281 0094 0200     		.2byte	0x2
+ 282 0096 7D       		.byte	0x7d
+ 283 0097 08       		.sleb128 8
+ 284 0098 04000000 		.4byte	.LCFI7
+ 285 009c 1C000000 		.4byte	.LFE3
+ 286 00a0 0200     		.2byte	0x2
+ 287 00a2 77       		.byte	0x77
+ 288 00a3 08       		.sleb128 8
+ 289 00a4 00000000 		.4byte	0x0
+ 290 00a8 00000000 		.4byte	0x0
+ 291              		.file 2 ".\\Generated_Source\\PSoC5\\/cytypes.h"
+ 292              		.file 3 ".\\Generated_Source\\PSoC5\\/Timer_Line_Begin.h"
+ 293              		.section	.debug_info
+ 294 0000 4F010000 		.4byte	0x14f
+ 295 0004 0200     		.2byte	0x2
+ 296 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 297 000a 04       		.byte	0x4
+ 298 000b 01       		.uleb128 0x1
+ 299 000c 9F000000 		.4byte	.LASF22
+ 300 0010 01       		.byte	0x1
+ 301 0011 1B000000 		.4byte	.LASF23
+ 302 0015 69010000 		.4byte	.LASF24
+ 303 0019 00000000 		.4byte	0x0
+ 304 001d 00000000 		.4byte	0x0
+ 305 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 306 0025 00000000 		.4byte	.Ldebug_line0
+ 307 0029 02       		.uleb128 0x2
+ 308 002a 01       		.byte	0x1
+ 309 002b 06       		.byte	0x6
+ 310 002c 41010000 		.4byte	.LASF0
+ 311 0030 02       		.uleb128 0x2
+ 312 0031 01       		.byte	0x1
+ 313 0032 08       		.byte	0x8
+ 314 0033 AB000000 		.4byte	.LASF1
+ 315 0037 02       		.uleb128 0x2
+ 316 0038 02       		.byte	0x2
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 10
 
 
- 261 0081 00000000 		.4byte	.LFB3
- 262 0085 02000000 		.4byte	.LCFI6
- 263 0089 0100     		.2byte	0x1
- 264 008b 5D       		.byte	0x5d
- 265 008c 02000000 		.4byte	.LCFI6
- 266 0090 04000000 		.4byte	.LCFI7
- 267 0094 0200     		.2byte	0x2
- 268 0096 7D       		.byte	0x7d
- 269 0097 08       		.sleb128 8
- 270 0098 04000000 		.4byte	.LCFI7
- 271 009c 1C000000 		.4byte	.LFE3
- 272 00a0 0200     		.2byte	0x2
- 273 00a2 77       		.byte	0x77
- 274 00a3 08       		.sleb128 8
- 275 00a4 00000000 		.4byte	0x0
- 276 00a8 00000000 		.4byte	0x0
- 277              		.file 2 ".\\Generated_Source\\PSoC5\\/cytypes.h"
- 278              		.file 3 ".\\Generated_Source\\PSoC5\\/Timer_Line_Begin.h"
- 279              		.section	.debug_info
- 280 0000 41010000 		.4byte	0x141
- 281 0004 0200     		.2byte	0x2
- 282 0006 00000000 		.4byte	.Ldebug_abbrev0
- 283 000a 04       		.byte	0x4
- 284 000b 01       		.uleb128 0x1
- 285 000c 9F000000 		.4byte	.LASF21
- 286 0010 01       		.byte	0x1
- 287 0011 1B000000 		.4byte	.LASF22
- 288 0015 55010000 		.4byte	.LASF23
- 289 0019 00000000 		.4byte	0x0
- 290 001d 00000000 		.4byte	0x0
- 291 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
- 292 0025 00000000 		.4byte	.Ldebug_line0
- 293 0029 02       		.uleb128 0x2
- 294 002a 01       		.byte	0x1
- 295 002b 06       		.byte	0x6
- 296 002c 2D010000 		.4byte	.LASF0
- 297 0030 02       		.uleb128 0x2
- 298 0031 01       		.byte	0x1
- 299 0032 08       		.byte	0x8
- 300 0033 AB000000 		.4byte	.LASF1
- 301 0037 02       		.uleb128 0x2
- 302 0038 02       		.byte	0x2
- 303 0039 05       		.byte	0x5
- 304 003a F9000000 		.4byte	.LASF2
- 305 003e 02       		.uleb128 0x2
- 306 003f 02       		.byte	0x2
- 307 0040 07       		.byte	0x7
- 308 0041 1A010000 		.4byte	.LASF3
- 309 0045 02       		.uleb128 0x2
- 310 0046 04       		.byte	0x4
- 311 0047 05       		.byte	0x5
- 312 0048 F0000000 		.4byte	.LASF4
- 313 004c 02       		.uleb128 0x2
- 314 004d 04       		.byte	0x4
- 315 004e 07       		.byte	0x7
- 316 004f 50000000 		.4byte	.LASF5
- 317 0053 02       		.uleb128 0x2
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 10
+ 317 0039 05       		.byte	0x5
+ 318 003a F9000000 		.4byte	.LASF2
+ 319 003e 02       		.uleb128 0x2
+ 320 003f 02       		.byte	0x2
+ 321 0040 07       		.byte	0x7
+ 322 0041 2E010000 		.4byte	.LASF3
+ 323 0045 02       		.uleb128 0x2
+ 324 0046 04       		.byte	0x4
+ 325 0047 05       		.byte	0x5
+ 326 0048 F0000000 		.4byte	.LASF4
+ 327 004c 02       		.uleb128 0x2
+ 328 004d 04       		.byte	0x4
+ 329 004e 07       		.byte	0x7
+ 330 004f 50000000 		.4byte	.LASF5
+ 331 0053 02       		.uleb128 0x2
+ 332 0054 08       		.byte	0x8
+ 333 0055 05       		.byte	0x5
+ 334 0056 00000000 		.4byte	.LASF6
+ 335 005a 02       		.uleb128 0x2
+ 336 005b 08       		.byte	0x8
+ 337 005c 07       		.byte	0x7
+ 338 005d 62000000 		.4byte	.LASF7
+ 339 0061 03       		.uleb128 0x3
+ 340 0062 04       		.byte	0x4
+ 341 0063 05       		.byte	0x5
+ 342 0064 696E7400 		.ascii	"int\000"
+ 343 0068 02       		.uleb128 0x2
+ 344 0069 04       		.byte	0x4
+ 345 006a 07       		.byte	0x7
+ 346 006b 0E000000 		.4byte	.LASF8
+ 347 006f 02       		.uleb128 0x2
+ 348 0070 01       		.byte	0x1
+ 349 0071 08       		.byte	0x8
+ 350 0072 17020000 		.4byte	.LASF9
+ 351 0076 04       		.uleb128 0x4
+ 352 0077 4A000000 		.4byte	.LASF10
+ 353 007b 02       		.byte	0x2
+ 354 007c 60       		.byte	0x60
+ 355 007d 30000000 		.4byte	0x30
+ 356 0081 04       		.uleb128 0x4
+ 357 0082 DF010000 		.4byte	.LASF11
+ 358 0086 02       		.byte	0x2
+ 359 0087 61       		.byte	0x61
+ 360 0088 3E000000 		.4byte	0x3e
+ 361 008c 05       		.uleb128 0x5
+ 362 008d 04       		.byte	0x4
+ 363 008e 07       		.byte	0x7
+ 364 008f 06       		.uleb128 0x6
+ 365 0090 F9010000 		.4byte	.LASF17
+ 366 0094 0A       		.byte	0xa
+ 367 0095 03       		.byte	0x3
+ 368 0096 3B       		.byte	0x3b
+ 369 0097 E2000000 		.4byte	0xe2
+ 370 009b 07       		.uleb128 0x7
+ 371 009c 8E000000 		.4byte	.LASF12
+ 372 00a0 03       		.byte	0x3
+ 373 00a1 3C       		.byte	0x3c
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 11
 
 
- 318 0054 08       		.byte	0x8
- 319 0055 05       		.byte	0x5
- 320 0056 00000000 		.4byte	.LASF6
- 321 005a 02       		.uleb128 0x2
- 322 005b 08       		.byte	0x8
- 323 005c 07       		.byte	0x7
- 324 005d 62000000 		.4byte	.LASF7
- 325 0061 03       		.uleb128 0x3
- 326 0062 04       		.byte	0x4
- 327 0063 05       		.byte	0x5
- 328 0064 696E7400 		.ascii	"int\000"
- 329 0068 02       		.uleb128 0x2
- 330 0069 04       		.byte	0x4
- 331 006a 07       		.byte	0x7
- 332 006b 0E000000 		.4byte	.LASF8
- 333 006f 02       		.uleb128 0x2
- 334 0070 01       		.byte	0x1
- 335 0071 08       		.byte	0x8
- 336 0072 03020000 		.4byte	.LASF9
- 337 0076 04       		.uleb128 0x4
- 338 0077 4A000000 		.4byte	.LASF10
- 339 007b 02       		.byte	0x2
- 340 007c 60       		.byte	0x60
- 341 007d 30000000 		.4byte	0x30
- 342 0081 04       		.uleb128 0x4
- 343 0082 CB010000 		.4byte	.LASF11
- 344 0086 02       		.byte	0x2
- 345 0087 61       		.byte	0x61
- 346 0088 3E000000 		.4byte	0x3e
- 347 008c 05       		.uleb128 0x5
- 348 008d 04       		.byte	0x4
- 349 008e 07       		.byte	0x7
- 350 008f 06       		.uleb128 0x6
- 351 0090 E5010000 		.4byte	.LASF16
- 352 0094 06       		.byte	0x6
- 353 0095 03       		.byte	0x3
- 354 0096 3B       		.byte	0x3b
- 355 0097 D4000000 		.4byte	0xd4
- 356 009b 07       		.uleb128 0x7
- 357 009c 8E000000 		.4byte	.LASF12
- 358 00a0 03       		.byte	0x3
- 359 00a1 3C       		.byte	0x3c
- 360 00a2 76000000 		.4byte	0x76
- 361 00a6 02       		.byte	0x2
- 362 00a7 23       		.byte	0x23
- 363 00a8 00       		.uleb128 0x0
- 364 00a9 07       		.uleb128 0x7
- 365 00aa C2010000 		.4byte	.LASF13
- 366 00ae 03       		.byte	0x3
- 367 00af 48       		.byte	0x48
- 368 00b0 81000000 		.4byte	0x81
- 369 00b4 02       		.byte	0x2
- 370 00b5 23       		.byte	0x23
- 371 00b6 02       		.uleb128 0x2
- 372 00b7 07       		.uleb128 0x7
- 373 00b8 D2010000 		.4byte	.LASF14
- 374 00bc 03       		.byte	0x3
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 11
+ 374 00a2 76000000 		.4byte	0x76
+ 375 00a6 02       		.byte	0x2
+ 376 00a7 23       		.byte	0x23
+ 377 00a8 00       		.uleb128 0x0
+ 378 00a9 07       		.uleb128 0x7
+ 379 00aa D6010000 		.4byte	.LASF13
+ 380 00ae 03       		.byte	0x3
+ 381 00af 48       		.byte	0x48
+ 382 00b0 81000000 		.4byte	0x81
+ 383 00b4 02       		.byte	0x2
+ 384 00b5 23       		.byte	0x23
+ 385 00b6 02       		.uleb128 0x2
+ 386 00b7 07       		.uleb128 0x7
+ 387 00b8 E6010000 		.4byte	.LASF14
+ 388 00bc 03       		.byte	0x3
+ 389 00bd 49       		.byte	0x49
+ 390 00be 76000000 		.4byte	0x76
+ 391 00c2 02       		.byte	0x2
+ 392 00c3 23       		.byte	0x23
+ 393 00c4 04       		.uleb128 0x4
+ 394 00c5 07       		.uleb128 0x7
+ 395 00c6 03010000 		.4byte	.LASF15
+ 396 00ca 03       		.byte	0x3
+ 397 00cb 4B       		.byte	0x4b
+ 398 00cc 81000000 		.4byte	0x81
+ 399 00d0 02       		.byte	0x2
+ 400 00d1 23       		.byte	0x23
+ 401 00d2 06       		.uleb128 0x6
+ 402 00d3 07       		.uleb128 0x7
+ 403 00d4 79000000 		.4byte	.LASF16
+ 404 00d8 03       		.byte	0x3
+ 405 00d9 50       		.byte	0x50
+ 406 00da 76000000 		.4byte	0x76
+ 407 00de 02       		.byte	0x2
+ 408 00df 23       		.byte	0x23
+ 409 00e0 08       		.uleb128 0x8
+ 410 00e1 00       		.byte	0x0
+ 411 00e2 04       		.uleb128 0x4
+ 412 00e3 F9010000 		.4byte	.LASF17
+ 413 00e7 03       		.byte	0x3
+ 414 00e8 53       		.byte	0x53
+ 415 00e9 8F000000 		.4byte	0x8f
+ 416 00ed 08       		.uleb128 0x8
+ 417 00ee 01       		.byte	0x1
+ 418 00ef 4D010000 		.4byte	.LASF18
+ 419 00f3 01       		.byte	0x1
+ 420 00f4 2A       		.byte	0x2a
+ 421 00f5 01       		.byte	0x1
+ 422 00f6 00000000 		.4byte	.LFB0
+ 423 00fa 52000000 		.4byte	.LFE0
+ 424 00fe 00000000 		.4byte	.LLST0
+ 425 0102 08       		.uleb128 0x8
+ 426 0103 01       		.byte	0x1
+ 427 0104 B9000000 		.4byte	.LASF19
+ 428 0108 01       		.byte	0x1
+ 429 0109 58       		.byte	0x58
+ 430 010a 01       		.byte	0x1
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 12
 
 
- 375 00bd 49       		.byte	0x49
- 376 00be 76000000 		.4byte	0x76
- 377 00c2 02       		.byte	0x2
- 378 00c3 23       		.byte	0x23
- 379 00c4 04       		.uleb128 0x4
- 380 00c5 07       		.uleb128 0x7
- 381 00c6 79000000 		.4byte	.LASF15
- 382 00ca 03       		.byte	0x3
- 383 00cb 50       		.byte	0x50
- 384 00cc 76000000 		.4byte	0x76
- 385 00d0 02       		.byte	0x2
- 386 00d1 23       		.byte	0x23
- 387 00d2 05       		.uleb128 0x5
- 388 00d3 00       		.byte	0x0
- 389 00d4 04       		.uleb128 0x4
- 390 00d5 E5010000 		.4byte	.LASF16
- 391 00d9 03       		.byte	0x3
- 392 00da 53       		.byte	0x53
- 393 00db 8F000000 		.4byte	0x8f
- 394 00df 08       		.uleb128 0x8
- 395 00e0 01       		.byte	0x1
- 396 00e1 39010000 		.4byte	.LASF17
- 397 00e5 01       		.byte	0x1
- 398 00e6 2A       		.byte	0x2a
- 399 00e7 01       		.byte	0x1
- 400 00e8 00000000 		.4byte	.LFB0
- 401 00ec 40000000 		.4byte	.LFE0
- 402 00f0 00000000 		.4byte	.LLST0
- 403 00f4 08       		.uleb128 0x8
- 404 00f5 01       		.byte	0x1
- 405 00f6 B9000000 		.4byte	.LASF18
- 406 00fa 01       		.byte	0x1
- 407 00fb 58       		.byte	0x58
- 408 00fc 01       		.byte	0x1
- 409 00fd 00000000 		.4byte	.LFB1
- 410 0101 3A000000 		.4byte	.LFE1
- 411 0105 2B000000 		.4byte	.LLST1
- 412 0109 08       		.uleb128 0x8
- 413 010a 01       		.byte	0x1
- 414 010b 03010000 		.4byte	.LASF19
- 415 010f 01       		.byte	0x1
- 416 0110 90       		.byte	0x90
- 417 0111 01       		.byte	0x1
- 418 0112 00000000 		.4byte	.LFB2
- 419 0116 3E000000 		.4byte	.LFE2
- 420 011a 56000000 		.4byte	.LLST2
- 421 011e 08       		.uleb128 0x8
- 422 011f 01       		.byte	0x1
- 423 0120 AA010000 		.4byte	.LASF20
- 424 0124 01       		.byte	0x1
- 425 0125 B6       		.byte	0xb6
- 426 0126 01       		.byte	0x1
- 427 0127 00000000 		.4byte	.LFB3
- 428 012b 1C000000 		.4byte	.LFE3
- 429 012f 81000000 		.4byte	.LLST3
- 430 0133 09       		.uleb128 0x9
- 431 0134 D8000000 		.4byte	.LASF24
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 12
+ 431 010b 00000000 		.4byte	.LFB1
+ 432 010f 4C000000 		.4byte	.LFE1
+ 433 0113 2B000000 		.4byte	.LLST1
+ 434 0117 08       		.uleb128 0x8
+ 435 0118 01       		.byte	0x1
+ 436 0119 17010000 		.4byte	.LASF20
+ 437 011d 01       		.byte	0x1
+ 438 011e 90       		.byte	0x90
+ 439 011f 01       		.byte	0x1
+ 440 0120 00000000 		.4byte	.LFB2
+ 441 0124 3E000000 		.4byte	.LFE2
+ 442 0128 56000000 		.4byte	.LLST2
+ 443 012c 08       		.uleb128 0x8
+ 444 012d 01       		.byte	0x1
+ 445 012e BE010000 		.4byte	.LASF21
+ 446 0132 01       		.byte	0x1
+ 447 0133 B6       		.byte	0xb6
+ 448 0134 01       		.byte	0x1
+ 449 0135 00000000 		.4byte	.LFB3
+ 450 0139 1C000000 		.4byte	.LFE3
+ 451 013d 81000000 		.4byte	.LLST3
+ 452 0141 09       		.uleb128 0x9
+ 453 0142 D8000000 		.4byte	.LASF25
+ 454 0146 01       		.byte	0x1
+ 455 0147 14       		.byte	0x14
+ 456 0148 E2000000 		.4byte	0xe2
+ 457 014c 05       		.byte	0x5
+ 458 014d 03       		.byte	0x3
+ 459 014e 00000000 		.4byte	Timer_Line_Begin_backup
+ 460 0152 00       		.byte	0x0
+ 461              		.section	.debug_abbrev
+ 462 0000 01       		.uleb128 0x1
+ 463 0001 11       		.uleb128 0x11
+ 464 0002 01       		.byte	0x1
+ 465 0003 25       		.uleb128 0x25
+ 466 0004 0E       		.uleb128 0xe
+ 467 0005 13       		.uleb128 0x13
+ 468 0006 0B       		.uleb128 0xb
+ 469 0007 03       		.uleb128 0x3
+ 470 0008 0E       		.uleb128 0xe
+ 471 0009 1B       		.uleb128 0x1b
+ 472 000a 0E       		.uleb128 0xe
+ 473 000b 11       		.uleb128 0x11
+ 474 000c 01       		.uleb128 0x1
+ 475 000d 52       		.uleb128 0x52
+ 476 000e 01       		.uleb128 0x1
+ 477 000f 55       		.uleb128 0x55
+ 478 0010 06       		.uleb128 0x6
+ 479 0011 10       		.uleb128 0x10
+ 480 0012 06       		.uleb128 0x6
+ 481 0013 00       		.byte	0x0
+ 482 0014 00       		.byte	0x0
+ 483 0015 02       		.uleb128 0x2
+ 484 0016 24       		.uleb128 0x24
+ 485 0017 00       		.byte	0x0
+ 486 0018 0B       		.uleb128 0xb
+ 487 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 13
 
 
- 432 0138 01       		.byte	0x1
- 433 0139 14       		.byte	0x14
- 434 013a D4000000 		.4byte	0xd4
- 435 013e 05       		.byte	0x5
- 436 013f 03       		.byte	0x3
- 437 0140 00000000 		.4byte	Timer_Line_Begin_backup
- 438 0144 00       		.byte	0x0
- 439              		.section	.debug_abbrev
- 440 0000 01       		.uleb128 0x1
- 441 0001 11       		.uleb128 0x11
- 442 0002 01       		.byte	0x1
- 443 0003 25       		.uleb128 0x25
- 444 0004 0E       		.uleb128 0xe
- 445 0005 13       		.uleb128 0x13
- 446 0006 0B       		.uleb128 0xb
- 447 0007 03       		.uleb128 0x3
- 448 0008 0E       		.uleb128 0xe
- 449 0009 1B       		.uleb128 0x1b
- 450 000a 0E       		.uleb128 0xe
- 451 000b 11       		.uleb128 0x11
- 452 000c 01       		.uleb128 0x1
- 453 000d 52       		.uleb128 0x52
- 454 000e 01       		.uleb128 0x1
- 455 000f 55       		.uleb128 0x55
- 456 0010 06       		.uleb128 0x6
- 457 0011 10       		.uleb128 0x10
- 458 0012 06       		.uleb128 0x6
- 459 0013 00       		.byte	0x0
- 460 0014 00       		.byte	0x0
- 461 0015 02       		.uleb128 0x2
- 462 0016 24       		.uleb128 0x24
- 463 0017 00       		.byte	0x0
- 464 0018 0B       		.uleb128 0xb
- 465 0019 0B       		.uleb128 0xb
- 466 001a 3E       		.uleb128 0x3e
- 467 001b 0B       		.uleb128 0xb
- 468 001c 03       		.uleb128 0x3
- 469 001d 0E       		.uleb128 0xe
- 470 001e 00       		.byte	0x0
- 471 001f 00       		.byte	0x0
- 472 0020 03       		.uleb128 0x3
- 473 0021 24       		.uleb128 0x24
- 474 0022 00       		.byte	0x0
- 475 0023 0B       		.uleb128 0xb
- 476 0024 0B       		.uleb128 0xb
- 477 0025 3E       		.uleb128 0x3e
- 478 0026 0B       		.uleb128 0xb
- 479 0027 03       		.uleb128 0x3
- 480 0028 08       		.uleb128 0x8
- 481 0029 00       		.byte	0x0
- 482 002a 00       		.byte	0x0
- 483 002b 04       		.uleb128 0x4
- 484 002c 16       		.uleb128 0x16
- 485 002d 00       		.byte	0x0
- 486 002e 03       		.uleb128 0x3
- 487 002f 0E       		.uleb128 0xe
- 488 0030 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 13
+ 488 001a 3E       		.uleb128 0x3e
+ 489 001b 0B       		.uleb128 0xb
+ 490 001c 03       		.uleb128 0x3
+ 491 001d 0E       		.uleb128 0xe
+ 492 001e 00       		.byte	0x0
+ 493 001f 00       		.byte	0x0
+ 494 0020 03       		.uleb128 0x3
+ 495 0021 24       		.uleb128 0x24
+ 496 0022 00       		.byte	0x0
+ 497 0023 0B       		.uleb128 0xb
+ 498 0024 0B       		.uleb128 0xb
+ 499 0025 3E       		.uleb128 0x3e
+ 500 0026 0B       		.uleb128 0xb
+ 501 0027 03       		.uleb128 0x3
+ 502 0028 08       		.uleb128 0x8
+ 503 0029 00       		.byte	0x0
+ 504 002a 00       		.byte	0x0
+ 505 002b 04       		.uleb128 0x4
+ 506 002c 16       		.uleb128 0x16
+ 507 002d 00       		.byte	0x0
+ 508 002e 03       		.uleb128 0x3
+ 509 002f 0E       		.uleb128 0xe
+ 510 0030 3A       		.uleb128 0x3a
+ 511 0031 0B       		.uleb128 0xb
+ 512 0032 3B       		.uleb128 0x3b
+ 513 0033 0B       		.uleb128 0xb
+ 514 0034 49       		.uleb128 0x49
+ 515 0035 13       		.uleb128 0x13
+ 516 0036 00       		.byte	0x0
+ 517 0037 00       		.byte	0x0
+ 518 0038 05       		.uleb128 0x5
+ 519 0039 24       		.uleb128 0x24
+ 520 003a 00       		.byte	0x0
+ 521 003b 0B       		.uleb128 0xb
+ 522 003c 0B       		.uleb128 0xb
+ 523 003d 3E       		.uleb128 0x3e
+ 524 003e 0B       		.uleb128 0xb
+ 525 003f 00       		.byte	0x0
+ 526 0040 00       		.byte	0x0
+ 527 0041 06       		.uleb128 0x6
+ 528 0042 13       		.uleb128 0x13
+ 529 0043 01       		.byte	0x1
+ 530 0044 03       		.uleb128 0x3
+ 531 0045 0E       		.uleb128 0xe
+ 532 0046 0B       		.uleb128 0xb
+ 533 0047 0B       		.uleb128 0xb
+ 534 0048 3A       		.uleb128 0x3a
+ 535 0049 0B       		.uleb128 0xb
+ 536 004a 3B       		.uleb128 0x3b
+ 537 004b 0B       		.uleb128 0xb
+ 538 004c 01       		.uleb128 0x1
+ 539 004d 13       		.uleb128 0x13
+ 540 004e 00       		.byte	0x0
+ 541 004f 00       		.byte	0x0
+ 542 0050 07       		.uleb128 0x7
+ 543 0051 0D       		.uleb128 0xd
+ 544 0052 00       		.byte	0x0
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 14
 
 
- 489 0031 0B       		.uleb128 0xb
- 490 0032 3B       		.uleb128 0x3b
- 491 0033 0B       		.uleb128 0xb
- 492 0034 49       		.uleb128 0x49
- 493 0035 13       		.uleb128 0x13
- 494 0036 00       		.byte	0x0
- 495 0037 00       		.byte	0x0
- 496 0038 05       		.uleb128 0x5
- 497 0039 24       		.uleb128 0x24
- 498 003a 00       		.byte	0x0
- 499 003b 0B       		.uleb128 0xb
- 500 003c 0B       		.uleb128 0xb
- 501 003d 3E       		.uleb128 0x3e
- 502 003e 0B       		.uleb128 0xb
- 503 003f 00       		.byte	0x0
- 504 0040 00       		.byte	0x0
- 505 0041 06       		.uleb128 0x6
- 506 0042 13       		.uleb128 0x13
- 507 0043 01       		.byte	0x1
- 508 0044 03       		.uleb128 0x3
- 509 0045 0E       		.uleb128 0xe
- 510 0046 0B       		.uleb128 0xb
- 511 0047 0B       		.uleb128 0xb
- 512 0048 3A       		.uleb128 0x3a
- 513 0049 0B       		.uleb128 0xb
- 514 004a 3B       		.uleb128 0x3b
- 515 004b 0B       		.uleb128 0xb
- 516 004c 01       		.uleb128 0x1
- 517 004d 13       		.uleb128 0x13
- 518 004e 00       		.byte	0x0
- 519 004f 00       		.byte	0x0
- 520 0050 07       		.uleb128 0x7
- 521 0051 0D       		.uleb128 0xd
- 522 0052 00       		.byte	0x0
- 523 0053 03       		.uleb128 0x3
- 524 0054 0E       		.uleb128 0xe
- 525 0055 3A       		.uleb128 0x3a
- 526 0056 0B       		.uleb128 0xb
- 527 0057 3B       		.uleb128 0x3b
- 528 0058 0B       		.uleb128 0xb
- 529 0059 49       		.uleb128 0x49
- 530 005a 13       		.uleb128 0x13
- 531 005b 38       		.uleb128 0x38
- 532 005c 0A       		.uleb128 0xa
- 533 005d 00       		.byte	0x0
- 534 005e 00       		.byte	0x0
- 535 005f 08       		.uleb128 0x8
- 536 0060 2E       		.uleb128 0x2e
- 537 0061 00       		.byte	0x0
- 538 0062 3F       		.uleb128 0x3f
- 539 0063 0C       		.uleb128 0xc
- 540 0064 03       		.uleb128 0x3
- 541 0065 0E       		.uleb128 0xe
- 542 0066 3A       		.uleb128 0x3a
- 543 0067 0B       		.uleb128 0xb
- 544 0068 3B       		.uleb128 0x3b
- 545 0069 0B       		.uleb128 0xb
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 14
+ 545 0053 03       		.uleb128 0x3
+ 546 0054 0E       		.uleb128 0xe
+ 547 0055 3A       		.uleb128 0x3a
+ 548 0056 0B       		.uleb128 0xb
+ 549 0057 3B       		.uleb128 0x3b
+ 550 0058 0B       		.uleb128 0xb
+ 551 0059 49       		.uleb128 0x49
+ 552 005a 13       		.uleb128 0x13
+ 553 005b 38       		.uleb128 0x38
+ 554 005c 0A       		.uleb128 0xa
+ 555 005d 00       		.byte	0x0
+ 556 005e 00       		.byte	0x0
+ 557 005f 08       		.uleb128 0x8
+ 558 0060 2E       		.uleb128 0x2e
+ 559 0061 00       		.byte	0x0
+ 560 0062 3F       		.uleb128 0x3f
+ 561 0063 0C       		.uleb128 0xc
+ 562 0064 03       		.uleb128 0x3
+ 563 0065 0E       		.uleb128 0xe
+ 564 0066 3A       		.uleb128 0x3a
+ 565 0067 0B       		.uleb128 0xb
+ 566 0068 3B       		.uleb128 0x3b
+ 567 0069 0B       		.uleb128 0xb
+ 568 006a 27       		.uleb128 0x27
+ 569 006b 0C       		.uleb128 0xc
+ 570 006c 11       		.uleb128 0x11
+ 571 006d 01       		.uleb128 0x1
+ 572 006e 12       		.uleb128 0x12
+ 573 006f 01       		.uleb128 0x1
+ 574 0070 40       		.uleb128 0x40
+ 575 0071 06       		.uleb128 0x6
+ 576 0072 00       		.byte	0x0
+ 577 0073 00       		.byte	0x0
+ 578 0074 09       		.uleb128 0x9
+ 579 0075 34       		.uleb128 0x34
+ 580 0076 00       		.byte	0x0
+ 581 0077 03       		.uleb128 0x3
+ 582 0078 0E       		.uleb128 0xe
+ 583 0079 3A       		.uleb128 0x3a
+ 584 007a 0B       		.uleb128 0xb
+ 585 007b 3B       		.uleb128 0x3b
+ 586 007c 0B       		.uleb128 0xb
+ 587 007d 49       		.uleb128 0x49
+ 588 007e 13       		.uleb128 0x13
+ 589 007f 02       		.uleb128 0x2
+ 590 0080 0A       		.uleb128 0xa
+ 591 0081 00       		.byte	0x0
+ 592 0082 00       		.byte	0x0
+ 593 0083 00       		.byte	0x0
+ 594              		.section	.debug_pubnames,"",%progbits
+ 595 0000 88000000 		.4byte	0x88
+ 596 0004 0200     		.2byte	0x2
+ 597 0006 00000000 		.4byte	.Ldebug_info0
+ 598 000a 53010000 		.4byte	0x153
+ 599 000e ED000000 		.4byte	0xed
+ 600 0012 54696D65 		.ascii	"Timer_Line_Begin_SaveConfig\000"
+ 600      725F4C69 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 15
 
 
- 546 006a 27       		.uleb128 0x27
- 547 006b 0C       		.uleb128 0xc
- 548 006c 11       		.uleb128 0x11
- 549 006d 01       		.uleb128 0x1
- 550 006e 12       		.uleb128 0x12
- 551 006f 01       		.uleb128 0x1
- 552 0070 40       		.uleb128 0x40
- 553 0071 06       		.uleb128 0x6
- 554 0072 00       		.byte	0x0
- 555 0073 00       		.byte	0x0
- 556 0074 09       		.uleb128 0x9
- 557 0075 34       		.uleb128 0x34
- 558 0076 00       		.byte	0x0
- 559 0077 03       		.uleb128 0x3
- 560 0078 0E       		.uleb128 0xe
- 561 0079 3A       		.uleb128 0x3a
- 562 007a 0B       		.uleb128 0xb
- 563 007b 3B       		.uleb128 0x3b
- 564 007c 0B       		.uleb128 0xb
- 565 007d 49       		.uleb128 0x49
- 566 007e 13       		.uleb128 0x13
- 567 007f 02       		.uleb128 0x2
- 568 0080 0A       		.uleb128 0xa
- 569 0081 00       		.byte	0x0
- 570 0082 00       		.byte	0x0
- 571 0083 00       		.byte	0x0
- 572              		.section	.debug_pubnames,"",%progbits
- 573 0000 88000000 		.4byte	0x88
- 574 0004 0200     		.2byte	0x2
- 575 0006 00000000 		.4byte	.Ldebug_info0
- 576 000a 45010000 		.4byte	0x145
- 577 000e DF000000 		.4byte	0xdf
- 578 0012 54696D65 		.ascii	"Timer_Line_Begin_SaveConfig\000"
- 578      725F4C69 
- 578      6E655F42 
- 578      6567696E 
- 578      5F536176 
- 579 002e F4000000 		.4byte	0xf4
- 580 0032 54696D65 		.ascii	"Timer_Line_Begin_RestoreConfig\000"
- 580      725F4C69 
- 580      6E655F42 
- 580      6567696E 
- 580      5F526573 
- 581 0051 09010000 		.4byte	0x109
- 582 0055 54696D65 		.ascii	"Timer_Line_Begin_Sleep\000"
- 582      725F4C69 
- 582      6E655F42 
- 582      6567696E 
- 582      5F536C65 
- 583 006c 1E010000 		.4byte	0x11e
- 584 0070 54696D65 		.ascii	"Timer_Line_Begin_Wakeup\000"
- 584      725F4C69 
- 584      6E655F42 
- 584      6567696E 
- 584      5F57616B 
- 585 0088 00000000 		.4byte	0x0
- 586              		.section	.debug_aranges,"",%progbits
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 15
+ 600      6E655F42 
+ 600      6567696E 
+ 600      5F536176 
+ 601 002e 02010000 		.4byte	0x102
+ 602 0032 54696D65 		.ascii	"Timer_Line_Begin_RestoreConfig\000"
+ 602      725F4C69 
+ 602      6E655F42 
+ 602      6567696E 
+ 602      5F526573 
+ 603 0051 17010000 		.4byte	0x117
+ 604 0055 54696D65 		.ascii	"Timer_Line_Begin_Sleep\000"
+ 604      725F4C69 
+ 604      6E655F42 
+ 604      6567696E 
+ 604      5F536C65 
+ 605 006c 2C010000 		.4byte	0x12c
+ 606 0070 54696D65 		.ascii	"Timer_Line_Begin_Wakeup\000"
+ 606      725F4C69 
+ 606      6E655F42 
+ 606      6567696E 
+ 606      5F57616B 
+ 607 0088 00000000 		.4byte	0x0
+ 608              		.section	.debug_aranges,"",%progbits
+ 609 0000 34000000 		.4byte	0x34
+ 610 0004 0200     		.2byte	0x2
+ 611 0006 00000000 		.4byte	.Ldebug_info0
+ 612 000a 04       		.byte	0x4
+ 613 000b 00       		.byte	0x0
+ 614 000c 0000     		.2byte	0x0
+ 615 000e 0000     		.2byte	0x0
+ 616 0010 00000000 		.4byte	.LFB0
+ 617 0014 52000000 		.4byte	.LFE0-.LFB0
+ 618 0018 00000000 		.4byte	.LFB1
+ 619 001c 4C000000 		.4byte	.LFE1-.LFB1
+ 620 0020 00000000 		.4byte	.LFB2
+ 621 0024 3E000000 		.4byte	.LFE2-.LFB2
+ 622 0028 00000000 		.4byte	.LFB3
+ 623 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 624 0030 00000000 		.4byte	0x0
+ 625 0034 00000000 		.4byte	0x0
+ 626              		.section	.debug_ranges,"",%progbits
+ 627              	.Ldebug_ranges0:
+ 628 0000 00000000 		.4byte	.Ltext0
+ 629 0004 00000000 		.4byte	.Letext0
+ 630 0008 00000000 		.4byte	.LFB0
+ 631 000c 52000000 		.4byte	.LFE0
+ 632 0010 00000000 		.4byte	.LFB1
+ 633 0014 4C000000 		.4byte	.LFE1
+ 634 0018 00000000 		.4byte	.LFB2
+ 635 001c 3E000000 		.4byte	.LFE2
+ 636 0020 00000000 		.4byte	.LFB3
+ 637 0024 1C000000 		.4byte	.LFE3
+ 638 0028 00000000 		.4byte	0x0
+ 639 002c 00000000 		.4byte	0x0
+ 640              		.section	.debug_str,"MS",%progbits,1
+ 641              	.LASF6:
+ 642 0000 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 16
 
 
- 587 0000 34000000 		.4byte	0x34
- 588 0004 0200     		.2byte	0x2
- 589 0006 00000000 		.4byte	.Ldebug_info0
- 590 000a 04       		.byte	0x4
- 591 000b 00       		.byte	0x0
- 592 000c 0000     		.2byte	0x0
- 593 000e 0000     		.2byte	0x0
- 594 0010 00000000 		.4byte	.LFB0
- 595 0014 40000000 		.4byte	.LFE0-.LFB0
- 596 0018 00000000 		.4byte	.LFB1
- 597 001c 3A000000 		.4byte	.LFE1-.LFB1
- 598 0020 00000000 		.4byte	.LFB2
- 599 0024 3E000000 		.4byte	.LFE2-.LFB2
- 600 0028 00000000 		.4byte	.LFB3
- 601 002c 1C000000 		.4byte	.LFE3-.LFB3
- 602 0030 00000000 		.4byte	0x0
- 603 0034 00000000 		.4byte	0x0
- 604              		.section	.debug_ranges,"",%progbits
- 605              	.Ldebug_ranges0:
- 606 0000 00000000 		.4byte	.Ltext0
- 607 0004 00000000 		.4byte	.Letext0
- 608 0008 00000000 		.4byte	.LFB0
- 609 000c 40000000 		.4byte	.LFE0
- 610 0010 00000000 		.4byte	.LFB1
- 611 0014 3A000000 		.4byte	.LFE1
- 612 0018 00000000 		.4byte	.LFB2
- 613 001c 3E000000 		.4byte	.LFE2
- 614 0020 00000000 		.4byte	.LFB3
- 615 0024 1C000000 		.4byte	.LFE3
- 616 0028 00000000 		.4byte	0x0
- 617 002c 00000000 		.4byte	0x0
- 618              		.section	.debug_str,"MS",%progbits,1
- 619              	.LASF6:
- 620 0000 6C6F6E67 		.ascii	"long long int\000"
- 620      206C6F6E 
- 620      6720696E 
- 620      7400
- 621              	.LASF8:
- 622 000e 756E7369 		.ascii	"unsigned int\000"
- 622      676E6564 
- 622      20696E74 
- 622      00
- 623              	.LASF22:
- 624 001b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Timer_Line_Begin_PM.c\000"
- 624      6E657261 
- 624      7465645F 
- 624      536F7572 
- 624      63655C50 
- 625              	.LASF10:
- 626 004a 75696E74 		.ascii	"uint8\000"
- 626      3800
- 627              	.LASF5:
- 628 0050 6C6F6E67 		.ascii	"long unsigned int\000"
- 628      20756E73 
- 628      69676E65 
- 628      6420696E 
- 628      7400
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 16
-
-
- 629              	.LASF7:
- 630 0062 6C6F6E67 		.ascii	"long long unsigned int\000"
- 630      206C6F6E 
- 630      6720756E 
- 630      7369676E 
- 630      65642069 
- 631              	.LASF15:
- 632 0079 54696D65 		.ascii	"TimerControlRegister\000"
- 632      72436F6E 
- 632      74726F6C 
- 632      52656769 
- 632      73746572 
- 633              	.LASF12:
- 634 008e 54696D65 		.ascii	"TimerEnableState\000"
- 634      72456E61 
- 634      626C6553 
- 634      74617465 
- 634      00
- 635              	.LASF21:
- 636 009f 474E5520 		.ascii	"GNU C 4.4.1\000"
- 636      4320342E 
- 636      342E3100 
- 637              	.LASF1:
- 638 00ab 756E7369 		.ascii	"unsigned char\000"
- 638      676E6564 
- 638      20636861 
- 638      7200
- 639              	.LASF18:
- 640 00b9 54696D65 		.ascii	"Timer_Line_Begin_RestoreConfig\000"
- 640      725F4C69 
- 640      6E655F42 
- 640      6567696E 
- 640      5F526573 
- 641              	.LASF24:
- 642 00d8 54696D65 		.ascii	"Timer_Line_Begin_backup\000"
- 642      725F4C69 
- 642      6E655F42 
- 642      6567696E 
- 642      5F626163 
- 643              	.LASF4:
- 644 00f0 6C6F6E67 		.ascii	"long int\000"
+ 642      206C6F6E 
+ 642      6720696E 
+ 642      7400
+ 643              	.LASF8:
+ 644 000e 756E7369 		.ascii	"unsigned int\000"
+ 644      676E6564 
  644      20696E74 
  644      00
- 645              	.LASF2:
- 646 00f9 73686F72 		.ascii	"short int\000"
- 646      7420696E 
- 646      7400
- 647              	.LASF19:
- 648 0103 54696D65 		.ascii	"Timer_Line_Begin_Sleep\000"
- 648      725F4C69 
- 648      6E655F42 
- 648      6567696E 
- 648      5F536C65 
- 649              	.LASF3:
- 650 011a 73686F72 		.ascii	"short unsigned int\000"
- 650      7420756E 
- 650      7369676E 
-ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccPz96Gb.s 			page 17
+ 645              	.LASF23:
+ 646 001b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Timer_Line_Begin_PM.c\000"
+ 646      6E657261 
+ 646      7465645F 
+ 646      536F7572 
+ 646      63655C50 
+ 647              	.LASF10:
+ 648 004a 75696E74 		.ascii	"uint8\000"
+ 648      3800
+ 649              	.LASF5:
+ 650 0050 6C6F6E67 		.ascii	"long unsigned int\000"
+ 650      20756E73 
+ 650      69676E65 
+ 650      6420696E 
+ 650      7400
+ 651              	.LASF7:
+ 652 0062 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 652      206C6F6E 
+ 652      6720756E 
+ 652      7369676E 
+ 652      65642069 
+ 653              	.LASF16:
+ 654 0079 54696D65 		.ascii	"TimerControlRegister\000"
+ 654      72436F6E 
+ 654      74726F6C 
+ 654      52656769 
+ 654      73746572 
+ 655              	.LASF12:
+ 656 008e 54696D65 		.ascii	"TimerEnableState\000"
+ 656      72456E61 
+ 656      626C6553 
+ 656      74617465 
+ 656      00
+ 657              	.LASF22:
+ 658 009f 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 658      4320342E 
+ 658      342E3100 
+ 659              	.LASF1:
+ 660 00ab 756E7369 		.ascii	"unsigned char\000"
+ 660      676E6564 
+ 660      20636861 
+ 660      7200
+ 661              	.LASF19:
+ 662 00b9 54696D65 		.ascii	"Timer_Line_Begin_RestoreConfig\000"
+ 662      725F4C69 
+ 662      6E655F42 
+ 662      6567696E 
+ 662      5F526573 
+ 663              	.LASF25:
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 17
 
 
- 650      65642069 
- 650      6E7400
- 651              	.LASF0:
- 652 012d 7369676E 		.ascii	"signed char\000"
- 652      65642063 
- 652      68617200 
- 653              	.LASF17:
- 654 0139 54696D65 		.ascii	"Timer_Line_Begin_SaveConfig\000"
- 654      725F4C69 
- 654      6E655F42 
- 654      6567696E 
- 654      5F536176 
- 655              	.LASF23:
- 656 0155 433A5C55 		.ascii	"C:\\Users\\Public\\Documents\\Carlab\\BC and TJ\\Pr"
- 656      73657273 
- 656      5C507562 
- 656      6C69635C 
- 656      446F6375 
- 657 0182 6F6A6563 		.ascii	"oject 4\\Navigation01\\Navigation01.cydsn\000"
- 657      7420345C 
- 657      4E617669 
- 657      67617469 
- 657      6F6E3031 
- 658              	.LASF20:
- 659 01aa 54696D65 		.ascii	"Timer_Line_Begin_Wakeup\000"
- 659      725F4C69 
- 659      6E655F42 
- 659      6567696E 
- 659      5F57616B 
- 660              	.LASF13:
- 661 01c2 54696D65 		.ascii	"TimerUdb\000"
- 661      72556462 
- 661      00
- 662              	.LASF11:
- 663 01cb 75696E74 		.ascii	"uint16\000"
- 663      313600
- 664              	.LASF14:
- 665 01d2 496E7465 		.ascii	"InterruptMaskValue\000"
- 665      72727570 
- 665      744D6173 
- 665      6B56616C 
- 665      756500
- 666              	.LASF16:
- 667 01e5 54696D65 		.ascii	"Timer_Line_Begin_backupStruct\000"
- 667      725F4C69 
- 667      6E655F42 
- 667      6567696E 
- 667      5F626163 
- 668              	.LASF9:
- 669 0203 63686172 		.ascii	"char\000"
- 669      00
- 670              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"
+ 664 00d8 54696D65 		.ascii	"Timer_Line_Begin_backup\000"
+ 664      725F4C69 
+ 664      6E655F42 
+ 664      6567696E 
+ 664      5F626163 
+ 665              	.LASF4:
+ 666 00f0 6C6F6E67 		.ascii	"long int\000"
+ 666      20696E74 
+ 666      00
+ 667              	.LASF2:
+ 668 00f9 73686F72 		.ascii	"short int\000"
+ 668      7420696E 
+ 668      7400
+ 669              	.LASF15:
+ 670 0103 54696D65 		.ascii	"TimerCaptureCounter\000"
+ 670      72436170 
+ 670      74757265 
+ 670      436F756E 
+ 670      74657200 
+ 671              	.LASF20:
+ 672 0117 54696D65 		.ascii	"Timer_Line_Begin_Sleep\000"
+ 672      725F4C69 
+ 672      6E655F42 
+ 672      6567696E 
+ 672      5F536C65 
+ 673              	.LASF3:
+ 674 012e 73686F72 		.ascii	"short unsigned int\000"
+ 674      7420756E 
+ 674      7369676E 
+ 674      65642069 
+ 674      6E7400
+ 675              	.LASF0:
+ 676 0141 7369676E 		.ascii	"signed char\000"
+ 676      65642063 
+ 676      68617200 
+ 677              	.LASF18:
+ 678 014d 54696D65 		.ascii	"Timer_Line_Begin_SaveConfig\000"
+ 678      725F4C69 
+ 678      6E655F42 
+ 678      6567696E 
+ 678      5F536176 
+ 679              	.LASF24:
+ 680 0169 433A5C55 		.ascii	"C:\\Users\\Public\\Documents\\Carlab\\BC and TJ\\Pr"
+ 680      73657273 
+ 680      5C507562 
+ 680      6C69635C 
+ 680      446F6375 
+ 681 0196 6F6A6563 		.ascii	"oject 4\\Navigation01\\Navigation01.cydsn\000"
+ 681      7420345C 
+ 681      4E617669 
+ 681      67617469 
+ 681      6F6E3031 
+ 682              	.LASF21:
+ 683 01be 54696D65 		.ascii	"Timer_Line_Begin_Wakeup\000"
+ 683      725F4C69 
+ 683      6E655F42 
+ 683      6567696E 
+ARM GAS  C:\Users\bccho\AppData\Local\Temp\ccIA3bdv.s 			page 18
+
+
+ 683      5F57616B 
+ 684              	.LASF13:
+ 685 01d6 54696D65 		.ascii	"TimerUdb\000"
+ 685      72556462 
+ 685      00
+ 686              	.LASF11:
+ 687 01df 75696E74 		.ascii	"uint16\000"
+ 687      313600
+ 688              	.LASF14:
+ 689 01e6 496E7465 		.ascii	"InterruptMaskValue\000"
+ 689      72727570 
+ 689      744D6173 
+ 689      6B56616C 
+ 689      756500
+ 690              	.LASF17:
+ 691 01f9 54696D65 		.ascii	"Timer_Line_Begin_backupStruct\000"
+ 691      725F4C69 
+ 691      6E655F42 
+ 691      6567696E 
+ 691      5F626163 
+ 692              	.LASF9:
+ 693 0217 63686172 		.ascii	"char\000"
+ 693      00
+ 694              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

@@ -1,5 +1,5 @@
 # Navigation01
-# 2017-03-30 18:09:54Z
+# 2017-04-04 00:15:00Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -9,104 +9,141 @@ dont_use_io iocell 1 1
 dont_use_io iocell 1 3
 set_io "Camera_data(0)" iocell 4 0
 set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "Comp_out(0)" iocell 2 6
 set_io "Comparator(0)" iocell 4 6
 set_io "Hall_sensor(0)" iocell 5 0
+set_io "Horiz_out(0)" iocell 2 4
 set_io "Horiz_sync(0)" iocell 4 4
-set_location "Net_276" 2 0 1 2
-set_location "Net_301" 1 0 0 1
-set_location "Net_416" 2 5 1 1
-set_location "Net_456" 3 3 1 3
-set_location "Net_47" 2 0 1 3
-set_location "Net_580" 2 3 1 3
-set_location "Net_599" 3 3 0 1
-set_location "Net_612" 2 3 1 0
+set_io "Line_begin(0)" iocell 3 4
+set_io "Line_end(0)" iocell 3 6
+set_location "MODIN7_0" 2 3 0 1
+set_location "MODIN7_1" 2 3 1 3
+set_location "Net_276" 0 1 1 2
+set_location "Net_301" 0 0 1 2
+set_location "Net_416" 0 3 0 1
+set_location "Net_456" 3 4 1 0
+set_location "Net_47" 0 0 0 2
+set_location "Net_580" 2 4 1 0
+set_location "Net_612" 2 4 1 1
+set_location "Net_764" 1 1 0 3
+set_location "Net_836" 2 2 0 3
+set_location "Net_839" 1 1 0 2
+set_location "Net_840" 1 0 1 3
 set_io "Pin_button(0)" iocell 6 1
 set_io "Pin_motor(0)" iocell 4 1
 set_io "Pin_servo(0)" iocell 0 1
 set_io "Rx_1(0)" iocell 3 0
+set_io "Trigger(0)" iocell 3 2
 set_io "Tx_1(0)" iocell 3 1
+set_io "Vert_out(0)" iocell 2 2
 set_io "Vertical_sync(0)" iocell 4 2
+set_location "\Counter_First_Row:CounterUDB:count_enable\" 1 1 1 3
+set_location "\Counter_First_Row:CounterUDB:count_stored_i\" 1 3 1 3
+set_location "\Counter_First_Row:CounterUDB:overflow_reg_i\" 1 0 1 0
+set_location "\Counter_First_Row:CounterUDB:reload\" 1 0 0 1
+set_location "\Counter_First_Row:CounterUDB:sC8:counterdp:u0\" 1 0 2
+set_location "\Counter_First_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\" 1 1 6
+set_location "\Counter_First_Row:CounterUDB:sSTSReg:rstSts:stsreg\" 1 0 4
+set_location "\Counter_First_Row:CounterUDB:status_0\" 1 0 0 2
+set_location "\Counter_First_Row:CounterUDB:status_2\" 1 0 0 3
+set_location "\Counter_Last_Row:CounterUDB:count_enable\" 1 3 1 2
+set_location "\Counter_Last_Row:CounterUDB:overflow_reg_i\" 1 0 1 2
+set_location "\Counter_Last_Row:CounterUDB:reload\" 1 1 1 0
+set_location "\Counter_Last_Row:CounterUDB:sC8:counterdp:u0\" 1 1 2
+set_location "\Counter_Last_Row:CounterUDB:sCTRLReg:SyncCtl:ctrlreg\" 1 3 6
+set_location "\Counter_Last_Row:CounterUDB:sSTSReg:rstSts:stsreg\" 1 1 4
+set_location "\Counter_Last_Row:CounterUDB:status_0\" 1 1 1 2
+set_location "\Counter_Last_Row:CounterUDB:status_2\" 1 0 0 0
 set_location "\Counter_PID:CounterHW\" timercell -1 -1 0
 set_location "\Counter_Tick_Timeout:CounterHW\" timercell -1 -1 1
-set_io "\LCD:LCDPort(0)\" iocell 2 0
-set_io "\LCD:LCDPort(1)\" iocell 2 1
-set_io "\LCD:LCDPort(2)\" iocell 2 2
-set_io "\LCD:LCDPort(3)\" iocell 2 3
-set_io "\LCD:LCDPort(4)\" iocell 2 4
-set_io "\LCD:LCDPort(5)\" iocell 2 5
-set_io "\LCD:LCDPort(6)\" iocell 2 6
-set_location "\PWM_Motor:PWMUDB:final_kill_reg\" 2 3 1 2
-set_location "\PWM_Motor:PWMUDB:prevCompare1\" 3 3 0 2
-set_location "\PWM_Motor:PWMUDB:runmode_enable\" 3 3 0 0
+set_io "\LCD:LCDPort(0)\" iocell 5 1
+set_io "\LCD:LCDPort(1)\" iocell 5 2
+set_io "\LCD:LCDPort(2)\" iocell 5 3
+set_io "\LCD:LCDPort(3)\" iocell 5 4
+set_io "\LCD:LCDPort(4)\" iocell 5 5
+set_io "\LCD:LCDPort(5)\" iocell 5 6
+set_io "\LCD:LCDPort(6)\" iocell 5 7
+set_location "\PWM_Motor:PWMUDB:final_kill_reg\" 0 2 0 2
+set_location "\PWM_Motor:PWMUDB:prevCompare1\" 2 4 0 2
+set_location "\PWM_Motor:PWMUDB:runmode_enable\" 2 4 0 0
 set_location "\PWM_Motor:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 3 6
-set_location "\PWM_Motor:PWMUDB:sP16:pwmdp:u0\" 2 3 2
-set_location "\PWM_Motor:PWMUDB:sP16:pwmdp:u1\" 3 3 2
-set_location "\PWM_Motor:PWMUDB:sSTSReg:rstSts:stsreg\" 3 3 4
-set_location "\PWM_Motor:PWMUDB:status_0\" 3 3 0 3
-set_location "\PWM_Motor:PWMUDB:status_5\" 2 3 1 1
-set_location "\PWM_Servo:PWMUDB:prevCompare1\" 2 2 0 2
-set_location "\PWM_Servo:PWMUDB:runmode_enable\" 2 2 1 1
+set_location "\PWM_Motor:PWMUDB:sP16:pwmdp:u0\" 3 4 2
+set_location "\PWM_Motor:PWMUDB:sP16:pwmdp:u1\" 2 4 2
+set_location "\PWM_Motor:PWMUDB:sSTSReg:rstSts:stsreg\" 2 4 4
+set_location "\PWM_Motor:PWMUDB:status_0\" 2 4 1 2
+set_location "\PWM_Motor:PWMUDB:status_5\" 0 3 1 2
+set_location "\PWM_Servo:PWMUDB:prevCompare1\" 1 3 0 2
+set_location "\PWM_Servo:PWMUDB:runmode_enable\" 1 3 0 0
 set_location "\PWM_Servo:PWMUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 3 6
-set_location "\PWM_Servo:PWMUDB:sP16:pwmdp:u0\" 3 2 2
-set_location "\PWM_Servo:PWMUDB:sP16:pwmdp:u1\" 2 2 2
-set_location "\PWM_Servo:PWMUDB:sSTSReg:rstSts:stsreg\" 2 2 4
-set_location "\PWM_Servo:PWMUDB:status_0\" 2 2 0 3
-set_location "\Timer_Line_Begin:TimerUDB:capt_fifo_load\" 2 4 0 0
-set_location "\Timer_Line_Begin:TimerUDB:capture_last\" 2 4 1 1
-set_location "\Timer_Line_Begin:TimerUDB:rstSts:stsreg\" 2 4 4
-set_location "\Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 4 6
-set_location "\Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\" 3 4 2
-set_location "\Timer_Line_Begin:TimerUDB:sT16:timerdp:u1\" 2 4 2
-set_location "\Timer_Line_Begin:TimerUDB:status_tc\" 2 4 1 3
-set_location "\Timer_Line_End:TimerUDB:capt_fifo_load\" 2 5 0 2
-set_location "\Timer_Line_End:TimerUDB:capt_int_temp\" 2 5 0 0
-set_location "\Timer_Line_End:TimerUDB:int_capt_count_0\" 2 4 0 2
-set_location "\Timer_Line_End:TimerUDB:int_capt_count_1\" 2 4 1 0
-set_location "\Timer_Line_End:TimerUDB:rstSts:stsreg\" 3 5 4
-set_location "\Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 5 6
-set_location "\Timer_Line_End:TimerUDB:sT16:timerdp:u0\" 2 5 2
-set_location "\Timer_Line_End:TimerUDB:sT16:timerdp:u1\" 3 5 2
-set_location "\Timer_Line_End:TimerUDB:status_tc\" 3 5 0 1
-set_location "\Timer_Row:TimerHW\" timercell -1 -1 2
-set_location "\Timer_Wheel_Tick:TimerHW\" timercell -1 -1 3
-set_location "\UART:BUART:counter_load_not\" 0 0 1 1
+set_location "\PWM_Servo:PWMUDB:sP16:pwmdp:u0\" 0 3 2
+set_location "\PWM_Servo:PWMUDB:sP16:pwmdp:u1\" 1 3 2
+set_location "\PWM_Servo:PWMUDB:sSTSReg:rstSts:stsreg\" 0 3 4
+set_location "\PWM_Servo:PWMUDB:status_0\" 1 3 0 3
+set_location "\Timer_Line_Begin:TimerUDB:capt_int_temp\" 3 3 0 0
+set_location "\Timer_Line_Begin:TimerUDB:capture_last\" 1 3 1 0
+set_location "\Timer_Line_Begin:TimerUDB:cntr_load\" 1 2 0 1
+set_location "\Timer_Line_Begin:TimerUDB:fifo_load_polarized\" 1 2 1 1
+set_location "\Timer_Line_Begin:TimerUDB:rstSts:stsreg\" 3 1 4
+set_location "\Timer_Line_Begin:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 4 6
+set_location "\Timer_Line_Begin:TimerUDB:sCapCount:counter\" 1 2 7
+set_location "\Timer_Line_Begin:TimerUDB:sT16:timerdp:u0\" 3 0 2
+set_location "\Timer_Line_Begin:TimerUDB:sT16:timerdp:u1\" 3 1 2
+set_location "\Timer_Line_Begin:TimerUDB:status_tc\" 3 0 0 2
+set_location "\Timer_Line_Begin:TimerUDB:tmp_fifo_load\" 1 2 0 0
+set_location "\Timer_Line_End:TimerUDB:capt_fifo_load\" 2 2 0 0
+set_location "\Timer_Line_End:TimerUDB:capt_int_temp\" 2 2 1 1
+set_location "\Timer_Line_End:TimerUDB:int_capt_count_0\" 2 1 0 0
+set_location "\Timer_Line_End:TimerUDB:int_capt_count_1\" 2 0 0 1
+set_location "\Timer_Line_End:TimerUDB:rstSts:stsreg\" 2 2 4
+set_location "\Timer_Line_End:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 1 6
+set_location "\Timer_Line_End:TimerUDB:sT16:timerdp:u0\" 3 2 2
+set_location "\Timer_Line_End:TimerUDB:sT16:timerdp:u1\" 2 2 2
+set_location "\Timer_Line_End:TimerUDB:status_tc\" 3 2 1 0
+set_location "\Timer_Row:TimerUDB:capt_fifo_load\" 2 3 1 2
+set_location "\Timer_Row:TimerUDB:capture_last\" 2 2 1 0
+set_location "\Timer_Row:TimerUDB:rstSts:stsreg\" 3 4 4
+set_location "\Timer_Row:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 3 2 6
+set_location "\Timer_Row:TimerUDB:sT16:timerdp:u0\" 2 3 2
+set_location "\Timer_Row:TimerUDB:sT16:timerdp:u1\" 3 3 2
+set_location "\Timer_Row:TimerUDB:status_tc\" 3 3 1 1
+set_location "\Timer_Wheel_Tick:TimerHW\" timercell -1 -1 2
+set_location "\UART:BUART:counter_load_not\" 0 2 0 0
 set_location "\UART:BUART:pollcount_0\" 3 0 0 1
-set_location "\UART:BUART:pollcount_1\" 3 1 1 0
-set_location "\UART:BUART:rx_address_detected\" 3 1 0 1
-set_location "\UART:BUART:rx_bitclk_enable\" 3 1 1 3
-set_location "\UART:BUART:rx_counter_load\" 3 1 1 1
-set_location "\UART:BUART:rx_last\" 3 0 0 3
-set_location "\UART:BUART:rx_load_fifo\" 3 0 1 2
-set_location "\UART:BUART:rx_postpoll\" 3 0 0 2
+set_location "\UART:BUART:pollcount_1\" 3 0 1 0
+set_location "\UART:BUART:rx_address_detected\" 3 2 0 2
+set_location "\UART:BUART:rx_bitclk_enable\" 3 0 1 3
+set_location "\UART:BUART:rx_counter_load\" 3 4 1 2
+set_location "\UART:BUART:rx_last\" 3 0 0 0
+set_location "\UART:BUART:rx_load_fifo\" 3 2 1 1
+set_location "\UART:BUART:rx_postpoll\" 3 0 0 3
 set_location "\UART:BUART:rx_state_0\" 3 1 0 0
-set_location "\UART:BUART:rx_state_2\" 3 2 1 0
-set_location "\UART:BUART:rx_state_3\" 3 2 0 3
-set_location "\UART:BUART:rx_state_stop1_reg\" 3 1 0 3
-set_location "\UART:BUART:rx_status_3\" 3 0 0 0
-set_location "\UART:BUART:rx_status_4\" 3 0 1 0
-set_location "\UART:BUART:rx_status_5\" 3 1 1 2
-set_location "\UART:BUART:sRX:RxBitCounter\" 3 1 7
-set_location "\UART:BUART:sRX:RxShifter:u0\" 3 0 2
-set_location "\UART:BUART:sRX:RxSts\" 3 0 4
-set_location "\UART:BUART:sTX:TxShifter:u0\" 1 0 2
-set_location "\UART:BUART:sTX:TxSts\" 1 0 4
-set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" 0 0 2
-set_location "\UART:BUART:tx_bitclk\" 0 0 0 2
-set_location "\UART:BUART:tx_bitclk_enable_pre\" 1 0 0 2
-set_location "\UART:BUART:tx_state_0\" 0 0 0 0
-set_location "\UART:BUART:tx_state_1\" 0 0 1 2
-set_location "\UART:BUART:tx_state_2\" 1 0 1 1
-set_location "\UART:BUART:tx_status_0\" 1 0 0 0
-set_location "\UART:BUART:tx_status_2\" 1 0 0 3
-set_location "\UART:BUART:txn\" 1 0 1 0
-set_location "__ONE__" 2 1 1 2
+set_location "\UART:BUART:rx_state_2\" 3 1 1 0
+set_location "\UART:BUART:rx_state_3\" 3 4 0 0
+set_location "\UART:BUART:rx_state_stop1_reg\" 3 3 1 3
+set_location "\UART:BUART:rx_status_3\" 3 1 1 2
+set_location "\UART:BUART:rx_status_4\" 1 0 1 1
+set_location "\UART:BUART:rx_status_5\" 2 0 0 2
+set_location "\UART:BUART:sRX:RxBitCounter\" 3 0 7
+set_location "\UART:BUART:sRX:RxShifter:u0\" 2 0 2
+set_location "\UART:BUART:sRX:RxSts\" 0 0 4
+set_location "\UART:BUART:sTX:TxShifter:u0\" 0 1 2
+set_location "\UART:BUART:sTX:TxSts\" 0 2 4
+set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" 0 2 2
+set_location "\UART:BUART:tx_bitclk\" 0 3 1 0
+set_location "\UART:BUART:tx_bitclk_enable_pre\" 0 2 1 3
+set_location "\UART:BUART:tx_state_0\" 0 3 1 3
+set_location "\UART:BUART:tx_state_1\" 0 0 0 0
+set_location "\UART:BUART:tx_state_2\" 0 2 1 2
+set_location "\UART:BUART:tx_status_0\" 0 3 0 3
+set_location "\UART:BUART:tx_status_2\" 0 1 1 3
+set_location "\UART:BUART:txn\" 0 1 0 0
+set_location "__ONE__" 0 2 0 1
 set_location "camera_comp_fall" interrupt -1 -1 0
 set_location "camera_comp_rise" interrupt -1 -1 1
 set_location "camera_frame_start" interrupt -1 -1 2
-set_location "camera_row_start" interrupt -1 -1 3
-set_location "inter_button" interrupt -1 -1 4
-set_location "rx_rcvd" interrupt -1 -1 5
+set_location "inter_button" interrupt -1 -1 3
+set_location "rx_rcvd" interrupt -1 -1 4
 set_location "throttle_update" interrupt -1 -1 17
-set_location "tick_timeout" interrupt -1 -1 6
-set_location "tmp__cydff_2_reg" 2 3 0 2
-set_location "wheel_tick" interrupt -1 -1 7
+set_location "tick_timeout" interrupt -1 -1 5
+set_location "tmp__cydff_2_reg" 1 2 0 2
+set_location "wheel_tick" interrupt -1 -1 6
