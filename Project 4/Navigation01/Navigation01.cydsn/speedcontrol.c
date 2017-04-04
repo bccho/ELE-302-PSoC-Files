@@ -5,6 +5,7 @@
 /*-----------------------------------------------------------------*/
 #include <speedcontrol.h>
 #include <device.h>
+#include <hardware.h>
 #include <math.h>
 #include <stdio.h>
 
@@ -12,26 +13,21 @@
 static char strbuffer[100];
 
 // Speed setting
-static const int MAX_THROTTLE = 999;
-int throttle = 0;
+static int throttle = 0;
 
 // Tick tracking
-static const int TICK_TIMER_PERIOD = 65536;
 #define BUF_WHEEL_TICK_SIZE 3
-int bufWheelTick[BUF_WHEEL_TICK_SIZE];
-int bufWheelTickPos = 0;
-int bufWheelTickCurSize = 0;
-int oldTickCount = 0;
+static int bufWheelTick[BUF_WHEEL_TICK_SIZE];
+static int bufWheelTickPos = 0;
+static int bufWheelTickCurSize = 0;
+static int oldTickCount = 0;
 
 // Speed calculating
-static const int CLK_FREQ = 100000;
-static const double WHEEL_DIAM = 2.41; // in inches
 
 // Distance tracking
 static double totalDistance = 0;
 
 // Time tracking
-static const int PID_TIMER_PERIOD = 10000;
 static double elapsedTime = 0;
 
 // Speed error derivative tracking
@@ -281,7 +277,7 @@ void SpeedControl_handleWheelTickTimeout() {
 /* Handle PID timer. Controls speed and updates time */
 void SpeedControl_handleTimer() {
     if (throttlePIDon) {
-        elapsedTime += (double) PID_TIMER_PERIOD / (double) CLK_FREQ;
+        elapsedTime += (double) PID_TIMER_PERIOD / (double) MAIN_CLK_FREQ;
         setThrottle(controlThrottle(getSpeed()));
     }
 }
@@ -383,7 +379,7 @@ static double getSpeed() {
         cumSum += (double) bufWheelTick[i];
     }
     double averageCount = cumSum / bufWheelTickCurSize;
-    double ticksPerSec = CLK_FREQ / averageCount;
+    double ticksPerSec = MAIN_CLK_FREQ / averageCount;
     double speed = ticksPerSec * ((M_PI * WHEEL_DIAM) / 5) * (1.0/12.0);
     
     return speed;

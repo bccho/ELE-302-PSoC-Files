@@ -5,16 +5,12 @@
 /*-----------------------------------------------------------------*/
 #include <navigation.h>
 #include <device.h>
-#include <math.h>
+#include <hardware.h>
+//#include <math.h> // floor and ceil throw errors if included
 #include <stdio.h>
 
 // Printing
 static char strbuffer[100];
-
-// Steering setting
-const double MIN_TIME_SERVO = 0.00105;
-const double MAX_TIME_SERVO = 0.00169;
-const double MAIN_CLK_FREQ = 100000;
 
 // Line (x, spatial) error integral tracking
 static double lineErrorIntegral = 0.0;
@@ -59,6 +55,8 @@ static void setSteering(double dir);
 // static void resetSteeringTracking();
 static void resetDerivativeTracking();
 static void resetIntegralTracking();
+static double floor(double a);
+static double ceil(double a);
 
 /*-----------------------------------------------------------------*/
 
@@ -177,20 +175,19 @@ double Navigation_getDtheta() {
 void Navigation_setSteering(double dir) {
     if (!steeringPIDon) setSteering(dir);
     else UART_PutString("Cannot change steering when PID on\n");
-
 }
 
-// Steering function (-1 is full left, +1 is full right, 0 is center)
-static void setSteering(double dir) {
-    if (dir >  1) dir =  1;
-    if (dir < -1) dir = -1;
+/* Get steering */
+double Navigation_getSteeringMillis() {
+    double servoVal = PWM_Servo_ReadCompare() / MAIN_CLK_FREQ;
+    return servoVal;
+}
 
-    double servoTime = MIN_TIME_SERVO + (MAX_TIME_SERVO - MIN_TIME_SERVO) * (dir + 1) / 2;
-    double servoPeriod = servoTime * MAIN_CLK_FREQ;
-    double midPeriod = 0.5*(MAX_TIME_SERVO + MIN_TIME_SERVO) * MAIN_CLK_FREQ;
-    if (servoPeriod > midPeriod) servoPeriod = floor(servoPeriod);
-    else servoPeriod = ceil(servoPeriod);
-    PWM_Servo_WriteCompare(servoPeriod);
+// -1 is full left, +1 is full right, 0 is center
+double Navigation_getSteering() {
+    double servoVal = Navigation_getSteeringMillis();
+    double setVal = (servoVal - MIN_TIME_SERVO) / (MAX_TIME_SERVO - MIN_TIME_SERVO);
+    return setVal * 2 - 1;
 }
 
 /* Kill steering and navigation */
@@ -209,7 +206,28 @@ void Navigation_handleTimer() {
     }
 }
 
+/* Floor and ceil helper functions */
+static double floor(double a) {
+    return (double) (int) a;
+}
 
+static double ceil(double a) {
+    return floor(a) + 1;
+}
+
+
+// Steering function (-1 is full left, +1 is full right, 0 is center)
+static void setSteering(double dir) {
+    if (dir >  1) dir =  1;
+    if (dir < -1) dir = -1;
+
+    double servoTime = MIN_TIME_SERVO + (MAX_TIME_SERVO - MIN_TIME_SERVO) * (dir + 1) / 2;
+    double servoPeriod = servoTime * MAIN_CLK_FREQ;
+    double midPeriod = 0.5*(MAX_TIME_SERVO + MIN_TIME_SERVO) * MAIN_CLK_FREQ;
+    if (servoPeriod > midPeriod) servoPeriod = floor(servoPeriod);
+    else servoPeriod = ceil(servoPeriod);
+    PWM_Servo_WriteCompare(servoPeriod);
+}
 
 /* Updates the steering error values, and uses them to update
  * the set point throttle for PWM control

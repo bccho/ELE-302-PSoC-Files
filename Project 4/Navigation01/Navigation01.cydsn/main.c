@@ -4,60 +4,44 @@
 /* BC Cho (bccho@) and TJ Smith (tjs8@)                            */
 /*-----------------------------------------------------------------*/
 #include <device.h>
+#include <hardware.h>
 #include <stdio.h>
 #include <speedcontrol.h>
+#include <navigation.h>
 #include <serial.h>
 
-char buildVersion[] = "Build 1.0.0";
-char strbuffer[100];
+static char buildVersion[] = "Build 1.0.0";
+static char strbuffer[100];
 
 // Function prototypes
-void parseMessage();
+static void parseMessage();
 
 
-int buttonInterrupted = 0;
-int rxInterrupted = 0;
-int wheelTickInterrupted = 0;
-int tickTimeoutInterrupted = 0;
-int pidTimerInterrupted = 0;
-int camCompRiseInterrupted = 0;
-int camCompFallInterrupted = 0;
-int camRowInterrupted = 0;
-int camFrameInterrupted = 0;
+static int buttonInterrupted = 0;
+static int rxInterrupted = 0;
+static int wheelTickInterrupted = 0;
+static int tickTimeoutInterrupted = 0;
+static int pidTimerInterrupted = 0;
+static int camCompRiseInterrupted = 0;
+static int camCompFallInterrupted = 0;
+static int camFrameInterrupted = 0;
 
-int numFrames = 0;
-int numRows = 0;
-int numCompBegin = 0;
-int numCompEnd = 0;
-int rowCycles = 0;
-int lineBeginCycles = 0;
-int lineEndCycles = 0;
-#define CAM_CLK_FREQ 12000000
-const double MAIN_CLK_FREQ = 100000;
+static int numFrames = 0;
+static int numRows = 0;
+static int numCompBegin = 0;
+static int numCompEnd = 0;
+static int rowCycles = 0;
+static int lineBeginCycles = 0;
+static int lineEndCycles = 0;
 
-// Control pulse times in s
-const double MIN_TIME_SERVO = 0.00105;
-const double MAX_TIME_SERVO = 0.00169;
+static const double EXPECTED_ROW_CYCLES = EXPECTED_ROW_TIME * CAM_CLK_FREQ;
 
-const double CAMERA_TIMER_PERIOD = 65536;
+static int test6 = 0;
+static int test7 = 0;
+// static int test8 = 0;
+static int test9 = 0;
 
-#define EXPECTED_ROW_TIME 0.000059
-const double EXPECTED_ROW_CYCLES = EXPECTED_ROW_TIME * CAM_CLK_FREQ;
-
-int test6 = 0;
-int test7 = 0;
-int test8 = 0;
-int test9 = 0;
-
-double lineMid = 0;
-
-double floor(double a) {
-    return (double) (int) a;
-}
-
-double ceil(double a) {
-    return floor(a) + 1;
-}
+static double lineMid = 0;
 
 /*
  * parseMessage()
@@ -67,7 +51,7 @@ double ceil(double a) {
  * Inputs: message
  * Returns: none
  */
-void parseMessage(char *message) {
+static void parseMessage(char *message) {
     if (message == NULL) return;
     
     char msgPrefix[4];
@@ -269,15 +253,10 @@ void parseMessage(char *message) {
             if (sscanf(message + prefixLen, "%lf", &value) > 0) {
                 if (value > 1) value = 1;
                 if (value < 0) value = 0;
-                double servoTime = MIN_TIME_SERVO + (MAX_TIME_SERVO - MIN_TIME_SERVO) * value;
-                double servoPeriod = servoTime * MAIN_CLK_FREQ;
-                double midPeriod = 0.5*(MAX_TIME_SERVO + MIN_TIME_SERVO) * MAIN_CLK_FREQ;
-                if (servoPeriod > midPeriod) servoPeriod = floor(servoPeriod);
-                else servoPeriod = ceil(servoPeriod);
-                PWM_Servo_WriteCompare(servoPeriod);
+                Navigation_setSteering(value * 2 - 1);
             }
-            double servoVal = PWM_Servo_ReadCompare() / MAIN_CLK_FREQ;
-            double setVal = (servoVal - MIN_TIME_SERVO) / (MAX_TIME_SERVO - MIN_TIME_SERVO);
+            double servoVal = Navigation_getSteeringMillis();
+            double setVal = (Navigation_getSteering() + 1) / 2;
             sprintf(strbuffer, "Servo set to %.3f (%.3f ms)\n", setVal, servoVal*1000);
             UART_PutString(strbuffer);
         }
@@ -364,7 +343,7 @@ int main() {
     
     // Start servo PWM
     PWM_Servo_Start();
-    PWM_Servo_WriteCompare((MIN_TIME_SERVO + MAX_TIME_SERVO)/2 * MAIN_CLK_FREQ);
+    Navigation_setSteering(0);
     
     // Start pushbutton
     inter_button_Start();

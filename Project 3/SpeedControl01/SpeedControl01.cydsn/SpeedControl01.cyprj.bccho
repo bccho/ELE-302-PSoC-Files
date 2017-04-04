@@ -775,6 +775,10 @@
 </file>
 <file name=".\Generated_Source\PSoC5\camera_row_start.H" />
 <file name=".\Generated_Source\PSoC5\camera_row_start.c" />
+<file name=".\CortexM3\ARM_GCC_441\Debug\core_cm3.o">
+<dep name=".\Generated_Source\PSoC5\core_cm3.c" />
+</file>
+<file name=".\Generated_Source\PSoC5\core_cm3.c" />
 <file name=".\CortexM3\ARM_GCC_441\Debug\cyPm.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
@@ -893,10 +897,6 @@
 </file>
 <file name=".\Generated_Source\PSoC5\wheel_tick.H" />
 <file name=".\Generated_Source\PSoC5\wheel_tick.c" />
-<file name=".\CortexM3\ARM_GCC_441\Debug\core_cm3.o">
-<dep name=".\Generated_Source\PSoC5\core_cm3.c" />
-</file>
-<file name=".\Generated_Source\PSoC5\core_cm3.c" />
 <file name=".\CortexM3\ARM_GCC_441\Debug\CyBootAsmGnu.o">
 <dep name=".\Generated_Source\PSoC5\CyBootAsmGnu.s" />
 </file>
@@ -917,35 +917,25 @@
 <dep name=".\CortexM3\ARM_GCC_441\Debug\LCD_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Pin_button.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\inter_button.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\Pin_motor.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\Clock_1.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\LCD_LCDPort.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\Cm3Start.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\core_cm3.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\CyBootAsmGnu.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\CyDmac.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\CyFlash.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\CyLib.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\cyPm.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\CySpc.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\cyutils.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\rx_rcvd.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\Hall_sensor.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\wheel_tick.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\tick_timeout.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\throttle_update.o" />
-<dep name=".\CortexM3\ARM_GCC_441\Debug\Clock_2.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\PWM_Motor.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\PWM_Motor_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\Pin_motor.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\Clock_1.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\UART.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\UART_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\UART_INT.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\rx_rcvd.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\Hall_sensor.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\wheel_tick.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Counter_PID.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Counter_PID_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\tick_timeout.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Timer_Wheel_Tick.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Timer_Wheel_Tick_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Counter_Tick_Timeout.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Counter_Tick_Timeout_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\throttle_update.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\Clock_2.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\PWM_Servo.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\PWM_Servo_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Pin_servo.o" />
@@ -964,6 +954,16 @@
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Timer_Line_End.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\Timer_Line_End_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\camera_comp_fall.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\LCD_LCDPort.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\Cm3Start.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\core_cm3.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\CyBootAsmGnu.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\CyDmac.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\CyFlash.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\CyLib.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\cyPm.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\CySpc.o" />
+<dep name=".\CortexM3\ARM_GCC_441\Debug\cyutils.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_441\Debug\SpeedControl01.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_441\Debug\CyComponentLibrary.a" />
@@ -1034,9 +1034,10 @@
 <name_val_pair name=".\Generated_Source\PSoC5\camera_comp_fall.c" v="&quot;-I. &quot;&quot;-Wno-main &quot;&quot;-I./Generated_Source/PSoC5 &quot;&quot;-mcpu=cortex-m3 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
 <name_val_pair name=".\Generated_Source\PSoC5\cyfitter_cfg.c" v="&quot;-I. &quot;&quot;-Wno-main &quot;&quot;-I./Generated_Source/PSoC5 &quot;&quot;-mcpu=cortex-m3 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
 <name_val_pair name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\SpeedControl01\SpeedControl01.cydsn\CortexM3\ARM_GCC_441\Debug\SpeedControl01.hex" v="&quot;-mthumb &quot;&quot;-march=armv7-m &quot;&quot;-mfix-cortex-m3-ldrd &quot;&quot;-T &quot;&quot;.\Generated_Source\PSoC5\cm3gcc.ld &quot;&quot;-g &quot;&quot;-Wl,-Map,${OutputDir}\${ProjectShortName}.map &quot;&quot;-Wl,--gc-sections &quot;" />
+<name_val_pair name="C:\Users\Public\Documents\Carlab\BC and TJ\Project 3\SpeedControl01\SpeedControl01.cydsn\CortexM3\ARM_GCC_441\Debug\SpeedControl01.hex" v="&quot;-mthumb &quot;&quot;-march=armv7-m &quot;&quot;-mfix-cortex-m3-ldrd &quot;&quot;-T &quot;&quot;.\Generated_Source\PSoC5\cm3gcc.ld &quot;&quot;-g &quot;&quot;-Wl,-Map,${OutputDir}\${ProjectShortName}.map &quot;&quot;-Wl,--gc-sections &quot;" />
 </name>
 </genericCmdLineData>
-<codeGenCmdLineTag v="&quot;-.appdatapath&quot; &quot;C:\Users\bccho\AppData\Local\Cypress Semiconductor\PSoC Creator\2.1&quot; &quot;-.fdsnotice&quot; &quot;-.fdswarpdepfile=warp_dependencies.txt&quot; &quot;-.fdselabdepfile=elab_dependencies.txt&quot; &quot;-.fdsbldfile=generated_files.txt&quot; &quot;-p&quot; &quot;C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\SpeedControl01\SpeedControl01.cydsn\SpeedControl01.cyprj&quot; &quot;-d&quot; &quot;CY8C5868AXI-LP035&quot; &quot;-s&quot; &quot;C:\Users\Public\Documents\Carlab\BC and TJ\Project 4\SpeedControl01\SpeedControl01.cydsn\Generated_Source\PSoC5&quot; &quot;--&quot; &quot;-yv2&quot; &quot;-v3&quot; &quot;-ygs&quot; &quot;-q10&quot; &quot;-o2&quot; &quot;-.fftcfgtype=LE&quot; " />
+<codeGenCmdLineTag v="&quot;-.appdatapath&quot; &quot;C:\Users\bccho\AppData\Local\Cypress Semiconductor\PSoC Creator\2.1&quot; &quot;-.fdsnotice&quot; &quot;-.fdswarpdepfile=warp_dependencies.txt&quot; &quot;-.fdselabdepfile=elab_dependencies.txt&quot; &quot;-.fdsbldfile=generated_files.txt&quot; &quot;-p&quot; &quot;C:\Users\Public\Documents\Carlab\BC and TJ\Project 3\SpeedControl01\SpeedControl01.cydsn\SpeedControl01.cyprj&quot; &quot;-d&quot; &quot;CY8C5868AXI-LP035&quot; &quot;-s&quot; &quot;C:\Users\Public\Documents\Carlab\BC and TJ\Project 3\SpeedControl01\SpeedControl01.cydsn\Generated_Source\PSoC5&quot; &quot;--&quot; &quot;-yv2&quot; &quot;-v3&quot; &quot;-ygs&quot; &quot;-q10&quot; &quot;-o2&quot; &quot;-.fftcfgtype=LE&quot; " />
 </CyGuid_b0374e30-ce3a-47f2-ad85-821643292c68>
 </dataGuid>
 <dataGuid v="925cc1e1-309e-4e08-b0a1-09a83c35b157">
@@ -1951,48 +1952,18 @@
 <v>.\Generated_Source\PSoC5\Pin_button.h</v>
 <v>.\Generated_Source\PSoC5\inter_button.c</v>
 <v>.\Generated_Source\PSoC5\inter_button.h</v>
-<v>.\Generated_Source\PSoC5\PWM.c</v>
-<v>.\Generated_Source\PSoC5\PWM.h</v>
-<v>.\Generated_Source\PSoC5\PWM_PM.c</v>
+<v>.\Generated_Source\PSoC5\PWM_Motor.c</v>
+<v>.\Generated_Source\PSoC5\PWM_Motor.h</v>
+<v>.\Generated_Source\PSoC5\PWM_Motor_PM.c</v>
 <v>.\Generated_Source\PSoC5\Pin_motor_aliases.h</v>
 <v>.\Generated_Source\PSoC5\Pin_motor.c</v>
 <v>.\Generated_Source\PSoC5\Pin_motor.h</v>
 <v>.\Generated_Source\PSoC5\Clock_1.c</v>
 <v>.\Generated_Source\PSoC5\Clock_1.h</v>
-<v>.\Generated_Source\PSoC5\LCD_LCDPort_aliases.h</v>
-<v>.\Generated_Source\PSoC5\LCD_LCDPort.c</v>
-<v>.\Generated_Source\PSoC5\LCD_LCDPort.h</v>
-<v>.\Generated_Source\PSoC5\cm3gcc.ld</v>
-<v>.\Generated_Source\PSoC5\Cm3RealView.scat</v>
-<v>.\Generated_Source\PSoC5\Cm3Start.c</v>
-<v>.\Generated_Source\PSoC5\core_cm3_psoc5.h</v>
-<v>.\Generated_Source\PSoC5\core_cm3.c</v>
-<v>.\Generated_Source\PSoC5\core_cm3.h</v>
-<v>.\Generated_Source\PSoC5\CyBootAsmGnu.s</v>
-<v>.\Generated_Source\PSoC5\CyBootAsmRv.s</v>
-<v>.\Generated_Source\PSoC5\CyDmac.c</v>
-<v>.\Generated_Source\PSoC5\CyDmac.h</v>
-<v>.\Generated_Source\PSoC5\CyFlash.c</v>
-<v>.\Generated_Source\PSoC5\CyFlash.h</v>
-<v>.\Generated_Source\PSoC5\CyLib.c</v>
-<v>.\Generated_Source\PSoC5\CyLib.h</v>
-<v>.\Generated_Source\PSoC5\cypins.h</v>
-<v>.\Generated_Source\PSoC5\cyPm.c</v>
-<v>.\Generated_Source\PSoC5\cyPm.h</v>
-<v>.\Generated_Source\PSoC5\CySpc.c</v>
-<v>.\Generated_Source\PSoC5\CySpc.h</v>
-<v>.\Generated_Source\PSoC5\cytypes.h</v>
-<v>.\Generated_Source\PSoC5\cyutils.c</v>
-<v>.\Generated_Source\PSoC5\core_cmFunc.h</v>
-<v>.\Generated_Source\PSoC5\core_cmInstr.h</v>
-<v>.\Generated_Source\PSoC5\Cm3Iar.icf</v>
-<v>.\Generated_Source\PSoC5\CyBootAsmIar.s</v>
-<v>.\Generated_Source\PSoC5\project.h</v>
-<v>.\Generated_Source\PSoC5\UART_1.c</v>
-<v>.\Generated_Source\PSoC5\UART_1.h</v>
-<v>.\Generated_Source\PSoC5\UART_1_PM.c</v>
-<v>.\Generated_Source\PSoC5\UART_1_INT.c</v>
-<v>.\Generated_Source\PSoC5\UART_1_BOOT.c</v>
+<v>.\Generated_Source\PSoC5\UART.c</v>
+<v>.\Generated_Source\PSoC5\UART.h</v>
+<v>.\Generated_Source\PSoC5\UART_PM.c</v>
+<v>.\Generated_Source\PSoC5\UART_INT.c</v>
 <v>.\Generated_Source\PSoC5\rx_rcvd.c</v>
 <v>.\Generated_Source\PSoC5\rx_rcvd.h</v>
 <v>.\Generated_Source\PSoC5\Hall_sensor_aliases.h</v>
@@ -2000,48 +1971,21 @@
 <v>.\Generated_Source\PSoC5\Hall_sensor.h</v>
 <v>.\Generated_Source\PSoC5\wheel_tick.c</v>
 <v>.\Generated_Source\PSoC5\wheel_tick.h</v>
-<v>.\Generated_Source\PSoC5\Counter_1.c</v>
-<v>.\Generated_Source\PSoC5\Counter_1.h</v>
-<v>.\Generated_Source\PSoC5\Counter_1_PM.c</v>
-<v>.\Generated_Source\PSoC5\Timer_1.c</v>
-<v>.\Generated_Source\PSoC5\Timer_1.h</v>
-<v>.\Generated_Source\PSoC5\Timer_1_PM.c</v>
-<v>.\Generated_Source\PSoC5\eeprom.hex</v>
-<v>.\Generated_Source\PSoC5\cymetadata.c</v>
-<v>.\Generated_Source\PSoC5\cydeviceiar.inc</v>
-<v>.\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
-<v>.\Generated_Source\PSoC5\cyfitteriar.inc</v>
-<v>.\Generated_Source\PSoC5\cydisabledsheets.h</v>
-<v>.\Generated_Source\PSoC5\UART_1_IntClock.c</v>
-<v>.\Generated_Source\PSoC5\UART_1_IntClock.h</v>
-<v>.\Generated_Source\PSoC5\tick_timeout.c</v>
-<v>.\Generated_Source\PSoC5\tick_timeout.h</v>
-<v>.\Generated_Source\PSoC5\ShiftReg_1.c</v>
-<v>.\Generated_Source\PSoC5\ShiftReg_1.h</v>
-<v>.\Generated_Source\PSoC5\ShiftReg_1_PM.c</v>
-<v>.\Generated_Source\PSoC5\Counter_2.c</v>
-<v>.\Generated_Source\PSoC5\Counter_2.h</v>
-<v>.\Generated_Source\PSoC5\Counter_2_PM.c</v>
-<v>.\Generated_Source\PSoC5\throttle_update.c</v>
-<v>.\Generated_Source\PSoC5\throttle_update.h</v>
-<v>.\Generated_Source\PSoC5\Clock_2.c</v>
-<v>.\Generated_Source\PSoC5\Clock_2.h</v>
-<v>.\Generated_Source\PSoC5\PWM_Motor.c</v>
-<v>.\Generated_Source\PSoC5\PWM_Motor.h</v>
-<v>.\Generated_Source\PSoC5\PWM_Motor_PM.c</v>
-<v>.\Generated_Source\PSoC5\UART.c</v>
-<v>.\Generated_Source\PSoC5\UART.h</v>
-<v>.\Generated_Source\PSoC5\UART_PM.c</v>
-<v>.\Generated_Source\PSoC5\UART_INT.c</v>
 <v>.\Generated_Source\PSoC5\Counter_PID.c</v>
 <v>.\Generated_Source\PSoC5\Counter_PID.h</v>
 <v>.\Generated_Source\PSoC5\Counter_PID_PM.c</v>
+<v>.\Generated_Source\PSoC5\tick_timeout.c</v>
+<v>.\Generated_Source\PSoC5\tick_timeout.h</v>
 <v>.\Generated_Source\PSoC5\Timer_Wheel_Tick.c</v>
 <v>.\Generated_Source\PSoC5\Timer_Wheel_Tick.h</v>
 <v>.\Generated_Source\PSoC5\Timer_Wheel_Tick_PM.c</v>
 <v>.\Generated_Source\PSoC5\Counter_Tick_Timeout.c</v>
 <v>.\Generated_Source\PSoC5\Counter_Tick_Timeout.h</v>
 <v>.\Generated_Source\PSoC5\Counter_Tick_Timeout_PM.c</v>
+<v>.\Generated_Source\PSoC5\throttle_update.c</v>
+<v>.\Generated_Source\PSoC5\throttle_update.h</v>
+<v>.\Generated_Source\PSoC5\Clock_2.c</v>
+<v>.\Generated_Source\PSoC5\Clock_2.h</v>
 <v>.\Generated_Source\PSoC5\PWM_Servo.c</v>
 <v>.\Generated_Source\PSoC5\PWM_Servo.h</v>
 <v>.\Generated_Source\PSoC5\PWM_Servo_PM.c</v>
@@ -2079,6 +2023,31 @@
 <v>.\Generated_Source\PSoC5\Timer_Line_End_PM.c</v>
 <v>.\Generated_Source\PSoC5\camera_comp_fall.c</v>
 <v>.\Generated_Source\PSoC5\camera_comp_fall.h</v>
+<v>.\Generated_Source\PSoC5\LCD_LCDPort_aliases.h</v>
+<v>.\Generated_Source\PSoC5\LCD_LCDPort.c</v>
+<v>.\Generated_Source\PSoC5\LCD_LCDPort.h</v>
+<v>.\Generated_Source\PSoC5\cm3gcc.ld</v>
+<v>.\Generated_Source\PSoC5\Cm3RealView.scat</v>
+<v>.\Generated_Source\PSoC5\Cm3Start.c</v>
+<v>.\Generated_Source\PSoC5\core_cm3_psoc5.h</v>
+<v>.\Generated_Source\PSoC5\core_cm3.c</v>
+<v>.\Generated_Source\PSoC5\core_cm3.h</v>
+<v>.\Generated_Source\PSoC5\CyBootAsmGnu.s</v>
+<v>.\Generated_Source\PSoC5\CyBootAsmRv.s</v>
+<v>.\Generated_Source\PSoC5\CyDmac.c</v>
+<v>.\Generated_Source\PSoC5\CyDmac.h</v>
+<v>.\Generated_Source\PSoC5\CyFlash.c</v>
+<v>.\Generated_Source\PSoC5\CyFlash.h</v>
+<v>.\Generated_Source\PSoC5\CyLib.c</v>
+<v>.\Generated_Source\PSoC5\CyLib.h</v>
+<v>.\Generated_Source\PSoC5\cypins.h</v>
+<v>.\Generated_Source\PSoC5\cyPm.c</v>
+<v>.\Generated_Source\PSoC5\cyPm.h</v>
+<v>.\Generated_Source\PSoC5\CySpc.c</v>
+<v>.\Generated_Source\PSoC5\CySpc.h</v>
+<v>.\Generated_Source\PSoC5\cytypes.h</v>
+<v>.\Generated_Source\PSoC5\cyutils.c</v>
+<v>.\Generated_Source\PSoC5\project.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\2.1\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2098,7 +2067,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\2.1\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\2.1\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="131352995598604450" />
+<deps_time v="131357549537834823" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 </userData>

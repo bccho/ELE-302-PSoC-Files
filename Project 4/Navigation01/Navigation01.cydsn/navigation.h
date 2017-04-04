@@ -69,6 +69,10 @@ double Navigation_getDistance();
 /* Set steering */
 void Navigation_setSteering(double dir);
 
+/* Get steering */
+double Navigation_getSteering();
+double Navigation_getSteeringMillis();
+
 /* Kill throttle and speed control */
 void Navigation_kill();
 

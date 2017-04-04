@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SpeedControl01\Navigation01\Header Files">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SpeedControl01\Navigation01\Header Files\hardware.h">
 <ExpandedNodeIds>
 <v>SpeedControl01</v>
 <v>SpeedControl01\Navigation01</v>
@@ -21,6 +21,7 @@
 <v>SpeedControl01\Navigation01\Navigation01.cydwr</v>
 <v>SpeedControl01\Navigation01\Header Files</v>
 <v>SpeedControl01\Navigation01\Header Files\device.h</v>
+<v>SpeedControl01\Navigation01\Header Files\hardware.h</v>
 <v>SpeedControl01\Navigation01\Header Files\navigation.h</v>
 <v>SpeedControl01\Navigation01\Header Files\serial.h</v>
 <v>SpeedControl01\Navigation01\Header Files\speedcontrol.h</v>
@@ -215,6 +216,7 @@
 <v>SpeedControl01\Navigation01\Navigation01.cydwr</v>
 <v>SpeedControl01\Navigation01\Header Files</v>
 <v>SpeedControl01\Navigation01\Header Files\device.h</v>
+<v>SpeedControl01\Navigation01\Header Files\hardware.h</v>
 <v>SpeedControl01\Navigation01\Header Files\navigation.h</v>
 <v>SpeedControl01\Navigation01\Header Files\serial.h</v>
 <v>SpeedControl01\Navigation01\Header Files\speedcontrol.h</v>
@@ -256,7 +258,6 @@
 <v>SpeedControl01\Navigation01\Generated_Source\PSoC5\Comparator\Comparator.h</v>
 <v>SpeedControl01\Navigation01\Generated_Source\PSoC5\Comparator\Comparator_aliases.h</v>
 <v>SpeedControl01\Navigation01\Generated_Source\PSoC5\Counter_First_Row</v>
-<v>SpeedControl01\Navigation01\Generated_Source\PSoC5\Counter_First_Row\Counter_First_Row.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SpeedControl01">
@@ -289,12 +290,6 @@
 <VisibleNodeIds>
 <v>SpeedControl01</v>
 <v>SpeedControl01\Navigation01</v>
-<v>SpeedControl01\Navigation01\CortexM3</v>
-<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441</v>
-<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug</v>
-<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug\Navigation01.elf</v>
-<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug\Navigation01.hex</v>
-<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug\Navigation01.map</v>
 <v>SpeedControl01\Navigation01\Navigation01.rpt</v>
 <v>SpeedControl01\Navigation01\Navigation01_timing.html</v>
 </VisibleNodeIds>
@@ -361,12 +356,14 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\Navigation01.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Navigation01.cydsn\Navigation01.cydwr" />
 <name v=".\Navigation01.cydsn\main.c" />
 <name v=".\Navigation01.cydsn\serial.h" />
 <name v=".\Navigation01.cydsn\serial.c" />
 <name v=".\Navigation01.cydsn\speedcontrol.h" />
 <name v=".\Navigation01.cydsn\speedcontrol.c" />
-<name v=".\Navigation01.cydsn\Navigation01.cydwr" />
+<name v=".\Navigation01.cydsn\navigation.h" />
+<name v=".\Navigation01.cydsn\navigation.c" />
 </OpenDocs>
 <config v="" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
