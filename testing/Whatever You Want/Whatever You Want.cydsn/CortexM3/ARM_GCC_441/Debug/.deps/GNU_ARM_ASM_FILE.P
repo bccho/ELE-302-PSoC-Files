@@ -1,4 +1,0 @@
-H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/CortexM3/ARM_GCC_441/Debug/CyBootAsmGnu.o : H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s 
-
-H:/ele302/learning/Whatever\ You\ Want/Whatever\ You\ Want.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s : 
-
