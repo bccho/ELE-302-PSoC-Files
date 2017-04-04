@@ -27,7 +27,7 @@ static double thetaIntegral = 0.0;
 
 // Theta (angle from line) error derivative tracking
 #define BUF_THETA_SIZE 10
-static double bufTheta[BUF_LINE_ERROR_SIZE];
+static double bufTheta[BUF_THETA_SIZE];
 static int bufThetaPos = 0;
 static int bufThetaLastPos = 0;
 

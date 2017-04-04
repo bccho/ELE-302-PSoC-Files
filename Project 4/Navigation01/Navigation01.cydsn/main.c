@@ -4,6 +4,7 @@
 /* BC Cho (bccho@) and TJ Smith (tjs8@)                            */
 /*-----------------------------------------------------------------*/
 #include <device.h>
+#define VAR_DECLS
 #include <hardware.h>
 #include <stdio.h>
 #include <speedcontrol.h>
