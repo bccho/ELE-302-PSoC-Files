@@ -4,7 +4,6 @@
 /* BC Cho (bccho@) and TJ Smith (tjs8@)                            */
 /*-----------------------------------------------------------------*/
 #include <device.h>
-#define VAR_DECLS
 #include <hardware.h>
 #include <stdio.h>
 #include <speedcontrol.h>
@@ -26,23 +25,6 @@ static int pidTimerInterrupted = 0;
 static int camCompRiseInterrupted = 0;
 static int camCompFallInterrupted = 0;
 static int camFrameInterrupted = 0;
-
-static int numFrames = 0;
-static int numRows = 0;
-static int numCompBegin = 0;
-static int numCompEnd = 0;
-static int rowCycles = 0;
-static int lineBeginCycles = 0;
-static int lineEndCycles = 0;
-
-static const double EXPECTED_ROW_CYCLES = EXPECTED_ROW_TIME * CAM_CLK_FREQ;
-
-static int test6 = 0;
-static int test7 = 0;
-// static int test8 = 0;
-static int test9 = 0;
-
-static double lineMid = 0;
 
 /*
  * parseMessage()
@@ -218,33 +200,16 @@ static void parseMessage(char *message) {
         
         
         
-        // Messages of the form "GC" retun all camera variables
-        else if (strcmp(msgPrefix, "GC") == 0) {
-            sprintf(strbuffer, "Frame count = %d\nRow count = %d\nComparator counts (begin) = %d\nComparator counts (end) = %d\nRow cycles = %d\nLine begin cycles = %d\nLine end cycles = %d\n",
-                    numFrames, numRows, numCompBegin, numCompEnd, rowCycles, lineBeginCycles, lineEndCycles);
-            UART_PutString(strbuffer);
-        }
-        
-        // Messages of the form "GT" retun all test variables
-        else if (strcmp(msgPrefix, "GT") == 0) {
-            sprintf(strbuffer, "Frame count = %d\nComparator counts (begin) = %d\nComparator counts (end) = %d\nLine begin cycles = %d\nLine end cycles = %d\n",
-                    numFrames, numCompBegin, numCompEnd, lineBeginCycles, lineEndCycles);
-            UART_PutString(strbuffer);
-            sprintf(strbuffer, "6: %d\n7: %d\n9: %d\nLine mid: %f\n", test6, test7, test9, lineMid);
-            UART_PutString(strbuffer);
-        }
+//        // Messages of the form "GC" retun all camera variables
+//        else if (strcmp(msgPrefix, "GC") == 0) {
+//            sprintf(strbuffer, "Frame count = %d\nRow count = %d\nComparator counts (begin) = %d\nComparator counts (end) = %d\nRow cycles = %d\nLine begin cycles = %d\nLine end cycles = %d\n",
+//                    numFrames, numRows, numCompBegin, numCompEnd, rowCycles, lineBeginCycles, lineEndCycles);
+//            UART_PutString(strbuffer);
+//        }
         
         // Messages of the form "RC" resets camera variables
         else if (strcmp(msgPrefix, "RC") == 0) {
-            numCompBegin = 0;
-            numCompEnd = 0;
-            numFrames = 0;
-            numRows = 0;
-            
-            rowCycles = 0;
-            lineBeginCycles = 0;
-            lineEndCycles = 0;
-            
+            Camera_reset();
             UART_PutString("Camera variables reset\n");
         }
         
@@ -267,68 +232,41 @@ static void parseMessage(char *message) {
 
 /* Button interrupt */
 CY_ISR(button_inter) {
-//    if (buttonInterrupted) {
-//        UART_PutString("Error 1: Interrupt not handled\n");
-//    }
     buttonInterrupted = 1;
 }
 
 /* Recieved data interrupt */
 CY_ISR(rx_inter) {
-//    if (rxInterrupted) {
-//        UART_PutString("Error 2: Interrupt not handled\n");
-//    }
     rxInterrupted = 1;
 }
 
 /* Wheel tick interrupt */
 CY_ISR(wheel_inter) {
-//    if (wheelTickInterrupted) {
-//        UART_PutString("Error 3: Interrupt not handled\n");
-//    }
     wheelTickInterrupted = 1;
 }
 
 /* Wheel tick timeout interrupt */
 CY_ISR(timeout_inter) {
-//    if (tickTimeoutInterrupted) {
-//        UART_PutString("Error 4: Interrupt not handled\n");
-//    }
     tickTimeoutInterrupted = 1;
 }
 
 /* PID timer interrupt */
 CY_ISR(pid_inter) {
-//    if (pidTimerInterrupted) {
-//        UART_PutString("Error 5: Interrupt not handled\n");
-//    }
     pidTimerInterrupted = 1;
 }
 
 /* Camera comparator rise interrupt */
 CY_ISR(cam_comp_rise_inter) {
-//    if (camCompRiseInterrupted) {
-//        UART_PutString("Error 6: Interrupt not handled\n");
-//    }
-//    test6++;
     camCompRiseInterrupted = 1;
 }
 
 /* Camera comparator fall interrupt */
 CY_ISR(cam_comp_fall_inter) {
-//    if (camCompFallInterrupted) {
-//        UART_PutString("Error 7: Interrupt not handled\n");
-//    }
-//    test7++;
     camCompFallInterrupted = 1;
 }
 
 /* Camera frame start interrupt */
 CY_ISR(cam_frame_inter) {
-//    if (camFrameInterrupted) {
-//        UART_PutString("Error 9: Interrupt not handled\n");
-//    }
-//    test9++;
     camFrameInterrupted = 1;
 }
 
@@ -429,7 +367,7 @@ int main() {
         // Perform PID update and update time count
         if (pidTimerInterrupted) {
             SpeedControl_handleTimer();
-            sprintf(strbuffer, "Line mid: %f\n", lineMid);
+            sprintf(strbuffer, "Line mid: %f\n", Camera_getLineMid());
             UART_PutString(strbuffer);
             
             pidTimerInterrupted = 0;
@@ -437,31 +375,19 @@ int main() {
         
         // Handle comparator rise interrupt
         if (camCompRiseInterrupted) {
-            double lineBeginCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_Begin_ReadCapture();
-            if (lineBeginCyclesTemp > 0.15*EXPECTED_ROW_CYCLES && lineBeginCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
-                numCompBegin++;
-                lineBeginCycles = lineBeginCyclesTemp;
-            }
+            Camera_handleCompRise();
             camCompRiseInterrupted = 0;
         }
         
         // Handle comparator fall interrupt
         if (camCompFallInterrupted) {
-            double lineEndCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_End_ReadCapture();
-            if (lineEndCyclesTemp > 0.15*EXPECTED_ROW_CYCLES && lineEndCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
-                numCompEnd++;
-                lineEndCycles = lineEndCyclesTemp;
-                int diff = lineEndCycles - lineBeginCycles;
-                if (diff < 150 && diff > 0) {
-                    lineMid = ((lineEndCycles + lineBeginCycles)/2)/EXPECTED_ROW_CYCLES;
-                }
-            }
+            Camera_handleCompFall();
             camCompFallInterrupted = 0;
         }
         
         // Handle frame interrupts
         if (camFrameInterrupted) {
-            numFrames++;
+            Camera_handleFrameStart();
             camFrameInterrupted = 0;
         }
     }

@@ -7,16 +7,6 @@
 #ifndef HARDWARE_H
 #define HARDWARE_H
 
-//#ifndef VAR_DECLS
-//    #define VAR_DECLS
-//    #define _DECL extern
-//    #define _INIT(x)
-//#else
-//    #define _DECL
-//    #define _INIT(x)  = x
-//#endif
-
-
 /*-----------------------------------------------------------------*/
 
 /* Main clock */
@@ -38,6 +28,7 @@
 #define CAM_CLK_FREQ 12000000 // Hz
 #define CAMERA_TIMER_PERIOD 65536
 #define EXPECTED_ROW_TIME 0.000059 // seconds
+#define COUNTER_LAST_ROW_COUNT 200
 
 /* PID */
 #define PID_TIMER_PERIOD 10000
