@@ -19,7 +19,7 @@ double Camera_getLineMid();
 
 double Camera_getLineAngle();
 
-void Camera_rest();
+void Camera_reset();
 
 
 

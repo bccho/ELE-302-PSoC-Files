@@ -8,6 +8,7 @@
 #include <hardware.h>
 //#include <math.h> // floor and ceil throw errors if included
 #include <stdio.h>
+#include <camera.h>
 
 // Printing
 static char strbuffer[100];
@@ -199,9 +200,8 @@ void Navigation_kill() {
 /* Handle PID timer. Controls speed and updates time */
 void Navigation_handleTimer() {
     if (steeringPIDon) {
-        // TODO: get x and theta
-        double x = 0;
-        double theta = 0;
+        double x = Camera_getLineMid();
+        double theta = Camera_getLineAngle();
         setSteering(controlSteering(x, theta));
     }
 }
