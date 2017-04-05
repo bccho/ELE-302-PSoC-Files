@@ -7,6 +7,7 @@
 #include <device.h>
 #include <hardware.h>
 #include <stdio.h>
+#include <math.h>
 
 /*-----------------------------------------------------------------*/
 
@@ -57,7 +58,7 @@ void Camera_printValues() {
 
 void Camera_handleCompRise() {
     double lineBeginCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_Begin_ReadCapture();
-    int counterVal = Counter_Last_Row_ReadCounter();
+//    int counterVal = Counter_Last_Row_ReadCounter();
     numCompBeginTotal++;
     if (0.15*EXPECTED_ROW_CYCLES < lineBeginCyclesTemp && lineBeginCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
         numCompBeginReal++;
@@ -74,7 +75,7 @@ void Camera_handleCompRise() {
 
 void Camera_handleCompFall() {
     double lineEndCyclesTemp = CAMERA_TIMER_PERIOD - Timer_Line_End_ReadCapture();
-    int counterVal = Counter_Last_Row_ReadCounter();
+//    int counterVal = Counter_Last_Row_ReadCounter();
     numCompEndTotal++;
     if (0.15*EXPECTED_ROW_CYCLES < lineEndCyclesTemp && lineEndCyclesTemp < 0.95*EXPECTED_ROW_CYCLES) {
         numCompEndReal++;
@@ -128,7 +129,7 @@ double Camera_getLineMid() {
 }
 
 double Camera_getLineAngle() {
-    // TODO: line angle calculation
+    lineAngle = lineMidFar - lineMid;
     return lineAngle;
 }
 
