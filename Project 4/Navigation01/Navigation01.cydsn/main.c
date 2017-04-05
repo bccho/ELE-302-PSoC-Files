@@ -60,7 +60,7 @@ static void parseMessage(char *message) {
             UART_PutString(strbuffer);
         }
         
-        // Messages beginning with "TP" toggle PID control
+        // Messages beginning with "TP" toggle throttle PID control
         else if (strcmp(msgPrefix, "TP") == 0) {
             if (!SpeedControl_isEnabled()) {
                 SpeedControl_enable();
@@ -176,15 +176,16 @@ static void parseMessage(char *message) {
                 SpeedControl_disableVerbosePrintout();
             }
             if (SpeedControl_isVerbosePrintoutEnabled()) {
-                UART_PutString("Verbose printout on\n");
+                UART_PutString("Throttle verbose printout on\n");
             } else {
-                UART_PutString("Verbose printout off\n");
+                UART_PutString("Throttle verbose printout off\n");
             }
         }
         
         // Messages starting with "A" will abort
         else if (strcmp(msgPrefix, "A") == 0) {
             SpeedControl_kill();
+            Navigation_kill();
         }
         
         
@@ -201,12 +202,10 @@ static void parseMessage(char *message) {
         
         
         
-//        // Messages of the form "GC" retun all camera variables
-//        else if (strcmp(msgPrefix, "GC") == 0) {
-//            sprintf(strbuffer, "Frame count = %d\nRow count = %d\nComparator counts (begin) = %d\nComparator counts (end) = %d\nRow cycles = %d\nLine begin cycles = %d\nLine end cycles = %d\n",
-//                    numFrames, numRows, numCompBegin, numCompEnd, rowCycles, lineBeginCycles, lineEndCycles);
-//            UART_PutString(strbuffer);
-//        }
+        // Messages of the form "GC" retun all camera variables
+        else if (strcmp(msgPrefix, "GC") == 0) {
+            Camera_printValues();
+        }
         
         // Messages of the form "RC" resets camera variables
         else if (strcmp(msgPrefix, "RC") == 0) {
@@ -226,6 +225,78 @@ static void parseMessage(char *message) {
             double setVal = (Navigation_getSteering() + 1) / 2;
             sprintf(strbuffer, "Servo set to %.3f (%.3f ms)\n", setVal, servoVal*1000);
             UART_PutString(strbuffer);
+        }
+        
+        // Messages beginning with "TN" toggle navigation/steering control
+        else if (strcmp(msgPrefix, "TN") == 0) {
+            if (!Navigation_isEnabled()) {
+                Navigation_enable();
+            } else {
+                Navigation_disable();
+            }
+            if (Navigation_isEnabled()) {
+                UART_PutString("Steering control on\n");
+            } else {
+                UART_PutString("Steering control off\n");
+            }
+        }
+        
+        // Messages of the form "CPLx" (x float) change the proportional line term to x
+        else if (strcmp(msgPrefix, "CPL") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setPline(value);
+            }
+
+            sprintf(strbuffer, "Pline = %.2f\n", Navigation_getPline());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CILx" (x float) change the integral line term to x
+        else if (strcmp(msgPrefix, "CIL") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setIline(value);
+            }
+
+            sprintf(strbuffer, "Iline = %.2f\n", Navigation_getIline());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CIIx" (x float) change the integral line term to x
+        else if (strcmp(msgPrefix, "CII") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setIIline(value);
+            }
+
+            sprintf(strbuffer, "IIline = %.2f\n", Navigation_getIIline());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CDLx" (x float) change the derivative line term to x
+        else if (strcmp(msgPrefix, "CDL") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setDline(value);
+            }
+
+            sprintf(strbuffer, "Dline = %.2f\n", Navigation_getDline());
+            UART_PutString(strbuffer);
+        }
+        
+        // Message of the form "TVN" toggle verbose printout for navigation/steering PID control
+        else if (strcmp(msgPrefix, "TVN") == 0) {
+            if (!Navigation_isVerbosePrintoutEnabled()) {
+                Navigation_enableVerbosePrintout();
+            } else {
+                Navigation_disableVerbosePrintout();
+            }
+            if (Navigation_isVerbosePrintoutEnabled()) {
+                UART_PutString("Navigation verbose printout on\n");
+            } else {
+                UART_PutString("Navigation verbose printout off\n");
+            }
         }
     }
 }
@@ -316,12 +387,15 @@ int main() {
     camera_comp_fall_SetVector(cam_comp_fall_inter);
     camera_frame_start_Start();
     camera_frame_start_SetVector(cam_frame_inter);
+    
+    // Start camera timers and counters
     Timer_Line_Begin_Start();
     Timer_Line_End_Start(); 
-    Timer_Row_Start();
     
     Counter_First_Row_Start();
     Counter_Last_Row_Start();
+    
+    Counter_Comp_Ignore_Start();
     
     // LCD initial text
     LCD_Position(0, 0);
@@ -368,8 +442,9 @@ int main() {
         // Perform PID update and update time count
         if (pidTimerInterrupted) {
             SpeedControl_handleTimer();
-            sprintf(strbuffer, "Line mid: %f\n", Camera_getLineMid());
-            UART_PutString(strbuffer);
+            Navigation_handleTimer();
+            //sprintf(strbuffer, "Line mid: %f\n", Camera_getLineMid());
+            //UART_PutString(strbuffer);
             
             pidTimerInterrupted = 0;
         }

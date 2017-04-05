@@ -35,13 +35,13 @@ static int bufThetaLastPos = 0;
 // PID settings
 static int steeringPIDon = 0;
 
-static double coeffPline = 50.0;
-static double coeffIline = 10.0;
-static double coeffIIline = 10.0;
-static double coeffDline = 10.0;
-static double coeffPtheta = 50.0;
-static double coeffItheta = 10.0;
-static double coeffDtheta = 10.0;
+static double coeffPline = 2.0;
+static double coeffIline = 0.0;
+static double coeffIIline = 0.0;
+static double coeffDline = 0.0;
+static double coeffPtheta = 0.0;
+static double coeffItheta = 0.0;
+static double coeffDtheta = 0.0;
 
 // Misc
 static int verbosePrintoutOn = 0;
@@ -236,6 +236,11 @@ static void setSteering(double dir) {
  *         theta (double) - the angle that the car makes to the line (0 is parallel to the line)
  * Returns: newSteering (double) */
 static double controlSteering(double linePos, double theta) {
+    /* Ignore if invalid values */
+    if (linePos < 0) {
+        return 0;
+    }
+
     /* Line position */
     // Calculate error
     double targetLinePos = 0.5;

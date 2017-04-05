@@ -51,20 +51,26 @@ void Navigation_setItheta(double I);
 /* Set D coefficient */
 void Navigation_setDtheta(double D);
 
-/* Get P coefficient */
-double Navigation_getP();
+/* Set P coefficient */
+double Navigation_getPline();
 
-/* Get I coefficient */
-double Navigation_getI();
+/* Set I coefficient */
+double Navigation_getIline();
 
-/* Get D coefficient */
-double Navigation_getD();
+/* Set II coefficient */
+double Navigation_getIIline();
 
-/* Get current speed */
-double Navigation_getSpeed();
+/* Set D coefficient */
+double Navigation_getDline();
 
-/* Get total distance */
-double Navigation_getDistance();
+/* Set P coefficient */
+double Navigation_getPtheta();
+
+/* Set I coefficient */
+double Navigation_getItheta();
+
+/* Set D coefficient */
+double Navigation_getDtheta();
 
 /* Set steering */
 void Navigation_setSteering(double dir);

@@ -8,6 +8,7 @@
 
 /*-----------------------------------------------------------------*/
 
+void Camera_printValues();
 
 void Camera_handleCompRise();
 
