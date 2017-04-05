@@ -413,9 +413,10 @@ int main() {
         if (buttonInterrupted) {
             if (SpeedControl_isEnabled()) {
                 SpeedControl_kill();
+                Navigation_kill();
             } else {
-                SpeedControl_enableDistanceControl();
                 SpeedControl_enable();
+                Navigation_enable();
             }
             buttonInterrupted = 0;
         }

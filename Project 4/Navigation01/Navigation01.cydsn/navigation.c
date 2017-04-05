@@ -39,7 +39,7 @@ static double coeffPline = 2.0;
 static double coeffIline = 0.0;
 static double coeffIIline = 0.0;
 static double coeffDline = 0.0;
-static double coeffPtheta = 0.0;
+static double coeffPtheta = 2.0;
 static double coeffItheta = 0.0;
 static double coeffDtheta = 0.0;
 
