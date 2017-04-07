@@ -330,6 +330,20 @@ static void parseMessage(char *message) {
             UART_PutString(strbuffer);
         }
         
+        // Message of the form "TLE" toggle line error tracking
+        else if (strcmp(msgPrefix, "TLE") == 0) {
+            if (!Camera_getLineErrorTracking()) {
+                Camera_setLineErrorTracking(1);
+            } else {
+                Camera_setLineErrorTracking(0);
+            }
+            if (Camera_getLineErrorTracking()) {
+                UART_PutString("Line error tracking on\n");
+            } else {
+                UART_PutString("Line error tracking off\n");
+            }
+        }
+        
         // Message of the form "TVN" toggle verbose printout for navigation/steering PID control
         else if (strcmp(msgPrefix, "TVN") == 0) {
             if (!Navigation_isVerbosePrintoutEnabled()) {

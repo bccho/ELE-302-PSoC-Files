@@ -31,6 +31,8 @@ static double lineMidNear = 0;
 static double lineMidFar = 0;
 static double lineAngle = 0;
 
+static int lineErrorTrackingEnabled = 0;
+
 static int numMissedNear = 0;
 static int numMissedFar = 0;
 static int compRiseNearSeen = 0;
@@ -63,6 +65,14 @@ void Camera_printValues() {
     UART_PutString(strbuffer);
     sprintf(strbuffer, "Line end cycles (far) = %d\n", lineEndCyclesFar);
     UART_PutString(strbuffer);
+}
+
+void Camera_setLineErrorTracking(int val) {
+    lineErrorTrackingEnabled = val;
+}
+
+int Camera_getLineErrorTracking() {
+    return lineErrorTrackingEnabled;
 }
 
 
@@ -195,6 +205,7 @@ void Camera_reset() {
 }
 
 static int checkLineMidNear() {
+    if (!lineErrorTrackingEnabled) return 0;
     if (numMissedNear > maxLineMisses) return -1;
     else if (compRiseNearSeen == 0) return -2;
     else if (compFallNearSeen == 0) return -3;
@@ -206,6 +217,7 @@ static int checkLineMidNear() {
 }
 
 static int checkLineMidFar() {
+    if (!lineErrorTrackingEnabled) return 0;
     if (numMissedFar > maxLineMisses) return -1;
     else if (compRiseFarSeen == 0) return -2;
     else if (compFallFarSeen == 0) return -3;

@@ -19,6 +19,9 @@ void Camera_handleFrameStart();
 void Camera_setMaxLineMisses(int val);
 int Camera_getMaxLineMisses();
 
+void Camera_setLineErrorTracking(int val);
+int Camera_getLineErrorTracking();
+
 double Camera_getLineMid();
 double Camera_getLineMidFar();
 
