@@ -79,12 +79,12 @@ void Navigation_setSteering(double dir);
 double Navigation_getSteering();
 double Navigation_getSteeringMillis();
 
-/* Kill throttle and speed control */
+/* Kill steering and navigation control */
 void Navigation_kill();
 
 
 
-/* Handle PID timer. Controls speed and updates time */
+/* Handle PID timer. Controls steering */
 void Navigation_handleTimer();
 
 

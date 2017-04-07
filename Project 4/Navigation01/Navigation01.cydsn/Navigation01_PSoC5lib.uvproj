@@ -833,36 +833,6 @@
               <FilePath>.\Generated_Source\PSoC5\camera_comp_fall.h</FilePath>
             </File>
             <File>
-              <FileName>Counter_Last_Row.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Last_Row.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.h</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Last_Row_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row_PM.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_First_Row.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_First_Row.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.h</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_First_Row_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>Trigger_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\Trigger_aliases.h</FilePath>
@@ -953,21 +923,6 @@
               <FilePath>.\Generated_Source\PSoC5\Vert_out.h</FilePath>
             </File>
             <File>
-              <FileName>Counter_Comp_Ignore.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Comp_Ignore.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Comp_Ignore.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Comp_Ignore.h</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Comp_Ignore_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Comp_Ignore_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>CompIgnore_out_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\CompIgnore_out_aliases.h</FilePath>
@@ -981,6 +936,111 @@
               <FileName>CompIgnore_out.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\CompIgnore_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Reset_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Reset_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Reset_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Reset_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Reset_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Reset_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Capture_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Capture_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Capture_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Capture_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Capture_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Capture_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_1.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_1.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_1_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_1_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_2.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_2.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_2_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_2_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Near_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Near_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Near_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Near_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Near_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Near_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Far_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Far_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Far_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Far_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Far_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Far_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Camera_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Camera_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Camera_out.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1817,36 +1877,6 @@
               <FilePath>.\Generated_Source\PSoC5\camera_comp_fall.h</FilePath>
             </File>
             <File>
-              <FileName>Counter_Last_Row.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Last_Row.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row.h</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Last_Row_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Last_Row_PM.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_First_Row.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_First_Row.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row.h</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_First_Row_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_First_Row_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>Trigger_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\Trigger_aliases.h</FilePath>
@@ -1937,21 +1967,6 @@
               <FilePath>.\Generated_Source\PSoC5\Vert_out.h</FilePath>
             </File>
             <File>
-              <FileName>Counter_Comp_Ignore.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Comp_Ignore.c</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Comp_Ignore.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Comp_Ignore.h</FilePath>
-            </File>
-            <File>
-              <FileName>Counter_Comp_Ignore_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC5\Counter_Comp_Ignore_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>CompIgnore_out_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\CompIgnore_out_aliases.h</FilePath>
@@ -1965,6 +1980,111 @@
               <FileName>CompIgnore_out.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC5\CompIgnore_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Reset_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Reset_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Reset_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Reset_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Reset_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Reset_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Capture_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Capture_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Capture_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Capture_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Capture_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Capture_out.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_1.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_1.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_1_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_1_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_2.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_2.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Comp_Ignore_2_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Timer_Comp_Ignore_2_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Near_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Near_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Near_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Near_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Near_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Near_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Far_Row.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Far_Row.c</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Far_Row.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Far_Row.h</FilePath>
+            </File>
+            <File>
+              <FileName>Counter_Far_Row_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Counter_Far_Row_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_out_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Camera_out_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Camera_out.c</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_out.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC5\Camera_out.h</FilePath>
             </File>
           </Files>
         </Group>

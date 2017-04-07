@@ -363,7 +363,8 @@ static void setThrottle(int thr) {
     
     PWM_Motor_WriteCompare(throttle);
     
-    LCD_Position(1,0);
+    LCD_ClearDisplay();
+    LCD_Position(0,0);
     char lcdbuffer[4];
     sprintf(lcdbuffer, "%3i", throttle);
     LCD_PrintString(lcdbuffer);

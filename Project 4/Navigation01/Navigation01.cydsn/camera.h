@@ -16,9 +16,15 @@ void Camera_handleCompFall();
 
 void Camera_handleFrameStart();
 
+void Camera_setMaxLineMisses(int val);
+int Camera_getMaxLineMisses();
+
 double Camera_getLineMid();
+double Camera_getLineMidFar();
 
 double Camera_getLineAngle();
+
+void Camera_handleTimer();
 
 void Camera_reset();
 

@@ -52,16 +52,16 @@ static void parseMessage(char *message) {
             UART_PutString(strbuffer);
         }
         
-        // Messages beginning with "G" return the throttle, speed, and PID controls
-        else if (strcmp(msgPrefix, "G") == 0) {
+        // Messages beginning with "GS" return the throttle, speed, and PID controls
+        else if (strcmp(msgPrefix, "GS") == 0) {
             sprintf(strbuffer, "Throttle: %d\nSpeed: %f ft/s\nP = %.2f\tI = %.2f\tD = %.2f\n", 
                     SpeedControl_getThrottle(), SpeedControl_getSpeed(), SpeedControl_getP(), 
                     SpeedControl_getI(), SpeedControl_getD());
             UART_PutString(strbuffer);
         }
         
-        // Messages beginning with "TP" toggle throttle PID control
-        else if (strcmp(msgPrefix, "TP") == 0) {
+        // Messages beginning with "TS" toggle speed PID control
+        else if (strcmp(msgPrefix, "TS") == 0) {
             if (!SpeedControl_isEnabled()) {
                 SpeedControl_enable();
             } else {
@@ -74,7 +74,7 @@ static void parseMessage(char *message) {
             }
         }
         
-        // Messages of the form "TPT" toggle distance control
+        // Messages of the form "TDC" toggle distance control
         else if (strcmp(msgPrefix, "TDC") == 0) {
             if (!SpeedControl_isDistanceControlEnabled()) {
                 SpeedControl_enableDistanceControl();
@@ -102,36 +102,36 @@ static void parseMessage(char *message) {
             }
         }
         
-        // Messages of the form "CPx" (x integer) change the proportional term to x
-        else if (strcmp(msgPrefix, "CP") == 0) {
+        // Messages of the form "CPSx" (x integer) change the proportional term to x
+        else if (strcmp(msgPrefix, "CPS") == 0) {
             int value = 0;
             if (sscanf(message + prefixLen, "%i", &value) > 0) {
                 SpeedControl_setP(value);
             }
 
-            sprintf(strbuffer, "P = %.2f\n", SpeedControl_getP());
+            sprintf(strbuffer, "Pspeed = %.2f\n", SpeedControl_getP());
             UART_PutString(strbuffer);
         }
         
-        // Messages of the form "CIx" (x float) change the integral term to x
-        else if (strcmp(msgPrefix, "CI") == 0) {
+        // Messages of the form "CISx" (x float) change the integral term to x
+        else if (strcmp(msgPrefix, "CIS") == 0) {
             double value = 0;
             if (sscanf(message + prefixLen, "%lf", &value) > 0) {
                 SpeedControl_setI(value);
             }
 
-            sprintf(strbuffer, "I = %.2f\n", SpeedControl_getI());
+            sprintf(strbuffer, "Ispeed = %.2f\n", SpeedControl_getI());
             UART_PutString(strbuffer);
         }
         
-        // Messages of the form "CDx" (x integer) change the derivative term to x
-        else if (strcmp(msgPrefix, "CD") == 0) {
+        // Messages of the form "CDSx" (x integer) change the derivative term to x
+        else if (strcmp(msgPrefix, "CDS") == 0) {
             int value = 0;
             if (sscanf(message + prefixLen, "%i", &value) > 0) {
                 SpeedControl_setD(value);
             }
 
-            sprintf(strbuffer, "D = %.2f\n", SpeedControl_getD());
+            sprintf(strbuffer, "Dspeed = %.2f\n", SpeedControl_getD());
             UART_PutString(strbuffer);
         }
         
@@ -168,8 +168,8 @@ static void parseMessage(char *message) {
             UART_PutString(strbuffer);
         }
         
-        // Message of the form "TVP" toggle verbose printout for speed PID control
-        else if (strcmp(msgPrefix, "TVP") == 0) {
+        // Message of the form "TVS" toggle verbose printout for speed PID control
+        else if (strcmp(msgPrefix, "TVS") == 0) {
             if (!SpeedControl_isVerbosePrintoutEnabled()) {
                 SpeedControl_enableVerbosePrintout();
             } else {
@@ -227,6 +227,18 @@ static void parseMessage(char *message) {
             UART_PutString(strbuffer);
         }
         
+        // Messages of the form "CMMx" change maximum line misses to x (must be positive int)
+        else if (strcmp(msgPrefix, "CMM") == 0) {
+            int value = 0;
+            if (sscanf(message + prefixLen, "%d", &value) > 0) {
+                Camera_setMaxLineMisses(value);
+            }
+            sprintf(strbuffer, "Maximum line misses set to %d\n", Camera_getMaxLineMisses());
+            UART_PutString(strbuffer);
+        }
+        
+        
+        
         // Messages beginning with "TN" toggle navigation/steering control
         else if (strcmp(msgPrefix, "TN") == 0) {
             if (!Navigation_isEnabled()) {
@@ -282,6 +294,39 @@ static void parseMessage(char *message) {
             }
 
             sprintf(strbuffer, "Dline = %.2f\n", Navigation_getDline());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CPTx" (x float) change the proportional theta term to x
+        else if (strcmp(msgPrefix, "CPT") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setPtheta(value);
+            }
+
+            sprintf(strbuffer, "Ptheta = %.2f\n", Navigation_getPtheta());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CITx" (x float) change the integral theta term to x
+        else if (strcmp(msgPrefix, "CIT") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setIline(value);
+            }
+
+            sprintf(strbuffer, "Itheta = %.2f\n", Navigation_getItheta());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CDTx" (x float) change the derivative theta term to x
+        else if (strcmp(msgPrefix, "CDT") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setDtheta(value);
+            }
+
+            sprintf(strbuffer, "Dtheta = %.2f\n", Navigation_getDtheta());
             UART_PutString(strbuffer);
         }
         
@@ -392,20 +437,23 @@ int main() {
     Timer_Line_Begin_Start();
     Timer_Line_End_Start(); 
     
-    Counter_First_Row_Start();
-    Counter_Last_Row_Start();
+    Counter_Far_Row_Start();
+    Counter_Near_Row_Start();
     
-    Counter_Comp_Ignore_Start();
-    
-    // LCD initial text
-    LCD_Position(0, 0);
-    LCD_PrintString(buildVersion);
+    Timer_Comp_Ignore_1_Start();
+    Timer_Comp_Ignore_2_Start();
     
     // Init serial
     Serial_init();
     
-    // Init speed control
+    // Init control
     SpeedControl_init();
+    Navigation_init();
+    
+    // LCD initial text
+    LCD_ClearDisplay();
+    LCD_Position(0, 0);
+    LCD_PrintString(buildVersion);
     
     for(;;)
     {
@@ -443,9 +491,10 @@ int main() {
         // Perform PID update and update time count
         if (pidTimerInterrupted) {
             SpeedControl_handleTimer();
+            Camera_handleTimer();
             Navigation_handleTimer();
-            //sprintf(strbuffer, "Line mid: %f\n", Camera_getLineMid());
-            //UART_PutString(strbuffer);
+//            sprintf(strbuffer, "%6.3f %6.3f %6.3f\n", Camera_getLineMid(), Camera_getLineMidFar(), Camera_getLineAngle());
+//            UART_PutString(strbuffer);
             
             pidTimerInterrupted = 0;
         }

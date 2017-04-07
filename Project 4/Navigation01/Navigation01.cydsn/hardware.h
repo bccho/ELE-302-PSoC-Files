@@ -17,7 +17,7 @@
 
 /* Distance measurement */
 #define TICK_TIMER_PERIOD 65536
-#define WHEEL_DIAM 2.41 // inches
+#define WHEEL_DIAM 2.5 // inches
 
 /* Steering */
 // Control pulse times for steering
@@ -28,7 +28,9 @@
 #define CAM_CLK_FREQ 12000000 // Hz
 #define CAMERA_TIMER_PERIOD 65536
 #define EXPECTED_ROW_TIME 0.000059 // seconds
-#define COUNTER_LAST_ROW_COUNT 200
+#define COUNTER_NEAR_ROW_COUNT 240
+#define LINE_CYCLES_FAR 70
+#define LINE_CYCLES_NEAR 80
 
 /* PID */
 #define PID_TIMER_PERIOD 10000

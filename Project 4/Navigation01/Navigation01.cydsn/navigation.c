@@ -8,6 +8,7 @@
 #include <hardware.h>
 //#include <math.h> // floor and ceil throw errors if included
 #include <stdio.h>
+#include <speedcontrol.h>
 #include <camera.h>
 
 // Printing
@@ -35,7 +36,7 @@ static int bufThetaLastPos = 0;
 // PID settings
 static int steeringPIDon = 0;
 
-static double coeffPline = 2.0;
+static double coeffPline = 4.0;
 static double coeffIline = 0.0;
 static double coeffIIline = 0.0;
 static double coeffDline = 0.0;
@@ -202,6 +203,8 @@ void Navigation_handleTimer() {
     if (steeringPIDon) {
         double x = Camera_getLineMid();
         double theta = Camera_getLineAngle();
+//        sprintf(strbuffer, "Line Mid: %f\n", x);
+        UART_PutString(strbuffer);
         setSteering(controlSteering(x, theta));
     }
 }
@@ -227,6 +230,11 @@ static void setSteering(double dir) {
     if (servoPeriod > midPeriod) servoPeriod = floor(servoPeriod);
     else servoPeriod = ceil(servoPeriod);
     PWM_Servo_WriteCompare(servoPeriod);
+    
+    LCD_Position(1,0);
+    char lcdbuffer[6];
+    sprintf(lcdbuffer, "%.3f", dir);
+    LCD_PrintString(lcdbuffer);
 }
 
 /* Updates the steering error values, and uses them to update
@@ -237,7 +245,11 @@ static void setSteering(double dir) {
  * Returns: newSteering (double) */
 static double controlSteering(double linePos, double theta) {
     /* Ignore if invalid values */
-    if (linePos < 0) {
+    if (linePos < 0 || theta < -1) {
+        Navigation_kill();
+        SpeedControl_kill();
+        sprintf(strbuffer, "Killing: x %4.3f th %4.3f\n", linePos, theta);
+        UART_PutString(strbuffer);
         return 0;
     }
 
@@ -257,8 +269,9 @@ static double controlSteering(double linePos, double theta) {
     lineErrorDoubleIntegral += lineErrorIntegral;
 
     /* Theta */
-    // Calculate error
-    bufTheta[bufThetaPos] = theta;
+    // Calculate error, which is -theta
+    double thetaError = -theta;
+    bufTheta[bufThetaPos] = thetaError;
     // Calculate derivative of error
     double thetaDerivative = (bufTheta[bufThetaPos] - bufTheta[bufThetaLastPos]) / (double) BUF_THETA_SIZE;
     bufThetaPos = (bufThetaPos + 1) % BUF_THETA_SIZE;
@@ -266,11 +279,11 @@ static double controlSteering(double linePos, double theta) {
         bufThetaLastPos = (bufThetaLastPos + 1) % BUF_THETA_SIZE;
     }
     // Calculate integral of error
-    thetaIntegral += theta;
+    thetaIntegral += thetaError;
 
     /* Calculate new steering position */
-    double newSteering = lineError * coeffPline + lineErrorIntegral * coeffIline + lineErrorDoubleIntegral * coeffIIline + lineErrorDerivative * coeffDline +
-        theta * coeffPtheta + thetaIntegral * coeffItheta + thetaDerivative * coeffDtheta;
+    double newSteering = lineError * coeffPline + lineErrorIntegral * coeffIline + lineErrorDoubleIntegral * coeffIIline - lineErrorDerivative * coeffDline +
+        thetaError * coeffPtheta + thetaIntegral * coeffItheta - thetaDerivative * coeffDtheta;
 
     if (verbosePrintoutOn) {
         sprintf(strbuffer, "%4.3f | %3.2f, %3.2f, %6.2f, %8.2f, %3.2f | %4.2f , %6.2f, %4.2f\n", 
