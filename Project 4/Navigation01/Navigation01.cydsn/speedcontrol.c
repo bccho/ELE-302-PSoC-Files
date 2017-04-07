@@ -48,8 +48,8 @@ static double targetSpeed = 4.0; // in feet per second
 static double targetDistance = 40;
 static double targetTime = 10; // do not set directly
 static int throttleSS = 100;
-static double coeffP = 50.0;
-static double coeffI = 10.0;
+static double coeffP = 80.0;
+static double coeffI = 1.0;
 static double coeffD = 10.0;
 
 // Misc
@@ -294,8 +294,6 @@ static int controlThrottle(double speed) {
     if (distanceTimeoutOn && totalDistance >= targetDistance) {
         killAll();
         
-        sprintf(strbuffer, "Target distance reached in %6.2f s\n", elapsedTime);
-        UART_PutString(strbuffer);
         return 0;
     }
     else {
@@ -348,6 +346,8 @@ static void killAll() {
     setThrottle(0);
     throttlePIDon = 0;
     UART_PutString("PID and throttle killed\n");
+    sprintf(strbuffer, "Time elapsed: %6.2f s\n", elapsedTime);
+    UART_PutString(strbuffer);
 }
 
 

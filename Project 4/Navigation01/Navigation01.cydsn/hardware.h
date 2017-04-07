@@ -21,19 +21,21 @@
 
 /* Steering */
 // Control pulse times for steering
-#define MIN_TIME_SERVO 0.00105 // seconds
-#define MAX_TIME_SERVO 0.00169 // seconds
+#define MIN_TIME_SERVO 0.00100 // seconds
+//#define MIN_TIME_SERVO 0.00105 // seconds
+#define MAX_TIME_SERVO 0.00175 // seconds
+//#define MAX_TIME_SERVO 0.00169 // seconds
 
 /* Camera */
 #define CAM_CLK_FREQ 12000000 // Hz
 #define CAMERA_TIMER_PERIOD 65536
 #define EXPECTED_ROW_TIME 0.000059 // seconds
 #define COUNTER_NEAR_ROW_COUNT 240
-#define LINE_CYCLES_FAR 70
-#define LINE_CYCLES_NEAR 80
+#define LINE_CYCLES_FAR 45
+#define LINE_CYCLES_NEAR 70
 
 /* PID */
-#define PID_TIMER_PERIOD 10000
+#define PID_TIMER_PERIOD 2000
 
 
 ///* Main clock */

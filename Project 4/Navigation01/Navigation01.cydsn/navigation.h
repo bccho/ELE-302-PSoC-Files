@@ -75,6 +75,10 @@ double Navigation_getDtheta();
 /* Set steering */
 void Navigation_setSteering(double dir);
 
+/* Set navigation target speed */
+void Navigation_setTargetSpeed(double speed);
+double Navigation_getTargetSpeed();
+
 /* Get steering */
 double Navigation_getSteering();
 double Navigation_getSteeringMillis();

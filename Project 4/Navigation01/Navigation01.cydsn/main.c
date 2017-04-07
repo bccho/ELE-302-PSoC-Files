@@ -38,8 +38,8 @@ static int camFrameInterrupted = 0;
 static void parseMessage(char *message) {
     if (message == NULL) return;
     
-    char msgPrefix[4];
-    if (sscanf(message, "%3[A-Za-z]", msgPrefix) == 1) {
+    char msgPrefix[5];
+    if (sscanf(message, "%4[A-Za-z]", msgPrefix) == 1) {
         int prefixLen = strlen(msgPrefix);
         
         // Messages of the form "CTx" (x integer) set the duty cycle to x out of MAX_THROTTLE
@@ -183,7 +183,7 @@ static void parseMessage(char *message) {
         }
         
         // Messages starting with "A" will abort
-        else if (strcmp(msgPrefix, "A") == 0) {
+        else if (strcmp(msgPrefix, "A") == 0 || strcmp(msgPrefix, "a") == 0) {
             SpeedControl_kill();
             Navigation_kill();
         }
@@ -223,7 +223,7 @@ static void parseMessage(char *message) {
             }
             double servoVal = Navigation_getSteeringMillis();
             double setVal = (Navigation_getSteering() + 1) / 2;
-            sprintf(strbuffer, "Servo set to %.3f (%.3f ms)\n", setVal, servoVal*1000);
+            sprintf(strbuffer, "Servo set to %.3f (%.3f ms)\n", setVal, servoVal);
             UART_PutString(strbuffer);
         }
         
@@ -275,8 +275,8 @@ static void parseMessage(char *message) {
             UART_PutString(strbuffer);
         }
         
-        // Messages of the form "CIIx" (x float) change the integral line term to x
-        else if (strcmp(msgPrefix, "CII") == 0) {
+        // Messages of the form "CIILx" (x float) change the integral line term to x
+        else if (strcmp(msgPrefix, "CIIL") == 0) {
             double value = 0;
             if (sscanf(message + prefixLen, "%lf", &value) > 0) {
                 Navigation_setIIline(value);
@@ -327,6 +327,17 @@ static void parseMessage(char *message) {
             }
 
             sprintf(strbuffer, "Dtheta = %.2f\n", Navigation_getDtheta());
+            UART_PutString(strbuffer);
+        }
+        
+        // Messages of the form "CTSNx" (x float) change target speed to x ft/s for navigation
+        else if (strcmp(msgPrefix, "CTSN") == 0) {
+            double value = 0;
+            if (sscanf(message + prefixLen, "%lf", &value) > 0) {
+                Navigation_setTargetSpeed(value);
+            }
+            
+            sprintf(strbuffer, "Navigation Target Speed = %f ft/s\n", Navigation_getTargetSpeed());
             UART_PutString(strbuffer);
         }
         
@@ -477,6 +488,8 @@ int main() {
                 SpeedControl_kill();
                 Navigation_kill();
             } else {
+                SpeedControl_setTargetDistance(107.1);
+                SpeedControl_enableDistanceControl();
                 SpeedControl_enable();
                 Navigation_enable();
             }

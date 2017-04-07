@@ -36,16 +36,19 @@ static int bufThetaLastPos = 0;
 // PID settings
 static int steeringPIDon = 0;
 
-static double coeffPline = 4.0;
+static double coeffPline = 3.0;
 static double coeffIline = 0.0;
 static double coeffIIline = 0.0;
-static double coeffDline = 0.0;
-static double coeffPtheta = 2.0;
+static double coeffDline = 2.0;
+static double coeffPtheta = 0.5;
 static double coeffItheta = 0.0;
 static double coeffDtheta = 0.0;
 
+static double targetSpeed = 4.0;
+
 // Misc
 static int verbosePrintoutOn = 0;
+static int moduloCount = 0;
 
 
 /*-----------------------------------------------------------------*/
@@ -59,12 +62,13 @@ static void resetDerivativeTracking();
 static void resetIntegralTracking();
 static double floor(double a);
 static double ceil(double a);
+static double absVal(double a);
 
 /*-----------------------------------------------------------------*/
 
 /* Initialize navigation */
 void Navigation_init() {
-    // resetSteeringTracking();
+    resetIntegralTracking();
     resetDerivativeTracking();
     setSteering(0);
 }
@@ -181,13 +185,13 @@ void Navigation_setSteering(double dir) {
 
 /* Get steering */
 double Navigation_getSteeringMillis() {
-    double servoVal = PWM_Servo_ReadCompare() / MAIN_CLK_FREQ;
-    return servoVal;
+    double servoVal = (double) PWM_Servo_ReadCompare() / (double) MAIN_CLK_FREQ;
+    return servoVal * 1000;
 }
 
 // -1 is full left, +1 is full right, 0 is center
 double Navigation_getSteering() {
-    double servoVal = Navigation_getSteeringMillis();
+    double servoVal = Navigation_getSteeringMillis() / 1000;
     double setVal = (servoVal - MIN_TIME_SERVO) / (MAX_TIME_SERVO - MIN_TIME_SERVO);
     return setVal * 2 - 1;
 }
@@ -198,7 +202,7 @@ void Navigation_kill() {
 }
 
 
-/* Handle PID timer. Controls speed and updates time */
+/* Handle PID timer. Controls steering and target speed */
 void Navigation_handleTimer() {
     if (steeringPIDon) {
         double x = Camera_getLineMid();
@@ -209,7 +213,16 @@ void Navigation_handleTimer() {
     }
 }
 
-/* Floor and ceil helper functions */
+/* Set/get navigation target speed */
+void Navigation_setTargetSpeed(double speed) {
+    targetSpeed = speed;
+}
+
+double Navigation_getTargetSpeed() {
+    return targetSpeed;
+}
+
+/* Math helper functions */
 static double floor(double a) {
     return (double) (int) a;
 }
@@ -218,9 +231,15 @@ static double ceil(double a) {
     return floor(a) + 1;
 }
 
+static double absVal(double a) {
+    if (a < 0) return -a;
+    else return a;
+}
+
 
 // Steering function (-1 is full left, +1 is full right, 0 is center)
 static void setSteering(double dir) {
+    if (dir < 0) dir *= 1.15;
     if (dir >  1) dir =  1;
     if (dir < -1) dir = -1;
 
@@ -284,12 +303,23 @@ static double controlSteering(double linePos, double theta) {
     /* Calculate new steering position */
     double newSteering = lineError * coeffPline + lineErrorIntegral * coeffIline + lineErrorDoubleIntegral * coeffIIline - lineErrorDerivative * coeffDline +
         thetaError * coeffPtheta + thetaIntegral * coeffItheta - thetaDerivative * coeffDtheta;
+    
+    /* Adjust target speed based on theta */
+    //SpeedControl_setTargetSpeed(targetSpeed * (1 - absVal(theta) / 2));
+    //SpeedControl_setTargetSpeed(targetSpeed * (1 - absVal(lineError)));
+    SpeedControl_setTargetSpeed(targetSpeed * (1 - absVal(lineError)/2) * (1 - absVal(theta)/4));
 
+    /* Verbose printout */
     if (verbosePrintoutOn) {
-        sprintf(strbuffer, "%4.3f | %3.2f, %3.2f, %6.2f, %8.2f, %3.2f | %4.2f , %6.2f, %4.2f\n", 
-                newSteering, linePos, lineError, lineErrorIntegral, lineErrorDoubleIntegral, lineErrorDerivative, 
-                theta, thetaIntegral, thetaDerivative);
-        UART_PutString(strbuffer);
+        moduloCount++;
+        if (moduloCount == 10) {
+            moduloCount = 0;
+    //        sprintf(strbuffer, "%4.3f | %3.2f, %3.2f, %6.2f, %8.2f, %3.2f | %4.2f , %6.2f, %4.2f\n", 
+    //                newSteering, linePos, lineError, lineErrorIntegral, lineErrorDoubleIntegral, lineErrorDerivative, 
+    //                theta, thetaIntegral, thetaDerivative);
+            sprintf(strbuffer, "%4.3f %4.3f, %4.3f\n", newSteering, linePos, theta);
+            UART_PutString(strbuffer);
+        }
     }
 
     return newSteering;
