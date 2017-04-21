@@ -312,6 +312,12 @@
 <VisibleNodeIds>
 <v>SpeedControl01</v>
 <v>SpeedControl01\Navigation01</v>
+<v>SpeedControl01\Navigation01\CortexM3</v>
+<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441</v>
+<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug</v>
+<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug\Navigation01.elf</v>
+<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug\Navigation01.hex</v>
+<v>SpeedControl01\Navigation01\CortexM3\ARM_GCC_441\Debug\Navigation01.map</v>
 <v>SpeedControl01\Navigation01\Navigation01.rpt</v>
 <v>SpeedControl01\Navigation01\Navigation01_timing.html</v>
 </VisibleNodeIds>
@@ -379,13 +385,15 @@
 <OpenDocs>
 <name v=".\Navigation01.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Navigation01.cydsn\Navigation01.cydwr" />
+<name v=".\Navigation01.cydsn\hardware.h" />
 <name v=".\Navigation01.cydsn\main.c" />
-<name v=".\Navigation01.cydsn\serial.h" />
-<name v=".\Navigation01.cydsn\serial.c" />
-<name v=".\Navigation01.cydsn\speedcontrol.h" />
-<name v=".\Navigation01.cydsn\speedcontrol.c" />
 <name v=".\Navigation01.cydsn\navigation.h" />
 <name v=".\Navigation01.cydsn\navigation.c" />
+<name v=".\Navigation01.cydsn\camera.h" />
+<name v=".\Navigation01.cydsn\camera.c" />
+<name v=".\Navigation01.cydsn\speedcontrol.h" />
+<name v=".\Navigation01.cydsn\speedcontrol.c" />
+<name v=".\Navigation01.cydsn\serial.c" />
 </OpenDocs>
 <config v="" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
