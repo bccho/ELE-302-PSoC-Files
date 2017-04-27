@@ -31,60 +31,10 @@
 #define CAMERA_TIMER_PERIOD 65536
 #define EXPECTED_ROW_TIME 0.000059 // seconds
 #define COUNTER_NEAR_ROW_COUNT 240
-#define LINE_CYCLES_FAR 45
-#define LINE_CYCLES_NEAR 70
+#define LINE_CYCLES_FAR 70 // far camera: 45
+#define LINE_CYCLES_NEAR 80 // far camera: 70
 
 /* PID */
 #define PID_TIMER_PERIOD 2000
-
-
-///* Main clock */
-//_DECL const int MAIN_CLK_FREQ _INIT(100000);
-//
-///* Throttle */
-//_DECL const int MAX_THROTTLE _INIT(999);
-//
-///* Distance measurement */
-//_DECL const int TICK_TIMER_PERIOD _INIT(65536);
-//_DECL const double WHEEL_DIAM _INIT(2.41); // in inches
-//
-///* Steering */
-//// Control pulse times in seconds, for steering
-//_DECL const double MIN_TIME_SERVO _INIT(0.00105);
-//_DECL const double MAX_TIME_SERVO _INIT(0.00169);
-//
-///* Camera */
-//_DECL const int CAM_CLK_FREQ _INIT(12000000);
-//_DECL const int CAMERA_TIMER_PERIOD _INIT(65536);
-//_DECL const double EXPECTED_ROW_TIME _INIT(0.000059);
-//
-///* PID */
-//_DECL const int PID_TIMER_PERIOD _INIT(10000);
-
-//
-///* Main clock */
-//const int MAIN_CLK_FREQ = 100000;
-//
-///* Throttle */
-//const int MAX_THROTTLE = 999;
-//
-///* Distance measurement */
-//const int TICK_TIMER_PERIOD = 65536;
-//const double WHEEL_DIAM = 2.41; // in inches
-//
-///* Steering */
-//// Control pulse times in seconds, for steering
-//const double MIN_TIME_SERVO = 0.00105;
-//const double MAX_TIME_SERVO = 0.00169;
-//
-///* Camera */
-//#define CAM_CLK_FREQ 12000000
-//const double CAMERA_TIMER_PERIOD = 65536;
-//#define EXPECTED_ROW_TIME 0.000059
-//
-///* PID */
-//const int PID_TIMER_PERIOD = 10000;
-
-
 
 #endif
