@@ -6,6 +6,7 @@
 #include <device.h>
 #include <hardware.h>
 #include <serial.h>
+#include <accel.h>
 #include <stdio.h>
 #include <math.h>
 
@@ -13,18 +14,21 @@ static char buildVersion[] = "Build 1.0.0";
 static char strbuffer[100];
 
 static int rxInterrupted = 0;
+static int refreshInterrupted = 0;
 
 // Function prototypes
 static void parseMessage();
-void driveMagPhase(double direction, double magnitude);
-void drive(int dirs[], double mags[]);
-//static double floor(double a);
-//static double ceil(double a);
-//static double absVal(double a);
+static void driveMagPhase(double direction, double magnitude);
+static void drive(int dirs[], double mags[]);
 
+static int dirs[4];
+static double mags[4];
 
-int dirs[4];
-double mags[4];
+static double accelVals[3];
+static double gyroVals[3];
+
+static int accelTestVal = 0;
+static int accelZeroed = 0;
 
 /*
  * parseMessage()
@@ -90,22 +94,6 @@ static void parseMessage(char *message) {
             }
         }
         
-        // Messages of the form "CDx" (x integer) set PWM to period x
-        if (strcmp(msgPrefix, "CP") == 0) {
-            int value = 0;
-            if (sscanf(message + prefixLen, "%d", &value) > 0) {
-                if (value > 100000) value = 100000;
-                if (value < 0) value = 0;
-                PWM_Front_Left_WritePeriod(value);
-                PWM_Front_Right_WritePeriod(value);
-                PWM_Back_Left_WritePeriod(value);
-                PWM_Back_Right_WritePeriod(value);
-                
-                sprintf(strbuffer, "New Period: %d\n", value);
-                UART_PutString(strbuffer);
-            }
-        }
-        
         // Drive forward
         if (strcmp(msgPrefix, "w") == 0) {
             driveMagPhase(0, 0.5);    
@@ -132,11 +120,20 @@ static void parseMessage(char *message) {
             UART_PutString("Stopped\n");
         }
         
+        // Accel Test
+        if (strcmp(msgPrefix, "AT") == 0) {
+            int value = 0;
+            if (sscanf(message + prefixLen, "%d", &value) > 0) {
+                accelTestVal = value;
+            }
+            UART_PutString("Accel Test\n");
+        }
+        
     }
 }
 
 // 0 deg is forward, 90 is left. magnitude is from 0 to 1
-void driveMagPhase(double direction, double magnitude) {
+static void driveMagPhase(double direction, double magnitude) {
     // angle w.r.t the axis formed by the front right and back left wheels
     double angle = direction * (M_PI/180) + (M_PI/4);
     // ratio of front left and back right wheel power to front right and back left wheel power
@@ -163,7 +160,7 @@ void driveMagPhase(double direction, double magnitude) {
     drive(dirs, mags);
 }
 
-void drive(int dirs[], double mags[]) {
+static void drive(int dirs[], double mags[]) {
     int i;
     for (i = 0; i < 4; i++) {
         if (mags[i] < 0) mags[i] = 0;
@@ -181,8 +178,20 @@ void drive(int dirs[], double mags[]) {
 }
 
 /* Recieved data interrupt */
-CY_ISR(rx_inter) {
+CY_ISR(rx_ISR) {
     rxInterrupted = 1;
+}
+
+/* Refresh timer interrupt */
+CY_ISR(refresh_ISR) {
+    if (refreshInterrupted != 0) UART_PutString("M\n");
+//    else UART_PutString("H\n");
+    static int count;
+    count++;
+    if (count > 1) {
+        refreshInterrupted = 1;
+        count = 0;
+    }
 }
 
 
@@ -198,7 +207,12 @@ void main()
     // Start UART
     UART_Start();
     rx_rcvd_Start();
-    rx_rcvd_SetVector(rx_inter);
+    rx_rcvd_SetVector(rx_ISR);
+    
+    // Start refresh interrupt
+    Counter_Refresh_Start();
+    refresh_interrupt_Start();
+    refresh_interrupt_SetVector(refresh_ISR);
     
     // Start Motors
     PWM_Front_Left_Start();
@@ -209,7 +223,14 @@ void main()
     
     // Init serial
     Serial_init();
-
+    
+    // Start I2C
+    I2C_Start();
+    
+    // Init accelerometer
+    Accel_init();
+    accelZeroed = 0;
+    
 
     for(;;)
     {
@@ -219,21 +240,137 @@ void main()
             parseMessage(message);
             rxInterrupted = 0;
         }
+        
+        // Handle refresh timer
+        if (refreshInterrupted) {
+//            static double accelValsRaw[3];
+//            static double gyroValsRaw[3];
+//            
+//            static double accelOffsets[3];
+//            static double gyroOffsets[3];
+//            
+//            Accel_readAccel(accelValsRaw);
+//            Accel_readGyro(gyroValsRaw);
+//            
+//            if (0) {
+////            if (accelZeroed != 1) {
+//                static int count;
+//                static int samples = 100;
+//                count++;
+//                if (count < samples) {
+//                    int i;
+//                    for (i = 0; i < 3; i++) {
+//                        accelOffsets[i] += accelValsRaw[i];
+//                        gyroOffsets[i] += gyroValsRaw[i];
+//                    }
+//                }
+//                else {
+//                    int i;
+//                    for (i = 0; i < 3; i++) {
+//                        accelOffsets[i] /= samples;
+//                        gyroOffsets[i] /= samples;
+//                    }
+//                    accelZeroed = 1;
+//                    sprintf(strbuffer, "Offsets: %8.3f, %8.3f, %8.3f, %8.3f, %8.3f, %8.3f\n", accelOffsets[0], accelOffsets[1], accelOffsets[2], 
+//                                                                                              gyroOffsets[0], gyroOffsets[1], gyroOffsets[2]);
+//                    UART_PutString(strbuffer);
+//                }
+//            }
+//            else {
+//                int i;
+//                for (i = 0; i < 3; i++) {
+//                    accelVals[i] = accelValsRaw[i] - accelOffsets[i];
+//                    gyroVals[i] = gyroValsRaw[i] - gyroOffsets[i];
+//                }
+//                
+//                int breakIndex;
+//                switch (accelTestVal) {
+//                    case 0:
+//                        sprintf(strbuffer, "%8.3f, %8.3f, %8.3f, %8.3f, %8.3f, %8.3f\n", accelVals[0], accelVals[1], accelVals[2], gyroVals[0], gyroVals[1], gyroVals[2]);
+//                        break;
+//                    case 1:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) accelVals[0]/200 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 2:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) accelVals[1]/200 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 3:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) accelVals[2]/200 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 4:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) gyroVals[0]/100 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 5:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) gyroVals[1]/100 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 6:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) gyroVals[2]/100 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                }
+//                UART_PutString(strbuffer);
+//            }
+
+            Accel_refresh();
+//            static int count;
+//            count++;
+//            if (count > 10) {  //100x per sec
+//                count = 0;
+//                Accel_getAccel(accelVals);
+//                Accel_getGyro(gyroVals);
+//                
+//                int breakIndex;
+//                switch (accelTestVal) {
+//                    case 0:
+//                        sprintf(strbuffer, "%8.3f, %8.3f, %8.3f, %8.3f, %8.3f, %8.3f\n", accelVals[0], accelVals[1], accelVals[2], gyroVals[0], gyroVals[1], gyroVals[2]);
+//                        break;
+//                    case 1:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) accelVals[0]/200 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 2:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) accelVals[1]/200 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 3:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) accelVals[2]/200 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 4:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) gyroVals[0]/100 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 5:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) gyroVals[1]/100 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                    case 6:
+//                        sprintf(strbuffer, "                                                            \n");
+//                        breakIndex = (int) gyroVals[2]/100 + 6;
+//                        strbuffer[breakIndex] = '0';
+//                        break;
+//                }
+//                UART_PutString(strbuffer);
+//            }
+            refreshInterrupted = 0;
+        }
     }
 }
-
-///* Math helper functions */
-//static double floor(double a) {
-//    return (double) (int) a;
-//}
-//
-//static double ceil(double a) {
-//    return floor(a) + 1;
-//}
-//
-//static double absVal(double a) {
-//    if (a < 0) return -a;
-//    else return a;
-//}
 
 /* [] END OF FILE */
