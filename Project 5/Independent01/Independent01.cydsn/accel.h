@@ -17,6 +17,7 @@
 
 int Accel_init();
 void Accel_getAccel(double *accelData);
+void Accel_getMag(double *magData);
 void Accel_getGyro(double *gyroData);
 void Accel_refresh();
 
@@ -37,6 +38,12 @@ void Accel_refresh();
 #define LSM9DS0_ACCEL_MG_LSB_6G (0.183F)
 #define LSM9DS0_ACCEL_MG_LSB_8G (0.244F)
 #define LSM9DS0_ACCEL_MG_LSB_16G (0.732F) // Is this right? Was expecting 0.488F
+
+// Magnetic Field Strength: gauss range
+#define LSM9DS0_MAG_MGAUSS_2GAUSS      (0.08F)
+#define LSM9DS0_MAG_MGAUSS_4GAUSS      (0.16F)
+#define LSM9DS0_MAG_MGAUSS_8GAUSS      (0.32F)
+#define LSM9DS0_MAG_MGAUSS_12GAUSS     (0.48F)
 
 // Angular Rate: dps per LSB
 #define LSM9DS0_GYRO_DPS_DIGIT_245DPS      (0.00875F)
@@ -116,6 +123,25 @@ typedef enum
 	LSM9DS0_ACCELDATARATE_800HZ          = (0b1001 << 4),
 	LSM9DS0_ACCELDATARATE_1600HZ         = (0b1010 << 4)
 } lm9ds0AccelDataRate_t;
+
+typedef enum
+{
+  LSM9DS0_MAGGAIN_2GAUSS               = (0b00 << 5),  // +/- 2 gauss
+  LSM9DS0_MAGGAIN_4GAUSS               = (0b01 << 5),  // +/- 4 gauss
+  LSM9DS0_MAGGAIN_8GAUSS               = (0b10 << 5),  // +/- 8 gauss
+  LSM9DS0_MAGGAIN_12GAUSS              = (0b11 << 5)   // +/- 12 gauss
+} lsm9ds0MagGain_t;
+
+typedef enum
+{
+  LSM9DS0_MAGDATARATE_3_125HZ          = (0b000 << 2),
+  LSM9DS0_MAGDATARATE_6_25HZ           = (0b001 << 2),
+  LSM9DS0_MAGDATARATE_12_5HZ           = (0b010 << 2),
+  LSM9DS0_MAGDATARATE_25HZ             = (0b011 << 2),
+  LSM9DS0_MAGDATARATE_50HZ             = (0b100 << 2),
+  LSM9DS0_MAGDATARATE_100HZ            = (0b101 << 2)
+} lsm9ds0MagDataRate_t;
+
 
 typedef enum
 {

@@ -1,9 +1,9 @@
 /*-----------------------------------------------------------------*/
-/* serial.c                                                        */
+/* serial_pi.c                                                        */
 /*                                                                 */
 /* BC Cho (bccho@) and TJ Smith (tjs8@)                            */
 /*-----------------------------------------------------------------*/
-#include <serial.h>
+#include <serial_pi.h>
 #include <device.h>
 
 /*-----------------------------------------------------------------*/
@@ -20,7 +20,7 @@ static void resetRx();
 /*-----------------------------------------------------------------*/
 
 /* Initializes serial communications */
-void Serial_init() {
+void Serial_Pi_init() {
     resetRx();
 }
 
@@ -28,7 +28,7 @@ void Serial_init() {
 /* Handles incoming serial data 
    Returns: null if transmission is not complete, the transmitted
             string otherwise */
-char *Serial_handleData() {
+char *Serial_Pi_handleData() {
     // reset the buffer if needed (last call completed a message)
     if (needReset) {
         resetRx();
@@ -36,19 +36,19 @@ char *Serial_handleData() {
     }
     
     char recByte;
-    while ((recByte = UART_GetChar()) > 0) {
+    while ((recByte = UART_Pi_GetChar()) > 0) {
         // if NL, CR, or EOT, indicate end of message and echo back special char
         if (recByte == 0xA || recByte == 0xD || recByte == 0x4) {
-            UART_PutChar('$');
-            UART_PutChar(recByte);
+            UART_Pi_PutChar('$');
+            UART_Pi_PutChar(recByte);
             needReset = 1;
-            //while (UART_GetChar() > 0) {}
-            UART_ClearRxBuffer();
+            //while (UART_Pi_GetChar() > 0) {}
+            UART_Pi_ClearRxBuffer();
             return bufRx;
         }
         // if we have reached max buffer size, indicate overflow error
         if (bufRxPos == BUF_RX_SIZE) {
-            UART_PutString("! Buffer Overflow !");
+            UART_Pi_PutString("! Buffer Overflow !");
             needReset = 1;
             return bufRx;
         // for normal bytes, put byte in buffer and echo the byte
@@ -56,7 +56,7 @@ char *Serial_handleData() {
         else {
             bufRx[bufRxPos] = recByte;
             bufRxPos++;
-            UART_PutChar(recByte);
+            UART_Pi_PutChar(recByte);
         }
     }
     return NULL;
